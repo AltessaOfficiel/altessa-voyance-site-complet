@@ -1,0 +1,31 @@
+
+<html><body>
+<h1>Contact - Altessa Voyance</h1>
+<form action="mailto:contact@altessavoyance.com" method="post" enctype="text/plain">
+Prénom: <input name="prenom"><br>
+Nom: <input name="nom"><br>
+Date de naissance: <input name="date_naissance" type="date"><br>
+Type: <select id="type-field" name="type">
+<option value="a-la-question">À la question — 8€</option>
+<option value="sentimental">Sentimental — 20€</option>
+<option value="professionnel">Professionnel — 20€</option>
+<option value="financier">Financier — 20€</option>
+<option value="general">Général — 20€</option>
+<option value="soin-energetique">Soin énergétique — 50€</option>
+</select><br>
+<div id="bloc-sentimental" style="display:none;">
+Prénom 2: <input name="prenom_autre"><br>
+Nom 2: <input name="nom_autre"><br>
+Date naissance 2: <input name="date_naissance_autre" type="date"><br>
+</div>
+Question:<br>
+<textarea name="question"></textarea><br>
+<button type="submit">Envoyer</button>
+</form>
+<script>
+const t=document.getElementById('type-field');
+const b=document.getElementById('bloc-sentimental');
+function u(){ b.style.display = t.value==='sentimental' ? 'block':'none'; }
+t.addEventListener('change',u); u();
+</script>
+</body></html>
