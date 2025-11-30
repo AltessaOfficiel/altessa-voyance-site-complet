@@ -1,0 +1,54 @@
+{
+  "home_title": "Altessa Veggenza — Home",
+  "brand_name": "Altessa",
+  "brand_sub": "Veggenza",
+
+  "nav_home": "Home",
+  "nav_experts": "Esperti",
+  "nav_tarifs": "Tariffe",
+  "nav_contact": "Contatto",
+
+  "home_intro": "Scopri il tuo futuro con i nostri esperti online.<br>Ricevi risposte chiare, precise e personalizzate.",
+  "btn_choose_expert": "Scegli il tuo esperto",
+
+  "horoscope_title": "Oroscopo generale",
+  "horoscope_subtitle": "Una visione simbolica dell’energia del momento per ogni segno zodiacale.",
+
+  "sign_aries": "Ariete",
+  "sign_aries_desc": "Prendi iniziativa — lo slancio è dalla tua parte.",
+
+  "sign_taurus": "Toro",
+  "sign_taurus_desc": "Consolida le basi e metti in sicurezza i tuoi progetti.",
+
+  "sign_gemini": "Gemelli",
+  "sign_gemini_desc": "Comunica — sta arrivando un’informazione importante.",
+
+  "sign_cancer": "Cancro",
+  "sign_cancer_desc": "Proteggi ciò che conta e segui la tua intuizione.",
+
+  "sign_leo": "Leone",
+  "sign_leo_desc": "Brilla senza paura — i tuoi sforzi vengono notati.",
+
+  "sign_virgo": "Vergine",
+  "sign_virgo_desc": "Chiarisci, organizza — la tua mente si libera.",
+
+  "sign_libra": "Bilancia",
+  "sign_libra_desc": "Un nuovo equilibrio nasce nelle tue relazioni.",
+
+  "sign_scorpio": "Scorpione",
+  "sign_scorpio_desc": "Verità nascoste emergono — accoglile.",
+
+  "sign_sagittarius": "Sagittario",
+  "sign_sagittarius_desc": "Apri i tuoi orizzonti — un progetto cresce.",
+
+  "sign_capricorn": "Capricorno",
+  "sign_capricorn_desc": "La perseveranza ripaga — arriva riconoscimento.",
+
+  "sign_aquarius": "Acquario",
+  "sign_aquarius_desc": "Innova — un’idea può cambiare tutto.",
+
+  "sign_pisces": "Pesci",
+  "sign_pisces_desc": "Ascolta le tue sensazioni — un sogno diventa direzione.",
+
+  "footer_text": "Altessa Veggenza © — Veggenza online."
+}
