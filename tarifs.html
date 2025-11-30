@@ -10,6 +10,7 @@
 
 <body>
 
+<!-- HEADER UNIFIÉ -->
 <header class="header">
   <div class="logo">
     <img src="https://i.imgur.com/Y8xX3Xv.png" alt="Logo Altessa">
@@ -30,102 +31,58 @@
 <main class="section tarifs-page">
 
   <h1 class="section-title">Tarifs de voyance</h1>
+
   <p class="section-subtitle">
-    Choisissez votre type de voyance en fonction de votre besoin.  
-    Les réponses sont envoyées par e-mail <strong>après validation du paiement sécurisé</strong>.
+    Choisissez votre type de voyance selon votre besoin.<br>
+    <strong>Réponse envoyée par e-mail après validation du paiement sécurisé.</strong>
   </p>
 
+  <!-- GRID TARIFS -->
   <div class="tarifs-grid">
 
     <article class="tarif-card">
       <h2>À la question</h2>
       <p class="tarif-price">8 €</p>
-      <p>Une question précise, une réponse ciblée avec tirage adapté.</p>
+      <p>Une question précise, réponse directe et claire.</p>
     </article>
 
     <article class="tarif-card">
       <h2>Voyance sentimentale</h2>
       <p class="tarif-price">20 €</p>
-      <p>Amour, couple, retour d’une personne, rencontres.</p>
+      <p>Couple, amour, retrouvailles, liens présents et futurs.</p>
     </article>
 
     <article class="tarif-card">
       <h2>Voyance professionnelle</h2>
       <p class="tarif-price">20 €</p>
-      <p>Travail, projets, reconversion, évolution de carrière.</p>
+      <p>Carrière, travail, changement pro, évolution.</p>
     </article>
 
     <article class="tarif-card">
       <h2>Voyance financière</h2>
       <p class="tarif-price">20 €</p>
-      <p>Finances, achats, investissements, stabilité.</p>
+      <p>Finances, achats importants, stabilité et sécurité.</p>
     </article>
 
     <article class="tarif-card tarif-highlight">
       <h2>Voyance générale</h2>
       <p class="tarif-price">45 €</p>
-      <p>Vue d’ensemble sur plusieurs domaines à la fois.</p>
+      <p>Bilan complet : sentimental, pro, finances et tendances à venir.</p>
     </article>
 
     <article class="tarif-card">
       <h2>Soin énergétique</h2>
       <p class="tarif-price">50 €</p>
-      <p>Harmonisation énergétique pour apaiser les blocages.</p>
+      <p>Nettoyage énergétique, apaisement, réalignement intérieur.</p>
     </article>
 
   </div>
 
+  <!-- BOUTONS ACTION -->
   <div class="tarifs-actions">
-    <a href="experts.html" class="btn-secondary">Choisissez votre expert</a>
+    <a href="experts.html" class="btn-secondary">Choisir mon expert</a>
+    <a href="formulaire.html" class="btn-primary">Poser ma question</a>
   </div>
-
-  <!-- FORMULAIRE QUESTION -->
-  <section id="form-question" class="form-section">
-    <h2>Formulaire de question</h2>
-    <p>
-      Remplissez ce formulaire après avoir choisi votre type de voyance.  
-      <strong>Le message n’est transmis à l’expert qu’une fois le paiement validé (Stripe à intégrer).</strong>
-    </p>
-
-    <form class="question-form">
-      <label>
-        Votre prénom
-        <input type="text" name="prenom" required>
-      </label>
-
-      <label>
-        Votre e-mail
-        <input type="email" name="email" required>
-      </label>
-
-      <label>
-        Type de voyance
-        <select name="type" required>
-          <option value="">Sélectionnez…</option>
-          <option>À la question — 8€</option>
-          <option>Voyance sentimentale — 20€</option>
-          <option>Voyance professionnelle — 20€</option>
-          <option>Voyance financière — 20€</option>
-          <option>Voyance générale — 45€</option>
-          <option>Soin énergétique — 50€</option>
-        </select>
-      </label>
-
-      <label>
-        Votre question / situation (détaillez au maximum)
-        <textarea name="message" rows="6" required></textarea>
-      </label>
-
-      <button type="submit" class="btn-primary form-btn">
-        Payer et envoyer votre question
-      </button>
-
-      <p class="form-note">
-        🔒 Le paiement sécurisé (ex : Stripe) doit être configuré côté serveur.
-        Ce modèle affiche uniquement le bouton et la structure du formulaire.
-      </p>
-    </form>
-  </section>
 
 </main>
 
