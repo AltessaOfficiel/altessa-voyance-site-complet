@@ -1,0 +1,54 @@
+{
+  "home_title": "Altessa Voyance — Accueil",
+  "brand_name": "Altessa",
+  "brand_sub": "Voyance",
+
+  "nav_home": "Accueil",
+  "nav_experts": "Experts",
+  "nav_tarifs": "Tarifs",
+  "nav_contact": "Contact",
+
+  "home_intro": "Découvrez l’avenir avec nos experts en ligne.<br>Recevez des réponses claires, précises et personnalisées.",
+  "btn_choose_expert": "Choisissez votre expert",
+
+  "horoscope_title": "Horoscope général",
+  "horoscope_subtitle": "Une vision symbolique de l’énergie du moment pour chaque signe du zodiaque.",
+
+  "sign_aries": "Bélier",
+  "sign_aries_desc": "Prenez des initiatives, l’élan est avec vous.",
+
+  "sign_taurus": "Taureau",
+  "sign_taurus_desc": "Consolidez vos bases, sécurisez vos projets.",
+
+  "sign_gemini": "Gémeaux",
+  "sign_gemini_desc": "Communiquez, une information clé vous parvient.",
+
+  "sign_cancer": "Cancer",
+  "sign_cancer_desc": "Protégez ce qui compte, suivez votre intuition.",
+
+  "sign_leo": "Lion",
+  "sign_leo_desc": "Brillez sans crainte, on remarque enfin vos efforts.",
+
+  "sign_virgo": "Vierge",
+  "sign_virgo_desc": "Clarifiez, organisez, votre esprit se libère.",
+
+  "sign_libra": "Balance",
+  "sign_libra_desc": "Un nouvel équilibre se crée dans vos relations.",
+
+  "sign_scorpio": "Scorpion",
+  "sign_scorpio_desc": "Les vérités cachées remontent, accueillez-les.",
+
+  "sign_sagittarius": "Sagittaire",
+  "sign_sagittarius_desc": "Ouvrez le champ des possibles, un projet prend de l’ampleur.",
+
+  "sign_capricorn": "Capricorne",
+  "sign_capricorn_desc": "La persévérance paye, une reconnaissance arrive.",
+
+  "sign_aquarius": "Verseau",
+  "sign_aquarius_desc": "Innovez, une idée différente peut tout changer.",
+
+  "sign_pisces": "Poissons",
+  "sign_pisces_desc": "Écoutez vos ressentis, un rêve peut devenir direction.",
+
+  "footer_text": "Altessa Voyance © — Voyance en ligne."
+}
