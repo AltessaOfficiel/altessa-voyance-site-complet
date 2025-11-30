@@ -12,7 +12,7 @@
 <!-- HEADER identique au reste du site -->
 <header class="header">
   <div class="logo">
-    <img src="https://i.imgur.com/Y8xX3Xv.png" alt="Logo Altessa">
+    <img src="assets/img/logo-altessa.png" alt="Logo Altessa">
     <div class="logo-text">
       <span class="logo-main">Altessa</span>
       <span class="logo-sub">Voyance</span>
@@ -69,12 +69,12 @@
           <option value="sentimentale">Sentimental (20€)</option>
           <option value="professionnelle">Professionnel (20€)</option>
           <option value="financiere">Financier (20€)</option>
-          <option value="generale">Général (20€)</option>
+          <option value="generale">Général (45€)</option>
           <option value="soin">Soin énergétique (50€)</option>
         </select>
       </div>
 
-      <!-- APPARITION AUTOMATIQUE POUR LA VOYANCE SENTIMENTALE -->
+      <!-- Champ supplémentaire pour voyance sentimentale -->
       <div class="form-row sentimental-only" style="display:none;">
         <label>Prénom de la 2e personne (optionnel)</label>
         <input type="text" name="autre_personne">
@@ -102,26 +102,24 @@
   Altessa Voyance © — Service réservé aux personnes majeures.
 </footer>
 
-<!-- SCRIPT POUR REMPLIR L'EXPERT + AFFICHER LE SENTIMENTAL -->
+<!-- SCRIPT — Pré-remplissage + affichage du champ sentimental -->
 <script>
   // Remplit le champ expert avec ?expert=
   const params = new URLSearchParams(window.location.search);
   const expert = params.get("expert");
   const expertInput = document.getElementById("expert");
+
   if (expert && expertInput) {
     expertInput.value = expert;
   }
 
-  // Affiche le bloc sentimental si besoin
+  // Gestion de la voyance sentimentale
   const typeSelect = document.getElementById("type");
   const sentimentalBlock = document.querySelector(".sentimental-only");
 
   function updateSentimental() {
-    if (typeSelect.value === "sentimentale") {
-      sentimentalBlock.style.display = "block";
-    } else {
-      sentimentalBlock.style.display = "none";
-    }
+    sentimentalBlock.style.display =
+      typeSelect.value === "sentimentale" ? "block" : "none";
   }
 
   typeSelect.addEventListener("change", updateSentimental);
