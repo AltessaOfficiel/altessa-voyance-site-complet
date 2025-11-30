@@ -4,390 +4,280 @@
   <meta charset="UTF-8">
   <title>Altessa Voyance — Nos experts</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- ====== STYLE COMPLET ====== -->
-  <style>
-    body {
-      background: #080016;
-      color: #fff;
-      font-family: "Poppins", sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    /* HEADER */
-    .site-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 25px 50px;
-      background: rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(4px);
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo-icon {
-      font-size: 28px;
-      color: #e9c46a;
-    }
-
-    .logo-name {
-      font-size: 26px;
-      font-weight: bold;
-    }
-
-    .logo-tag {
-      font-size: 14px;
-      letter-spacing: 2px;
-      color: #e9c46a;
-      text-transform: uppercase;
-    }
-
-    .main-nav a {
-      color: #fff;
-      margin: 0 18px;
-      text-decoration: none;
-      font-size: 16px;
-      transition: 0.3s;
-    }
-
-    .main-nav a:hover,
-    .main-nav .active {
-      color: #e9c46a;
-    }
-
-    .btn-nav-contact {
-      padding: 10px 20px;
-      background: #e9c46a;
-      color: #1a0a26 !important;
-      border-radius: 30px;
-      font-weight: bold;
-    }
-
-    /* SECTION */
-    .section {
-      padding: 80px 20px;
-    }
-
-    .section-inner {
-      max-width: 1250px;
-      margin: auto;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 40px;
-      margin-bottom: 20px;
-    }
-
-    .section-intro {
-      text-align: center;
-      font-size: 18px;
-      color: #ccc;
-      max-width: 700px;
-      margin: 0 auto 60px;
-    }
-
-    /* GRID EXPERTS */
-    .experts-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 40px;
-    }
-
-    .expert-card {
-      background: rgba(30, 0, 60, 0.7);
-      border-radius: 20px;
-      padding: 30px;
-      text-align: center;
-      border: 1px solid rgba(255, 200, 80, 0.3);
-      box-shadow: 0 0 25px rgba(255, 200, 80, 0.15);
-      transition: 0.3s;
-    }
-
-    .expert-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 0 45px rgba(255, 200, 80, 0.4);
-    }
-
-    /* AVATARS */
-    .expert-avatar {
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      margin: 0 auto 20px;
-      background-size: cover;
-      background-position: center;
-      border: 3px solid #e9c46a;
-      box-shadow: 0 0 25px rgba(255, 200, 80, 0.3);
-    }
-
-    .expert-avatar-1 {
-      background-image: url("https://files.catbox.moe/9p67yd.jpg");
-    }
-    .expert-avatar-2 {
-      background-image: url("https://files.catbox.moe/8f0z5l.jpg");
-    }
-    .expert-avatar-3 {
-      background-image: url("https://files.catbox.moe/1t9n2v.jpg");
-    }
-    .expert-avatar-4 {
-      background-image: url("https://files.catbox.moe/0rl6k7.jpg");
-    }
-
-    .expert-role {
-      color: #e9c46a;
-      font-size: 16px;
-      margin-bottom: 15px;
-    }
-
-    .expert-bio {
-      font-size: 14px;
-      color: #ddd;
-      line-height: 1.5;
-      margin-bottom: 25px;
-    }
-
-    /* BUTTON */
-    .btn-primary {
-      background: linear-gradient(135deg, #fddb8d, #d5a237);
-      color: #1a0a26;
-      padding: 12px 20px;
-      border-radius: 30px;
-      font-weight: bold;
-      display: inline-block;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    .btn-primary:hover {
-      transform: scale(1.06);
-      background: linear-gradient(135deg, #ffe7b3, #e8b85a);
-    }
-
-    /* FOOTER */
-    .site-footer {
-      text-align: center;
-      padding: 40px;
-      margin-top: 60px;
-      color: #aaa;
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-
 <body>
-
-<header class="site-header">
-  <div class="logo">
-    <span class="logo-icon">✶</span>
-    <div>
-      <span class="logo-name">Altessa</span><br>
-      <span class="logo-tag">Voyance</span>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="logo">
+      <span class="logo-icon">✶</span>
+      <div class="logo-text">
+        <span class="logo-name">Altessa</span>
+        <span class="logo-tag">Voyance</span>
+      </div>
     </div>
-  </div>
+    <nav class="main-nav">
+      <a href="index.html">Accueil</a>
+      <a href="experts.html" class="active">Experts</a>
+      <a href="tarifs.html">Tarifs</a>
+      <a href="contact.html" class="btn-nav-contact">Contact</a>
+    </nav>
+  </header>
 
-  <nav class="main-nav">
-    <a href="index.html">Accueil</a>
-    <a href="experts.html" class="active">Experts</a>
-    <a href="tarifs.html">Tarifs</a>
-    <a href="contact.html" class="btn-nav-contact">Contact</a>
-  </nav>
-</header>
+  <!-- CONTENU PRINCIPAL -->
+  <main class="section">
+    <div class="section-inner">
+      <h1 class="section-title">Nos experts en ligne</h1>
+      <p class="section-intro">
+        Consultez nos voyants professionnels pour obtenir des conseils
+        et des prédictions personnalisées, claires et personnalisées.
+      </p>
 
-<main class="section">
-  <div class="section-inner">
-    <h1 class="section-title">Nos experts en ligne</h1>
-    <p class="section-intro">
-      Consultez nos voyants professionnels pour obtenir des conseils et des prédictions personnalisées.
-    </p>
+      <div class="experts-grid">
+        <!-- 1 -->
+        <article class="expert-card">
+          <div class="expert-avatar avatar-ariane"></div>
+          <h2>Ariane</h2>
+          <p class="expert-role">Tarologue</p>
+          <p class="expert-bio">
+            Spécialiste du Tarot de Marseille, Ariane vous guide sur vos choix
+            sentimentaux et vos grandes décisions de vie.
+          </p>
+          <a href="tarifs.html" class="btn-primary">Consulter</a>
+        </article>
 
-    <div class="experts-grid">
+        <!-- 2 -->
+        <article class="expert-card">
+          <div class="expert-avatar avatar-noemie"></div>
+          <h2>Noémie</h2>
+          <p class="expert-role">Astrologue</p>
+          <p class="expert-bio">
+            Noémie analyse votre thème astral pour éclairer votre chemin
+            professionnel, financier et spirituel.
+          </p>
+          <a href="tarifs.html" class="btn-primary">Consulter</a>
+        </article>
 
-      <!-- 20 CARTES AUTOMATIQUES -->
-      <!-- Elles tournent avec 4 avatars -->
+        <!-- 3 -->
+        <article class="expert-card">
+          <div class="expert-avatar avatar-nicolas"></div>
+          <h2>Nicolas</h2>
+          <p class="expert-role">Médium</p>
+          <p class="expert-bio">
+            Médium pur, Nicolas capte vos blocages et vous aide à comprendre
+            les messages que l’univers vous envoie.
+          </p>
+          <a href="tarifs.html" class="btn-primary">Consulter</a>
+        </article>
 
-      <!-- 1 -->
-      <article class="expert-card">
-        <div class="expert-avatar expert-avatar-1"></div>
-        <h2>Ariane</h2>
-        <p class="expert-role">Tarologue</p>
-        <p class="expert-bio">Spécialiste du Tarot de Marseille pour vos décisions sentimentales et vos choix de vie.</p>
-        <a href="tarifs.html" class="btn-primary">Consulter</a>
-      </article>
+        <!-- 4 -->
+        <article class="expert-card">
+          <div class="expert-avatar avatar-elise"></div>
+          <h2>Élise</h2>
+          <p class="expert-role">Voyante</p>
+          <p class="expert-bio">
+            Avec une approche douce et bienveillante, Élise vous accompagne
+            sur vos questions sentimentales et familiales.
+          </p>
+          <a href="tarifs.html" class="btn-primary">Consulter</a>
+        </article>
 
-      <!-- 2 -->
-      <article class="expert-card">
-        <div class="expert-avatar expert-avatar-2"></div>
-        <h2>Noémie</h2>
-        <p class="expert-role">Astrologue</p>
-        <p class="expert-bio">Analyse complète de votre thème astral pour éclairer votre chemin.</p>
-        <a href="tarifs.html" class="btn-primary">Consulter</a>
-      </article>
+        <!-- 5 -->
+        <article class="expert-card">
+          <div class="expert-avatar avatar-mathieu"></div>
+          <h2>Mathieu</h2>
+          <p class="expert-role">Voyant sentimental</p>
+          <p class="expert-bio">
+            Spécialisé dans les relations et les retours, Mathieu éclaire vos
+            liens karmiques et vos choix de cœur.
+          </p>
+          <a href="tarifs.html" class="btn-primary">Consulter</a>
+        </article>
 
-      <!-- 3 -->
-      <article class="expert-card">
-        <div class="expert-avatar expert-avatar-3"></div>
-        <h2>Nicolas</h2>
-        <p class="expert-role">Médium</p>
-        <p class="expert-bio">Médium pur, perceptions précises pour comprendre vos blocages.</p>
-        <a href="tarifs.html" class="btn-primary">Consulter</a>
-      </article>
+        <!-- 6 -->
+        <article class="expert-card">
+          <div class="expert-avatar avatar-claire"></div>
+          <h2>Claire</h2>
+          <p class="expert-role">Voyante professionnelle</p>
+          <p class="expert-bio">
+            Claire vous accompagne sur votre carrière, vos projets
+            et vos réorientations professionnelles.
+          </p>
+          <a href="tarifs.html" class="btn-primary">Consulter</a>
+        </article>
 
-      <!-- 4 -->
-      <article class="expert-card">
-        <div class="expert-avatar expert-avatar-4"></div>
-        <h2>Élise</h2>
-        <p class="expert-role">Voyante</p>
-        <p class="expert-bio">Approche douce et bienveillante pour vos questions sentimentales.</p>
-        <a href="tarifs.html" class="btn-primary">Consulter</a>
-      </article>
+        <!-- 7 -->
+        <article class="expert-card">
+          <div class="expert-avatar avatar-julien"></div>
+          <h2>Julien</h2>
+          <p class="expert-role">Numérologue</p>
+          <p class="expert-bio">
+            Julien décrypte vos nombres de vie pour vous aider à prendre
+            des décisions alignées avec votre chemin de destinée.
+          </p>
+          <a href="tarifs.html" class="btn-primary">Consulter</a>
+        </article>
 
-      <!-- AUTO-GÉNÉRATION 5 → 20 -->
-      <!-- Reste du groupe identique à ton fichier initial -->
+        <!-- 8 -->
+        <article class="expert-card">
+          <div class="expert-avatar avatar-sofia"></div>
+          <h2>Sofia</h2>
+          <p class="expert-role">Médium spirituelle</p>
+          <p class="expert-bio">
+            Connexion aux guides et aux messages subtils pour apaiser vos
+            blocages et éclairer vos choix de vie.
+          </p>
+          <a href="tarifs.html" class="btn-primary">Consulter</a>
+        </article>
 
-      <!-- 5 -->
-      <article class="expert-card">
-        <div class="expert-avatar expert-avatar-1"></div>
-        <h2>Maël</h2>
-        <p class="expert-role">Numérologue</p>
-        <p class="expert-bio">Décrypte vos nombres de vie pour des décisions alignées.</p>
-        <a href="tarifs.html" class="btn-primary">Consulter</a>
-      </article>
+        <!-- 9 -->
+        <article class="expert-card">
+          <div class="expert-avatar avatar-david"></div>
+          <h2>David</h2>
+          <p class="expert-role">Médium clairaudient</p>
+          <p class="expert-bio">
+            Perceptions fines et messages auditifs pour débloquer
+            les situations complexes.
+          </p>
+          <a href="tarifs.html" class="btn-primary">Consulter</a>
+        </article>
 
-      <article class="expert-card">
-        <div class="expert-avatar expert-avatar-2"></div>
-        <h2>Clara</h2>
-        <p class="expert-role">Voyante</p>
-        <p class="expert-bio">Clairvoyance et clairsentience pour une vision globale.</p>
-        <a href="tarifs.html" class="btn-primary">Consulter</a>
-      </article>
+        <!-- 10 -->
+        <article class="expert-card">
+          <div class="expert-avatar avatar-sarah"></div>
+          <h2>Sarah</h2>
+          <p class="expert-role">Voyante de l’âme</p>
+          <p class="expert-bio">
+            Lecture profonde de votre chemin spirituel et de vos missions de vie.
+          </p>
+          <a href="tarifs.html" class="btn-primary">Consulter</a>
+        </article>
 
-      <article class="expert-card">
-        <div class="expert-avatar expert-avatar-3"></div>
-        <h2>Raphaël</h2>
-        <p class="expert-role">Médium spirit</p>
-        <p class="expert-bio">Messages subtils pour dépasser vos blocages karmiques.</p>
-        <a href="tarifs.html" class="btn-primary">Consulter</a>
-      </article>
+        <!-- 11 -->
+        <article class="expert-card">
+          <div class="expert-avatar avatar-ilian"></div>
+          <h2>Ilian</h2>
+          <p class="expert-role">Voyant généraliste</p>
+          <p class="expert-bio">
+            Vue d’ensemble sur amour, travail, santé et projets à venir.
+          </p>
+          <a href="tarifs.html" class="btn-primary">Consulter</a>
+        </article>
 
-      <article class="expert-card">
-        <div class="expert-avatar expert-avatar-4"></div>
-        <h2>Luna</h2>
-        <p class="expert-role">Cartomancienne</p>
-        <p class="expert-bio">Oracles et tarots pour vos choix de cœur et de carrière.</p>
-        <a href="tarifs.html" class="btn-primary">Consulter</a>
-      </article>
+        <!-- 12 -->
+        <article class="expert-card">
+          <div class="expert-avatar avatar-mael"></div>
+          <h2>Maël</h2>
+          <p class="expert-role">Coach spirituel</p>
+          <p class="expert-bio">
+            Maël vous aide à reprendre confiance en vous
+            et à comprendre vos expériences de vie.
+          </p>
+          <a href="tarifs.html" class="btn-primary">Consulter</a>
+        </article>
 
-      <!-- continue 9 → 20 -->
+        <!-- 13 -->
+        <article class="expert-card">
+          <div class="expert-avatar avatar-luna"></div>
+          <h2>Luna</h2>
+          <p class="expert-role">Cartomancienne</p>
+          <p class="expert-bio">
+            Luna lit les oracles et les tarots pour éclairer vos choix
+            de cœur, de carrière et de finances.
+          </p>
+          <a href="tarifs.html" class="btn-primary">Consulter</a>
+        </article>
 
-      <article class="expert-card">
-        <div class="expert-avatar expert-avatar-1"></div>
-        <h2>Samuel</h2>
-        <p class="expert-role">Coach spirituel</p>
-        <p class="expert-bio">Retrouvez confiance et compréhension de vos expériences.</p>
-        <a href="tarifs.html" class="btn-primary">Consulter</a>
-      </article>
+        <!-- 14 -->
+        <article class="expert-card">
+          <div class="expert-avatar avatar-samuel"></div>
+          <h2>Samuel</h2>
+          <p class="expert-role">Médium intuitif</p>
+          <p class="expert-bio">
+            Samuel ressent vos émotions et capte vos blocages pour vous guider
+            avec douceur mais précision.
+          </p>
+          <a href="tarifs.html" class="btn-primary">Consulter</a>
+        </article>
 
-      <article class="expert-card">
-        <div class="expert-avatar expert-avatar-2"></div>
-        <h2>Jade</h2>
-        <p class="expert-role">Médium & tarologue</p>
-        <p class="expert-bio">Réponses précises et directes, sans complaisance.</p>
-        <a href="tarifs.html" class="btn-primary">Consulter</a>
-      </article>
+        <!-- 15 -->
+        <article class="expert-card">
+          <div class="expert-avatar avatar-jade"></div>
+          <h2>Jade</h2>
+          <p class="expert-role">Médium & tarologue</p>
+          <p class="expert-bio">
+            Jade associe tarot et médiumnité pour des réponses directes,
+            précises et sans complaisance.
+          </p>
+          <a href="tarifs.html" class="btn-primary">Consulter</a>
+        </article>
 
-      <article class="expert-card">
-        <div class="expert-avatar expert-avatar-3"></div>
-        <h2>Victor</h2>
-        <p class="expert-role">Voyant</p>
-        <p class="expert-bio">Guidance professionnelle et orientation de carrière.</p>
-        <a href="tarifs.html" class="btn-primary">Consulter</a>
-      </article>
+        <!-- 16 -->
+        <article class="expert-card">
+          <div class="expert-avatar avatar-victor"></div>
+          <h2>Victor</h2>
+          <p class="expert-role">Voyant</p>
+          <p class="expert-bio">
+            Victor vous aide à faire les bons choix dans vos projets
+            professionnels et vos réorientations.
+          </p>
+          <a href="tarifs.html" class="btn-primary">Consulter</a>
+        </article>
 
-      <article class="expert-card">
-        <div class="expert-avatar expert-avatar-4"></div>
-        <h2>Anaïs</h2>
-        <p class="expert-role">Astrologue karmique</p>
-        <p class="expert-bio">Exploration de vos mémoires karmiques et relations.</p>
-        <a href="tarifs.html" class="btn-primary">Consulter</a>
-      </article>
+        <!-- 17 -->
+        <article class="expert-card">
+          <div class="expert-avatar avatar-anais"></div>
+          <h2>Anaïs</h2>
+          <p class="expert-role">Astrologue karmique</p>
+          <p class="expert-bio">
+            Anaïs explore vos mémoires karmiques pour éclairer vos
+            schémas répétitifs et vos relations.
+          </p>
+          <a href="tarifs.html" class="btn-primary">Consulter</a>
+        </article>
 
-      <article class="expert-card">
-        <div class="expert-avatar expert-avatar-1"></div>
-        <h2>Thomas</h2>
-        <p class="expert-role">Médium auditif</p>
-        <p class="expert-bio">Messages reçus sous forme de sons et mots.</p>
-        <a href="tarifs.html" class="btn-primary">Consulter</a>
-      </article>
+        <!-- 18 -->
+        <article class="expert-card">
+          <div class="expert-avatar avatar-chloe"></div>
+          <h2>Chloé</h2>
+          <p class="expert-role">Cartomancienne</p>
+          <p class="expert-bio">
+            Chloé utilise différents oracles pour vous offrir une vision
+            douce mais très concrète de votre avenir.
+          </p>
+          <a href="tarifs.html" class="btn-primary">Consulter</a>
+        </article>
 
-      <article class="expert-card">
-        <div class="expert-avatar expert-avatar-2"></div>
-        <h2>Yara</h2>
-        <p class="expert-role">Énergéticienne</p>
-        <p class="expert-bio">Libération des tensions et rééquilibrage émotionnel.</p>
-        <a href="tarifs.html" class="btn-primary">Consulter</a>
-      </article>
+        <!-- 19 -->
+        <article class="expert-card">
+          <div class="expert-avatar avatar-hugo"></div>
+          <h2>Hugo</h2>
+          <p class="expert-role">Astro-coach</p>
+          <p class="expert-bio">
+            Hugo mélange astrologie et coaching pour vous accompagner
+            vers la réalisation de vos objectifs.
+          </p>
+          <a href="tarifs.html" class="btn-primary">Consulter</a>
+        </article>
 
-      <article class="expert-card">
-        <div class="expert-avatar expert-avatar-3"></div>
-        <h2>Camille</h2>
-        <p class="expert-role">Voyant(e)</p>
-        <p class="expert-bio">Clarté sur vos choix sentimentaux et affectifs.</p>
-        <a href="tarifs.html" class="btn-primary">Consulter</a>
-      </article>
-
-      <article class="expert-card">
-        <div class="expert-avatar expert-avatar-4"></div>
-        <h2>Idris</h2>
-        <p class="expert-role">Médium flash</p>
-        <p class="expert-bio">Réponses très rapides grâce aux flashs intuitifs.</p>
-        <a href="tarifs.html" class="btn-primary">Consulter</a>
-      </article>
-
-      <article class="expert-card">
-        <div class="expert-avatar expert-avatar-1"></div>
-        <h2>Chloé</h2>
-        <p class="expert-role">Cartomancienne</p>
-        <p class="expert-bio">Vision douce mais concrète de votre avenir.</p>
-        <a href="tarifs.html" class="btn-primary">Consulter</a>
-      </article>
-
-      <article class="expert-card">
-        <div class="expert-avatar expert-avatar-2"></div>
-        <h2>Océane</h2>
-        <p class="expert-role">Voyante émotionnelle</p>
-        <p class="expert-bio">Travaille avec vos émotions pour apaiser le cœur.</p>
-        <a href="tarifs.html" class="btn-primary">Consulter</a>
-      </article>
-
-      <article class="expert-card">
-        <div class="expert-avatar expert-avatar-3"></div>
-        <h2>Hugo</h2>
-        <p class="expert-role">Astro-coach</p>
-        <p class="expert-bio">Astrologie + coaching pour atteindre vos objectifs.</p>
-        <a href="tarifs.html" class="btn-primary">Consulter</a>
-      </article>
-
-      <article class="expert-card">
-        <div class="expert-avatar expert-avatar-4"></div>
-        <h2>Livia</h2>
-        <p class="expert-role">Voyante intuitive</p>
-        <p class="expert-bio">Messages spontanés très précis et intuitifs.</p>
-        <a href="tarifs.html" class="btn-primary">Consulter</a>
-      </article>
-
+        <!-- 20 -->
+        <article class="expert-card">
+          <div class="expert-avatar avatar-livia"></div>
+          <h2>Livia</h2>
+          <p class="expert-role">Voyante intuitive</p>
+          <p class="expert-bio">
+            Livia se connecte à vos énergies pour vous transmettre
+            des messages spontanés et très intuitifs.
+          </p>
+          <a href="tarifs.html" class="btn-primary">Consulter</a>
+        </article>
+      </div>
     </div>
-  </div>
-</main>
+  </main>
 
-<footer class="site-footer">
-  <p>Altessa Voyance © — Voyance en ligne.</p>
-</footer>
-
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>Altessa Voyance © — Voyance en ligne.</p>
+  </footer>
 </body>
 </html>
