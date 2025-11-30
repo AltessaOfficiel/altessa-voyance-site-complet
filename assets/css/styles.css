@@ -1,3 +1,76 @@
+/* ===== AVATARS EXPERTS ===== */
+
+.experts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.expert-card {
+  background: radial-gradient(circle at top, #2f174f 0%, #150a24 60%, #0a0614 100%);
+  border-radius: 28px;
+  padding: 32px 24px 28px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.expert-avatar {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  margin: 0 auto 24px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow:
+    0 0 0 3px #f5d08a,
+    0 0 25px rgba(245, 208, 138, 0.6);
+}
+
+/* Noms rôles etc, au cas où */
+.expert-card h2 {
+  font-size: 1.4rem;
+  margin-bottom: 4px;
+}
+
+.expert-role {
+  color: #f5d08a;
+  font-size: 0.95rem;
+  margin-bottom: 14px;
+}
+
+.expert-bio {
+  font-size: 0.95rem;
+  color: #ddd;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* ===== PHOTOS PAR EXPERT ===== */
+/* Place tous tes fichiers dans: assets/img/experts/ */
+
+.avatar-ariane   { background-image: url("assets/img/experts/ariane.jpg"); }
+.avatar-noemie   { background-image: url("assets/img/experts/noemie.jpg"); }
+.avatar-nicolas  { background-image: url("assets/img/experts/nicolas.jpg"); }
+.avatar-elise    { background-image: url("assets/img/experts/elise.jpg"); }
+.avatar-mathieu  { background-image: url("assets/img/experts/mathieu.jpg"); }
+.avatar-claire   { background-image: url("assets/img/experts/claire.jpg"); }
+.avatar-julien   { background-image: url("assets/img/experts/julien.jpg"); }
+.avatar-sofia    { background-image: url("assets/img/experts/sofia.jpg"); }
+.avatar-david    { background-image: url("assets/img/experts/david.jpg"); }
+.avatar-sarah    { background-image: url("assets/img/experts/sarah.jpg"); }
+.avatar-ilian    { background-image: url("assets/img/experts/ilian.jpg"); }
+.avatar-mael     { background-image: url("assets/img/experts/mael.jpg"); }
+.avatar-luna     { background-image: url("assets/img/experts/luna.jpg"); }
+.avatar-samuel   { background-image: url("assets/img/experts/samuel.jpg"); }
+.avatar-jade     { background-image: url("assets/img/experts/jade.jpg"); }
+.avatar-victor   { background-image: url("assets/img/experts/victor.jpg"); }
+.avatar-anais    { background-image: url("assets/img/experts/anais.jpg"); }
+.avatar-chloe    { background-image: url("assets/img/experts/chloe.jpg"); }
+.avatar-hugo     { background-image: url("assets/img/experts/hugo.jpg"); }
+.avatar-livia    { background-image: url("assets/img/experts/livia.jpg"); }
 /* ====== GLOBAL ====== */
 *,
 *::before,
