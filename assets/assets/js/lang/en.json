@@ -1,0 +1,54 @@
+{
+  "home_title": "Altessa Psychic — Home",
+  "brand_name": "Altessa",
+  "brand_sub": "Psychic",
+
+  "nav_home": "Home",
+  "nav_experts": "Experts",
+  "nav_tarifs": "Prices",
+  "nav_contact": "Contact",
+
+  "home_intro": "Discover your future with our online experts.<br>Receive clear, precise and personalized answers.",
+  "btn_choose_expert": "Choose your expert",
+
+  "horoscope_title": "General Horoscope",
+  "horoscope_subtitle": "A symbolic vision of today's energy for every zodiac sign.",
+
+  "sign_aries": "Aries",
+  "sign_aries_desc": "Take initiative — momentum is working for you.",
+
+  "sign_taurus": "Taurus",
+  "sign_taurus_desc": "Strengthen your foundations and secure your projects.",
+
+  "sign_gemini": "Gemini",
+  "sign_gemini_desc": "Communicate — a key piece of information is coming.",
+
+  "sign_cancer": "Cancer",
+  "sign_cancer_desc": "Protect what matters and trust your intuition.",
+
+  "sign_leo": "Leo",
+  "sign_leo_desc": "Shine without fear — your efforts are finally noticed.",
+
+  "sign_virgo": "Virgo",
+  "sign_virgo_desc": "Clarify, organize — your mind becomes lighter.",
+
+  "sign_libra": "Libra",
+  "sign_libra_desc": "A new balance appears in your relationships.",
+
+  "sign_scorpio": "Scorpio",
+  "sign_scorpio_desc": "Hidden truths rise — welcome them.",
+
+  "sign_sagittarius": "Sagittarius",
+  "sign_sagittarius_desc": "Expand your horizons — a project grows bigger.",
+
+  "sign_capricorn": "Capricorn",
+  "sign_capricorn_desc": "Perseverance pays — recognition is coming.",
+
+  "sign_aquarius": "Aquarius",
+  "sign_aquarius_desc": "Innovate — a different idea may change everything.",
+
+  "sign_pisces": "Pisces",
+  "sign_pisces_desc": "Listen to your feelings — a dream becomes a direction.",
+
+  "footer_text": "Altessa Psychic © — Online clairvoyance."
+}
