@@ -145,6 +145,41 @@ a:hover {
   border: none;
 }
 
+/* ========== SÉLECTEUR DE LANGUE ========== */
+
+#lang-switcher {
+  margin-left: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(243,212,138,0.7);
+  background: rgba(5,0,20,0.75);
+  color: #fdf7e6;
+  font-size: 0.8rem;
+  font-family: inherit;
+  cursor: pointer;
+  outline: none;
+  min-width: 80px;
+  appearance: none;
+}
+
+/* petit chevron stylé (facultatif, fonctionne dans la plupart des navigateurs) */
+#lang-switcher {
+  background-image:
+    linear-gradient(45deg, transparent 50%, #f3d48a 50%),
+    linear-gradient(135deg, #f3d48a 50%, transparent 50%);
+  background-position:
+    calc(100% - 10px) calc(50% - 3px),
+    calc(100% - 6px) calc(50% - 3px);
+  background-repeat: no-repeat;
+  background-size: 6px 6px, 6px 6px;
+  padding-right: 26px;
+}
+
+#lang-switcher:focus {
+  box-shadow: 0 0 0 1px rgba(248,224,160,0.9);
+  border-color: #f8e0a0;
+}
+
 /* ========== BOUTONS ========== */
 
 .btn-primary,
@@ -565,10 +600,15 @@ a:hover {
   }
 
   .nav {
-    gap: 16px;
+    gap: 12px;
     font-size: 0.85rem;
     flex-wrap: wrap;
     justify-content: center;
+  }
+
+  #lang-switcher {
+    order: 2;
+    width: auto;
   }
 
   .hero {
@@ -620,5 +660,11 @@ a:hover {
     margin-left: 0;
     margin-top: 10px;
     display: inline-flex;
+  }
+
+  #lang-switcher {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
   }
 }
