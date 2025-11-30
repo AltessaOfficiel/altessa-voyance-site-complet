@@ -4,91 +4,108 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Altessa Voyance — Découvrez l’avenir avec nos experts en ligne</title>
+
+  <!-- Police Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- CSS global -->
   <link rel="stylesheet" href="assets/css/styles.css" />
-  <script src="assets/js/site.js" defer></script>
 </head>
 <body>
-<div id="stars"></div>
-<header class="site-header">
-  <div class="brand-left">
-    <div class="brand-mark"><span class="brand-icon">✶</span></div>
-    <div class="brand-text">
-      <span class="brand-name">Altessa</span>
-      <span class="brand-tag">Voyance</span>
-    </div>
-  </div>
-  <nav class="main-nav">
-    <a href="index.html" class="active">Accueil</a>
-    <a href="experts.html">Experts</a>
-    <a href="tarifs.html">Tarifs</a>
-    <a href="contact.html" class="btn-nav">Contact</a>
-  </nav>
-</header>
-<main class="page page-home">
-  <section class="hero">
-    <div class="hero-logo-block">
-      <div class="hero-logo-circle">
-        <div class="hero-logo-flower">
-          <span class="petal petal-1"></span>
-          <span class="petal petal-2"></span>
-          <span class="petal petal-3"></span>
-          <span class="petal petal-4"></span>
+  <div class="page-wrapper">
+
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="logo">
+        <div class="logo-icon">✶</div>
+        <div class="logo-text">
+          <span class="logo-main">Altessa</span>
+          <span class="logo-sub">Voyance</span>
         </div>
       </div>
-      <div class="hero-logo-text">
-        <h1 class="hero-title">Altessa</h1>
-        <p class="hero-subtitle">Voyance</p>
-      </div>
-    </div>
-    <div class="hero-content">
-      <p class="hero-lead">Découvrez l’avenir avec nos experts en ligne.</p>
-      <p class="hero-desc">
-        Posez vos questions à nos voyants professionnels et recevez des réponses
-        claires, précises et personnalisées par e-mail : sentimental, professionnel,
-        financier, général ou soin énergétique.
-      </p>
-      <p class="hero-note">
-        Service divinatoire assisté par intelligence artificielle, proposé à des fins
-        de guidance et de divertissement. Ne remplace pas un avis médical, juridique
-        ou financier.
-      </p>
-      <div class="hero-actions">
-        <a href="contact.html" class="btn-primary">Poser une question</a>
-        <a href="experts.html" class="btn-secondary">Découvrir les experts</a>
-      </div>
-    </div>
-  </section>
-  <section class="section section-horo">
-    <h2>Horoscope général</h2>
-    <p class="section-intro">
-      Une vision symbolique de l’énergie du moment pour chaque signe du zodiaque.
-    </p>
-    <div id="horo-cards" class="horo-cards"></div>
-    <p class="horo-note">Interprétations proposées à titre indicatif et ludique.</p>
-  </section>
-  <section class="section">
-    <h2>Comment fonctionne Altessa Voyance ?</h2>
-    <div class="steps">
-      <article class="step">
-        <div class="step-number">1</div>
-        <h3>Choisissez votre expert</h3>
-        <p>Chaque expert Altessa a son style, sa sensibilité et ses spécialités.</p>
-      </article>
-      <article class="step">
-        <div class="step-number">2</div>
-        <h3>Choisissez votre type de question</h3>
-        <p>À la question, sentimental, professionnel, financier, général ou soin énergétique.</p>
-      </article>
-      <article class="step">
-        <div class="step-number">3</div>
-        <h3>Recevez votre réponse par e-mail</h3>
-        <p>Après validation du paiement, votre réponse détaillée est envoyée à votre adresse e-mail.</p>
-      </article>
-    </div>
-  </section>
-</main>
-<footer class="site-footer">
-  <p>© Altessa Voyance — Service de divertissement. Ne remplace pas un avis médical, juridique ou financier.</p>
-</footer>
+
+      <nav class="main-nav">
+        <a href="index.html" class="active">Accueil</a>
+        <a href="experts.html">Experts</a>
+        <a href="tarifs.html">Tarifs</a>
+        <a href="contact.html" class="btn-nav">Contact</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <main class="main-content">
+      <section class="hero">
+        <div class="hero-logo">
+          <div class="hero-lotus">✶</div>
+          <h1 class="hero-title">Altessa<br /><span>Voyance</span></h1>
+        </div>
+
+        <p class="hero-subtitle">
+          Découvrez l’avenir avec nos experts en ligne
+        </p>
+
+        <p class="hero-text">
+          Posez vos questions à nos voyants professionnels et recevez
+          des réponses claires, précises et personnalisées.
+        </p>
+
+        <div class="hero-cta">
+          <a href="contact.html" class="btn-primary">Poser une question</a>
+        </div>
+      </section>
+
+      <!-- HOROSCOPE -->
+      <section class="section">
+        <h2 class="section-title">Horoscope général</h2>
+        <p class="section-intro">
+          Une vision symbolique de l’énergie du moment pour chaque signe du zodiaque.
+        </p>
+
+        <div class="cards-grid horoscope-grid">
+          <article class="card card-horoscope">
+            <div class="card-icon">♈</div>
+            <h3 class="card-title">Bélier</h3>
+            <p class="card-text">
+              Prenez des décisions audacieuses, l’univers soutient vos choix.
+            </p>
+          </article>
+
+          <article class="card card-horoscope">
+            <div class="card-icon">♉</div>
+            <h3 class="card-title">Taureau</h3>
+            <p class="card-text">
+              Consolidez vos bases et offrez-vous un moment de confort.
+            </p>
+          </article>
+
+          <article class="card card-horoscope">
+            <div class="card-icon">♊</div>
+            <h3 class="card-title">Gémeaux</h3>
+            <p class="card-text">
+              Exprimez-vous, c’est le bon moment pour les échanges profonds.
+            </p>
+          </article>
+
+          <article class="card card-horoscope">
+            <div class="card-icon">♋</div>
+            <h3 class="card-title">Cancer</h3>
+            <p class="card-text">
+              Protégez ce qui compte pour vous et écoutez votre intuition.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <p>Altessa Voyance &copy; <span id="year"></span> — Guidance spirituelle en ligne.</p>
+    </footer>
+  </div>
+
+  <script src="assets/js/site.js"></script>
 </body>
 </html>
+
