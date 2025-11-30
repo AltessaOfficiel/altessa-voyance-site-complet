@@ -5,11 +5,11 @@
   const expertInput = document.querySelector("[name='expert']");
 
   if (expert && expertInput) {
-    expertInput.value = expert;
+    expertInput.value = decodeURIComponent(expert.replace(/\+/g, " "));
   }
 })();
 
-// --- Afficher le champ "2e personne" pour le sentimental uniquement ---
+// --- Afficher automatiquement le champ sentimental ---
 (function () {
   const typeSelect = document.querySelector("[name='type']");
   const sentimentalBlock = document.querySelector(".sentimental-only");
@@ -17,7 +17,6 @@
   if (!typeSelect || !sentimentalBlock) return;
 
   function updateSentimentalVisibility() {
-    // On ne déclenche QUE si la valeur est EXACTEMENT "sentimentale"
     sentimentalBlock.style.display =
       typeSelect.value === "sentimentale" ? "block" : "none";
   }
@@ -26,7 +25,7 @@
   updateSentimentalVisibility();
 })();
 
-// --- Gestion du bouton Paiement (Stripe) ---
+// --- Gestion du bouton Paiement (Stripe Checkout) ---
 (function () {
   const form = document.getElementById("voyance-form");
   if (!form) return;
@@ -34,15 +33,19 @@
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
+    // Vérification HTML5
     if (!form.checkValidity()) {
       form.reportValidity();
       return;
     }
 
+    // Récupère toutes les données du formulaire
     const data = Object.fromEntries(new FormData(form).entries());
+
+    // Sauvegarde temporaire (utile pour réafficher après paiement)
     localStorage.setItem("altessa_voyance_form", JSON.stringify(data));
 
-    // URL Stripe à remplacer par ton vrai Checkout
+    // 🔥 À remplacer par ton lien de paiement réel Stripe Checkout
     const stripeCheckoutUrl = "https://stripe.com";
 
     window.location.href = stripeCheckoutUrl;
