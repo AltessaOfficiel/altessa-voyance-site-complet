@@ -14,8 +14,25 @@ html, body {
 body {
   min-height: 100vh;
   font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background: radial-gradient(circle at top, #3b1770 0, #080016 55%, #05000d 100%);
+  background: radial-gradient(circle at top, #4b1c7f 0, #080016 55%, #05000d 100%);
   color: #ffffff;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* léger ciel étoilé */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(255,255,255,0.18) 0, transparent 55%),
+    radial-gradient(circle at 80% 10%, rgba(248,224,160,0.14) 0, transparent 60%),
+    radial-gradient(circle at 20% 80%, rgba(154,95,214,0.18) 0, transparent 55%);
+  opacity: 0.35;
+  mix-blend-mode: screen;
+  z-index: -1;
 }
 
 /* liens */
@@ -39,9 +56,9 @@ a:hover {
   justify-content: space-between;
   align-items: center;
   padding: 18px 8vw;
-  background: rgba(5, 0, 20, 0.92);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(217, 164, 65, 0.2);
+  background: radial-gradient(circle at top left, rgba(110,58,196,0.45), rgba(5,0,20,0.92));
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(217, 164, 65, 0.25);
 }
 
 .logo {
@@ -51,8 +68,9 @@ a:hover {
 }
 
 .logo img {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
+  filter: drop-shadow(0 0 14px rgba(248,224,160,0.7));
 }
 
 .logo-text {
@@ -63,14 +81,14 @@ a:hover {
 
 .logo-main {
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
 }
 
 .logo-sub {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: #d9a441;
+  color: #f3d48a;
 }
 
 .nav {
@@ -83,6 +101,28 @@ a:hover {
 .nav a {
   opacity: 0.8;
   position: relative;
+  padding-bottom: 2px;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg,#f8e0a0,#d9a441);
+  border-radius: 999px;
+  transition: width 0.18s ease, left 0.18s ease;
+}
+
+.nav a:hover {
+  opacity: 1;
+}
+
+.nav a:hover::after {
+  width: 100%;
+  left: 0;
 }
 
 .nav a.active {
@@ -91,14 +131,8 @@ a:hover {
 }
 
 .nav a.active::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
   width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg,#f8e0a0,#d9a441);
-  border-radius: 999px;
+  left: 0;
 }
 
 .btn-nav {
@@ -108,6 +142,7 @@ a:hover {
   color: #2c143c;
   font-weight: 600;
   box-shadow: 0 0 18px rgba(217,164,65,0.55);
+  border: none;
 }
 
 /* ========== BOUTONS ========== */
@@ -126,7 +161,7 @@ a:hover {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg,#f8e0a0,#d9a441);
+  background: radial-gradient(circle at top left,#f8e0a0,#d9a441);
   color: #2c143c;
   box-shadow: 0 0 26px rgba(217,164,65,0.6);
 }
@@ -140,12 +175,16 @@ a:hover {
 .btn-secondary {
   background: rgba(217,164,65,0.12);
   color: #f8e0a0;
-  border: 1px solid rgba(217,164,65,0.5);
+  border: 1px solid rgba(217,164,65,0.6);
 }
 
 .btn-secondary:hover {
   transform: translateY(-2px);
   box-shadow: 0 0 18px rgba(217,164,65,0.4);
+}
+
+.btn-full {
+  width: 100%;
 }
 
 /* ========== HERO ACCUEIL ========== */
@@ -158,7 +197,7 @@ a:hover {
 .hero-lotus {
   width: 120px;
   margin-bottom: 12px;
-  filter: drop-shadow(0 0 26px rgba(248,224,160,0.7));
+  filter: drop-shadow(0 0 26px rgba(248,224,160,0.75));
 }
 
 .hero-title {
@@ -172,7 +211,7 @@ a:hover {
   margin: 4px 0 14px;
   text-transform: uppercase;
   letter-spacing: 0.3em;
-  color: #d9a441;
+  color: #f3d48a;
 }
 
 .hero-text {
@@ -182,8 +221,21 @@ a:hover {
   opacity: 0.9;
 }
 
-.hero-btn {
-  margin-top: 10px;
+/* hero interne (contact) */
+
+.hero-inner {
+  padding-top: 40px;
+  padding-inline: 8vw;
+}
+
+.hero-title-small {
+  font-size: 1.8rem;
+}
+
+.hero-text-centered {
+  text-align: center;
+  max-width: 640px;
+  margin: 10px auto 0;
 }
 
 /* ========== SECTIONS GÉNÉRIQUES ========== */
@@ -196,6 +248,8 @@ a:hover {
   text-align: center;
   font-size: 2rem;
   margin-bottom: 6px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .section-subtitle {
@@ -204,6 +258,38 @@ a:hover {
   margin: 0 auto 28px;
   font-weight: 300;
   opacity: 0.85;
+}
+
+/* ========== CARTES MYSTIQUES GÉNÉRIQUES ========== */
+
+.horocard,
+.expert-card,
+.tarif-card {
+  background: radial-gradient(circle at top,#2b134f,#120021 55%,#090013 100%);
+  border-radius: 24px;
+  padding: 20px 18px 22px;
+  border: 1px solid rgba(217,164,65,0.22);
+  box-shadow: 0 0 20px rgba(0,0,0,0.55);
+  position: relative;
+  overflow: hidden;
+}
+
+.horocard::before,
+.expert-card::before,
+.tarif-card::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(circle at top, rgba(248,224,160,0.18), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.horocard:hover::before,
+.expert-card:hover::before,
+.tarif-card:hover::before {
+  opacity: 1;
 }
 
 /* ========== HOROSCOPE GRID ========== */
@@ -217,18 +303,14 @@ a:hover {
 }
 
 .horocard {
-  background: radial-gradient(circle at top,#29124f,#120021 55%,#090013 100%);
-  border-radius: 24px;
-  padding: 18px 16px 20px;
   text-align: center;
-  box-shadow: 0 0 18px rgba(0,0,0,0.5);
-  border: 1px solid rgba(217,164,65,0.18);
 }
 
 .horocard img {
   width: 46px;
   height: 46px;
   margin-bottom: 10px;
+  filter: drop-shadow(0 0 12px rgba(248,224,160,0.7));
 }
 
 .horocard h3 {
@@ -259,12 +341,8 @@ a:hover {
 }
 
 .expert-card {
-  background: radial-gradient(circle at top,#29124f,#120021 55%,#090013 100%);
-  border-radius: 26px;
-  padding: 22px 20px 24px;
   text-align: center;
-  border: 1px solid rgba(217,164,65,0.18);
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  padding-top: 26px;
 }
 
 .expert-photo {
@@ -274,7 +352,7 @@ a:hover {
   object-fit: cover;
   margin-bottom: 12px;
   border: 3px solid rgba(217,164,65,0.9);
-  box-shadow: 0 0 18px rgba(217,164,65,0.45);
+  box-shadow: 0 0 18px rgba(217,164,65,0.55);
 }
 
 .expert-card h2 {
@@ -308,14 +386,6 @@ a:hover {
   margin: 0 auto 26px;
 }
 
-.tarif-card {
-  background: radial-gradient(circle at top,#29124f,#120021 55%,#090013 100%);
-  border-radius: 24px;
-  padding: 20px 18px 22px;
-  border: 1px solid rgba(217,164,65,0.2);
-  box-shadow: 0 0 18px rgba(0,0,0,0.5);
-}
-
 .tarif-card h2 {
   margin: 0 0 6px;
   font-size: 1.1rem;
@@ -335,8 +405,8 @@ a:hover {
 }
 
 .tarif-highlight {
-  box-shadow: 0 0 26px rgba(217,164,65,0.65);
-  border-color: rgba(248,224,160,0.8);
+  box-shadow: 0 0 28px rgba(217,164,65,0.7);
+  border-color: rgba(248,224,160,0.85);
 }
 
 .tarifs-actions {
@@ -344,7 +414,11 @@ a:hover {
   margin-bottom: 30px;
 }
 
-/* ========== FORMULAIRE QUESTION ========== */
+.tarifs-actions a + a {
+  margin-left: 10px;
+}
+
+/* ========== FORMULAIRE TARIFS (SECTION QUESTION) ========== */
 
 .form-section {
   max-width: 760px;
@@ -379,7 +453,7 @@ a:hover {
 .question-form input,
 .question-form select,
 .question-form textarea {
-  background: rgba(10,0,30,0.9);
+  background: rgba(10,0,30,0.92);
   border: 1px solid rgba(217,164,65,0.35);
   border-radius: 12px;
   padding: 10px 12px;
@@ -407,6 +481,56 @@ a:hover {
   margin-top: 6px;
   text-align: center;
 }
+
+/* ========== FORMULAIRE CONTACT (page contact.html) ========== */
+
+.page-contact main {
+  padding-bottom: 40px;
+}
+
+.contact-form {
+  max-width: 640px;
+  margin: 0 auto;
+  background: radial-gradient(circle at top,#2b134f,#120021 55%,#090013 100%);
+  border-radius: 26px;
+  padding: 24px 20px 28px;
+  border: 1px solid rgba(217,164,65,0.22);
+  box-shadow: 0 0 22px rgba(0,0,0,0.55);
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+  font-size: 0.9rem;
+}
+
+.form-row label {
+  opacity: 0.9;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  background: rgba(10,0,30,0.92);
+  border: 1px solid rgba(217,164,65,0.35);
+  border-radius: 12px;
+  padding: 10px 12px;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #f8e0a0;
+  box-shadow: 0 0 0 1px rgba(248,224,160,0.7);
+}
+
+/* note déjà stylée par .form-note plus haut */
 
 /* ========== FOOTER ========== */
 
@@ -443,10 +567,13 @@ a:hover {
   .nav {
     gap: 16px;
     font-size: 0.85rem;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .hero {
     padding-inline: 16px;
+    padding-top: 50px;
   }
 
   .section {
@@ -464,11 +591,34 @@ a:hover {
   .tarifs-grid {
     grid-template-columns: 1fr;
   }
+
+  .contact-form {
+    padding-inline: 16px;
+  }
 }
 
 @media (max-width: 520px) {
   .experts-grid,
   .horoscope-grid {
     grid-template-columns: 1fr;
+  }
+
+  .hero-title {
+    font-size: 2.4rem;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+  }
+
+  .tarifs-actions a + a {
+    margin-left: 0;
+    margin-top: 10px;
+    display: inline-flex;
   }
 }
