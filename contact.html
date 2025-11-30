@@ -1,1 +1,92 @@
-<!DOCTYPE html><html lang='fr'><head><meta charset='UTF-8'><title>Contact</title><link rel='stylesheet' href='assets/css/styles.css'><script src='assets/js/site.js' defer></script></head><body><div id='stars'></div><main class='page'><h1>Contact Altessa</h1></main></body></html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Altessa Voyance — Contact & consultation</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <div class="page-wrapper">
+
+    <header class="site-header">
+      <div class="logo">
+        <div class="logo-icon">✶</div>
+        <div class="logo-text">
+          <span class="logo-main">Altessa</span>
+          <span class="logo-sub">Voyance</span>
+        </div>
+      </div>
+
+      <nav class="main-nav">
+        <a href="index.html">Accueil</a>
+        <a href="experts.html">Experts</a>
+        <a href="tarifs.html">Tarifs</a>
+        <a href="contact.html" class="btn-nav active">Contact</a>
+      </nav>
+    </header>
+
+    <main class="main-content">
+      <section class="section">
+        <h1 class="page-title">Poser votre question</h1>
+        <p class="section-intro">
+          Remplissez ce formulaire avec vos informations et le type de guidance souhaité.
+          Vous recevrez votre réponse par e-mail dans un délai moyen de 24 à 48h.
+        </p>
+
+        <form class="contact-form">
+          <div class="form-row">
+            <label>Nom et prénom *</label>
+            <input type="text" required placeholder="Votre nom complet" />
+          </div>
+
+          <div class="form-row">
+            <label>Date de naissance *</label>
+            <input type="date" required />
+          </div>
+
+          <div class="form-row">
+            <label>Adresse e-mail *</label>
+            <input type="email" required placeholder="vous@exemple.com" />
+          </div>
+
+          <div class="form-row">
+            <label>Type de guidance *</label>
+            <select required>
+              <option value="">Choisissez...</option>
+              <option>À la question — 8€</option>
+              <option>Sentimental — 20€</option>
+              <option>Professionnel — 20€</option>
+              <option>Financier — 20€</option>
+              <option>Général — 20€</option>
+              <option>Soin énergétique — 50€</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label>Votre question *</label>
+            <textarea rows="5" required placeholder="Expliquez clairement votre situation et vos attentes."></textarea>
+          </div>
+
+          <p class="form-note">
+            * Champs obligatoires. Les réponses sont envoyées par e-mail après réception du paiement.
+          </p>
+
+          <button type="submit" class="btn-primary">Envoyer ma demande</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Altessa Voyance &copy; <span id="year"></span> — Contact & consultations.</p>
+    </footer>
+  </div>
+
+  <script src="assets/js/site.js"></script>
+</body>
+</html>
