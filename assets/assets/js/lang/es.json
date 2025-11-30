@@ -1,0 +1,54 @@
+{
+  "home_title": "Altessa Videncia — Inicio",
+  "brand_name": "Altessa",
+  "brand_sub": "Videncia",
+
+  "nav_home": "Inicio",
+  "nav_experts": "Expertos",
+  "nav_tarifs": "Precios",
+  "nav_contact": "Contacto",
+
+  "home_intro": "Descubre tu futuro con nuestros expertos online.<br>Recibe respuestas claras, precisas y personalizadas.",
+  "btn_choose_expert": "Elegir experto",
+
+  "horoscope_title": "Horóscopo general",
+  "horoscope_subtitle": "Una visión simbólica de la energía del momento para cada signo del zodiaco.",
+
+  "sign_aries": "Aries",
+  "sign_aries_desc": "Toma la iniciativa — la energía está contigo.",
+
+  "sign_taurus": "Tauro",
+  "sign_taurus_desc": "Consolida tus bases y asegura tus proyectos.",
+
+  "sign_gemini": "Géminis",
+  "sign_gemini_desc": "Comunica — llega una información clave.",
+
+  "sign_cancer": "Cáncer",
+  "sign_cancer_desc": "Protege lo que importa y sigue tu intuición.",
+
+  "sign_leo": "Leo",
+  "sign_leo_desc": "Brilla sin miedo — reconocen tus esfuerzos.",
+
+  "sign_virgo": "Virgo",
+  "sign_virgo_desc": "Aclara, organiza — tu mente se libera.",
+
+  "sign_libra": "Libra",
+  "sign_libra_desc": "Un nuevo equilibrio aparece en tus relaciones.",
+
+  "sign_scorpio": "Escorpio",
+  "sign_scorpio_desc": "Las verdades ocultas emergen — acéptalas.",
+
+  "sign_sagittarius": "Sagitario",
+  "sign_sagittarius_desc": "Amplía tus horizontes — un proyecto crece.",
+
+  "sign_capricorn": "Capricornio",
+  "sign_capricorn_desc": "La perseverancia paga — llega reconocimiento.",
+
+  "sign_aquarius": "Acuario",
+  "sign_aquarius_desc": "Innova — una idea diferente puede cambiar todo.",
+
+  "sign_pisces": "Piscis",
+  "sign_pisces_desc": "Escucha tus sentimientos — un sueño se vuelve dirección.",
+
+  "footer_text": "Altessa Videncia © — Consulta en línea."
+}
