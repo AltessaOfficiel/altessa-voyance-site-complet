@@ -2,10 +2,13 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Altessa Voyance — Tarifs</title>
+  <title data-i18n="tarifs_title">Altessa Voyance — Tarifs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
+
+  <!-- SCRIPT MULTILINGUE -->
+  <script src="assets/js/lang.js" defer></script>
 </head>
 
 <body>
@@ -13,26 +16,35 @@
 <!-- HEADER UNIFIÉ -->
 <header class="header">
   <div class="logo">
-    <img src="https://i.imgur.com/Y8xX3Xv.png" alt="Logo Altessa">
+    <img src="assets/img/logo-altessa.png" alt="Logo Altessa">
     <div class="logo-text">
-      <span class="logo-main">Altessa</span>
-      <span class="logo-sub">Voyance</span>
+      <span class="logo-main" data-i18n="brand_name">Altessa</span>
+      <span class="logo-sub" data-i18n="brand_sub">Voyance</span>
     </div>
   </div>
 
   <nav class="nav">
-    <a href="index.html">Accueil</a>
-    <a href="experts.html">Experts</a>
-    <a href="tarifs.html" class="active">Tarifs</a>
-    <a href="contact.html" class="btn-nav">Contact</a>
+    <a href="index.html" data-i18n="nav_home">Accueil</a>
+    <a href="experts.html" data-i18n="nav_experts">Experts</a>
+    <a href="tarifs.html" class="active" data-i18n="nav_tarifs">Tarifs</a>
+    <a href="contact.html" class="btn-nav" data-i18n="nav_contact">Contact</a>
+
+    <!-- Sélecteur de langue -->
+    <select id="lang-switcher">
+      <option value="fr">🇫🇷 FR</option>
+      <option value="en">🇬🇧 EN</option>
+      <option value="es">🇪🇸 ES</option>
+      <option value="pt">🇵🇹 PT</option>
+      <option value="it">🇮🇹 IT</option>
+    </select>
   </nav>
 </header>
 
 <main class="section tarifs-page">
 
-  <h1 class="section-title">Tarifs de voyance</h1>
+  <h1 class="section-title" data-i18n="tarifs_page_title">Tarifs de voyance</h1>
 
-  <p class="section-subtitle">
+  <p class="section-subtitle" data-i18n="tarifs_intro">
     Choisissez votre type de voyance selon votre besoin.<br>
     <strong>Réponse envoyée par e-mail après validation du paiement sécurisé.</strong>
   </p>
@@ -41,52 +53,52 @@
   <div class="tarifs-grid">
 
     <article class="tarif-card">
-      <h2>À la question</h2>
+      <h2 data-i18n="tarif_question_title">À la question</h2>
       <p class="tarif-price">8 €</p>
-      <p>Une question précise, réponse directe et claire.</p>
+      <p data-i18n="tarif_question_desc">Une question précise, réponse directe et claire.</p>
     </article>
 
     <article class="tarif-card">
-      <h2>Voyance sentimentale</h2>
+      <h2 data-i18n="tarif_sentimental_title">Voyance sentimentale</h2>
       <p class="tarif-price">20 €</p>
-      <p>Couple, amour, retrouvailles, liens présents et futurs.</p>
+      <p data-i18n="tarif_sentimental_desc">Couple, amour, retrouvailles, liens présents et futurs.</p>
     </article>
 
     <article class="tarif-card">
-      <h2>Voyance professionnelle</h2>
+      <h2 data-i18n="tarif_pro_title">Voyance professionnelle</h2>
       <p class="tarif-price">20 €</p>
-      <p>Carrière, travail, changement pro, évolution.</p>
+      <p data-i18n="tarif_pro_desc">Carrière, travail, changement pro, évolution.</p>
     </article>
 
     <article class="tarif-card">
-      <h2>Voyance financière</h2>
+      <h2 data-i18n="tarif_finance_title">Voyance financière</h2>
       <p class="tarif-price">20 €</p>
-      <p>Finances, achats importants, stabilité et sécurité.</p>
+      <p data-i18n="tarif_finance_desc">Finances, achats importants, stabilité et sécurité.</p>
     </article>
 
     <article class="tarif-card tarif-highlight">
-      <h2>Voyance générale</h2>
+      <h2 data-i18n="tarif_general_title">Voyance générale</h2>
       <p class="tarif-price">45 €</p>
-      <p>Bilan complet : sentimental, pro, finances et tendances à venir.</p>
+      <p data-i18n="tarif_general_desc">Bilan complet : sentimental, pro, finances et tendances à venir.</p>
     </article>
 
     <article class="tarif-card">
-      <h2>Soin énergétique</h2>
+      <h2 data-i18n="tarif_soin_title">Soin énergétique</h2>
       <p class="tarif-price">50 €</p>
-      <p>Nettoyage énergétique, apaisement, réalignement intérieur.</p>
+      <p data-i18n="tarif_soin_desc">Nettoyage énergétique, apaisement, réalignement intérieur.</p>
     </article>
 
   </div>
 
   <!-- BOUTONS ACTION -->
   <div class="tarifs-actions">
-    <a href="experts.html" class="btn-secondary">Choisir mon expert</a>
-    <a href="formulaire.html" class="btn-primary">Poser ma question</a>
+    <a href="experts.html" class="btn-secondary" data-i18n="btn_choose_expert">Choisir mon expert</a>
+    <a href="formulaire.html" class="btn-primary" data-i18n="btn_ask_question">Poser ma question</a>
   </div>
 
 </main>
 
-<footer class="footer">
+<footer class="footer" data-i18n="footer_text">
   Altessa Voyance © — Voyance en ligne.
 </footer>
 
