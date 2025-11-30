@@ -38,7 +38,13 @@
   </section>
 
   <section class="section">
-    <form class="contact-form" action="mailto:altessa.voyance@mail.com" method="post" enctype="text/plain">
+    <form class="contact-form" id="voyance-form" action="mailto:altessa.voyance@mail.com" method="post" enctype="text/plain">
+
+      <!-- CHAMP EXPERT AUTO-REMPLI -->
+      <div class="form-row">
+        <label>Expert sélectionné</label>
+        <input type="text" name="expert" id="expert" readonly>
+      </div>
 
       <div class="form-row">
         <label>Nom complet*</label>
@@ -50,7 +56,6 @@
         <input type="email" name="email" required />
       </div>
 
-      <!-- CHAMP DATE AJOUTÉ ET CORRECT -->
       <div class="form-row">
         <label>Date de naissance*</label>
         <input type="date" name="date_naissance" required />
@@ -58,15 +63,21 @@
 
       <div class="form-row">
         <label>Type de consultation*</label>
-        <select name="type" required>
+        <select name="type" id="type" required>
           <option value="">Choisissez…</option>
-          <option>À la question (8€)</option>
-          <option>Sentimental (20€)</option>
-          <option>Professionnel (20€)</option>
-          <option>Financier (20€)</option>
-          <option>Général (20€)</option>
-          <option>Soin énergétique (50€)</option>
+          <option value="question">À la question (8€)</option>
+          <option value="sentimentale">Sentimental (20€)</option>
+          <option value="professionnelle">Professionnel (20€)</option>
+          <option value="financiere">Financier (20€)</option>
+          <option value="generale">Général (20€)</option>
+          <option value="soin">Soin énergétique (50€)</option>
         </select>
+      </div>
+
+      <!-- APPARITION AUTOMATIQUE POUR LA VOYANCE SENTIMENTALE -->
+      <div class="form-row sentimental-only" style="display:none;">
+        <label>Prénom de la 2e personne (optionnel)</label>
+        <input type="text" name="autre_personne">
       </div>
 
       <div class="form-row">
@@ -91,6 +102,31 @@
   Altessa Voyance © — Service réservé aux personnes majeures.
 </footer>
 
-<script src="assets/js/site.js" defer></script>
+<!-- SCRIPT POUR REMPLIR L'EXPERT + AFFICHER LE SENTIMENTAL -->
+<script>
+  // Remplit le champ expert avec ?expert=
+  const params = new URLSearchParams(window.location.search);
+  const expert = params.get("expert");
+  const expertInput = document.getElementById("expert");
+  if (expert && expertInput) {
+    expertInput.value = expert;
+  }
+
+  // Affiche le bloc sentimental si besoin
+  const typeSelect = document.getElementById("type");
+  const sentimentalBlock = document.querySelector(".sentimental-only");
+
+  function updateSentimental() {
+    if (typeSelect.value === "sentimentale") {
+      sentimentalBlock.style.display = "block";
+    } else {
+      sentimentalBlock.style.display = "none";
+    }
+  }
+
+  typeSelect.addEventListener("change", updateSentimental);
+  updateSentimental();
+</script>
+
 </body>
 </html>
