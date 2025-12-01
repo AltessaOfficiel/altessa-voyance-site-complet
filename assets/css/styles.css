@@ -821,6 +821,83 @@ a:hover {
     margin-top: 10px;
     display: inline-flex;
   }
+/* ============================================================
+   ANIMATION LOTUS MAGIQUE – VERSION TAPIS VOLANT + TRAÎNÉE DORÉE
+   ============================================================ */
+
+/* Conteneur pour contrôler l'arrivée de gauche → centre */
+.lotus-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  animation: lotus-flight 3.8s ease-out forwards;
+}
+
+/* Lotus ENCORE PLUS GRAND + flottement + glow */
+.hero-lotus {
+  width: 260px; /* tu peux monter à 300 si tu veux 😎 */
+  filter: drop-shadow(0 0 35px rgba(248,224,160,1))
+          drop-shadow(0 0 55px rgba(255,230,150,0.8));
+  animation:
+    lotus-float 4s ease-in-out infinite,
+    lotus-shimmer 3s ease-in-out infinite;
+}
+
+/* Poussière dorée scintillante derrière le lotus */
+.lotus-trail {
+  position: absolute;
+  left: -200px; /* suit l'arrivée */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 280px;
+  height: 80px;
+  pointer-events: none;
+
+  background: radial-gradient(circle,
+    rgba(255,230,180,0.8) 0%,
+    rgba(255,230,180,0.35) 25%,
+    transparent 70%);
+  opacity: 0;
+  filter: blur(12px);
+  animation: trail-fade 4s ease-out forwards;
+}
+
+/* ARRIVÉE STYLE TAPIS VOLANT */
+@keyframes lotus-flight {
+  0% {
+    transform: translateX(-110%) translateY(30px) rotate(-4deg);
+  }
+  40% {
+    transform: translateX(15%) translateY(-10px) rotate(2deg);
+  }
+  70% {
+    transform: translateX(-5%) translateY(8px);
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}
+
+/* Flottaison une fois arrivé */
+@keyframes lotus-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* scintillement doré sur le lotus */
+@keyframes lotus-shimmer {
+  0%, 100% { filter: drop-shadow(0 0 35px rgba(255,230,180,0.8)); }
+  50% { filter: drop-shadow(0 0 60px rgba(255,240,200,1)); }
+}
+
+/* traînée dorée progressive */
+@keyframes trail-fade {
+  0% { opacity: 0; transform: translateX(0) scaleX(0.6); }
+  20% { opacity: 0.8; }
+  60% { opacity: 0.4; transform: translateX(120px) scaleX(1.3); }
+  100% { opacity: 0; transform: translateX(250px) scaleX(1.8); }
+}
 
   #lang-switcher {
     width: 100%;
