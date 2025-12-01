@@ -18,14 +18,14 @@ html, body {
 
 body {
   min-height: 100vh;
-  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Poppins', system-ui, sans-serif;
   background: radial-gradient(circle at top, #4b1c7f 0, #080016 55%, #05000d 100%);
   color: #ffffff;
-  position: relative;
   overflow-x: hidden;
+  position: relative;
 }
 
-/* Ciel étoilé animé + halos mystiques */
+/* Ciel étoilé animé */
 body::before,
 body::after {
   content: "";
@@ -36,7 +36,6 @@ body::after {
 }
 
 body::before {
-  /* grand voile de couleur magique */
   background-image:
     radial-gradient(circle at 10% 20%, rgba(255,255,255,0.18) 0, transparent 55%),
     radial-gradient(circle at 80% 10%, rgba(248,224,160,0.16) 0, transparent 60%),
@@ -45,85 +44,26 @@ body::before {
   mix-blend-mode: screen;
 }
 
+@keyframes star-drift {
+  0% { transform: translate3d(0,0,0); opacity: .4; }
+  50% { transform: translate3d(-20px,10px,0); opacity: .9; }
+  100% { transform: translate3d(0,0,0); opacity: .4; }
+}
+
 body::after {
-  /* petites étoiles scintillantes qui bougent lentement */
   background-image:
     radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.7) 0, transparent 50%),
     radial-gradient(1px 1px at 60% 70%, rgba(255,255,255,0.6) 0, transparent 50%),
     radial-gradient(1px 1px at 80% 20%, rgba(248,224,160,0.7) 0, transparent 50%),
     radial-gradient(2px 2px at 40% 85%, rgba(255,255,255,0.4) 0, transparent 55%);
-  opacity: 0.45;
-  animation: star drift 40s linear infinite;
-  mix-blend-mode: screen;
-}
-
-@keyframes star {
-  0%, 100% { transform: translateY(0); opacity: 0.4; }
-  50% { opacity: 0.9; }
-}
-
-@keyframes drift {
-  0% { transform: translate3d(0,0,0); }
-  50% { transform: translate3d(-20px,10px,0); }
-  100% { transform: translate3d(0,0,0); }
-}
-
-/* petite astuce : combiner les deux noms pour la keyframes utilisée */
-@keyframes star-drift {
-  0% { transform: translate3d(0,0,0); opacity: 0.4; }
-  50% { transform: translate3d(-20px,10px,0); opacity: 0.9; }
-  100% { transform: translate3d(0,0,0); opacity: 0.4; }
-}
-
-body::after {
   animation: star-drift 45s linear infinite;
+  opacity: 0.45;
 }
 
-/* liens */
-
+/* Liens */
 a {
   color: inherit;
   text-decoration: none;
-}
-
-a:hover {
-  text-decoration: none;
-}
-
-/* ========== ANIMATIONS GLOBALES ========== */
-
-@keyframes float-soft {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-
-@keyframes pulse-glow {
-  0%, 100% { filter: drop-shadow(0 0 18px rgba(248,224,160,0.8)); }
-  50% { filter: drop-shadow(0 0 32px rgba(255,244,200,1)); }
-}
-
-@keyframes lotus-aura {
-  0% {
-    transform: scale(1);
-    opacity: 0.35;
-  }
-  50% {
-    transform: scale(1.18);
-    opacity: 0.7;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 0.35;
-  }
-}
-
-@keyframes shimmer-gold {
-  0% {
-    background-position: -120% 0;
-  }
-  100% {
-    background-position: 220% 0;
-  }
 }
 
 /* ========== HEADER ========== */
@@ -131,19 +71,18 @@ a:hover {
 .header {
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 18px 8vw;
   background: radial-gradient(circle at top left, rgba(110,58,196,0.7), rgba(5,0,20,0.96));
   backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(217, 164, 65, 0.28);
+  border-bottom: 1px solid rgba(217,164,65,0.28);
   box-shadow: 0 10px 40px rgba(0,0,0,0.55);
 }
 
-/* Logo + texte */
-
+/* Logo */
 .logo {
   display: flex;
   align-items: center;
@@ -151,47 +90,36 @@ a:hover {
 }
 
 .logo img {
-  width: 56px;          /* plus grand */
+  width: 56px;
   height: 56px;
-  filter: drop-shadow(0 0 26px rgba(248,224,160,0.9));
   border-radius: 999px;
+  filter: drop-shadow(0 0 26px rgba(248,224,160,0.9));
   animation: pulse-glow 3.5s ease-in-out infinite;
 }
 
-.logo-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.1;
+@keyframes pulse-glow {
+  0%,100% { filter: drop-shadow(0 0 18px rgba(248,224,160,0.8)); }
+  50% { filter: drop-shadow(0 0 38px rgba(255,238,190,1)); }
 }
 
-.logo-main {
-  font-weight: 600;
-  font-size: 1.35rem;
-}
-
-.logo-sub {
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: #f3d48a;
-}
+.logo-text { display: flex; flex-direction: column; }
+.logo-main { font-size: 1.35rem; font-weight: 600; }
+.logo-sub  { font-size: .78rem; text-transform: uppercase; letter-spacing: .2em; color: #f3d48a; }
 
 /* Navigation */
-
 .nav {
   display: flex;
   align-items: center;
   gap: 24px;
-  font-size: 0.95rem;
+  font-size: .95rem;
 }
 
 .nav a {
-  opacity: 0.8;
+  opacity: .8;
   position: relative;
   padding-bottom: 2px;
 }
 
-/* soulignement doré animé à la souris */
 .nav a::after {
   content: "";
   position: absolute;
@@ -200,9 +128,13 @@ a:hover {
   width: 0;
   height: 2px;
   background-image: linear-gradient(90deg,#f8e0a0,#d9a441,#f8e0a0);
-  background-size: 200% 100%;
   border-radius: 999px;
-  transition: width 0.18s ease, left 0.18s ease;
+  transition: width .18s ease, left .18s ease;
+}
+
+@keyframes shimmer-gold {
+  0% { background-position: -120% 0; }
+  100% { background-position: 220% 0; }
 }
 
 .nav a:hover {
@@ -216,26 +148,21 @@ a:hover {
 }
 
 .nav a.active {
-  opacity: 1;
-  font-weight: 500;
+  opacity: 1; font-weight: 500;
 }
 
 .nav a.active::after {
-  width: 100%;
-  left: 0;
+  width: 100%; left: 0;
 }
 
 /* Bouton contact */
-
 .btn-nav {
   padding: 8px 18px;
   border-radius: 999px;
   background-image: linear-gradient(120deg,#f8e0a0,#d9a441,#fbeac4);
-  background-size: 220% 100%;
   color: #2c143c;
   font-weight: 600;
   box-shadow: 0 0 18px rgba(217,164,65,0.65);
-  border: none;
   position: relative;
   overflow: hidden;
 }
@@ -244,102 +171,25 @@ a:hover {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    120deg,
-    transparent 0%,
-    rgba(255,255,255,0.5) 50%,
-    transparent 100%
-  );
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
   transform: translateX(-120%);
-  opacity: 0;
 }
 
 .btn-nav:hover::before {
-  opacity: 1;
   transform: translateX(120%);
-  transition: transform 0.6s ease, opacity 0.2s ease;
+  transition: transform .6s ease;
 }
 
-/* ========== SÉLECTEUR DE LANGUE ========== */
-
+/* Sélecteur langue */
 #lang-switcher {
-  margin-left: 8px;
   padding: 6px 12px;
   border-radius: 999px;
   border: 1px solid rgba(243,212,138,0.7);
   background: rgba(5,0,20,0.85);
   color: #fdf7e6;
-  font-size: 0.8rem;
-  font-family: inherit;
-  cursor: pointer;
-  outline: none;
-  min-width: 80px;
-  appearance: none;
 }
 
-/* petit chevron doré */
-#lang-switcher {
-  background-image:
-    linear-gradient(45deg, transparent 50%, #f3d48a 50%),
-    linear-gradient(135deg, #f3d48a 50%, transparent 50%);
-  background-position:
-    calc(100% - 10px) calc(50% - 3px),
-    calc(100% - 6px) calc(50% - 3px);
-  background-repeat: no-repeat;
-  background-size: 6px 6px, 6px 6px;
-  padding-right: 26px;
-}
-
-#lang-switcher:focus {
-  box-shadow: 0 0 0 1px rgba(248,224,160,0.9);
-  border-color: #f8e0a0;
-}
-
-/* ========== BOUTONS GLOBAUX ========== */
-
-.btn-primary,
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 26px;
-  border-radius: 999px;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
-}
-
-.btn-primary {
-  background-image: radial-gradient(circle at top left,#f8e0a0,#d9a441,#f6d37c);
-  background-size: 200% 200%;
-  color: #2c143c;
-  box-shadow: 0 0 26px rgba(217,164,65,0.7);
-  animation: shimmer-gold 4s linear infinite;
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.06);
-  box-shadow: 0 0 32px rgba(248,224,160,0.9);
-}
-
-.btn-secondary {
-  background: rgba(217,164,65,0.12);
-  color: #f8e0a0;
-  border: 1px solid rgba(217,164,65,0.7);
-}
-
-.btn-secondary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 18px rgba(217,164,65,0.5);
-}
-
-.btn-full {
-  width: 100%;
-}
-
-/* ========== HERO ACCUEIL + LOTUS GÉANT MYSTIQUE ========== */
+/* ========== HERO + LOTUS ANIMÉ ========== */
 
 .hero {
   padding: 80px 8vw 40px;
@@ -347,47 +197,100 @@ a:hover {
   position: relative;
 }
 
-/* halo circulaire derrière le lotus */
+/* Halo lumineux derrière le lotus */
 .hero::before {
   content: "";
   position: absolute;
-  top: 115px;
+  top: 120px;
   left: 50%;
   transform: translateX(-50%);
-  width: 260px;
-  height: 260px;
+  width: 280px;
+  height: 280px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(248,224,160,0.4) 0, transparent 65%);
-  opacity: 0.55;
-  filter: blur(4px);
-  z-index: -1;
-  animation: lotus-aura 5.5s ease-in-out infinite;
+  animation: lotus-aura 5.8s ease-in-out infinite;
 }
 
-/* Lotus central : beaucoup plus grand + flottaison */
+@keyframes lotus-aura {
+  0%,100% { opacity: .35; transform: translateX(-50%) scale(1); }
+  50% { opacity: .75; transform: translateX(-50%) scale(1.18); }
+}
 
+/* === ANIMATION TAPIS VOLANT === */
+
+.lotus-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  animation: lotus-flight 3.8s ease-out forwards;
+}
+
+@keyframes lotus-flight {
+  0%   { transform: translateX(-110%) translateY(30px) rotate(-4deg); }
+  40%  { transform: translateX(15%) translateY(-10px) rotate(2deg); }
+  70%  { transform: translateX(-5%) translateY(8px); }
+  100% { transform: translateX(0) translateY(0); }
+}
+
+/* Lotus géant + flottement */
 .hero-lotus {
-  width: 180px;              /* plus grand */
-  margin-bottom: 18px;
-  filter: drop-shadow(0 0 30px rgba(248,224,160,0.9));
+  width: 260px;
+  filter: drop-shadow(0 0 40px rgba(248,224,160,1))
+          drop-shadow(0 0 70px rgba(255,230,150,0.9));
   animation:
-    float-soft 4.5s ease-in-out infinite,
-    pulse-glow 4s ease-in-out infinite;
+    lotus-float 4s ease-in-out infinite,
+    lotus-shimmer 3s ease-in-out infinite;
 }
 
+@keyframes lotus-float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes lotus-shimmer {
+  0%,100% { filter: drop-shadow(0 0 35px rgba(255,230,180,0.8)); }
+  50%     { filter: drop-shadow(0 0 65px rgba(255,240,200,1)); }
+}
+
+/* Traînée dorée */
+.lotus-trail {
+  position: absolute;
+  left: -200px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 280px;
+  height: 80px;
+  background: radial-gradient(circle,
+    rgba(255,230,180,0.8) 0%,
+    rgba(255,230,180,0.35) 25%,
+    transparent 70%);
+  filter: blur(12px);
+  opacity: 0;
+  animation: trail-fade 4s ease-out forwards;
+}
+
+@keyframes trail-fade {
+  0% { opacity: 0; transform: translateX(0) scaleX(.6); }
+  20% { opacity: .8; }
+  60% { opacity: .4; transform: translateX(120px) scaleX(1.3); }
+  100% { opacity: 0; transform: translateX(250px) scaleX(1.8); }
+}
+
+/* Titres Hero */
 .hero-title {
-  font-size: clamp(3rem, 4.5vw, 3.8rem);
-  margin: 0;
-  font-weight: 600;
+  font-size: clamp(3rem, 4.5vw, 4rem);
+  margin-top: 10px;
 }
 
 .hero-subtitle {
   font-size: 1.7rem;
-  margin: 6px 0 16px;
-  text-transform: uppercase;
-  letter-spacing: 0.32em;
+  letter-spacing: .32em;
   color: #f3d48a;
+  margin-bottom: 16px;
 }
+/* =========================================================
+   SECTION TEXTE HERO
+   ========================================================= */
 
 .hero-text {
   max-width: 650px;
@@ -396,21 +299,9 @@ a:hover {
   opacity: 0.9;
 }
 
-/* hero interne (contact / autres pages) */
-
-.hero-inner {
-  padding-top: 40px;
-  padding-inline: 8vw;
-}
-
-.hero-title-small {
-  font-size: 1.8rem;
-}
-
-.hero-text-centered {
-  text-align: center;
-  max-width: 640px;
-  margin: 10px auto 0;
+/* Boutons Hero */
+.hero-btn {
+  margin-top: 8px;
 }
 
 /* ========== SECTIONS GÉNÉRIQUES ========== */
@@ -435,7 +326,9 @@ a:hover {
   opacity: 0.85;
 }
 
-/* ========== CARTES MYSTIQUES GÉNÉRIQUES (horoscope / expert / tarifs) ========== */
+/* =========================================================
+   CARTES (Horoscope / Experts / Tarifs)
+   ========================================================= */
 
 .horocard,
 .expert-card,
@@ -450,7 +343,7 @@ a:hover {
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
-/* lueur interne au survol */
+/* Lueur interne */
 .horocard::before,
 .expert-card::before,
 .tarif-card::before {
@@ -477,7 +370,9 @@ a:hover {
   opacity: 1;
 }
 
-/* ========== HOROSCOPE GRID ========== */
+/* =========================================================
+   HOROSCOPE
+   ========================================================= */
 
 .horoscope-grid {
   display: grid;
@@ -485,13 +380,13 @@ a:hover {
   gap: 20px;
   max-width: 1000px;
   margin: 0 auto;
+  margin-top: 30px;
 }
 
 .horocard {
   text-align: center;
 }
 
-/* icônes des signes : légères paillettes */
 .horocard img {
   width: 52px;
   height: 52px;
@@ -511,20 +406,15 @@ a:hover {
   opacity: 0.88;
 }
 
-/* ========== EXPERTS ========== */
-
-.experts-hero {
-  padding-top: 20px;
-}
-
-.experts-section {
-  padding-top: 10px;
-}
+/* =========================================================
+   EXPERTS
+   ========================================================= */
 
 .experts-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0,1fr));
   gap: 24px;
+  margin-top: 30px;
 }
 
 .expert-card {
@@ -559,11 +449,9 @@ a:hover {
   margin: 0 0 16px;
 }
 
-/* ========== TARIFS ========== */
-
-.tarifs-page {
-  padding-bottom: 70px;
-}
+/* =========================================================
+   TARIFS
+   ========================================================= */
 
 .tarifs-grid {
   display: grid;
@@ -605,7 +493,9 @@ a:hover {
   margin-left: 10px;
 }
 
-/* ========== FORMULAIRE TARIFS (SECTION QUESTION) ========== */
+/* =========================================================
+   FORMULAIRES TARIFS & CONTACT
+   ========================================================= */
 
 .form-section {
   max-width: 760px;
@@ -617,29 +507,19 @@ a:hover {
   margin-bottom: 10px;
 }
 
-.form-section p {
-  text-align: center;
-  font-size: 0.9rem;
-  opacity: 0.88;
-  margin-bottom: 20px;
-}
-
-.question-form {
+.question-form,
+.contact-form {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-.question-form label {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  font-size: 0.9rem;
-}
-
 .question-form input,
 .question-form select,
-.question-form textarea {
+.question-form textarea,
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
   background: rgba(10,0,30,0.92);
   border: 1px solid rgba(217,164,65,0.35);
   border-radius: 12px;
@@ -651,7 +531,10 @@ a:hover {
 
 .question-form input:focus,
 .question-form select:focus,
-.question-form textarea:focus {
+.question-form textarea:focus,
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
   outline: none;
   border-color: #f8e0a0;
   box-shadow: 0 0 0 1px rgba(248,224,160,0.7);
@@ -665,59 +548,12 @@ a:hover {
 .form-note {
   font-size: 0.8rem;
   opacity: 0.75;
-  margin-top: 6px;
   text-align: center;
 }
 
-/* ========== FORMULAIRE CONTACT (page contact.html) ========== */
-
-.page-contact main {
-  padding-bottom: 40px;
-}
-
-.contact-form {
-  max-width: 640px;
-  margin: 0 auto;
-  background: radial-gradient(circle at top,#2b134f,#120021 55%,#090013 100%);
-  border-radius: 26px;
-  padding: 24px 20px 28px;
-  border: 1px solid rgba(217,164,65,0.22);
-  box-shadow: 0 0 22px rgba(0,0,0,0.55);
-}
-
-.form-row {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-bottom: 14px;
-  font-size: 0.9rem;
-}
-
-.form-row label {
-  opacity: 0.9;
-}
-
-.contact-form input,
-.contact-form select,
-.contact-form textarea {
-  background: rgba(10,0,30,0.92);
-  border: 1px solid rgba(217,164,65,0.35);
-  border-radius: 12px;
-  padding: 10px 12px;
-  color: #ffffff;
-  font-family: inherit;
-  font-size: 0.9rem;
-}
-
-.contact-form input:focus,
-.contact-form select:focus,
-.contact-form textarea:focus {
-  outline: none;
-  border-color: #f8e0a0;
-  box-shadow: 0 0 0 1px rgba(248,224,160,0.7);
-}
-
-/* ========== FOOTER ========== */
+/* =========================================================
+   FOOTER
+   ========================================================= */
 
 .footer {
   padding: 18px 8vw 22px;
@@ -728,180 +564,50 @@ a:hover {
   margin-top: 20px;
 }
 
-/* ========== RESPONSIVE ========== */
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
 
 @media (max-width: 1024px) {
   .horoscope-grid {
-    grid-template-columns: repeat(3,minmax(0,1fr));
+    grid-template-columns: repeat(3,1fr);
   }
   .experts-grid {
-    grid-template-columns: repeat(3,minmax(0,1fr));
+    grid-template-columns: repeat(3,1fr);
   }
   .tarifs-grid {
-    grid-template-columns: repeat(2,minmax(0,1fr));
+    grid-template-columns: repeat(2,1fr);
   }
 }
 
 @media (max-width: 768px) {
   .header {
-    padding-inline: 16px;
     flex-direction: column;
-    gap: 10px;
-  }
-
-  .nav {
     gap: 12px;
-    font-size: 0.85rem;
+  }
+  .nav {
     flex-wrap: wrap;
     justify-content: center;
   }
-
-  #lang-switcher {
-    order: 2;
-    width: auto;
-  }
-
   .hero {
-    padding-inline: 16px;
     padding-top: 60px;
   }
-
-  .hero::before {
-    top: 130px;
-    width: 220px;
-    height: 220px;
-  }
-
-  .hero-lotus {
-    width: 150px;
-  }
-
-  .section {
-    padding-inline: 16px;
-  }
-
   .horoscope-grid {
-    grid-template-columns: repeat(2,minmax(0,1fr));
+    grid-template-columns: repeat(2,1fr);
   }
-
   .experts-grid {
-    grid-template-columns: repeat(2,minmax(0,1fr));
+    grid-template-columns: repeat(2,1fr);
   }
-
   .tarifs-grid {
     grid-template-columns: 1fr;
-  }
-
-  .contact-form {
-    padding-inline: 16px;
   }
 }
 
 @media (max-width: 520px) {
-  .experts-grid,
-  .horoscope-grid {
+  .hero-title { font-size: 2.4rem; }
+  .section-title { font-size: 1.6rem; }
+  .horoscope-grid,
+  .experts-grid {
     grid-template-columns: 1fr;
-  }
-
-  .hero-title {
-    font-size: 2.4rem;
-  }
-
-  .section-title {
-    font-size: 1.6rem;
-  }
-
-  .btn-primary,
-  .btn-secondary {
-    width: 100%;
-  }
-
-  .tarifs-actions a + a {
-    margin-left: 0;
-    margin-top: 10px;
-    display: inline-flex;
-  }
-/* ============================================================
-   ANIMATION LOTUS MAGIQUE – VERSION TAPIS VOLANT + TRAÎNÉE DORÉE
-   ============================================================ */
-
-/* Conteneur pour contrôler l'arrivée de gauche → centre */
-.lotus-wrapper {
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  animation: lotus-flight 3.8s ease-out forwards;
-}
-
-/* Lotus ENCORE PLUS GRAND + flottement + glow */
-.hero-lotus {
-  width: 260px; /* tu peux monter à 300 si tu veux 😎 */
-  filter: drop-shadow(0 0 35px rgba(248,224,160,1))
-          drop-shadow(0 0 55px rgba(255,230,150,0.8));
-  animation:
-    lotus-float 4s ease-in-out infinite,
-    lotus-shimmer 3s ease-in-out infinite;
-}
-
-/* Poussière dorée scintillante derrière le lotus */
-.lotus-trail {
-  position: absolute;
-  left: -200px; /* suit l'arrivée */
-  top: 50%;
-  transform: translateY(-50%);
-  width: 280px;
-  height: 80px;
-  pointer-events: none;
-
-  background: radial-gradient(circle,
-    rgba(255,230,180,0.8) 0%,
-    rgba(255,230,180,0.35) 25%,
-    transparent 70%);
-  opacity: 0;
-  filter: blur(12px);
-  animation: trail-fade 4s ease-out forwards;
-}
-
-/* ARRIVÉE STYLE TAPIS VOLANT */
-@keyframes lotus-flight {
-  0% {
-    transform: translateX(-110%) translateY(30px) rotate(-4deg);
-  }
-  40% {
-    transform: translateX(15%) translateY(-10px) rotate(2deg);
-  }
-  70% {
-    transform: translateX(-5%) translateY(8px);
-  }
-  100% {
-    transform: translateX(0) translateY(0);
-  }
-}
-
-/* Flottaison une fois arrivé */
-@keyframes lotus-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-/* scintillement doré sur le lotus */
-@keyframes lotus-shimmer {
-  0%, 100% { filter: drop-shadow(0 0 35px rgba(255,230,180,0.8)); }
-  50% { filter: drop-shadow(0 0 60px rgba(255,240,200,1)); }
-}
-
-/* traînée dorée progressive */
-@keyframes trail-fade {
-  0% { opacity: 0; transform: translateX(0) scaleX(0.6); }
-  20% { opacity: 0.8; }
-  60% { opacity: 0.4; transform: translateX(120px) scaleX(1.3); }
-  100% { opacity: 0; transform: translateX(250px) scaleX(1.8); }
-}
-
-  #lang-switcher {
-    width: 100%;
-    text-align: center;
-    justify-content: center;
   }
 }
