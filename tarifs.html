@@ -11,13 +11,9 @@
   <!-- SCRIPT MULTILINGUE -->
   <script src="assets/js/lang.js" defer></script>
 
-  <!-- PAYPAL SDK (UN SEUL CHARGEMENT) -->
-  <script 
-    src="https://www.paypal.com/sdk/js?client-id=BAA3LPdWYhDwfbYcXsmBhfCHXhRtcth_XEFw9tpnDSr42xeS7cdHDPl4kkudskfXSomt0uyjCfsdvzBBz8
-    &components=hosted-buttons
-    &disable-funding=venmo
-    &currency=EUR">
-  </script>
+ <!-- PAYPAL SDK (UN SEUL SCRIPT, SANS RETOUR À LA LIGNE) -->
+<script src="https://www.paypal.com/sdk/js?client-id=BAA3LPdWYhDwfbYcXsmBhfCHXhRtcth_XEFw9tpnDSr42xeS7cdHDPl4kkudskfXSomt0uyjCfsdvzBBz8&components=hosted-buttons&disable-funding=venmo&currency=EUR"></script>
+
 
   <style>
     /* Style doux pour encadrer les boutons PayPal */
@@ -194,6 +190,14 @@
 
 
 <footer class="footer">Altessa Voyance © — Voyance en ligne.</footer>
+<script>
+  paypal.HostedButtons({ hostedButtonId: "LGCWPQ9JHDT5U" }).render("#paypal-container-LGCWPQ9JHDT5U");
+  paypal.HostedButtons({ hostedButtonId: "H8LA54EZY2T46" }).render("#paypal-container-H8LA54EZY2T46");
+  paypal.HostedButtons({ hostedButtonId: "A3DZS2TAYSGYS" }).render("#paypal-container-A3DZS2TAYSGYS");
+  paypal.HostedButtons({ hostedButtonId: "AJDZ94JCHR8U8" }).render("#paypal-container-AJDZ94JCHR8U8");
+  paypal.HostedButtons({ hostedButtonId: "GT986X6GT42PA" }).render("#paypal-container-GT986X6GT42PA");
+  paypal.HostedButtons({ hostedButtonId: "AY42SMUCPK3YU" }).render("#paypal-container-AY42SMUCPK3YU");
+</script>
 
 </body>
 </html>
