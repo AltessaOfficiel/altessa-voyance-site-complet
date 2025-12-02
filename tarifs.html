@@ -4,21 +4,48 @@
   <meta charset="UTF-8">
   <title data-i18n="tarifs_title">Altessa Voyance — Tarifs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
 
   <!-- SCRIPT MULTILINGUE -->
   <script src="assets/js/lang.js" defer></script>
 
-  <!-- PAYPAL SDK (NE PAS MODIFIER) -->
+  <!-- PAYPAL SDK (UN SEUL CHARGEMENT) -->
   <script 
-    src="https://www.paypal.com/sdk/js?client-id=BAA3LPdWYhDwfbYcXsmBhfCHXhRtcth_XEFw9tpnDSr42xeS7cdHDPl4kkudskfXSomt0uyjCfsdvzBBz8&components=hosted-buttons&disable-funding=venmo&currency=EUR">
+    src="https://www.paypal.com/sdk/js?client-id=BAA3LPdWYhDwfbYcXsmBhfCHXhRtcth_XEFw9tpnDSr42xeS7cdHDPl4kkudskfXSomt0uyjCfsdvzBBz8
+    &components=hosted-buttons
+    &disable-funding=venmo
+    &currency=EUR">
   </script>
+
+  <style>
+    /* Style doux pour encadrer les boutons PayPal */
+    .mystic-paybox {
+      margin-top: 12px;
+      padding: 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(248,224,160,0.35);
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0,0,0,0.35);
+      backdrop-filter: blur(4px);
+    }
+    .mystic-paybox h3 {
+      margin: 0 0 12px;
+      font-size: 1rem;
+      color: #f3d48a;
+      font-weight: 500;
+    }
+  </style>
+
 </head>
 
 <body>
 
-<!-- HEADER UNIFIÉ -->
+<!-- ====================================== -->
+<!-- HEADER -->
+<!-- ====================================== -->
 <header class="header">
   <div class="logo">
     <img src="assets/img/logo-altessa.png" alt="Logo Altessa">
@@ -34,7 +61,6 @@
     <a href="tarifs.html" class="active" data-i18n="nav_tarifs">Tarifs</a>
     <a href="contact.html" class="btn-nav" data-i18n="nav_contact">Contact</a>
 
-    <!-- Sélecteur de langue -->
     <select id="lang-switcher">
       <option value="fr">🇫🇷 FR</option>
       <option value="en">🇬🇧 EN</option>
@@ -45,6 +71,9 @@
   </nav>
 </header>
 
+<!-- ====================================== -->
+<!-- PAGE TARIFS -->
+<!-- ====================================== -->
 <main class="section tarifs-page">
 
   <h1 class="section-title" data-i18n="tarifs_page_title">Tarifs de voyance</h1>
@@ -54,103 +83,117 @@
     <strong>Réponse envoyée par e-mail après validation du paiement sécurisé.</strong>
   </p>
 
-  <!-- GRID TARIFS -->
   <div class="tarifs-grid">
 
-    <!-- ⭐ OFFRE 1 — AVEC BOUTON PAYPAL -->
+    <!-- =============================== -->
+    <!-- 1) À LA QUESTION – 8 € -->
+    <!-- =============================== -->
     <article class="tarif-card">
-      <h2 data-i18n="tarif_question_title">À la question</h2>
+      <h2>À la question</h2>
       <p class="tarif-price">8 €</p>
-      <p data-i18n="tarif_question_desc">Une question précise, réponse directe et claire.</p>
+      <p>Une question précise, réponse directe et claire.</p>
 
-      <!-- Paiement PayPal -->
       <div class="mystic-paybox">
         <h3>Paiement sécurisé – 8 €</h3>
-
         <div id="paypal-container-LGCWPQ9JHDT5U"></div>
-        <script>
-          paypal.HostedButtons({
-            hostedButtonId: "LGCWPQ9JHDT5U",
-          }).render("#paypal-container-LGCWPQ9JHDT5U");
-        </script>
       </div>
     </article>
 
-  <!-- ⭐ OFFRE 2 — Voyance sentimentale + PayPal -->
-<article class="tarif-card">
-  <h2 data-i18n="tarif_sentimental_title">Voyance sentimentale</h2>
-  <p class="tarif-price">20 €</p>
-  <p data-i18n="tarif_sentimental_desc">Couple, amour, retrouvailles, liens présents et futurs.</p>
-
-  <!-- Zone de paiement -->
-  <div class="mystic-paybox">
-    <h3>Paiement sécurisé – 20 €</h3>
-
-    <div id="paypal-container-H8LA54EZY2T46"></div>
-    <script>
-      paypal.HostedButtons({
-        hostedButtonId: "H8LA54EZY2T46",
-      }).render("#paypal-container-H8LA54EZY2T46");
-    </script>
-
-  </div>
-</article>
-
-    
-    <!-- ⭐ OFFRE 3 — Voyance professionnelle + PayPal -->
-<article class="tarif-card">
-  <h2 data-i18n="tarif_pro_title">Voyance professionnelle</h2>
-  <p class="tarif-price">20 €</p>
-  <p data-i18n="tarif_pro_desc">Carrière, travail, changement pro, évolution.</p>
-
-  <!-- Paiement PayPal -->
-  <div class="mystic-paybox">
-    <h3>Paiement sécurisé – 20 €</h3>
-
-    <div id="paypal-container-A3DZS2TAYSGYS"></div>
-    <script>
-      paypal.HostedButtons({
-        hostedButtonId: "A3DZS2TAYSGYS",
-      }).render("#paypal-container-A3DZS2TAYSGYS");
-    </script>
-  </div>
-</article>
-
-
-    <!-- ⭐ OFFRE 4 -->
+    <!-- =============================== -->
+    <!-- 2) SENTIMENTALE – 20 € -->
+    <!-- =============================== -->
     <article class="tarif-card">
-      <h2 data-i18n="tarif_finance_title">Voyance financière</h2>
+      <h2>Voyance sentimentale</h2>
       <p class="tarif-price">20 €</p>
-      <p data-i18n="tarif_finance_desc">Finances, achats importants, stabilité et sécurité.</p>
+      <p>Couple, amour, retrouvailles, liens présents et futurs.</p>
+
+      <div class="mystic-paybox">
+        <h3>Paiement sécurisé – 20 €</h3>
+        <div id="paypal-container-H8LA54EZY2T46"></div>
+      </div>
     </article>
 
-    <!-- ⭐ OFFRE 5 -->
-    <article class="tarif-card tarif-highlight">
-      <h2 data-i18n="tarif_general_title">Voyance générale</h2>
-      <p class="tarif-price">45 €</p>
-      <p data-i18n="tarif_general_desc">Bilan complet : sentimental, pro, finances et tendances à venir.</p>
-    </article>
-
-    <!-- ⭐ OFFRE 6 -->
+    <!-- =============================== -->
+    <!-- 3) PROFESSIONNELLE – 20 € -->
+    <!-- =============================== -->
     <article class="tarif-card">
-      <h2 data-i18n="tarif_soin_title">Soin énergétique</h2>
+      <h2>Voyance professionnelle</h2>
+      <p class="tarif-price">20 €</p>
+      <p>Carrière, travail, changement pro, évolution.</p>
+
+      <div class="mystic-paybox">
+        <h3>Paiement sécurisé – 20 €</h3>
+        <div id="paypal-container-A3DZS2TAYSGYS"></div>
+      </div>
+    </article>
+
+    <!-- =============================== -->
+    <!-- 4) FINANCIÈRE – 20 € -->
+    <!-- =============================== -->
+    <article class="tarif-card">
+      <h2>Voyance financière</h2>
+      <p class="tarif-price">20 €</p>
+      <p>Finances, achats importants, stabilité et sécurité.</p>
+
+      <div class="mystic-paybox">
+        <h3>Paiement sécurisé – 20 €</h3>
+        <div id="paypal-container-AJDZ94JCHR8U8"></div>
+      </div>
+    </article>
+
+    <!-- =============================== -->
+    <!-- 5) GÉNÉRALE – 45 € -->
+    <!-- =============================== -->
+    <article class="tarif-card tarif-highlight">
+      <h2>Voyance générale</h2>
+      <p class="tarif-price">45 €</p>
+      <p>Bilan complet : sentimental, pro, finances et tendances à venir.</p>
+
+      <div class="mystic-paybox">
+        <h3>Paiement sécurisé – 45 €</h3>
+        <div id="paypal-container-GT986X6GT42PA"></div>
+      </div>
+    </article>
+
+    <!-- =============================== -->
+    <!-- 6) SOIN ÉNERGÉTIQUE – 50 € -->
+    <!-- =============================== -->
+    <article class="tarif-card">
+      <h2>Soin énergétique</h2>
       <p class="tarif-price">50 €</p>
-      <p data-i18n="tarif_soin_desc">Nettoyage énergétique, apaisement, réalignement intérieur.</p>
+      <p>Nettoyage énergétique, apaisement, réalignement intérieur.</p>
+
+      <div class="mystic-paybox">
+        <h3>Paiement sécurisé – 50 €</h3>
+        <div id="paypal-container-AY42SMUCPK3YU"></div>
+      </div>
     </article>
 
   </div>
 
-  <!-- BOUTONS ACTION -->
+  <!-- Boutons bas -->
   <div class="tarifs-actions">
-    <a href="experts.html" class="btn-secondary" data-i18n="btn_choose_expert">Choisir mon expert</a>
-    <a href="contact.html" class="btn-primary" data-i18n="btn_ask_question">Poser ma question</a>
+    <a href="experts.html" class="btn-secondary">Choisir mon expert</a>
+    <a href="contact.html" class="btn-primary">Poser ma question</a>
   </div>
 
 </main>
 
-<footer class="footer" data-i18n="footer_text">
-  Altessa Voyance © — Voyance en ligne.
-</footer>
+
+<!-- ====================================== -->
+<!-- PAYPAL INITIALISATION -->
+<!-- ====================================== -->
+<script>
+  paypal.HostedButtons({ hostedButtonId: "LGCWPQ9JHDT5U" }).render("#paypal-container-LGCWPQ9JHDT5U");
+  paypal.HostedButtons({ hostedButtonId: "H8LA54EZY2T46" }).render("#paypal-container-H8LA54EZY2T46");
+  paypal.HostedButtons({ hostedButtonId: "A3DZS2TAYSGYS" }).render("#paypal-container-A3DZS2TAYSGYS");
+  paypal.HostedButtons({ hostedButtonId: "AJDZ94JCHR8U8" }).render("#paypal-container-AJDZ94JCHR8U8");
+  paypal.HostedButtons({ hostedButtonId: "GT986X6GT42PA" }).render("#paypal-container-GT986X6GT42PA");
+  paypal.HostedButtons({ hostedButtonId: "AY42SMUCPK3YU" }).render("#paypal-container-AY42SMUCPK3YU");
+</script>
+
+
+<footer class="footer">Altessa Voyance © — Voyance en ligne.</footer>
 
 </body>
 </html>
