@@ -611,3 +611,57 @@ a {
     grid-template-columns: 1fr;
   }
 }
+/* =========================================================
+   PAYPAL – BOÎTE MYSTIQUE PREMIUM
+   ========================================================= */
+
+.mystic-paybox {
+  margin-top: 16px;
+  padding: 20px;
+  border-radius: 18px;
+  background: radial-gradient(circle at top,
+    rgba(248,224,160,0.18),
+    rgba(20,0,40,0.65) 55%,
+    rgba(10,0,25,0.9) 100%
+  );
+  border: 1px solid rgba(248,224,160,0.38);
+  box-shadow:
+    0 0 22px rgba(0,0,0,0.55),
+    inset 0 0 24px rgba(248,224,160,0.12);
+  backdrop-filter: blur(8px);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Lueur animée interne */
+.mystic-paybox::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  background: radial-gradient(circle,
+    rgba(255,245,200,0.15),
+    transparent 70%
+  );
+  animation: mysticGlow 5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes mysticGlow {
+  0%,100% { opacity: 0.25; transform: scale(1); }
+  50%     { opacity: 0.65; transform: scale(1.25); }
+}
+
+.mystic-paybox h3 {
+  margin: 0 0 10px;
+  font-size: 1rem;
+  color: #f8e0a0;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 8px rgba(248,224,160,0.6);
+}
+
+/* Ajustement du conteneur PayPal */
+.mystic-paybox > div {
+  margin-top: 12px;
+}
