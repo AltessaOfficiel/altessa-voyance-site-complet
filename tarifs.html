@@ -97,12 +97,25 @@
 </article>
 
     
-    <!-- ⭐ OFFRE 3 -->
-    <article class="tarif-card">
-      <h2 data-i18n="tarif_pro_title">Voyance professionnelle</h2>
-      <p class="tarif-price">20 €</p>
-      <p data-i18n="tarif_pro_desc">Carrière, travail, changement pro, évolution.</p>
-    </article>
+    <!-- ⭐ OFFRE 3 — Voyance professionnelle + PayPal -->
+<article class="tarif-card">
+  <h2 data-i18n="tarif_pro_title">Voyance professionnelle</h2>
+  <p class="tarif-price">20 €</p>
+  <p data-i18n="tarif_pro_desc">Carrière, travail, changement pro, évolution.</p>
+
+  <!-- Paiement PayPal -->
+  <div class="mystic-paybox">
+    <h3>Paiement sécurisé – 20 €</h3>
+
+    <div id="paypal-container-A3DZS2TAYSGYS"></div>
+    <script>
+      paypal.HostedButtons({
+        hostedButtonId: "A3DZS2TAYSGYS",
+      }).render("#paypal-container-A3DZS2TAYSGYS");
+    </script>
+  </div>
+</article>
+
 
     <!-- ⭐ OFFRE 4 -->
     <article class="tarif-card">
