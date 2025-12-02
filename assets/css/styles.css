@@ -659,6 +659,25 @@ a {
   font-weight: 500;
   letter-spacing: 0.05em;
   text-shadow: 0 0 8px rgba(248,224,160,0.6);
+
+   .mystic-paybox {
+  margin-top: 18px;
+  padding: 16px;
+  background: radial-gradient(circle at top, rgba(248,224,160,0.15), rgba(110,58,196,0.15));
+  border: 1px solid rgba(248,224,160,0.45);
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(248,224,160,0.25);
+  backdrop-filter: blur(6px);
+}
+
+.mystic-paybox h3 {
+  margin-bottom: 12px;
+  font-size: 1rem;
+  color: #f8e0a0;
+  font-weight: 500;
+}
+
 }
 
 /* Ajustement du conteneur PayPal */
