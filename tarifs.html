@@ -76,27 +76,25 @@
       </div>
     </article>
 
-    <!-- ⭐ OFFRE 2 -->
-    <article class="tarif-card">
-      <h2 data-i18n="tarif_sentimental_title">Voyance sentimentale</h2>
-      <p class="tarif-price">20 €</p>
-      <p data-i18n="tarif_sentimental_desc">Couple, amour, retrouvailles, liens présents et futurs.</p>
-    </article>
+  <!-- ⭐ OFFRE 2 — Voyance sentimentale + PayPal -->
+<article class="tarif-card">
+  <h2 data-i18n="tarif_sentimental_title">Voyance sentimentale</h2>
+  <p class="tarif-price">20 €</p>
+  <p data-i18n="tarif_sentimental_desc">Couple, amour, retrouvailles, liens présents et futurs.</p>
 
-<!-- PAYPAL - Voyance Sentimentale -->
-<div class="paypal-box">
-  <div id="paypal-container-H8LA54EZY2T46"></div>
-</div>
+  <!-- Zone de paiement -->
+  <div class="mystic-paybox">
+    <h3>Paiement sécurisé – 20 €</h3>
 
-<script 
-  src="https://www.paypal.com/sdk/js?client-id=BAA3LPdWYhDwfbYcXsmBhfCHXhRtcth_XEFw9tpnDSr42xeS7cdHDPl4kkudskfXSomt0uyjCfsdvzBBz8&components=hosted-buttons&disable-funding=venmo&currency=EUR">
-</script>
+    <div id="paypal-container-H8LA54EZY2T46"></div>
+    <script>
+      paypal.HostedButtons({
+        hostedButtonId: "H8LA54EZY2T46",
+      }).render("#paypal-container-H8LA54EZY2T46");
+    </script>
 
-<script>
-  paypal.HostedButtons({
-    hostedButtonId: "H8LA54EZY2T46",
-  }).render("#paypal-container-H8LA54EZY2T46");
-</script>
+  </div>
+</article>
 
     
     <!-- ⭐ OFFRE 3 -->
