@@ -9,7 +9,6 @@
 
 <body class="page-contact">
 
-<!-- HEADER identique au reste du site -->
 <header class="header">
   <div class="logo">
     <img src="assets/img/logo-altessa.png" alt="Logo Altessa">
@@ -33,14 +32,18 @@
     <h1 class="hero-title hero-title-small">Poser votre question</h1>
     <p class="hero-text hero-text-centered">
       Remplissez le formulaire ci-dessous. Votre réponse vous sera envoyée par e-mail
-      dans un délai de 30 minutes à 2 h.
+      dans un délai de 24 à 48h.
     </p>
   </section>
 
   <section class="section">
-    <form class="contact-form" id="voyance-form" action="mailto:altessa.voyance@mail.com" method="post" enctype="text/plain">
+    <!-- 🔥 FORMULAIRE FORMSpree 🔥 -->
+    <form class="contact-form" id="voyance-form"
+          action="https://formspree.io/f/xzzngjaq"
+          method="POST">
 
-      <!-- CHAMP EXPERT AUTO-REMPLI -->
+      <input type="hidden" name="_redirect" value="https://altessavoyance.com/merci.html">
+
       <div class="form-row">
         <label>Expert sélectionné</label>
         <input type="text" name="expert" id="expert" readonly>
@@ -74,7 +77,6 @@
         </select>
       </div>
 
-      <!-- Champ supplémentaire pour voyance sentimentale -->
       <div class="form-row sentimental-only" style="display:none;">
         <label>Prénom de la 2e personne (optionnel)</label>
         <input type="text" name="autre_personne">
@@ -87,8 +89,6 @@
 
       <p class="form-note">
         *Toutes les informations restent confidentielles.
-        Les consultations n’ont pas vocation à remplacer un suivi médical, psychologique,
-        juridique ou financier.
       </p>
 
       <button type="submit" class="btn-primary btn-full">
@@ -102,9 +102,8 @@
   Altessa Voyance © — Service réservé aux personnes majeures.
 </footer>
 
-<!-- SCRIPT — Pré-remplissage + affichage du champ sentimental -->
 <script>
-  // Remplit le champ expert avec ?expert=
+  // Remplit automatiquement le champ "expert" selon l'URL
   const params = new URLSearchParams(window.location.search);
   const expert = params.get("expert");
   const expertInput = document.getElementById("expert");
@@ -113,7 +112,7 @@
     expertInput.value = expert;
   }
 
-  // Gestion de la voyance sentimentale
+  // Afficher champ sentimental selon choix
   const typeSelect = document.getElementById("type");
   const sentimentalBlock = document.querySelector(".sentimental-only");
 
