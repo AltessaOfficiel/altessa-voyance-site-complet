@@ -9,6 +9,11 @@
 
   <!-- SCRIPT MULTILINGUE -->
   <script src="assets/js/lang.js" defer></script>
+
+  <!-- PAYPAL SDK (NE PAS MODIFIER) -->
+  <script 
+    src="https://www.paypal.com/sdk/js?client-id=BAA3LPdWYhDwfbYcXsmBhfCHXhRtcth_XEFw9tpnDSr42xeS7cdHDPl4kkudskfXSomt0uyjCfsdvzBBz8&components=hosted-buttons&disable-funding=venmo&currency=EUR">
+  </script>
 </head>
 
 <body>
@@ -52,36 +57,54 @@
   <!-- GRID TARIFS -->
   <div class="tarifs-grid">
 
+    <!-- ⭐ OFFRE 1 — AVEC BOUTON PAYPAL -->
     <article class="tarif-card">
       <h2 data-i18n="tarif_question_title">À la question</h2>
       <p class="tarif-price">8 €</p>
       <p data-i18n="tarif_question_desc">Une question précise, réponse directe et claire.</p>
+
+      <!-- Paiement PayPal -->
+      <div class="mystic-paybox">
+        <h3>Paiement sécurisé – 8 €</h3>
+
+        <div id="paypal-container-LGCWPQ9JHDT5U"></div>
+        <script>
+          paypal.HostedButtons({
+            hostedButtonId: "LGCWPQ9JHDT5U",
+          }).render("#paypal-container-LGCWPQ9JHDT5U");
+        </script>
+      </div>
     </article>
 
+    <!-- ⭐ OFFRE 2 -->
     <article class="tarif-card">
       <h2 data-i18n="tarif_sentimental_title">Voyance sentimentale</h2>
       <p class="tarif-price">20 €</p>
       <p data-i18n="tarif_sentimental_desc">Couple, amour, retrouvailles, liens présents et futurs.</p>
     </article>
 
+    <!-- ⭐ OFFRE 3 -->
     <article class="tarif-card">
       <h2 data-i18n="tarif_pro_title">Voyance professionnelle</h2>
       <p class="tarif-price">20 €</p>
       <p data-i18n="tarif_pro_desc">Carrière, travail, changement pro, évolution.</p>
     </article>
 
+    <!-- ⭐ OFFRE 4 -->
     <article class="tarif-card">
       <h2 data-i18n="tarif_finance_title">Voyance financière</h2>
       <p class="tarif-price">20 €</p>
       <p data-i18n="tarif_finance_desc">Finances, achats importants, stabilité et sécurité.</p>
     </article>
 
+    <!-- ⭐ OFFRE 5 -->
     <article class="tarif-card tarif-highlight">
       <h2 data-i18n="tarif_general_title">Voyance générale</h2>
       <p class="tarif-price">45 €</p>
       <p data-i18n="tarif_general_desc">Bilan complet : sentimental, pro, finances et tendances à venir.</p>
     </article>
 
+    <!-- ⭐ OFFRE 6 -->
     <article class="tarif-card">
       <h2 data-i18n="tarif_soin_title">Soin énergétique</h2>
       <p class="tarif-price">50 €</p>
@@ -93,11 +116,7 @@
   <!-- BOUTONS ACTION -->
   <div class="tarifs-actions">
     <a href="experts.html" class="btn-secondary" data-i18n="btn_choose_expert">Choisir mon expert</a>
-
-    <!-- 🔥 CORRECTIF ICI : lien réparé -->
-    <a href="contact.html" class="btn-primary" data-i18n="btn_ask_question">
-      Poser ma question
-    </a>
+    <a href="contact.html" class="btn-primary" data-i18n="btn_ask_question">Poser ma question</a>
   </div>
 
 </main>
