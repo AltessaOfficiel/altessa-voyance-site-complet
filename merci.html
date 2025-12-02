@@ -2,134 +2,124 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Merci pour votre confiance — Altessa Voyance</title>
+  <title>Merci pour votre confiance – Altessa Voyance</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Police -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Styles -->
+  <!-- Styles généraux -->
   <link rel="stylesheet" href="assets/css/styles.css">
 
   <style>
-    /* PAGE MERCI – Style inséré pour effet mystique */
+    /* SECTION MERCI */
     .merci-section {
       text-align: center;
-      padding: 100px 8vw;
+      padding: 120px 8vw;
       position: relative;
+      overflow: hidden;
     }
 
-    /* Aura mystique derrière l’icône */
+    /* Halo doré */
     .merci-section::before {
       content: "";
       position: absolute;
-      top: 60px;
+      top: 50%;
       left: 50%;
-      transform: translateX(-50%);
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      background: radial-gradient(circle,
-        rgba(248,224,160,0.5),
-        rgba(248,224,160,0.15),
-        transparent 70%
-      );
+      width: 420px;
+      height: 420px;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(248,224,160,0.25) 0%, transparent 70%);
       filter: blur(20px);
-      animation: merciAura 5s ease-in-out infinite;
+      animation: aura-pulse 6s ease-in-out infinite;
+      z-index: -1;
     }
 
-    @keyframes merciAura {
-      0%,100% { transform: translateX(-50%) scale(1); opacity: .55; }
-      50% { transform: translateX(-50%) scale(1.18); opacity: 1; }
+    @keyframes aura-pulse {
+      0%,100% { transform: translate(-50%, -50%) scale(1); opacity: .4; }
+      50% { transform: translate(-50%, -50%) scale(1.25); opacity: .9; }
     }
 
-    /* Icône lotus */
+    /* Lotus animé */
     .merci-lotus {
       width: 180px;
-      filter: drop-shadow(0 0 35px rgba(248,224,160,1));
-      animation: lotusFloat 4s ease-in-out infinite;
-      position: relative;
-      z-index: 2;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 0 35px rgba(255,230,180,0.9));
+      animation: lotus-float 4s ease-in-out infinite;
     }
 
-    @keyframes lotusFloat {
+    @keyframes lotus-float {
       0%,100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      50% { transform: translateY(-12px); }
     }
 
-    .merci-title {
+    h1 {
       font-size: 2.4rem;
-      margin-top: 20px;
+      margin-bottom: 10px;
     }
 
     .merci-text {
-      max-width: 700px;
-      margin: 18px auto 28px;
-      opacity: 0.9;
-      font-size: 1.05rem;
+      max-width: 600px;
+      font-size: 1.1rem;
+      margin: 0 auto 30px;
+      opacity: 0.88;
     }
 
-    .btn-return {
+    /* Bouton retour */
+    .btn-retour {
       display: inline-block;
-      margin-top: 20px;
+      margin-top: 18px;
       padding: 12px 28px;
       border-radius: 999px;
       font-weight: 600;
       background-image: linear-gradient(120deg,#f8e0a0,#d9a441,#fbeac4);
       color: #2c143c;
       box-shadow: 0 0 18px rgba(217,164,65,0.65);
+      transition: 0.2s;
     }
 
-    .btn-return:hover {
-      filter: brightness(1.1);
+    .btn-retour:hover {
+      box-shadow: 0 0 30px rgba(255,230,140,0.9);
       transform: translateY(-3px);
-      transition: .2s;
+    }
+
+    /* Message de redirection */
+    .redirect-msg {
+      margin-top: 15px;
+      font-size: 0.9rem;
+      opacity: 0.75;
     }
   </style>
+
+  <!-- 🔁 Redirection automatique (7 secondes) -->
+  <script>
+    setTimeout(function() {
+      window.location.href = "https://altessavoyance.com/";
+    }, 7000);
+  </script>
+
 </head>
 
 <body>
 
-<!-- HEADER -->
-<header class="header">
-  <div class="logo">
-    <img src="assets/img/logo-altessa.png" alt="Logo">
-    <div class="logo-text">
-      <span class="logo-main">Altessa</span>
-      <span class="logo-sub">Voyance</span>
-    </div>
-  </div>
+  <section class="merci-section">
 
-  <nav class="nav">
-    <a href="index.html">Accueil</a>
-    <a href="experts.html">Experts</a>
-    <a href="tarifs.html">Tarifs</a>
-    <a href="contact.html" class="btn-nav">Contact</a>
-  </nav>
-</header>
+    <img src="assets/img/lotus.png" alt="Lotus Altessa" class="merci-lotus">
 
-<!-- CONTENU -->
-<section class="merci-section">
+    <h1>Merci pour votre confiance ✨</h1>
 
-  <img src="assets/img/logo-altessa.png" alt="Lotus mystique" class="merci-lotus">
+    <p class="merci-text">
+      Votre paiement a bien été validé.<br>
+      Votre demande vient d’être transmise à l’un de nos voyants experts.<br>
+      Vous recevrez votre réponse directement par e-mail.
+    </p>
 
-  <h1 class="merci-title">Merci pour votre confiance ✨</h1>
+    <a href="index.html" class="btn-retour">Retour à l’accueil</a>
 
-  <p class="merci-text">
-    Votre paiement a bien été reçu.<br><br>
-    L’un de nos experts va analyser votre demande avec toute son énergie,
-    puis vous envoyer votre réponse personnalisée à l’adresse e-mail fournie.<br><br>
-    <strong>Temps de réponse moyen : 5 à 30 minutes.</strong>
-  </p>
+    <p class="redirect-msg">Redirection automatique dans 7 secondes…</p>
 
-  <a href="index.html" class="btn-return">Retour à l’accueil</a>
-
-</section>
-
-<!-- FOOTER -->
-<footer class="footer">
-  Altessa Voyance © — Voyance en ligne.
-</footer>
+  </section>
 
 </body>
 </html>
+
