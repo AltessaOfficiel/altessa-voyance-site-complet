@@ -9,6 +9,7 @@
 
 <body class="page-contact">
 
+<!-- HEADER -->
 <header class="header">
   <div class="logo">
     <img src="assets/img/logo-altessa.png" alt="Logo Altessa">
@@ -28,22 +29,28 @@
 
 <main>
 
+  <!-- HERO -->
   <section class="hero hero-inner">
     <h1 class="hero-title hero-title-small">Poser votre question</h1>
     <p class="hero-text hero-text-centered">
       Remplissez le formulaire ci-dessous. Votre réponse vous sera envoyée par e-mail
-      dans un délai de 30 minutes a 2h.
+      dans un délai de <strong>30 minutes à 2h</strong>.
     </p>
   </section>
 
+  <!-- FORMULAIRE -->
   <section class="section">
-    <!-- 🔥 FORMULAIRE FORMSpree 🔥 -->
     <form class="contact-form" id="voyance-form"
-          action="https://formspree.io/f/xzzngjaq"
+          action="https://api.web3forms.com/submit"
           method="POST">
 
-      <input type="hidden" name="_redirect" value="https://altessavoyance.com/merci.html">
+      <!-- 🔥 API Key Web3Forms -->
+      <input type="hidden" name="access_key" value="8dc0fef7-70fd-493b-8a00-b2dad0e3d15a">
 
+      <!-- 🔥 Redirection automatique -->
+      <input type="hidden" name="redirect" value="https://altessavoyance.com/merci.html">
+
+      <!-- Expert -->
       <div class="form-row">
         <label>Expert sélectionné</label>
         <input type="text" name="expert" id="expert" readonly>
@@ -77,6 +84,7 @@
         </select>
       </div>
 
+      <!-- Champ sentimental -->
       <div class="form-row sentimental-only" style="display:none;">
         <label>Prénom de la 2e personne (optionnel)</label>
         <input type="text" name="autre_personne">
@@ -88,7 +96,7 @@
       </div>
 
       <p class="form-note">
-        *Toutes les informations restent confidentielles.
+        *Toutes les informations restent strictement confidentielles.
       </p>
 
       <button type="submit" class="btn-primary btn-full">
@@ -98,10 +106,12 @@
   </section>
 </main>
 
+<!-- FOOTER -->
 <footer class="footer">
   Altessa Voyance © — Service réservé aux personnes majeures.
 </footer>
 
+<!-- SCRIPT : Pré-remplissage expert + affichage sentimental -->
 <script>
   // Remplit automatiquement le champ "expert" selon l'URL
   const params = new URLSearchParams(window.location.search);
@@ -112,7 +122,7 @@
     expertInput.value = expert;
   }
 
-  // Afficher champ sentimental selon choix
+  // Affiche champ sentimental uniquement si "voyance sentimentale" sélectionnée
   const typeSelect = document.getElementById("type");
   const sentimentalBlock = document.querySelector(".sentimental-only");
 
