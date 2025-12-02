@@ -684,3 +684,96 @@ a {
 .mystic-paybox > div {
   margin-top: 12px;
 }
+/* =========================================================
+   CONTACT — MISE EN PAGE COMPLÈTE & CENTRÉE
+   ========================================================= */
+
+.page-contact .section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+/* Conteneur du formulaire */
+.contact-form {
+  max-width: 650px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  padding: 20px;
+}
+
+/* Ligne de champ */
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Labels */
+.form-row label {
+  font-size: 1rem;
+  opacity: 0.85;
+  font-weight: 400;
+}
+
+/* Inputs + champs */
+.form-row input,
+.form-row select,
+.form-row textarea {
+  background: rgba(10,0,30,0.92);
+  border: 1px solid rgba(217,164,65,0.35);
+  border-radius: 12px;
+  padding: 12px;
+  color: #ffffff;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Focus lumineux */
+.form-row input:focus,
+.form-row select:focus,
+.form-row textarea:focus {
+  outline: none;
+  border-color: #f8e0a0;
+  box-shadow: 0 0 8px rgba(248,224,160,0.7);
+}
+
+/* Animation sentimentale */
+.sentimental-only {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Note */
+.form-note {
+  font-size: 0.8rem;
+  text-align: center;
+  opacity: 0.7;
+}
+
+/* Bouton full width */
+.btn-full {
+  width: 100%;
+  padding: 14px;
+  border-radius: 999px;
+  font-size: 1.1rem;
+  background-image: linear-gradient(120deg,#f8e0a0,#d9a441,#fbeac4);
+  color: #2c143c;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 0 12px rgba(248,224,160,0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-full:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 24px rgba(248,224,160,0.7);
+}
