@@ -121,6 +121,73 @@
     }, 300);
   });
 </script>
+<script>
+// ------------------------------
+//  CONFIG PAYPAL : IDs par type
+// ------------------------------
+const paypalIDs = {
+  question: "LGCWPQ9JHDT5U",          // 8€
+  sentimentale: "H8LA54EZY2T46",       // 20€
+  professionnelle: "A3DZS2TAYSGYS",    // 20€
+  financiere: "AJDZ94JCHR8U8",         // 20€
+  generale: "AY42SMUCPK3YU",           // 45€
+  soin: "GT986X6GT42PA"                // 50€
+};
+
+// Récupérer éléments du formulaire
+const typeSelect = document.getElementById("type");
+const form = document.getElementById("voyance-form");
+
+// Stockage temporaire avant paiement
+let formDataTemp = {};
+
+// Sauvegarde des données du formulaire AVANT l'envoi
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const selectedType = typeSelect.value;
+
+  if (!selectedType || !paypalIDs[selectedType]) {
+    alert("Veuillez sélectionner un type de consultation valide.");
+    return;
+  }
+
+  // Sauvegarder toutes les données du formulaire
+  const formData = new FormData(form);
+  formDataTemp = Object.fromEntries(formData.entries());
+
+  // 🔥 GÉNÉRATION DU LIEN PAYPAL HOSTED BUTTON
+  const paypalURL = `https://www.paypal.com/ncp/payment/${paypalIDs[selectedType]}`;
+
+  // Rediriger vers PayPal
+  window.location.href = paypalURL;
+});
+
+// ---------------------------
+//  Vérifier retour du paiement
+// ---------------------------
+function getParam(name) {
+  return new URLSearchParams(window.location.search).get(name);
+}
+
+// Vérification : "success" renvoyé par PayPal
+if (getParam("payment") === "success") {
+  
+  // Envoi automatique vers Formspree (après paiement validé)
+  fetch("https://formspree.io/f/xzzngjaq", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(formDataTemp)
+  }).then(() => {
+    // Redirection vers la page MERCI personnalisée
+    const expertName = formDataTemp.expert || "expert";
+    const type = formDataTemp.type || "";
+    
+    window.location.href =
+      `https://altessavoyance.com/merci.html?expert=${expertName}&type=${type}`;
+  });
+}
+</script>
 
 </body>
 </html>
