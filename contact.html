@@ -39,8 +39,8 @@
   <section class="hero hero-inner">
     <h1 class="hero-title hero-title-small">Poser votre question</h1>
     <p class="hero-text hero-text-centered">
-      1. Choisissez votre consultation et réglez en toute sécurité.<br>
-      2. Remplissez le formulaire pour transmettre votre question à l’expert choisi.<br>
+      <strong>Étape 1 :</strong> Choisissez votre consultation et réglez en toute sécurité.<br>
+      <strong>Étape 2 :</strong> Remplissez le formulaire pour transmettre votre question à l’expert choisi.<br>
       <strong>Réponse envoyée par e-mail entre 15 et 45 minutes.</strong>
     </p>
   </section>
@@ -73,7 +73,8 @@
 
         <p class="form-note">
           Après avoir choisi votre consultation, cliquez sur le bouton PayPal ci-dessous pour régler.
-          Une fois le paiement effectué, revenez sur cette page (ou laissez-la ouverte) et passez à l’étape 2.
+          Une fois le paiement effectué, vous serez redirigé sur une page de confirmation,
+          puis vous pourrez revenir ici et passer à l’étape 2.
         </p>
       </div>
 
@@ -163,10 +164,10 @@
             action="https://formspree.io/f/xzzngjaq"
             method="POST">
 
-        <!-- Redirection vers la page merci -->
+        <!-- Redirection vers la page merci (Formspree) -->
         <input type="hidden" name="_redirect" value="https://altessavoyance.com/merci.html">
 
-        <!-- Ces champs seront remplis automatiquement en JS -->
+        <!-- Ces champs sont remplis automatiquement en JS -->
         <input type="hidden" name="expert" id="form-expert">
         <input type="hidden" name="type" id="form-type">
 
@@ -200,7 +201,7 @@
           Les consultations ne remplacent pas un suivi médical, psychologique, juridique ou financier.
         </p>
 
-        <button type="submit" class="btn-primary btn-full">
+        <button type="submit" class="btn-primary btn-full" id="submit-btn">
           Envoyer ma question
         </button>
       </form>
@@ -214,150 +215,84 @@
   Altessa Voyance © — Service réservé aux personnes majeures.
 </footer>
 
+<!-- LOGIQUE JS : remplissage + verrouillage -->
 <script>
-  // --------- Récupération des paramètres d’URL (expert, type) ----------
-  const urlParams = new URLSearchParams(window.location.search);
-  const expertParam = urlParams.get("expert") || "Votre expert Altessa";
-  const typeParam   = urlParams.get("type"); // éventuel pré-remplissage
+(function () {
+  const params = new URLSearchParams(window.location.search);
+  const paid  = params.get("paid") === "1";
 
-  const expertDisplay = document.getElementById("expert-display");
-  const formExpert    = document.getElementById("form-expert");
+  // --------- Expert (URL ou localStorage) ----------
+  const expertFromUrl  = params.get("expert");
+  const expertStored   = localStorage.getItem("altessaExpert");
+  const expertName     = expertFromUrl || expertStored || "Votre expert Altessa";
 
-  expertDisplay.value = expertParam;
-  formExpert.value    = expertParam;
+  document.getElementById("expert-display").value = expertName;
+  document.getElementById("form-expert").value    = expertName;
+  localStorage.setItem("altessaExpert", expertName);
 
-  // --------- Gestion du SELECT de consultation ----------
+  // --------- Type de consultation + PayPal ----------
   const typeSelect      = document.getElementById("consultation-type");
-  const formTypeHidden  = document.getElementById("form-type");
+  const hiddenTypeInput = document.getElementById("form-type");
   const sentimentalBloc = document.querySelector(".sentimental-only");
   const paypalPanels    = document.querySelectorAll(".paypal-panel");
 
-  // Pré-sélection depuis l’URL si possible
-  if (typeParam && typeSelect.querySelector(`option[value="${typeParam}"]`)) {
-    typeSelect.value = typeParam;
+  const storedType = localStorage.getItem("altessaType");
+  if (!typeSelect.value && storedType && typeSelect.querySelector(`option[value="${storedType}"]`)) {
+    typeSelect.value = storedType;
   }
 
   function updateType() {
     const val = typeSelect.value;
-    formTypeHidden.value = val;
+    hiddenTypeInput.value = val;
+    localStorage.setItem("altessaType", val);
 
-    // Affichage du bon bloc PayPal
     paypalPanels.forEach(panel => {
       panel.style.display = (panel.dataset.type === val) ? "block" : "none";
     });
 
-    // Champ sentimental uniquement pour la voyance sentimentale
-    if (val === "sentimentale") {
-      sentimentalBloc.style.display = "block";
-    } else {
-      sentimentalBloc.style.display = "none";
-    }
+    sentimentalBloc.style.display = (val === "sentimentale") ? "block" : "none";
   }
 
   typeSelect.addEventListener("change", updateType);
-  updateType(); // initial
-</script>
-<script>
-// ------------------------------
-//    1. Récupère paramètres URL
-// ------------------------------
-const url = new URLSearchParams(window.location.search);
-const expert = url.get("expert") || "";
-const paid = url.get("paid") === "1";  // PayPal validé ?
+  updateType();
 
+  // --------- Verrouillage du formulaire tant que non payé ----------
+  const questionForm = document.getElementById("voyance-form");
+  const formFields   = questionForm.querySelectorAll("input, textarea, select, button");
+  const submitBtn    = document.getElementById("submit-btn");
 
-// ------------------------------
-//    2. Remplit expert
-// ------------------------------
-document.getElementById("expert").value = expert;
-
-
-// ------------------------------
-//    3. FORMULAIRE BLOQUÉ AVANT PAIEMENT
-// ------------------------------
-const questionForm = document.getElementById("question-form");
-const inputs = questionForm.querySelectorAll("input, textarea, select");
-const submitBtn = document.getElementById("submit-btn");
-
-function lockForm() {
-  inputs.forEach(i => i.disabled = true);
-  submitBtn.disabled = true;
-  submitBtn.style.opacity = "0.4";
-}
-
-function unlockForm() {
-  inputs.forEach(i => i.disabled = false);
-  submitBtn.disabled = false;
-  submitBtn.style.opacity = "1";
-}
-
-// Par défaut : FORMULAIRE BLOQUÉ
-if (!paid) {
-  lockForm();
-}
-
-
-// ------------------------------
-//    4. PayPal ID selon consultation
-// ------------------------------
-const paypalIDs = {
-  question: "LGCWPQ9JHDT5U",
-  sentimentale: "H8LA54EZY2T46",
-  professionnelle: "A3DZS2TAYSGYS",
-  financiere: "AJDZ94JCHR8U8",
-  generale: "GT986X6GT42PA",
-  soin: "AY42SMUCPK3YU"
-};
-
-const typeSelect = document.getElementById("type");
-typeSelect.addEventListener("change", () => {
-  const type = typeSelect.value;
-  const paypalZone = document.getElementById("paypal-zone");
-  paypalZone.innerHTML = "";
-
-  if (!paypalIDs[type]) return;
-
-  const div = document.createElement("div");
-  div.id = "paypal-container";
-  paypalZone.appendChild(div);
-
-  paypal.HostedButtons({
-    hostedButtonId: paypalIDs[type]
-  }).render("#paypal-container");
-});
-
-
-// ------------------------------
-//    5. Débloque après paiement
-// ------------------------------
-if (paid) {
-  unlockForm();  
-}
-
-
-// ------------------------------
-//    6. Envoi Formspree APRÈS paiement
-// ------------------------------
-questionForm.addEventListener("submit", function(e) {
-  e.preventDefault();
-
-  if (!paid) {
-    alert("❗ Vous devez payer avant d'envoyer votre question.");
-    return;
+  function setFormEnabled(enabled) {
+    formFields.forEach(el => {
+      if (el.type === "hidden") return; // hidden toujours actifs
+      el.disabled = !enabled;
+    });
+    submitBtn.style.opacity = enabled ? "1" : "0.4";
   }
 
-  const formData = Object.fromEntries(new FormData(questionForm).entries());
+  if (!paid) {
+    setFormEnabled(false);
 
-  fetch("https://formspree.io/f/xzzngjaq", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(formData)
-  }).then(() => {
-    window.location.href =
-      "https://altessavoyance.com/merci.html";
+    const info = document.createElement("p");
+    info.className = "form-note";
+    info.style.marginTop = "16px";
+    info.textContent = "⚠️ Vous devez d’abord régler votre consultation (étape 1). "
+      + "Après le paiement, vous serez redirigé vers une page de confirmation "
+      + "qui vous permettra de revenir ici et d’envoyer votre question.";
+    questionForm.parentNode.insertBefore(info, questionForm);
+  } else {
+    setFormEnabled(true);
+  }
+
+  // Sécurité supplémentaire côté navigateur
+  questionForm.addEventListener("submit", function (e) {
+    if (!paid) {
+      e.preventDefault();
+      alert("Vous devez payer votre consultation avant d'envoyer votre question.");
+    }
   });
-});
+})();
 </script>
 
 </body>
 </html>
+
