@@ -777,3 +777,34 @@ a {
   transform: translateY(-2px);
   box-shadow: 0 0 24px rgba(248,224,160,0.7);
 }
+/* =========================================================
+   BOUTON CONSULTER — STYLE DORÉ PREMIUM
+   ========================================================= */
+
+.btn-secondary {
+  display: inline-block;
+  padding: 10px 22px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #f8e0a0;
+  border: 1px solid rgba(248,224,160,0.55);
+  background: rgba(20,0,40,0.6);
+  text-decoration: none;
+  transition: 0.25s ease;
+  box-shadow:
+    0 0 10px rgba(248,224,160,0.35),
+    0 0 18px rgba(248,224,160,0.2);
+}
+
+/* Surbrillance mystique */
+.btn-secondary:hover {
+  color: #2c143c;
+  background-image: linear-gradient(120deg,#f8e0a0,#d9a441,#fbeac4);
+  border-color: rgba(248,224,160,0.9);
+  box-shadow:
+    0 0 16px rgba(248,224,160,0.85),
+    0 0 32px rgba(248,224,160,0.55),
+    0 0 55px rgba(248,224,160,0.35);
+  transform: translateY(-3px);
+}
