@@ -82,14 +82,15 @@
   document.getElementById("expert").value = expert || "Non spécifié";
 
   /* IDs des boutons PayPal */
-  const paypalIDs = {
-    question: "LGCWPQ9JHDT5U",
-    sentimentale: "H8LA54EZY2T46",
-    professionnelle: "A3DZS2TAYSGYS",
-    financiere: "AJDZ94JCHR8U8",
-    generale: "AY42SMUCPK3YU",
-    soin: "GT986X6GT42PA"
-  };
+  const paypalButtons = {
+  question: "LGCWPQ9JHDT5U",
+  sentimentale: "H8LA54EZY2T46",
+  professionnelle: "A3DZS2TAYSGYS",
+  financiere: "AJDZ94JCHR8U8",
+  generale: "AY42SMUCPK3YU",   
+  soin: "GT986X6GT42PA"        
+};
+
 
   /* Affiche le bouton PayPal correspondant */
   const typeSelect = document.getElementById("type");
