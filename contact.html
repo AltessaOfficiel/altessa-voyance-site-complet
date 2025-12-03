@@ -257,6 +257,107 @@
   typeSelect.addEventListener("change", updateType);
   updateType(); // initial
 </script>
+<script>
+// ------------------------------
+//    1. Récupère paramètres URL
+// ------------------------------
+const url = new URLSearchParams(window.location.search);
+const expert = url.get("expert") || "";
+const paid = url.get("paid") === "1";  // PayPal validé ?
+
+
+// ------------------------------
+//    2. Remplit expert
+// ------------------------------
+document.getElementById("expert").value = expert;
+
+
+// ------------------------------
+//    3. FORMULAIRE BLOQUÉ AVANT PAIEMENT
+// ------------------------------
+const questionForm = document.getElementById("question-form");
+const inputs = questionForm.querySelectorAll("input, textarea, select");
+const submitBtn = document.getElementById("submit-btn");
+
+function lockForm() {
+  inputs.forEach(i => i.disabled = true);
+  submitBtn.disabled = true;
+  submitBtn.style.opacity = "0.4";
+}
+
+function unlockForm() {
+  inputs.forEach(i => i.disabled = false);
+  submitBtn.disabled = false;
+  submitBtn.style.opacity = "1";
+}
+
+// Par défaut : FORMULAIRE BLOQUÉ
+if (!paid) {
+  lockForm();
+}
+
+
+// ------------------------------
+//    4. PayPal ID selon consultation
+// ------------------------------
+const paypalIDs = {
+  question: "LGCWPQ9JHDT5U",
+  sentimentale: "H8LA54EZY2T46",
+  professionnelle: "A3DZS2TAYSGYS",
+  financiere: "AJDZ94JCHR8U8",
+  generale: "GT986X6GT42PA",
+  soin: "AY42SMUCPK3YU"
+};
+
+const typeSelect = document.getElementById("type");
+typeSelect.addEventListener("change", () => {
+  const type = typeSelect.value;
+  const paypalZone = document.getElementById("paypal-zone");
+  paypalZone.innerHTML = "";
+
+  if (!paypalIDs[type]) return;
+
+  const div = document.createElement("div");
+  div.id = "paypal-container";
+  paypalZone.appendChild(div);
+
+  paypal.HostedButtons({
+    hostedButtonId: paypalIDs[type]
+  }).render("#paypal-container");
+});
+
+
+// ------------------------------
+//    5. Débloque après paiement
+// ------------------------------
+if (paid) {
+  unlockForm();  
+}
+
+
+// ------------------------------
+//    6. Envoi Formspree APRÈS paiement
+// ------------------------------
+questionForm.addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  if (!paid) {
+    alert("❗ Vous devez payer avant d'envoyer votre question.");
+    return;
+  }
+
+  const formData = Object.fromEntries(new FormData(questionForm).entries());
+
+  fetch("https://formspree.io/f/xzzngjaq", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(formData)
+  }).then(() => {
+    window.location.href =
+      "https://altessavoyance.com/merci.html";
+  });
+});
+</script>
 
 </body>
 </html>
