@@ -2,12 +2,43 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Merci pour votre paiement</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Merci pour votre confiance — Altessa Voyance</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    .merci-section {
+      text-align: center;
+      padding: 120px 8vw 80px;
+      position: relative;
+    }
+    .merci-logo {
+      margin-bottom: 24px;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    .merci-title {
+      font-size: clamp(2.4rem, 4vw, 3rem);
+      margin-bottom: 16px;
+    }
+    .merci-text {
+      max-width: 600px;
+      margin: 0 auto 28px;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+    .merci-countdown {
+      margin-top: 18px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+  </style>
 </head>
 
-<body class="page-contact">
+<body>
 
 <header class="header">
   <div class="logo">
@@ -27,80 +58,46 @@
 </header>
 
 <main>
+  <section class="merci-section">
+    <div class="merci-logo">Lotus Altessa</div>
+    <h1 class="merci-title">Merci pour votre confiance ✨</h1>
 
-  <section class="hero hero-inner">
-    <h1 class="hero-title hero-title-small">Merci pour votre paiement ✨</h1>
-    <p class="hero-text hero-text-centered">
-      Votre paiement a bien été reçu.<br>
-      Merci de remplir le formulaire ci-dessous pour que votre expert puisse traiter votre consultation.
+    <p class="merci-text">
+      Votre message a bien été transmis à l’un de nos voyants experts.
+      <br>Votre paiement a été validé et votre demande est maintenant en cours de traitement.
+      <br><br>
+      Vous recevrez votre réponse directement par e-mail dans un délai d’environ
+      <strong>15 à 45 minutes</strong>.
     </p>
-  </section>
 
-  <section class="section">
+    <a href="index.html" class="btn-primary">
+      Retour à l’accueil
+    </a>
 
-    <!-- 🔥 FORMULAIRE WEB3FORMS 🔥 -->
-    <form class="contact-form"
-          action="https://api.web3forms.com/submit"
-          method="POST">
-
-      <!-- Clé Web3Forms -->
-      <input type="hidden" name="access_key" value="8dc0fef7-70fd-493b-8a00-b2dad0e3d15a">
-
-      <!-- Redirection finale -->
-      <input type="hidden" name="redirect" value="https://altessavoyance.com/merci-final.html">
-
-      <div class="form-row">
-        <label>Expert</label>
-        <input type="text" id="expert" name="expert" readonly>
-      </div>
-
-      <div class="form-row">
-        <label>Type de consultation</label>
-        <input type="text" id="type" name="type" readonly>
-      </div>
-
-      <div class="form-row">
-        <label>Nom complet*</label>
-        <input type="text" name="nom" required />
-      </div>
-
-      <div class="form-row">
-        <label>Email*</label>
-        <input type="email" name="email" required />
-      </div>
-
-      <div class="form-row">
-        <label>Date de naissance*</label>
-        <input type="date" name="date_naissance" required />
-      </div>
-
-      <div class="form-row">
-        <label>Votre question / situation*</label>
-        <textarea name="message" rows="6" required></textarea>
-      </div>
-
-      <button type="submit" class="btn-primary btn-full">
-        Envoyer ma question
-      </button>
-
-    </form>
-
+    <p class="merci-countdown" id="merci-countdown">
+      Redirection automatique vers l’accueil dans 10 secondes…
+    </p>
   </section>
 </main>
 
 <footer class="footer">
-  Altessa Voyance © — Service réservé aux personnes majeures.
+  Altessa Voyance © — Voyance en ligne.
 </footer>
 
 <script>
-  const params = new URLSearchParams(window.location.search);
-  const custom = params.get("custom");
+  // Petit compte à rebours avant redirection
+  let seconds = 10;
+  const countdownEl = document.getElementById("merci-countdown");
 
-  if (custom) {
-    const [expert, type] = custom.split("|");
-    document.getElementById("expert").value = expert;
-    document.getElementById("type").value = type;
-  }
+  const interval = setInterval(() => {
+    seconds--;
+    if (seconds <= 0) {
+      clearInterval(interval);
+      window.location.href = "index.html";
+    } else {
+      countdownEl.textContent = "Redirection automatique vers l’accueil dans " + seconds + " secondes…";
+    }
+  }, 1000);
 </script>
 
 </body>
