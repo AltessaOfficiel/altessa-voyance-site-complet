@@ -5,11 +5,15 @@
   <title>Altessa Voyance — Poser votre question</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <!-- PAYPAL SDK -->
+  <script 
+    src="https://www.paypal.com/sdk/js?client-id=BAA3LPdWYhDwfbYcXsmBhfCHXhRtcth_XEFw9tpnDSr42xeS7cdHDPl4kkudskfXSomt0uyjCfsdvzBBz8&components=hosted-buttons&disable-funding=venmo&currency=EUR">
+  </script>
 </head>
 
 <body class="page-contact">
 
-<!-- HEADER -->
 <header class="header">
   <div class="logo">
     <img src="assets/img/logo-altessa.png" alt="Logo Altessa">
@@ -29,110 +33,93 @@
 
 <main>
 
-  <!-- HERO -->
   <section class="hero hero-inner">
     <h1 class="hero-title hero-title-small">Poser votre question</h1>
     <p class="hero-text hero-text-centered">
-      Remplissez le formulaire ci-dessous. Votre réponse vous sera envoyée par e-mail
-      dans un délai de <strong>30 minutes à 2h</strong>.
+      Choisissez votre consultation, réglez en toute sécurité, puis posez votre question.<br>
+      Réponse envoyée sous 30 minutes à 2h.
     </p>
   </section>
 
-  <!-- FORMULAIRE -->
   <section class="section">
-    <form class="contact-form" id="voyance-form"
-          action="https://api.web3forms.com/submit"
-          method="POST">
 
-      <!-- 🔥 API Key Web3Forms -->
-      <input type="hidden" name="access_key" value="8dc0fef7-70fd-493b-8a00-b2dad0e3d15a">
+    <!-- FORMULAIRE DE CHOIX AVANT PAIEMENT -->
+    <form class="contact-form" id="select-form">
 
-      <!-- 🔥 Redirection automatique -->
-      <input type="hidden" name="redirect" value="https://altessavoyance.com/merci.html">
-
-      <!-- Expert -->
       <div class="form-row">
         <label>Expert sélectionné</label>
-        <input type="text" name="expert" id="expert" readonly>
-      </div>
-
-      <div class="form-row">
-        <label>Nom complet*</label>
-        <input type="text" name="nom" required />
-      </div>
-
-      <div class="form-row">
-        <label>Adresse e-mail*</label>
-        <input type="email" name="email" required />
-      </div>
-
-      <div class="form-row">
-        <label>Date de naissance*</label>
-        <input type="date" name="date_naissance" required />
+        <input type="text" id="expert" readonly>
       </div>
 
       <div class="form-row">
         <label>Type de consultation*</label>
-        <select name="type" id="type" required>
+        <select id="type" required>
           <option value="">Choisissez…</option>
-          <option value="question">À la question (8€)</option>
-          <option value="sentimentale">Sentimental (20€)</option>
-          <option value="professionnelle">Professionnel (20€)</option>
-          <option value="financiere">Financier (20€)</option>
-          <option value="generale">Général (45€)</option>
-          <option value="soin">Soin énergétique (50€)</option>
+          <option value="question">À la question — 8€</option>
+          <option value="sentimentale">Sentimentale — 20€</option>
+          <option value="professionnelle">Professionnelle — 20€</option>
+          <option value="financiere">Financière — 20€</option>
+          <option value="generale">Générale — 45€</option>
+          <option value="soin">Soin énergétique — 50€</option>
         </select>
       </div>
-
-      <!-- Champ sentimental -->
-      <div class="form-row sentimental-only" style="display:none;">
-        <label>Prénom de la 2e personne (optionnel)</label>
-        <input type="text" name="autre_personne">
-      </div>
-
-      <div class="form-row">
-        <label>Votre question / situation*</label>
-        <textarea name="message" rows="6" required></textarea>
-      </div>
-
-      <p class="form-note">
-        *Toutes les informations restent strictement confidentielles.
-      </p>
-
-      <button type="submit" class="btn-primary btn-full">
-        Envoyer ma question
-      </button>
     </form>
+
+    <!-- CONTENEUR QUI CHANGE SELON LE TYPE -->
+    <div id="paypal-zone"></div>
+
   </section>
 </main>
 
-<!-- FOOTER -->
 <footer class="footer">
   Altessa Voyance © — Service réservé aux personnes majeures.
 </footer>
 
-<!-- SCRIPT : Pré-remplissage expert + affichage sentimental -->
 <script>
-  // Remplit automatiquement le champ "expert" selon l'URL
+  /* Remplit automatiquement l’expert selon l’URL */
   const params = new URLSearchParams(window.location.search);
   const expert = params.get("expert");
-  const expertInput = document.getElementById("expert");
+  document.getElementById("expert").value = expert || "Non spécifié";
 
-  if (expert && expertInput) {
-    expertInput.value = expert;
-  }
+  /* IDs des boutons PayPal */
+  const paypalIDs = {
+    question: "LGCWPQ9JHDT5U",
+    sentimentale: "H8LA54EZY2T46",
+    professionnelle: "A3DZS2TAYSGYS",
+    financiere: "AJDZ94JCHR8U8",
+    generale: "AY42SMUCPK3YU",
+    soin: "GT986X6GT42PA"
+  };
 
-  // Affiche champ sentimental uniquement si "voyance sentimentale" sélectionnée
+  /* Affiche le bouton PayPal correspondant */
   const typeSelect = document.getElementById("type");
-  const sentimentalBlock = document.querySelector(".sentimental-only");
+  const paypalZone = document.getElementById("paypal-zone");
 
-  function updateSentimental() {
-    sentimentalBlock.style.display =
-      typeSelect.value === "sentimentale" ? "block" : "none";
-  }
+  typeSelect.addEventListener("change", () => {
+    const t = typeSelect.value;
+    paypalZone.innerHTML = "";
 
-  typeSelect.addEventListener("change", updateSentimental);
-  updateSentimental();
+    if (!t) return;
+
+    const div = document.createElement("div");
+    div.id = "paypal-container";
+    paypalZone.appendChild(div);
+
+    paypal.HostedButtons({
+      hostedButtonId: paypalIDs[t]
+    }).render("#paypal-container");
+
+    // Ajout redirection personnalisée
+    const checkInterval = setInterval(() => {
+      const links = document.querySelectorAll("form[action*='paypal']");
+      if (links.length) {
+        links.forEach(f => {
+          f.action = f.action + "&custom=" + encodeURIComponent(`${expert}|${t}`);
+        });
+        clearInterval(checkInterval);
+      }
+    }, 300);
+  });
 </script>
 
 </body>
