@@ -2,123 +2,106 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Merci pour votre confiance – Altessa Voyance</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Police -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Styles généraux -->
+  <title>Merci pour votre paiement</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="assets/css/styles.css">
-
-  <style>
-    /* SECTION MERCI */
-    .merci-section {
-      text-align: center;
-      padding: 120px 8vw;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Halo doré */
-    .merci-section::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 420px;
-      height: 420px;
-      transform: translate(-50%, -50%);
-      background: radial-gradient(circle, rgba(248,224,160,0.25) 0%, transparent 70%);
-      filter: blur(20px);
-      animation: aura-pulse 6s ease-in-out infinite;
-      z-index: -1;
-    }
-
-    @keyframes aura-pulse {
-      0%,100% { transform: translate(-50%, -50%) scale(1); opacity: .4; }
-      50% { transform: translate(-50%, -50%) scale(1.25); opacity: .9; }
-    }
-
-    /* Lotus animé */
-    .merci-lotus {
-      width: 180px;
-      margin-bottom: 20px;
-      filter: drop-shadow(0 0 35px rgba(255,230,180,0.9));
-      animation: lotus-float 4s ease-in-out infinite;
-    }
-
-    @keyframes lotus-float {
-      0%,100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
-    }
-
-    h1 {
-      font-size: 2.4rem;
-      margin-bottom: 10px;
-    }
-
-    .merci-text {
-      max-width: 600px;
-      font-size: 1.1rem;
-      margin: 0 auto 30px;
-      opacity: 0.88;
-    }
-
-    /* Bouton retour */
-    .btn-retour {
-      display: inline-block;
-      margin-top: 18px;
-      padding: 12px 28px;
-      border-radius: 999px;
-      font-weight: 600;
-      background-image: linear-gradient(120deg,#f8e0a0,#d9a441,#fbeac4);
-      color: #2c143c;
-      box-shadow: 0 0 18px rgba(217,164,65,0.65);
-      transition: 0.2s;
-    }
-
-    .btn-retour:hover {
-      box-shadow: 0 0 30px rgba(255,230,140,0.9);
-      transform: translateY(-3px);
-    }
-
-    /* Message de redirection */
-    .redirect-msg {
-      margin-top: 15px;
-      font-size: 0.9rem;
-      opacity: 0.75;
-    }
-  </style>
-
-  <!-- 🔁 Redirection automatique (7 secondes) -->
-  <script>
-    setTimeout(function() {
-      window.location.href = "https://altessavoyance.com/";
-    }, 7000);
-  </script>
-
 </head>
 
-<body>
+<body class="page-contact">
 
-  <section class="merci-section">
+<header class="header">
+  <div class="logo">
+    <img src="assets/img/logo-altessa.png" alt="Logo Altessa">
+    <div class="logo-text">
+      <span class="logo-main">Altessa</span>
+      <span class="logo-sub">Voyance</span>
+    </div>
+  </div>
 
-    <img src="assets/img/lotus.png" alt="Lotus Altessa" class="merci-lotus">
+  <nav class="nav">
+    <a href="index.html">Accueil</a>
+    <a href="experts.html">Experts</a>
+    <a href="tarifs.html">Tarifs</a>
+    <a href="contact.html" class="btn-nav">Contact</a>
+  </nav>
+</header>
 
-    <h1>Merci pour votre confiance ✨</h1>
+<main>
 
-    <p class="merci-text">
-      Votre paiement a bien été validé.<br>
-      Votre demande vient d’être transmise à l’un de nos voyants experts.<br>
-      Vous recevrez votre réponse directement par e-mail.
+  <section class="hero hero-inner">
+    <h1 class="hero-title hero-title-small">Merci pour votre paiement ✨</h1>
+    <p class="hero-text hero-text-centered">
+      Votre paiement a bien été reçu.<br>
+      Merci de remplir le formulaire ci-dessous pour que votre expert puisse traiter votre consultation.
     </p>
+  </section>
 
-    <a href="index.html" class="btn-retour">Retour à l’accueil</a>
+  <section class="section">
 
-    <p class="redirect-msg">Redirection automatique dans 7 secondes…</p>
+    <!-- 🔥 FORMULAIRE WEB3FORMS 🔥 -->
+    <form class="contact-form"
+          action="https://api.web3forms.com/submit"
+          method="POST">
+
+      <!-- Clé Web3Forms -->
+      <input type="hidden" name="access_key" value="8dc0fef7-70fd-493b-8a00-b2dad0e3d15a">
+
+      <!-- Redirection finale -->
+      <input type="hidden" name="redirect" value="https://altessavoyance.com/merci-final.html">
+
+      <div class="form-row">
+        <label>Expert</label>
+        <input type="text" id="expert" name="expert" readonly>
+      </div>
+
+      <div class="form-row">
+        <label>Type de consultation</label>
+        <input type="text" id="type" name="type" readonly>
+      </div>
+
+      <div class="form-row">
+        <label>Nom complet*</label>
+        <input type="text" name="nom" required />
+      </div>
+
+      <div class="form-row">
+        <label>Email*</label>
+        <input type="email" name="email" required />
+      </div>
+
+      <div class="form-row">
+        <label>Date de naissance*</label>
+        <input type="date" name="date_naissance" required />
+      </div>
+
+      <div class="form-row">
+        <label>Votre question / situation*</label>
+        <textarea name="message" rows="6" required></textarea>
+      </div>
+
+      <button type="submit" class="btn-primary btn-full">
+        Envoyer ma question
+      </button>
+
+    </form>
 
   </section>
+</main>
+
+<footer class="footer">
+  Altessa Voyance © — Service réservé aux personnes majeures.
+</footer>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const custom = params.get("custom");
+
+  if (custom) {
+    const [expert, type] = custom.split("|");
+    document.getElementById("expert").value = expert;
+    document.getElementById("type").value = type;
+  }
+</script>
 
 </body>
 </html>
