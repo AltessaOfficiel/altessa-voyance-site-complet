@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Merci pour votre paiement — Altessa Voyance</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    .merci-section {
+      text-align: center;
+      padding: 120px 8vw 80px;
+      position: relative;
+    }
+    .merci-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(248,224,160,0.25), transparent 60%);
+      opacity: 0.4;
+      pointer-events: none;
+    }
+    .merci-card {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 40px 26px 32px;
+      border-radius: 28px;
+      background: radial-gradient(circle at top, #2b134f, #120021 55%, #090013 100%);
+      border: 1px solid rgba(248,224,160,0.35);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.8);
+      position: relative;
+      overflow: hidden;
+    }
+    .merci-title {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+    .merci-sub {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-bottom: 24px;
+    }
+    .merci-highlight {
+      color: #f8e0a0;
+      font-weight: 600;
+    }
+    .merci-resume {
+      text-align: left;
+      margin: 0 auto 26px;
+      max-width: 420px;
+      font-size: 0.95rem;
+    }
+    .merci-resume dt {
+      font-weight: 600;
+      color: #f8e0a0;
+    }
+    .merci-resume dd {
+      margin: 0 0 10px;
+      opacity: 0.9;
+    }
+    .btn-primary.big {
+      display: inline-block;
+      padding: 14px 30px;
+      border-radius: 999px;
+      font-size: 1rem;
+      margin-top: 6px;
+    }
+    .merci-timer {
+      margin-top: 14px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="logo">
+    <img src="assets/img/logo-altessa.png" alt="Logo Altessa">
+    <div class="logo-text">
+      <span class="logo-main">Altessa</span>
+      <span class="logo-sub">Voyance</span>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <a href="index.html">Accueil</a>
+    <a href="experts.html">Experts</a>
+    <a href="tarifs.html">Tarifs</a>
+    <a href="contact.html" class="btn-nav">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <section class="merci-section">
+    <div class="merci-card">
+      <h1 class="merci-title">Merci pour votre confiance ✨</h1>
+      <p class="merci-sub">
+        Votre paiement a bien été <span class="merci-highlight">validé</span>.
+        Votre demande va être transmise à l’un de nos voyants experts.
+      </p>
+
+      <dl class="merci-resume">
+        <dt>Expert sélectionné</dt>
+        <dd id="resume-expert">—</dd>
+        <dt>Type de consultation</dt>
+        <dd id="resume-type">—</dd>
+        <dt>Montant réglé</dt>
+        <dd id="resume-price">—</dd>
+      </dl>
+
+      <p>
+        Vous pouvez maintenant passer à l’étape 2 :  
+        <span class="merci-highlight">rédiger votre question détaillée</span>.
+      </p>
+
+      <a id="go-step2" href="contact.html?paid=1" class="btn-primary big">
+        Passer à l’étape 2 — Poser ma question
+      </a>
+
+      <p class="merci-timer">
+        Redirection automatique vers le formulaire dans <span id="countdown">10</span> secondes…
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  Altessa Voyance © — Service réservé aux personnes majeures.
+</footer>
+
+<script>
+(function () {
+  // Récupère les infos stockées lors de l'étape 1
+  const expert = localStorage.getItem("altessaExpert") || "Votre expert Altessa";
+  const type   = localStorage.getItem("altessaType")   || "";
+
+  const typeInfo = {
+    question:       { label: "À la question",           price: "8 €" },
+    sentimentale:   { label: "Voyance sentimentale",    price: "20 €" },
+    professionnelle:{ label: "Voyance professionnelle", price: "20 €" },
+    financiere:     { label: "Voyance financière",      price: "20 €" },
+    generale:       { label: "Voyance générale",        price: "45 €" },
+    soin:           { label: "Soin énergétique",        price: "50 €" }
+  };
+
+  const info = typeInfo[type] || { label: "Consultation Altessa", price: "—" };
+
+  document.getElementById("resume-expert").textContent = expert;
+  document.getElementById("resume-type").textContent   = info.label;
+  document.getElementById("resume-price").textContent  = info.price;
+
+  // Lien vers l'étape 2 (débloquée)
+  const step2Link = document.getElementById("go-step2");
+  step2Link.href = "contact.html?paid=1";
+
+  // Compte à rebours auto
+  let timeLeft = 10;
+  const countdownSpan = document.getElementById("countdown");
+
+  const timer = setInterval(() => {
+    timeLeft -= 1;
+    if (timeLeft <= 0) {
+      clearInterval(timer);
+      window.location.href = step2Link.href;
+    } else {
+      countdownSpan.textContent = String(timeLeft);
+    }
+  }, 1000);
+})();
+</script>
+
+</body>
+</html>
