@@ -161,13 +161,9 @@
       <h2 class="section-title">2. Posez votre question</h2>
 
       <form class="contact-form" id="voyance-form"
-      action="https://formspree.io/f/xzzngjaq"
-      method="POST"
-      data-redirect="https://altessavoyance.com/index.html">
+      action="https://altessa.app.n8n.cloud/webhook/voyance"
+      method="POST">
 
-
-        <!-- Redirection vers la page merci (Formspree) -->
-        <input type="hidden" name="_redirect" value="https://altessavoyance.com/merci.html">
 
         <!-- Ces champs sont remplis automatiquement en JS -->
         <input type="hidden" name="expert" id="form-expert">
@@ -293,6 +289,13 @@
     }
   });
 })();
+</script>
+<script>
+document.getElementById("voyance-form").addEventListener("submit", function() {
+    setTimeout(() => {
+        window.location.href = "https://altessavoyance.com/merci.html";
+    }, 1500);
+});
 </script>
 
 </body>
