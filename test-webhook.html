@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <title>Test Webhook n8n</title>
   <style>
-    body { font-family: Arial; padding: 20px; background: #f5f5f5; }
-    input, textarea { width: 100%; margin: 10px 0; padding: 10px; }
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+    input, textarea { width: 100%; margin: 10px 0; padding: 10px; box-sizing: border-box; }
     button { padding: 10px 20px; background: #7c4dff; color: white; border: none; cursor: pointer; }
+    button:hover { background: #5b35d1; }
   </style>
 </head>
 <body>
@@ -14,9 +15,7 @@
 <h2>Test Webhook n8n (sans paiement)</h2>
 <p>Ce formulaire envoie directement vers ton Webhook n8n.</p>
 
-<form method="POST" action="https://altessa.app.n8n.cloud/webhook-test/voyance
-">
-
+<form method="POST" action="https://altessa.app.n8n.cloud/webhook-test/voyance">
     <label>Expert :</label>
     <input type="text" name="expert" value="Ariane">
 
