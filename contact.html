@@ -2,11 +2,9 @@
       action="https://altessa.app.n8n.cloud/webhook/voyance"
       method="POST">
 
-    <!-- Champs ajoutés pour le TEST -->
-    <input type="hidden" name="expert" id="form-expert"
-           value="Ariane"> <!-- écrasé via JS si expert choisi -->
-    <input type="hidden" name="type" id="form-type"
-           value="question"> <!-- écrasé via JS si type choisi -->
+    <!-- Champs ajoutés pour TEST + workflow n8n -->
+    <input type="hidden" name="expert" id="form-expert" value="Ariane">
+    <input type="hidden" name="type" id="form-type" value="question">
 
     <div class="form-row">
       <label>Nom complet*</label>
@@ -21,6 +19,11 @@
     <div class="form-row">
       <label>Date de naissance*</label>
       <input type="date" name="date_naissance" required />
+    </div>
+
+    <div class="form-row">
+      <label>Prénom de la 2e personne (optionnel)</label>
+      <input type="text" name="autre_personne" />
     </div>
 
     <div class="form-row">
