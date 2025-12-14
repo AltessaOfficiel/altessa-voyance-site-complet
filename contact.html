@@ -78,96 +78,65 @@
         </p>
       </div>
 
-      <!-- PANELS PAYPAL (un par type) -->
+      <!-- PANELS PAYPAL -->
       <div id="paypal-panels">
 
-        <!-- À la question -->
         <div class="mystic-paybox paypal-panel" data-type="question" style="display:none;">
           <h3>Paiement — À la question (8 €)</h3>
           <p>Une question précise, réponse directe et claire.</p>
           <div id="paypal-container-LGCWPQ9JHDT5U"></div>
-          <script>
-            paypal.HostedButtons({
-              hostedButtonId: "LGCWPQ9JHDT5U",
-            }).render("#paypal-container-LGCWPQ9JHDT5U");
-          </script>
+          <script> paypal.HostedButtons({ hostedButtonId: "LGCWPQ9JHDT5U" }).render("#paypal-container-LGCWPQ9JHDT5U"); </script>
         </div>
 
-        <!-- Sentimentale -->
         <div class="mystic-paybox paypal-panel" data-type="sentimentale" style="display:none;">
           <h3>Paiement — Voyance sentimentale (20 €)</h3>
           <p>Couple, amour, retrouvailles, liens présents et futurs.</p>
           <div id="paypal-container-H8LA54EZY2T46"></div>
-          <script>
-            paypal.HostedButtons({
-              hostedButtonId: "H8LA54EZY2T46",
-            }).render("#paypal-container-H8LA54EZY2T46");
-          </script>
+          <script> paypal.HostedButtons({ hostedButtonId: "H8LA54EZY2T46" }).render("#paypal-container-H8LA54EZY2T46"); </script>
         </div>
 
-        <!-- Professionnelle -->
         <div class="mystic-paybox paypal-panel" data-type="professionnelle" style="display:none;">
           <h3>Paiement — Voyance professionnelle (20 €)</h3>
           <p>Carrière, travail, changement pro, évolution.</p>
           <div id="paypal-container-A3DZS2TAYSGYS"></div>
-          <script>
-            paypal.HostedButtons({
-              hostedButtonId: "A3DZS2TAYSGYS",
-            }).render("#paypal-container-A3DZS2TAYSGYS");
-          </script>
+          <script> paypal.HostedButtons({ hostedButtonId: "A3DZS2TAYSGYS" }).render("#paypal-container-A3DZS2TAYSGYS"); </script>
         </div>
 
-        <!-- Financière -->
         <div class="mystic-paybox paypal-panel" data-type="financiere" style="display:none;">
           <h3>Paiement — Voyance financière (20 €)</h3>
           <p>Finances, achats importants, stabilité et sécurité.</p>
           <div id="paypal-container-AJDZ94JCHR8U8"></div>
-          <script>
-            paypal.HostedButtons({
-              hostedButtonId: "AJDZ94JCHR8U8",
-            }).render("#paypal-container-AJDZ94JCHR8U8");
-          </script>
+          <script> paypal.HostedButtons({ hostedButtonId: "AJDZ94JCHR8U8" }).render("#paypal-container-AJDZ94JCHR8U8"); </script>
         </div>
 
-        <!-- Générale (45 €)  👉 ID = GT986X6GT42PA -->
         <div class="mystic-paybox paypal-panel" data-type="generale" style="display:none;">
           <h3>Paiement — Voyance générale (45 €)</h3>
           <p>Bilan complet : sentimental, pro, finances et tendances à venir.</p>
           <div id="paypal-container-GT986X6GT42PA"></div>
-          <script>
-            paypal.HostedButtons({
-              hostedButtonId: "GT986X6GT42PA",
-            }).render("#paypal-container-GT986X6GT42PA");
-          </script>
+          <script> paypal.HostedButtons({ hostedButtonId: "GT986X6GT42PA" }).render("#paypal-container-GT986X6GT42PA"); </script>
         </div>
 
-        <!-- Soin énergétique (50 €) 👉 ID = AY42SMUCPK3YU -->
         <div class="mystic-paybox paypal-panel" data-type="soin" style="display:none;">
           <h3>Paiement — Soin énergétique (50 €)</h3>
           <p>Nettoyage énergétique, apaisement, réalignement intérieur.</p>
           <div id="paypal-container-AY42SMUCPK3YU"></div>
-          <script>
-            paypal.HostedButtons({
-              hostedButtonId: "AY42SMUCPK3YU",
-            }).render("#paypal-container-AY42SMUCPK3YU");
-          </script>
+          <script> paypal.HostedButtons({ hostedButtonId: "AY42SMUCPK3YU" }).render("#paypal-container-AY42SMUCPK3YU"); </script>
         </div>
 
       </div>
 
       <hr style="margin:40px 0; opacity:0.15;">
 
-      <!-- ÉTAPE 2 : FORMULAIRE QUESTION (FORMSPREE) -->
+      <!-- ÉTAPE 2 : FORMULAIRE QUESTION -->
       <h2 class="section-title">2. Posez votre question</h2>
 
       <form class="contact-form" id="voyance-form"
       action="https://altessa.app.n8n.cloud/webhook/voyance"
       method="POST">
 
-
-        <!-- Ces champs sont remplis automatiquement en JS -->
         <input type="hidden" name="expert" id="form-expert">
         <input type="hidden" name="type" id="form-type">
+        <input type="hidden" name="test" id="test-flag">
 
         <div class="form-row">
           <label>Nom complet*</label>
@@ -213,26 +182,31 @@
   Altessa Voyance © — Service réservé aux personnes majeures.
 </footer>
 
-<!-- LOGIQUE JS : remplissage + verrouillage -->
+<!-- LOGIQUE JS - MODE TEST + VERROUILLAGE -->
 <script>
 (function () {
   const params = new URLSearchParams(window.location.search);
-  const paid  = params.get("paid") === "1";
+  const paid = params.get("paid") === "1";
+  
+  /* MODE TEST */
+  const testMode = params.get("test") === "1";
+  if (testMode) console.warn("⚠️ MODE TEST ACTIVÉ (paiement ignoré)");
+  document.getElementById("test-flag").value = testMode ? "1" : "0";
 
-  // --------- Expert (URL ou localStorage) ----------
-  const expertFromUrl  = params.get("expert");
-  const expertStored   = localStorage.getItem("altessaExpert");
-  const expertName     = expertFromUrl || expertStored || "Votre expert Altessa";
+  /* EXPERT */
+  const expertFromUrl = params.get("expert");
+  const expertStored = localStorage.getItem("altessaExpert");
+  const expertName = expertFromUrl || expertStored || "Votre expert Altessa";
 
   document.getElementById("expert-display").value = expertName;
-  document.getElementById("form-expert").value    = expertName;
+  document.getElementById("form-expert").value = expertName;
   localStorage.setItem("altessaExpert", expertName);
 
-  // --------- Type de consultation + PayPal ----------
-  const typeSelect      = document.getElementById("consultation-type");
+  /* TYPE + PAYPAL */
+  const typeSelect = document.getElementById("consultation-type");
   const hiddenTypeInput = document.getElementById("form-type");
   const sentimentalBloc = document.querySelector(".sentimental-only");
-  const paypalPanels    = document.querySelectorAll(".paypal-panel");
+  const paypalPanels = document.querySelectorAll(".paypal-panel");
 
   const storedType = localStorage.getItem("altessaType");
   if (!typeSelect.value && storedType && typeSelect.querySelector(`option[value="${storedType}"]`)) {
@@ -254,42 +228,44 @@
   typeSelect.addEventListener("change", updateType);
   updateType();
 
-  // --------- Verrouillage du formulaire tant que non payé ----------
+  /* FORMULAIRE */
   const questionForm = document.getElementById("voyance-form");
-  const formFields   = questionForm.querySelectorAll("input, textarea, select, button");
-  const submitBtn    = document.getElementById("submit-btn");
+  const formFields = questionForm.querySelectorAll("input, textarea, select, button");
+  const submitBtn = document.getElementById("submit-btn");
 
   function setFormEnabled(enabled) {
     formFields.forEach(el => {
-      if (el.type === "hidden") return; // hidden toujours actifs
+      if (el.type === "hidden") return;
       el.disabled = !enabled;
     });
     submitBtn.style.opacity = enabled ? "1" : "0.4";
   }
 
-  if (!paid) {
+  /* VERROUILLAGE (désactivé si mode test) */
+  if (!paid && !testMode) {
     setFormEnabled(false);
 
     const info = document.createElement("p");
     info.className = "form-note";
     info.style.marginTop = "16px";
-    info.textContent = "⚠️ Vous devez d’abord régler votre consultation (étape 1). "
-      + "Après le paiement, vous serez redirigé vers une page de confirmation "
-      + "qui vous permettra de revenir ici et d’envoyer votre question.";
+    info.textContent =
+      "⚠️ Vous devez d’abord régler votre consultation (étape 1). " +
+      "Après le paiement, vous serez redirigé sur une page de confirmation " +
+      "qui vous permettra de revenir ici et d’envoyer votre question.";
     questionForm.parentNode.insertBefore(info, questionForm);
   } else {
     setFormEnabled(true);
   }
 
-  // Sécurité supplémentaire côté navigateur
   questionForm.addEventListener("submit", function (e) {
-    if (!paid) {
+    if (!paid && !testMode) {
       e.preventDefault();
       alert("Vous devez payer votre consultation avant d'envoyer votre question.");
     }
   });
 })();
 </script>
+
 <script>
 document.getElementById("voyance-form").addEventListener("submit", function() {
     setTimeout(() => {
@@ -300,4 +276,5 @@ document.getElementById("voyance-form").addEventListener("submit", function() {
 
 </body>
 </html>
+
 
