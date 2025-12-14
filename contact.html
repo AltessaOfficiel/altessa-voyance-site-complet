@@ -1,40 +1,283 @@
-<form class="contact-form" id="voyance-form"
-      action="https://altessa.app.n8n.cloud/webhook/voyance"
-      method="POST">
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Altessa Voyance — Poser votre question</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css" />
 
-    <!-- Champs ajoutés pour TEST + workflow n8n -->
-    <input type="hidden" name="expert" id="form-expert" value="Ariane">
-    <input type="hidden" name="type" id="form-type" value="question">
+  <!-- PAYPAL SDK -->
+  <script 
+    src="https://www.paypal.com/sdk/js?client-id=BAA3LPdWYhDwfbYcXsmBhfCHXhRtcth_XEFw9tpnDSr42xeS7cdHDPl4kkudskfXSomt0uyjCfsdvzBBz8&components=hosted-buttons&disable-funding=venmo&currency=EUR">
+  </script>
+</head>
 
-    <div class="form-row">
-      <label>Nom complet*</label>
-      <input type="text" name="nom" required />
+<body class="page-contact">
+
+<!-- HEADER -->
+<header class="header">
+  <div class="logo">
+    <img src="assets/img/logo-altessa.png" alt="Logo Altessa">
+    <div class="logo-text">
+      <span class="logo-main">Altessa</span>
+      <span class="logo-sub">Voyance</span>
     </div>
+  </div>
 
-    <div class="form-row">
-      <label>Adresse e-mail*</label>
-      <input type="email" name="email" required />
+  <nav class="nav">
+    <a href="index.html">Accueil</a>
+    <a href="experts.html">Experts</a>
+    <a href="tarifs.html">Tarifs</a>
+    <a href="contact.html" class="btn-nav active">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero hero-inner">
+    <h1 class="hero-title hero-title-small">Poser votre question</h1>
+    <p class="hero-text hero-text-centered">
+      <strong>Étape 1 :</strong> Choisissez votre consultation et réglez en toute sécurité.<br>
+      <strong>Étape 2 :</strong> Remplissez le formulaire pour transmettre votre question à l’expert choisi.<br>
+      <strong>Réponse envoyée par e-mail entre 15 et 45 minutes.</strong>
+    </p>
+  </section>
+
+  <section class="section">
+    <div class="form-section">
+
+      <!-- ÉTAPE 1 : EXPERT + TYPE + PAYPAL -->
+      <h2 class="section-title">1. Choisissez votre consultation</h2>
+
+      <div class="question-form">
+        <div class="form-row">
+          <label>Expert sélectionné</label>
+          <input type="text" id="expert-display" readonly />
+        </div>
+
+        <div class="form-row">
+          <label>Type de consultation*</label>
+          <select id="consultation-type" required>
+            <option value="">Choisissez…</option>
+            <option value="question">À la question — 8€</option>
+            <option value="sentimentale">Voyance sentimentale — 20€</option>
+            <option value="professionnelle">Voyance professionnelle — 20€</option>
+            <option value="financiere">Voyance financière — 20€</option>
+            <option value="generale">Voyance générale — 45€</option>
+            <option value="soin">Soin énergétique — 50€</option>
+          </select>
+        </div>
+
+        <p class="form-note">
+          Après avoir choisi votre consultation, cliquez sur le bouton PayPal ci-dessous pour régler.
+          Une fois le paiement effectué, vous serez redirigé sur une page de confirmation,
+          puis vous pourrez revenir ici et passer à l’étape 2.
+        </p>
+      </div>
+
+      <!-- PAYPAL PANELS -->
+      <div id="paypal-panels">
+
+        <div class="mystic-paybox paypal-panel" data-type="question" style="display:none;">
+          <h3>Paiement — À la question (8 €)</h3>
+          <p>Une question précise, réponse directe et claire.</p>
+          <div id="paypal-container-LGCWPQ9JHDT5U"></div>
+          <script> paypal.HostedButtons({ hostedButtonId: "LGCWPQ9JHDT5U" }).render("#paypal-container-LGCWPQ9JHDT5U"); </script>
+        </div>
+
+        <div class="mystic-paybox paypal-panel" data-type="sentimentale" style="display:none;">
+          <h3>Paiement — Voyance sentimentale (20 €)</h3>
+          <p>Couple, amour, retrouvailles, liens présents et futurs.</p>
+          <div id="paypal-container-H8LA54EZY2T46"></div>
+          <script> paypal.HostedButtons({ hostedButtonId: "H8LA54EZY2T46" }).render("#paypal-container-H8LA54EZY2T46"); </script>
+        </div>
+
+        <div class="mystic-paybox paypal-panel" data-type="professionnelle" style="display:none;">
+          <h3>Paiement — Voyance professionnelle (20 €)</h3>
+          <p>Carrière, travail, reconversion, évolution.</p>
+          <div id="paypal-container-A3DZS2TAYSGYS"></div>
+          <script> paypal.HostedButtons({ hostedButtonId: "A3DZS2TAYSGYS" }).render("#paypal-container-A3DZS2TAYSGYS"); </script>
+        </div>
+
+        <div class="mystic-paybox paypal-panel" data-type="financiere" style="display:none;">
+          <h3>Paiement — Voyance financière (20 €)</h3>
+          <p>Finances, stabilité, achats importants, sécurité.</p>
+          <div id="paypal-container-AJDZ94JCHR8U8"></div>
+          <script> paypal.HostedButtons({ hostedButtonId: "AJDZ94JCHR8U8" }).render("#paypal-container-AJDZ94JCHR8U8"); </script>
+        </div>
+
+        <div class="mystic-paybox paypal-panel" data-type="generale" style="display:none;">
+          <h3>Paiement — Voyance générale (45 €)</h3>
+          <p>Bilan complet : sentimental, pro, finances et tendances à venir.</p>
+          <div id="paypal-container-GT986X6GT42PA"></div>
+          <script> paypal.HostedButtons({ hostedButtonId: "GT986X6GT42PA" }).render("#paypal-container-GT986X6GT42PA"); </script>
+        </div>
+
+        <div class="mystic-paybox paypal-panel" data-type="soin" style="display:none;">
+          <h3>Paiement — Soin énergétique (50 €)</h3>
+          <p>Nettoyage énergétique, apaisement, réalignement intérieur.</p>
+          <div id="paypal-container-AY42SMUCPK3YU"></div>
+          <script> paypal.HostedButtons({ hostedButtonId: "AY42SMUCPK3YU" }).render("#paypal-container-AY42SMUCPK3YU"); </script>
+        </div>
+
+      </div>
+
+      <hr style="margin:40px 0; opacity:0.15;">
+
+      <!-- FORMULAIRE -->
+      <h2 class="section-title">2. Posez votre question</h2>
+
+      <form class="contact-form" id="voyance-form"
+            action="https://altessa.app.n8n.cloud/webhook/voyance"
+            method="POST">
+
+        <input type="hidden" name="expert" id="form-expert">
+        <input type="hidden" name="type" id="form-type">
+
+        <div class="form-row">
+          <label>Nom complet*</label>
+          <input type="text" name="nom" required />
+        </div>
+
+        <div class="form-row">
+          <label>Adresse e-mail*</label>
+          <input type="email" name="email" required />
+        </div>
+
+        <div class="form-row">
+          <label>Date de naissance*</label>
+          <input type="date" name="date_naissance" required />
+        </div>
+
+        <div class="form-row sentimental-only" style="display:none;">
+          <label>Prénom de la 2e personne (optionnel)</label>
+          <input type="text" name="autre_personne">
+        </div>
+
+        <div class="form-row">
+          <label>Votre question / situation*</label>
+          <textarea name="message" rows="6" required></textarea>
+        </div>
+
+        <p class="form-note">
+          *Toutes les informations restent strictement confidentielles.<br>
+          Les consultations ne remplacent pas un suivi médical, psychologique, juridique ou financier.
+        </p>
+
+        <button type="submit" class="btn-primary btn-full" id="submit-btn">
+          Envoyer ma question
+        </button>
+      </form>
+
     </div>
+  </section>
 
-    <div class="form-row">
-      <label>Date de naissance*</label>
-      <input type="date" name="date_naissance" required />
-    </div>
+</main>
 
-    <div class="form-row">
-      <label>Prénom de la 2e personne (optionnel)</label>
-      <input type="text" name="autre_personne" />
-    </div>
-
-    <div class="form-row">
-      <label>Votre question / situation*</label>
-      <textarea name="message" rows="6" required></textarea>
-    </div>
-
-    <button type="submit" class="btn-primary btn-full" id="submit-btn">
-      Envoyer ma question
-    </button>
-</form>
+<footer class="footer">
+  Altessa Voyance © — Service réservé aux personnes majeures.
+</footer>
 
 
+<!-- LOGIQUE JS (corrigée & mode TEST intégré) -->
+<script>
+(function () {
 
+  const params = new URLSearchParams(window.location.search);
+  const paid  = params.get("paid") === "1";
+  const testMode = params.get("test") === "1";
+
+  // EXPERT (URL ou localStorage)
+  const expertFromUrl  = params.get("expert");
+  const expertStored   = localStorage.getItem("altessaExpert");
+  const expertName     = expertFromUrl || expertStored || "Votre expert Altessa";
+
+  document.getElementById("expert-display").value = expertName;
+  document.getElementById("form-expert").value    = expertName;
+  localStorage.setItem("altessaExpert", expertName);
+
+  // TYPE DE CONSULTATION
+  const typeSelect      = document.getElementById("consultation-type");
+  const hiddenTypeInput = document.getElementById("form-type");
+  const sentimentalBloc = document.querySelector(".sentimental-only");
+  const paypalPanels    = document.querySelectorAll(".paypal-panel");
+
+  const storedType = localStorage.getItem("altessaType");
+
+  if (!typeSelect.value && storedType && typeSelect.querySelector(`option[value="${storedType}"]`)) {
+    typeSelect.value = storedType;
+  }
+
+  function updateType() {
+    const val = typeSelect.value;
+    hiddenTypeInput.value = val;
+    localStorage.setItem("altessaType", val);
+
+    paypalPanels.forEach(panel => {
+      panel.style.display = (panel.dataset.type === val) ? "block" : "none";
+    });
+
+    sentimentalBloc.style.display = (val === "sentimentale") ? "block" : "none";
+  }
+
+  typeSelect.addEventListener("change", updateType);
+  updateType();
+
+
+  // ——————————————————————————————
+  // 🔥 MODE TEST (débloque le formulaire sans payer)
+  // ——————————————————————————————
+  const questionForm = document.getElementById("voyance-form");
+  const formFields   = questionForm.querySelectorAll("input, textarea, select, button");
+  const submitBtn    = document.getElementById("submit-btn");
+
+  function setFormEnabled(enabled) {
+    formFields.forEach(el => {
+      if (el.type === "hidden") return;
+      el.disabled = !enabled;
+    });
+    submitBtn.style.opacity = enabled ? "1" : "0.4";
+  }
+
+  if (testMode) {
+    setFormEnabled(true);
+  }
+  else if (!paid) {
+    setFormEnabled(false);
+
+    const info = document.createElement("p");
+    info.className = "form-note";
+    info.style.marginTop = "16px";
+    info.textContent = "⚠️ Vous devez d’abord régler votre consultation (étape 1). "
+      + "Après le paiement, vous serez redirigé vers une page de confirmation "
+      + "qui vous permettra de revenir ici et d’envoyer votre question.";
+    questionForm.parentNode.insertBefore(info, questionForm);
+  }
+  else {
+    setFormEnabled(true);
+  }
+
+  // Sécurité supplémentaire
+  questionForm.addEventListener("submit", function (e) {
+    if (!testMode && !paid) {
+      e.preventDefault();
+      alert("Vous devez payer votre consultation avant d'envoyer votre question.");
+    }
+  });
+
+})();
+</script>
+
+<!-- REDIRECTION APRÈS ENVOI -->
+<script>
+document.getElementById("voyance-form").addEventListener("submit", function() {
+    setTimeout(() => {
+        window.location.href = "https://altessavoyance.com/merci.html";
+    }, 1500);
+});
+</script>
+
+</body>
+</html>
