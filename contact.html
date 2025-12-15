@@ -52,6 +52,7 @@
       <h2 class="section-title">1. Choisissez votre consultation</h2>
 
       <div class="question-form">
+
         <div class="form-row">
           <label>Expert sélectionné</label>
           <input type="text" id="expert-display" readonly />
@@ -75,11 +76,13 @@
           Une fois le paiement effectué, vous serez redirigé sur une page de confirmation,
           puis vous pourrez revenir ici et passer à l’étape 2.
         </p>
+
       </div>
 
       <!-- PAYPAL PANELS -->
       <div id="paypal-panels">
 
+        <!-- QUESTION -->
         <div class="mystic-paybox paypal-panel" data-type="question" style="display:none;">
           <h3>Paiement — À la question (8 €)</h3>
           <p>Une question précise, réponse directe et claire.</p>
@@ -87,6 +90,7 @@
           <script> paypal.HostedButtons({ hostedButtonId: "LGCWPQ9JHDT5U" }).render("#paypal-container-LGCWPQ9JHDT5U"); </script>
         </div>
 
+        <!-- SENTIMENTALE -->
         <div class="mystic-paybox paypal-panel" data-type="sentimentale" style="display:none;">
           <h3>Paiement — Voyance sentimentale (20 €)</h3>
           <p>Couple, amour, retrouvailles, liens présents et futurs.</p>
@@ -94,6 +98,7 @@
           <script> paypal.HostedButtons({ hostedButtonId: "H8LA54EZY2T46" }).render("#paypal-container-H8LA54EZY2T46"); </script>
         </div>
 
+        <!-- PROFESSIONNELLE -->
         <div class="mystic-paybox paypal-panel" data-type="professionnelle" style="display:none;">
           <h3>Paiement — Voyance professionnelle (20 €)</h3>
           <p>Carrière, travail, reconversion, évolution.</p>
@@ -101,6 +106,7 @@
           <script> paypal.HostedButtons({ hostedButtonId: "A3DZS2TAYSGYS" }).render("#paypal-container-A3DZS2TAYSGYS"); </script>
         </div>
 
+        <!-- FINANCIÈRE -->
         <div class="mystic-paybox paypal-panel" data-type="financiere" style="display:none;">
           <h3>Paiement — Voyance financière (20 €)</h3>
           <p>Finances, stabilité, achats importants, sécurité.</p>
@@ -108,6 +114,7 @@
           <script> paypal.HostedButtons({ hostedButtonId: "AJDZ94JCHR8U8" }).render("#paypal-container-AJDZ94JCHR8U8"); </script>
         </div>
 
+        <!-- GENERALE -->
         <div class="mystic-paybox paypal-panel" data-type="generale" style="display:none;">
           <h3>Paiement — Voyance générale (45 €)</h3>
           <p>Bilan complet : sentimental, pro, finances et tendances à venir.</p>
@@ -115,6 +122,7 @@
           <script> paypal.HostedButtons({ hostedButtonId: "GT986X6GT42PA" }).render("#paypal-container-GT986X6GT42PA"); </script>
         </div>
 
+        <!-- SOIN -->
         <div class="mystic-paybox paypal-panel" data-type="soin" style="display:none;">
           <h3>Paiement — Soin énergétique (50 €)</h3>
           <p>Nettoyage énergétique, apaisement, réalignement intérieur.</p>
@@ -135,6 +143,9 @@
 
         <input type="hidden" name="expert" id="form-expert">
         <input type="hidden" name="type" id="form-type">
+
+        <!-- AJOUT ALTESSA : OFFRE -->
+        <input type="hidden" name="offre" id="form-offre">
 
         <div class="form-row">
           <label>Nom complet*</label>
@@ -181,7 +192,7 @@
 </footer>
 
 
-<!-- LOGIQUE JS (corrigée & mode TEST intégré) -->
+<!-- LOGIQUE JS + OFFRE INTÉGRÉE -->
 <script>
 (function () {
 
@@ -201,6 +212,7 @@
   // TYPE DE CONSULTATION
   const typeSelect      = document.getElementById("consultation-type");
   const hiddenTypeInput = document.getElementById("form-type");
+  const hiddenOfferInput = document.getElementById("form-offre"); // AJOUT ALTESSA
   const sentimentalBloc = document.querySelector(".sentimental-only");
   const paypalPanels    = document.querySelectorAll(".paypal-panel");
 
@@ -208,6 +220,18 @@
 
   if (!typeSelect.value && storedType && typeSelect.querySelector(`option[value="${storedType}"]`)) {
     typeSelect.value = storedType;
+  }
+
+  function updateOffer() {
+    const map = {
+      "question": 8,
+      "sentimentale": 20,
+      "professionnelle": 20,
+      "financiere": 20,
+      "generale": 45,
+      "soin": 45
+    };
+    hiddenOfferInput.value = map[typeSelect.value] || "";
   }
 
   function updateType() {
@@ -220,15 +244,14 @@
     });
 
     sentimentalBloc.style.display = (val === "sentimentale") ? "block" : "none";
+
+    updateOffer(); // AJOUT ALTESSA
   }
 
   typeSelect.addEventListener("change", updateType);
   updateType();
 
-
-  // ——————————————————————————————
-  // 🔥 MODE TEST (débloque le formulaire sans payer)
-  // ——————————————————————————————
+  // MODE TEST OU NON PAYÉ
   const questionForm = document.getElementById("voyance-form");
   const formFields   = questionForm.querySelectorAll("input, textarea, select, button");
   const submitBtn    = document.getElementById("submit-btn");
@@ -259,7 +282,6 @@
     setFormEnabled(true);
   }
 
-  // Sécurité supplémentaire
   questionForm.addEventListener("submit", function (e) {
     if (!testMode && !paid) {
       e.preventDefault();
@@ -281,3 +303,4 @@ document.getElementById("voyance-form").addEventListener("submit", function() {
 
 </body>
 </html>
+
