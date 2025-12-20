@@ -808,3 +808,61 @@ a {
     0 0 55px rgba(248,224,160,0.35);
   transform: translateY(-3px);
 }
+/* ===== ALTESSA PREMIUM SECTIONS ===== */
+
+.altessa-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  margin: 80px 0;
+}
+
+.altessa-block.reverse {
+  direction: rtl;
+}
+
+.altessa-block.reverse > * {
+  direction: ltr;
+}
+
+.altessa-text {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #eaeaea;
+}
+
+.altessa-title-box {
+  display: inline-block;
+  padding: 12px 26px;
+  border: 1px solid rgba(212,175,55,0.6);
+  margin-bottom: 25px;
+}
+
+.altessa-title-box h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #d4af37;
+  letter-spacing: 1px;
+}
+
+.altessa-text p {
+  margin-bottom: 18px;
+}
+
+.altessa-image img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 0 40px rgba(212,175,55,0.15);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .altessa-block {
+    grid-template-columns: 1fr;
+  }
+  .altessa-block.reverse {
+    direction: ltr;
+  }
+}
