@@ -137,5 +137,20 @@
   <a href="politique-cookies.html">Cookies</a>
   <a href="contact.html">Contact</a>
 </div>
+  <div id="cookie-banner" style="position:fixed;bottom:0;left:0;width:100%;background:#111;color:white;padding:15px;text-align:center;z-index:9999;">
+  Ce site utilise des cookies pour améliorer votre expérience.
+  <button onclick="acceptCookies()" style="margin-left:10px;">Accepter</button>
+  <a href="politique-cookies.html" style="color:#fff;margin-left:10px;">En savoir plus</a>
+</div>
+
+<script>
+function acceptCookies(){
+  localStorage.setItem("cookiesAccepted","true");
+  document.getElementById("cookie-banner").style.display="none";
+}
+if(localStorage.getItem("cookiesAccepted")){
+  document.getElementById("cookie-banner").style.display="none";
+}
+</script>  
 </body>
 </html>
