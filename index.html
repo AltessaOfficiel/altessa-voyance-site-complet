@@ -13,6 +13,16 @@
 
   <!-- Multilingue -->
   <script src="assets/js/lang.js" defer></script>
+
+  <!-- Styles de sécurité (n'écrase pas ton thème, évite les soucis d’affichage images) -->
+  <style>
+    /* Assure que les images s'affichent proprement même si un style manque */
+    .altessa-image img { width: 100%; height: auto; display: block; border-radius: 18px; }
+    /* Mode "image only" : on supprime le doublon en masquant le texte des sections */
+    .image-only .altessa-text { display: none !important; }
+    .image-only { display: flex; justify-content: center; }
+    .image-only .altessa-image { width: 100%; max-width: 1200px; }
+  </style>
 </head>
 
 <body>
@@ -67,118 +77,50 @@
 
   </section>
 
+  <!-- SECTION 1 : IMAGE ONLY -->
   <section class="section">
-    <div class="altessa-block">
-
-      <div class="altessa-text">
-        <div class="altessa-title-box">
-          <h2>Une voyance moderne, sincère et humaine</h2>
-        </div>
-
-        <p>
-          Altessa Voyance est née d’une volonté claire :
-          proposer une guidance sérieuse, respectueuse et profonde,
-          loin des discours anxiogènes et des promesses irréalistes.
-        </p>
-
-        <p>
-          Ici, chaque réponse est pensée comme un éclairage,
-          une lecture nuancée et responsable,
-          pour t’aider à avancer avec plus de clarté et de discernement.
-        </p>
-      </div>
-
+    <div class="altessa-block image-only">
+      <div class="altessa-text"></div>
       <div class="altessa-image">
-        <img src="assets/img/presentation/voyance-moderne.jpg" alt="Une voyance moderne, sincère et humaine">
+        <img src="assets/img/presentation/voyance-moderne.jpg" alt="Voyance moderne Altessa">
       </div>
-
     </div>
   </section>
 
+  <!-- SECTION 2 : IMAGE ONLY -->
   <section class="section">
-    <div class="altessa-block reverse">
-
-      <div class="altessa-text">
-        <div class="altessa-title-box">
-          <h2>Des experts aux sensibilités uniques</h2>
-        </div>
-
-        <p>
-          Tarot, astrologie, médiumnité, intuition ou numérologie :
-          chaque expert Altessa possède sa propre énergie,
-          son langage, sa manière d’interpréter.
-        </p>
-
-        <p>
-          Tu choisis celui ou celle qui résonne avec toi,
-          selon ton besoin, ton ressenti,
-          et la nature de ta question.
-        </p>
-      </div>
-
+    <div class="altessa-block reverse image-only">
+      <div class="altessa-text"></div>
       <div class="altessa-image">
-        <img src="assets/img/presentation/experts-sensibilites.jpg" alt="Des experts aux sensibilités uniques">
+        <img src="assets/img/presentation/experts-sensibilites.jpg" alt="Experts aux sensibilités uniques Altessa">
       </div>
-
     </div>
   </section>
 
+  <!-- SECTION 3 : IMAGE ONLY -->
   <section class="section">
-    <div class="altessa-block">
-
-      <div class="altessa-text">
-        <div class="altessa-title-box">
-          <h2>Une expérience fluide et confidentielle</h2>
-        </div>
-
-        <p>
-          Tu poses ta question en toute discrétion.
-          L’expert te répond avec bienveillance,
-          précision et respect de ton libre arbitre.
-        </p>
-
-        <p>
-          Aucune fatalité.
-          Aucun jugement.
-          Seulement des tendances, des éclairages
-          et des conseils concrets pour avancer.
-        </p>
-      </div>
-
+    <div class="altessa-block image-only">
+      <div class="altessa-text"></div>
       <div class="altessa-image">
-        <img src="assets/img/presentation/experience-confidentielle.jpg" alt="Une expérience fluide et confidentielle">
+        <img src="assets/img/presentation/experience-confidentielle.jpg" alt="Expérience fluide et confidentielle Altessa">
       </div>
-
     </div>
   </section>
 
+  <!-- SECTION 4 : IMAGE ONLY + CTA CGV (sans doublon) -->
   <section class="section">
-    <div class="altessa-block reverse">
-
-      <div class="altessa-text">
-        <div class="altessa-title-box">
-          <h2>Transparence & cadre de confiance</h2>
-        </div>
-
-        <p>
-          Nos consultations sont une guidance intuitive à visée spirituelle et divertissante.
-          Elles ne remplacent pas un avis médical, juridique ou financier.
-        </p>
-
-        <p>
-          Pour garantir une relation claire et sereine, consulte nos
-          <a href="cgv.html">Conditions Générales de Vente</a>.
-        </p>
-
-        <a href="cgv.html" class="btn-primary" style="margin-top:10px; display:inline-block;">
-          Lire les CGV
-        </a>
-      </div>
-
+    <div class="altessa-block reverse image-only">
+      <div class="altessa-text"></div>
       <div class="altessa-image">
-        <img src="assets/img/presentation/transparence-cgv.jpg" alt="Transparence et CGV Altessa">
+        <img src="assets/img/presentation/transparence-cgv.jpg" alt="Transparence et cadre de confiance Altessa">
       </div>
+    </div>
 
+    <!-- CTA simple sous l’image pour garder l’accès aux CGV -->
+    <div style="text-align:center; margin-top: 14px;">
+      <a href="cgv.html" class="btn-primary" style="display:inline-block;">
+        Lire les CGV
+      </a>
     </div>
   </section>
 
