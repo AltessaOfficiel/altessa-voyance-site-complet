@@ -8,27 +8,15 @@
   <!-- Police -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Styles (chemin selon ton repo: Actifs/CSS) -->
-  <link rel="stylesheet" href="Actifs/CSS/styles.css">
+  <!-- ✅ Chemins CORRECTS (ceux qui marchent sur ton site) -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="assets/js/lang.js" defer></script>
 
-  <!-- Multilingue (mets le bon chemin si ton JS est ailleurs) -->
-  <script src="Actifs/JS/lang.js" defer></script>
-
+  <!-- Petites sécurités d’affichage des images (sans casser ton thème) -->
   <style>
-    .altessa-image img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 18px;
-    }
-    .image-only {
-      display: flex;
-      justify-content: center;
-    }
-    .image-only .altessa-image {
-      width: 100%;
-      max-width: 1200px;
-    }
+    .altessa-image img { width: 100%; height: auto; display: block; border-radius: 18px; }
+    .image-only { display: flex; justify-content: center; }
+    .image-only .altessa-image { width: 100%; max-width: 1200px; }
   </style>
 </head>
 
@@ -37,7 +25,7 @@
 <!-- HEADER -->
 <header class="header">
   <div class="logo">
-    <img src="Actifs/IMG/logo-altessa.png" alt="Logo Altessa">
+    <img src="assets/img/logo-altessa.png" alt="Logo Altessa">
     <div class="logo-text">
       <span class="logo-main" data-i18n="brand_name">Altessa</span>
       <span class="logo-sub" data-i18n="brand_sub">Voyance</span>
@@ -46,16 +34,19 @@
 
   <nav class="nav">
     <a href="index.html" class="active" data-i18n="nav_home">Accueil</a>
-    <a href="experts.html" data-i18n="nav_experts">Experts</a>
+
+    <!-- ✅ Libellé conseillé : "Voyance écrite" (au lieu de "Experts") -->
+    <a href="experts.html" data-i18n="nav_experts">Voyance écrite</a>
+
     <a href="tarifs.html" data-i18n="nav_tarifs">Tarifs</a>
 
-    <!-- RDV Téléphone -->
+    <!-- ✅ RDV Téléphone visible partout -->
     <a href="rdv-telephone.html" class="btn-nav" data-i18n="nav_rdv">RDV Téléphone</a>
 
-    <!-- Contact -->
-    <a href="contact.html" data-i18n="nav_contact">Contact</a>
+    <!-- ✅ Support au lieu de Contact (si tu veux différencier) -->
+    <a href="contact.html" data-i18n="nav_contact">Support</a>
 
-    <select id="lang-switcher">
+    <select id="lang-switcher" aria-label="Langue">
       <option value="fr">🇫🇷 FR</option>
       <option value="en">🇬🇧 EN</option>
       <option value="es">🇪🇸 ES</option>
@@ -71,7 +62,7 @@
   <section class="hero">
     <div class="lotus-wrapper">
       <div class="lotus-trail"></div>
-      <img src="Actifs/IMG/logo-altessa.png" class="hero-lotus" alt="Lotus Altessa">
+      <img src="assets/img/logo-altessa.png" class="hero-lotus" alt="Lotus Altessa">
     </div>
 
     <h1 class="hero-title">Altessa</h1>
@@ -82,16 +73,21 @@
       Recevez des réponses claires, précises et personnalisées.
     </p>
 
-    <a href="experts.html" class="btn-primary hero-btn">
-      Choisissez votre expert
-    </a>
+    <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+      <a href="experts.html" class="btn-primary hero-btn">
+        Choisir un expert (écrit)
+      </a>
+      <a href="rdv-telephone.html" class="btn-primary hero-btn" style="opacity:.95;">
+        RDV Téléphone
+      </a>
+    </div>
   </section>
 
   <!-- IMAGE 1 -->
   <section class="section">
     <div class="altessa-block image-only">
       <div class="altessa-image">
-        <img src="Actifs/IMG/Présentation/voyance-moderne.jpg" alt="Voyance moderne Altessa">
+        <img src="assets/img/presentation/voyance-moderne.jpg" alt="Voyance moderne Altessa">
       </div>
     </div>
   </section>
@@ -100,7 +96,7 @@
   <section class="section">
     <div class="altessa-block reverse image-only">
       <div class="altessa-image">
-        <img src="Actifs/IMG/Présentation/experts-sensibilites.jpg" alt="Experts aux sensibilités uniques Altessa">
+        <img src="assets/img/presentation/experts-sensibilites.jpg" alt="Experts aux sensibilités uniques Altessa">
       </div>
     </div>
   </section>
@@ -109,18 +105,18 @@
   <section class="section">
     <div class="altessa-block image-only">
       <div class="altessa-image">
-        <img src="Actifs/IMG/Présentation/experience-confidentielle.jpg" alt="Expérience fluide et confidentielle Altessa">
+        <img src="assets/img/presentation/experience-confidentielle.jpg" alt="Expérience fluide et confidentielle Altessa">
       </div>
     </div>
   </section>
 
-  <!-- IMAGE 4 + CTA CGV -->
+  <!-- IMAGE 4 -->
   <section class="section">
     <div class="altessa-block reverse image-only">
       <div class="altessa-image">
-        <!-- ✅ ton fichier a DOUBLE extension .png.png -->
-        <img src="Actifs/IMG/Présentation/voyance-premium-confidentielle-altessa.png.png"
-             alt="Voyance premium confidentielle Altessa">
+        <!-- ✅ ATTENTION : pas d'espaces / accents dans le nom de fichier -->
+        <img src="assets/img/presentation/voyance-premium-confidentielle-altessa.png"
+             alt="Voyance premium et confidentialité Altessa">
       </div>
     </div>
 
@@ -142,7 +138,7 @@
       <a href="mentions-legales.html">Mentions légales</a>
       <a href="politique-confidentialite.html">Confidentialité</a>
       <a href="politique-cookies.html">Cookies</a>
-      <a href="contact.html">Contact</a>
+      <a href="contact.html">Support</a>
     </div>
   </div>
 </footer>
@@ -150,7 +146,7 @@
 <!-- COOKIE BANNER -->
 <div id="cookie-banner" style="position:fixed;bottom:0;left:0;width:100%;background:#111;color:white;padding:15px;text-align:center;z-index:9999;">
   Ce site utilise des cookies pour améliorer votre expérience.
-  <button onclick="acceptCookies()" style="margin-left:10px;">Accepter</button>
+  <button type="button" onclick="acceptCookies()" style="margin-left:10px;">Accepter</button>
   <a href="politique-cookies.html" style="color:#fff;margin-left:10px;">En savoir plus</a>
 </div>
 
@@ -158,12 +154,14 @@
   function acceptCookies(){
     localStorage.setItem("cookiesAccepted","true");
     const banner = document.getElementById("cookie-banner");
-    if (banner) banner.style.display = "none";
+    if (banner) banner.style.display="none";
   }
-  if (localStorage.getItem("cookiesAccepted")){
-    const banner = document.getElementById("cookie-banner");
-    if (banner) banner.style.display = "none";
-  }
+  (function(){
+    if(localStorage.getItem("cookiesAccepted")){
+      const banner = document.getElementById("cookie-banner");
+      if (banner) banner.style.display="none";
+    }
+  })();
 </script>
 
 </body>
