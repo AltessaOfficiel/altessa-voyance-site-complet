@@ -2,14 +2,36 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Réserver mon créneau — Altessa Voyance</title>
+  <title>Altessa Voyance — Confirmation RDV</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/styles.css" />
 
-  <!-- Calendly widget -->
+  <!-- Calendly embed -->
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+  <style>
+    .wrap{max-width:980px;margin:0 auto;}
+    .card{
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 18px;
+      padding: 22px;
+      backdrop-filter: blur(10px);
+      margin: 18px 0;
+    }
+    .muted{opacity:.85;}
+    .danger{
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: rgba(255,0,0,0.08);
+      border: 1px solid rgba(255,0,0,0.20);
+      font-size: 14px;
+    }
+  </style>
 </head>
 
 <body>
@@ -31,25 +53,80 @@
   </nav>
 </header>
 
-<main style="max-width:1100px;margin:40px auto 20px;padding:0 18px;">
+<main>
 
-  <h1>Choisis ton créneau ✅</h1>
-  <p style="opacity:.92;line-height:1.7;margin-bottom:18px;">
-    Merci ! Réserve maintenant ton rendez-vous dans l’agenda ci-dessous.
-  </p>
+  <section class="hero hero-inner">
+    <h1 class="hero-title hero-title-small">Confirmation</h1>
+    <p class="hero-text hero-text-centered">
+      Merci ! Si ton paiement est validé, tu peux maintenant réserver ton créneau.
+    </p>
+  </section>
 
-  <div class="calendly-inline-widget"
-       data-url="https://calendly.com/contact-altessavoyance/30min"
-       style="min-width:320px;height:780px;border-radius:18px;overflow:hidden;">
-  </div>
+  <section class="section wrap">
 
-  <p style="margin-top:14px;opacity:.85;">
-    Besoin d’aide : contact@altessavoyance.com
-  </p>
+    <div class="card">
+      <h2 style="margin:0 0 10px;">Réserver mon créneau</h2>
+      <p class="muted" style="margin:0 0 14px;">
+        Choisis ton créneau via Calendly ci-dessous.
+      </p>
+
+      <!-- Contenu dynamique -->
+      <div id="calendly-zone"></div>
+
+      <div id="blocked" style="display:none;" class="danger">
+        ⚠️ L’agenda est accessible uniquement après paiement.<br>
+        Retourne sur la page RDV Téléphone et règle la consultation avant de réserver.
+        <div style="margin-top:12px;">
+          <a class="btn-primary" href="rdv-telephone.html" style="display:inline-block;">Payer et réserver</a>
+        </div>
+      </div>
+    </div>
+
+    <p class="muted" style="margin-top:18px;">
+      Besoin d’aide : <a href="mailto:contact@altessavoyance.com">contact@altessavoyance.com</a>
+    </p>
+
+  </section>
 
 </main>
 
-<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<footer class="footer">
+  Altessa Voyance © — Service réservé aux personnes majeures.
+</footer>
+
+<script>
+(function(){
+  const params = new URLSearchParams(window.location.search);
+
+  // PayPal ajoute souvent au retour : token / PayerID / paymentId / ba_token selon le flux
+  const hasPaypalReturn =
+    params.has("token") ||
+    params.has("PayerID") ||
+    params.has("paymentId") ||
+    params.has("ba_token") ||
+    params.has("pp") ||
+    params.has("paid");
+
+  // mode test (si tu veux tester l'affichage calendly) : merci-rdv.html?test=1
+  const testMode = params.get("test") === "1";
+
+  const zone = document.getElementById("calendly-zone");
+  const blocked = document.getElementById("blocked");
+
+  if(testMode || hasPaypalReturn){
+    // Affiche Calendly
+    zone.innerHTML = `
+      <div class="calendly-inline-widget"
+           data-url="https://calendly.com/contact-altessavoyance/30min"
+           style="min-width:320px;height:760px;">
+      </div>
+    `;
+  } else {
+    // Bloque si accès direct sans retour PayPal
+    blocked.style.display = "block";
+  }
+})();
+</script>
 
 </body>
 </html>
