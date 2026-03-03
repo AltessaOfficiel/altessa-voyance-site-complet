@@ -1,1 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RDV Téléphone — Altessa Voyance</title>
 
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <!-- PayPal Hosted Buttons -->
+  <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&components=hosted-buttons&currency=EUR"></script>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="logo">
+    <img src="assets/img/logo-altessa.png" alt="Logo Altessa">
+    <div class="logo-text">
+      <span class="logo-main">Altessa</span>
+      <span class="logo-sub">Voyance</span>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <a href="index.html">Accueil</a>
+    <a href="experts.html">Experts</a>
+    <a href="tarifs.html">Tarifs</a>
+    <a href="rdv-telephone.html" class="btn-nav">RDV Téléphone</a>
+  </nav>
+</header>
+
+<main style="max-width:1000px;margin:60px auto;padding:0 18px;">
+
+  <h1>Consultation Téléphonique</h1>
+  <p style="opacity:.92;line-height:1.7;">
+    Réserve une consultation téléphonique avec une voyante humaine.<br>
+    <strong>Paiement requis avant la prise de rendez-vous.</strong>
+  </p>
+
+  <div style="margin-top:18px;padding:18px;border-radius:18px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);">
+    <h2 style="margin:0 0 10px;">Comment ça marche</h2>
+    <ol style="line-height:1.9;margin:0;padding-left:18px;">
+      <li>Tu règles la consultation via PayPal</li>
+      <li>Tu es redirigé(e) vers la page de confirmation</li>
+      <li>Tu choisis ton créneau dans l’agenda Calendly</li>
+      <li>La voyante t’appelle à l’heure prévue</li>
+    </ol>
+  </div>
+
+  <div style="margin-top:18px;padding:18px;border-radius:18px;background:rgba(0,0,0,0.18);border:1px solid rgba(255,255,255,0.10);">
+    <h2 style="margin:0 0 10px;">Paiement PayPal</h2>
+
+    <!-- Ton bouton PayPal Hosted -->
+    <div id="paypal-container-QB4BM54EDKYFG"></div>
+    <script>
+      paypal.HostedButtons({
+        hostedButtonId: "QB4BM54EDKYFG",
+      }).render("#paypal-container-QB4BM54EDKYFG");
+    </script>
+
+    <p style="margin-top:12px;opacity:.85;">
+      Après paiement, tu peux réserver ton créneau ici :
+      <a href="merci-rdv.html">Choisir mon créneau</a>
+    </p>
+  </div>
+
+  <p style="margin-top:18px;opacity:.85;">
+    Besoin d’aide : contact@altessavoyance.com
+  </p>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-container">
+    <p>© 2026 Altessa Voyance</p>
+    <div class="footer-links">
+      <a href="cgv.html">CGV</a>
+      <a href="mentions-legales.html">Mentions légales</a>
+      <a href="politique-confidentialite.html">Confidentialité</a>
+      <a href="politique-cookies.html">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
