@@ -2,18 +2,46 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RDV Téléphone — Altessa Voyance</title>
+  <title>Altessa Voyance — RDV Téléphone</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/styles.css" />
 
-  <!-- PayPal Hosted Buttons -->
-  <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&components=hosted-buttons&currency=EUR"></script>
+  <!-- PAYPAL SDK (Hosted Buttons) -->
+  <script
+    src="https://www.paypal.com/sdk/js?client-id=BAA3LPdWYhDwfbYcXsmBhfCHXhRtcth_XEFw9tpnDSr42xeS7cdHDPl4kkudskfXSomt0uyjCfsdvzBBz8&components=hosted-buttons&disable-funding=venmo&currency=EUR">
+  </script>
+
+  <style>
+    .card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 18px;
+      padding: 22px;
+      backdrop-filter: blur(10px);
+      margin: 18px 0;
+    }
+    .muted { opacity: .85; }
+    .warn {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: rgba(255, 170, 0, 0.10);
+      border: 1px solid rgba(255, 170, 0, 0.25);
+      font-size: 14px;
+    }
+    .btn-disabled {
+      pointer-events: none;
+      opacity: .45;
+      filter: grayscale(1);
+    }
+  </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <header class="header">
   <div class="logo">
     <img src="assets/img/logo-altessa.png" alt="Logo Altessa">
@@ -27,62 +55,78 @@
     <a href="index.html">Accueil</a>
     <a href="experts.html">Experts</a>
     <a href="tarifs.html">Tarifs</a>
-    <a href="rdv-telephone.html" class="btn-nav">RDV Téléphone</a>
+    <a href="rdv-telephone.html" class="btn-nav active">RDV Téléphone</a>
   </nav>
 </header>
 
-<main style="max-width:1000px;margin:60px auto;padding:0 18px;">
+<main>
 
-  <h1>Consultation Téléphonique</h1>
-  <p style="opacity:.92;line-height:1.7;">
-    Réserve une consultation téléphonique avec une voyante humaine.<br>
-    <strong>Paiement requis avant la prise de rendez-vous.</strong>
-  </p>
-
-  <div style="margin-top:18px;padding:18px;border-radius:18px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);">
-    <h2 style="margin:0 0 10px;">Comment ça marche</h2>
-    <ol style="line-height:1.9;margin:0;padding-left:18px;">
-      <li>Tu règles la consultation via PayPal</li>
-      <li>Tu es redirigé(e) vers la page de confirmation</li>
-      <li>Tu choisis ton créneau dans l’agenda Calendly</li>
-      <li>La voyante t’appelle à l’heure prévue</li>
-    </ol>
-  </div>
-
-  <div style="margin-top:18px;padding:18px;border-radius:18px;background:rgba(0,0,0,0.18);border:1px solid rgba(255,255,255,0.10);">
-    <h2 style="margin:0 0 10px;">Paiement PayPal</h2>
-
-    <!-- Ton bouton PayPal Hosted -->
-    <div id="paypal-container-QB4BM54EDKYFG"></div>
-    <script>
-      paypal.HostedButtons({
-        hostedButtonId: "QB4BM54EDKYFG",
-      }).render("#paypal-container-QB4BM54EDKYFG");
-    </script>
-
-    <p style="margin-top:12px;opacity:.85;">
-      Après paiement, tu peux réserver ton créneau ici :
-      <a href="merci-rdv.html">Choisir mon créneau</a>
+  <section class="hero hero-inner">
+    <h1 class="hero-title hero-title-small">Consultation Téléphonique</h1>
+    <p class="hero-text hero-text-centered">
+      Réserve une consultation téléphonique avec une voyante humaine.<br>
+      <strong>Paiement requis avant la prise de rendez-vous.</strong>
     </p>
-  </div>
+  </section>
 
-  <p style="margin-top:18px;opacity:.85;">
-    Besoin d’aide : contact@altessavoyance.com
-  </p>
+  <section class="section" style="max-width: 980px; margin: 0 auto;">
+
+    <div class="card">
+      <h2 style="margin:0 0 10px;">Comment ça marche</h2>
+      <ol class="muted" style="margin:0; padding-left:18px; line-height:1.8;">
+        <li>Tu règles la consultation via PayPal</li>
+        <li>Tu es redirigé(e) automatiquement vers la page de confirmation</li>
+        <li>Tu choisis ton créneau dans l’agenda Calendly</li>
+        <li>La voyante t’appelle à l’heure prévue</li>
+      </ol>
+    </div>
+
+    <!-- ✅ PAIEMENT OBLIGATOIRE -->
+    <div class="card">
+      <h2 style="margin:0 0 10px;">Paiement PayPal</h2>
+      <p class="muted" style="margin:0 0 14px;">
+        Après paiement, tu seras redirigé(e) vers la page de confirmation pour réserver ton créneau.
+      </p>
+
+      <!-- Bouton PayPal Hosted -->
+      <div id="paypal-container-QB4BM54EDKYFG"></div>
+
+      <div class="warn">
+        ⚠️ Le rendez-vous n’est possible qu’après paiement.  
+        Si tu ne vois pas le bouton PayPal, vérifie que tu n’as pas un bloqueur de contenu (AdBlock) et recharge la page.
+      </div>
+    </div>
+
+    <!-- 🚫 Calendly bloqué ici -->
+    <div class="card">
+      <h2 style="margin:0 0 10px;">Agenda (après paiement)</h2>
+      <p class="muted" style="margin:0 0 12px;">
+        L’agenda se débloque sur la page de confirmation après paiement.
+      </p>
+
+      <a class="btn-primary btn-disabled" href="#" style="display:inline-block;">
+        Choisir mon créneau
+      </a>
+    </div>
+
+    <p class="muted" style="margin-top:18px;">
+      Besoin d’aide : <a href="mailto:contact@altessavoyance.com">contact@altessavoyance.com</a>
+    </p>
+
+  </section>
 
 </main>
 
 <footer class="footer">
-  <div class="footer-container">
-    <p>© 2026 Altessa Voyance</p>
-    <div class="footer-links">
-      <a href="cgv.html">CGV</a>
-      <a href="mentions-legales.html">Mentions légales</a>
-      <a href="politique-confidentialite.html">Confidentialité</a>
-      <a href="politique-cookies.html">Cookies</a>
-    </div>
-  </div>
+  Altessa Voyance © — Service réservé aux personnes majeures.
 </footer>
+
+<script>
+  // Render PayPal Hosted Button
+  paypal.HostedButtons({
+    hostedButtonId: "QB4BM54EDKYFG"
+  }).render("#paypal-container-QB4BM54EDKYFG");
+</script>
 
 </body>
 </html>
