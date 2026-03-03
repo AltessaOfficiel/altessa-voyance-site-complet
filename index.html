@@ -16,10 +16,7 @@
 
   <!-- Styles de sécurité (n'écrase pas ton thème, évite les soucis d’affichage images) -->
   <style>
-    /* Assure que les images s'affichent proprement même si un style manque */
     .altessa-image img { width: 100%; height: auto; display: block; border-radius: 18px; }
-    /* Mode "image only" : on supprime le doublon en masquant le texte des sections */
-    .image-only .altessa-text { display: none !important; }
     .image-only { display: flex; justify-content: center; }
     .image-only .altessa-image { width: 100%; max-width: 1200px; }
   </style>
@@ -41,7 +38,12 @@
     <a href="index.html" class="active" data-i18n="nav_home">Accueil</a>
     <a href="experts.html" data-i18n="nav_experts">Experts</a>
     <a href="tarifs.html" data-i18n="nav_tarifs">Tarifs</a>
-    <a href="contact.html" class="btn-nav" data-i18n="nav_contact">Contact</a>
+
+    <!-- ✅ RDV Téléphone -->
+    <a href="rdv-telephone.html" class="btn-nav" data-i18n="nav_rdv">RDV Téléphone</a>
+
+    <!-- Contact (optionnel si tu le gardes) -->
+    <a href="contact.html" data-i18n="nav_contact">Contact</a>
 
     <select id="lang-switcher">
       <option value="fr">🇫🇷 FR</option>
@@ -57,7 +59,6 @@
 
   <!-- HERO -->
   <section class="hero">
-
     <div class="lotus-wrapper">
       <div class="lotus-trail"></div>
       <img src="assets/img/logo-altessa.png" class="hero-lotus" alt="Lotus Altessa">
@@ -74,13 +75,11 @@
     <a href="experts.html" class="btn-primary hero-btn">
       Choisissez votre expert
     </a>
-
   </section>
 
   <!-- SECTION 1 : IMAGE ONLY -->
   <section class="section">
     <div class="altessa-block image-only">
-      <div class="altessa-text"></div>
       <div class="altessa-image">
         <img src="assets/img/presentation/voyance-moderne.jpg" alt="Voyance moderne Altessa">
       </div>
@@ -90,7 +89,6 @@
   <!-- SECTION 2 : IMAGE ONLY -->
   <section class="section">
     <div class="altessa-block reverse image-only">
-      <div class="altessa-text"></div>
       <div class="altessa-image">
         <img src="assets/img/presentation/experts-sensibilites.jpg" alt="Experts aux sensibilités uniques Altessa">
       </div>
@@ -100,23 +98,20 @@
   <!-- SECTION 3 : IMAGE ONLY -->
   <section class="section">
     <div class="altessa-block image-only">
-      <div class="altessa-text"></div>
       <div class="altessa-image">
         <img src="assets/img/presentation/experience-confidentielle.jpg" alt="Expérience fluide et confidentielle Altessa">
       </div>
     </div>
   </section>
 
-  <!-- SECTION 4 : IMAGE ONLY + CTA CGV (sans doublon) -->
+  <!-- SECTION 4 : IMAGE ONLY + CTA CGV -->
   <section class="section">
     <div class="altessa-block reverse image-only">
-      <div class="altessa-text"></div>
       <div class="altessa-image">
         <img src="assets/img/presentation/transparence-cgv.jpg" alt="Transparence et cadre de confiance Altessa">
       </div>
     </div>
 
-    <!-- CTA simple sous l’image pour garder l’accès aux CGV -->
     <div style="text-align:center; margin-top: 14px;">
       <a href="cgv.html" class="btn-primary" style="display:inline-block;">
         Lire les CGV
@@ -130,27 +125,34 @@
   <div class="footer-container">
     <p>© 2026 Altessa Voyance</p>
 
-   <div class="footer-links">
-  <a href="cgv.html">CGV</a>
-  <a href="mentions-legales.html">Mentions légales</a>
-  <a href="politique-confidentialite.html">Confidentialité</a>
-  <a href="politique-cookies.html">Cookies</a>
-  <a href="contact.html">Contact</a>
-</div>
-  <div id="cookie-banner" style="position:fixed;bottom:0;left:0;width:100%;background:#111;color:white;padding:15px;text-align:center;z-index:9999;">
+    <div class="footer-links">
+      <a href="cgv.html">CGV</a>
+      <a href="mentions-legales.html">Mentions légales</a>
+      <a href="politique-confidentialite.html">Confidentialité</a>
+      <a href="politique-cookies.html">Cookies</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<!-- COOKIE BANNER -->
+<div id="cookie-banner" style="position:fixed;bottom:0;left:0;width:100%;background:#111;color:white;padding:15px;text-align:center;z-index:9999;">
   Ce site utilise des cookies pour améliorer votre expérience.
   <button onclick="acceptCookies()" style="margin-left:10px;">Accepter</button>
   <a href="politique-cookies.html" style="color:#fff;margin-left:10px;">En savoir plus</a>
 </div>
 
 <script>
-function acceptCookies(){
-  localStorage.setItem("cookiesAccepted","true");
-  document.getElementById("cookie-banner").style.display="none";
-}
-if(localStorage.getItem("cookiesAccepted")){
-  document.getElementById("cookie-banner").style.display="none";
-}
-</script>  
+  function acceptCookies(){
+    localStorage.setItem("cookiesAccepted","true");
+    const banner = document.getElementById("cookie-banner");
+    if (banner) banner.style.display="none";
+  }
+  if(localStorage.getItem("cookiesAccepted")){
+    const banner = document.getElementById("cookie-banner");
+    if (banner) banner.style.display="none";
+  }
+</script>
+
 </body>
 </html>
