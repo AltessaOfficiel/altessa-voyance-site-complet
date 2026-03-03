@@ -8,17 +8,27 @@
   <!-- Police -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <!-- Styles (chemin selon ton repo: Actifs/CSS) -->
+  <link rel="stylesheet" href="Actifs/CSS/styles.css">
 
-  <!-- Multilingue -->
-  <script src="assets/js/lang.js" defer></script>
+  <!-- Multilingue (mets le bon chemin si ton JS est ailleurs) -->
+  <script src="Actifs/JS/lang.js" defer></script>
 
-  <!-- Styles de sécurité (n'écrase pas ton thème, évite les soucis d’affichage images) -->
   <style>
-    .altessa-image img { width: 100%; height: auto; display: block; border-radius: 18px; }
-    .image-only { display: flex; justify-content: center; }
-    .image-only .altessa-image { width: 100%; max-width: 1200px; }
+    .altessa-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 18px;
+    }
+    .image-only {
+      display: flex;
+      justify-content: center;
+    }
+    .image-only .altessa-image {
+      width: 100%;
+      max-width: 1200px;
+    }
   </style>
 </head>
 
@@ -27,7 +37,7 @@
 <!-- HEADER -->
 <header class="header">
   <div class="logo">
-    <img src="assets/img/logo-altessa.png" alt="Logo Altessa">
+    <img src="Actifs/IMG/logo-altessa.png" alt="Logo Altessa">
     <div class="logo-text">
       <span class="logo-main" data-i18n="brand_name">Altessa</span>
       <span class="logo-sub" data-i18n="brand_sub">Voyance</span>
@@ -39,10 +49,10 @@
     <a href="experts.html" data-i18n="nav_experts">Experts</a>
     <a href="tarifs.html" data-i18n="nav_tarifs">Tarifs</a>
 
-    <!-- ✅ RDV Téléphone -->
+    <!-- RDV Téléphone -->
     <a href="rdv-telephone.html" class="btn-nav" data-i18n="nav_rdv">RDV Téléphone</a>
 
-    <!-- Contact (optionnel si tu le gardes) -->
+    <!-- Contact -->
     <a href="contact.html" data-i18n="nav_contact">Contact</a>
 
     <select id="lang-switcher">
@@ -61,7 +71,7 @@
   <section class="hero">
     <div class="lotus-wrapper">
       <div class="lotus-trail"></div>
-      <img src="assets/img/logo-altessa.png" class="hero-lotus" alt="Lotus Altessa">
+      <img src="Actifs/IMG/logo-altessa.png" class="hero-lotus" alt="Lotus Altessa">
     </div>
 
     <h1 class="hero-title">Altessa</h1>
@@ -77,39 +87,40 @@
     </a>
   </section>
 
-  <!-- SECTION 1 : IMAGE ONLY -->
+  <!-- IMAGE 1 -->
   <section class="section">
     <div class="altessa-block image-only">
       <div class="altessa-image">
-        <img src="assets/img/presentation/voyance-moderne.jpg" alt="Voyance moderne Altessa">
+        <img src="Actifs/IMG/Présentation/voyance-moderne.jpg" alt="Voyance moderne Altessa">
       </div>
     </div>
   </section>
 
-  <!-- SECTION 2 : IMAGE ONLY -->
+  <!-- IMAGE 2 -->
   <section class="section">
     <div class="altessa-block reverse image-only">
       <div class="altessa-image">
-        <img src="assets/img/presentation/experts-sensibilites.jpg" alt="Experts aux sensibilités uniques Altessa">
+        <img src="Actifs/IMG/Présentation/experts-sensibilites.jpg" alt="Experts aux sensibilités uniques Altessa">
       </div>
     </div>
   </section>
 
-  <!-- SECTION 3 : IMAGE ONLY -->
+  <!-- IMAGE 3 -->
   <section class="section">
     <div class="altessa-block image-only">
       <div class="altessa-image">
-        <img src="assets/img/presentation/experience-confidentielle.jpg" alt="Expérience fluide et confidentielle Altessa">
+        <img src="Actifs/IMG/Présentation/experience-confidentielle.jpg" alt="Expérience fluide et confidentielle Altessa">
       </div>
     </div>
   </section>
 
-  <!-- SECTION 4 : IMAGE ONLY + CTA CGV -->
+  <!-- IMAGE 4 + CTA CGV -->
   <section class="section">
     <div class="altessa-block reverse image-only">
       <div class="altessa-image">
-        <img src="assets/img/presentation/voyance-premium-confidentielle-altessa.png" 
-     alt="Voyance premium confidentielle Altessa">
+        <!-- ✅ ton fichier a DOUBLE extension .png.png -->
+        <img src="Actifs/IMG/Présentation/voyance-premium-confidentielle-altessa.png.png"
+             alt="Voyance premium confidentielle Altessa">
       </div>
     </div>
 
@@ -147,11 +158,11 @@
   function acceptCookies(){
     localStorage.setItem("cookiesAccepted","true");
     const banner = document.getElementById("cookie-banner");
-    if (banner) banner.style.display="none";
+    if (banner) banner.style.display = "none";
   }
-  if(localStorage.getItem("cookiesAccepted")){
+  if (localStorage.getItem("cookiesAccepted")){
     const banner = document.getElementById("cookie-banner");
-    if (banner) banner.style.display="none";
+    if (banner) banner.style.display = "none";
   }
 </script>
 
