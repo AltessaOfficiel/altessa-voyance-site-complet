@@ -8,14 +8,15 @@
   <!-- Police -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- ✅ Police manuscrite lisible (pour le mot d’Alessandra) -->
+  <!-- Police manuscrite lisible -->
   <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
 
-  <!-- ✅ Chemins -->
+  <!-- Styles -->
   <link rel="stylesheet" href="assets/css/styles.css">
+
+  <!-- Multilingue -->
   <script src="assets/js/lang.js" defer></script>
 
-  <!-- Petites sécurités + CTA premium (sans casser ton thème) -->
   <style>
     .altessa-image img { width: 100%; height: auto; display: block; border-radius: 18px; }
     .image-only { display: flex; justify-content: center; }
@@ -32,7 +33,7 @@
     .cta-gold{
       background:linear-gradient(135deg,#f6d47a,#caa24b);
       color:#2b0d44;
-      font-weight:600;
+      font-weight:700;
       padding:14px 28px;
       border-radius:40px;
       text-decoration:none;
@@ -56,7 +57,7 @@
       border-radius:40px;
       text-decoration:none;
       font-size:18px;
-      font-weight:600;
+      font-weight:700;
       transition:all .25s ease;
       display:inline-flex;
       align-items:center;
@@ -71,52 +72,32 @@
       box-shadow:0 0 20px rgba(255,215,120,0.80);
     }
 
-    /* ✅ Bloc signature Alessandra */
-    .alessandra-wrap{
-      max-width:1100px;
-      margin:0 auto;
-      padding:0 18px;
-    }
+    /* Bloc signature Alessandra */
+    .alessandra-wrap{ max-width:1100px; margin:0 auto; padding:0 18px; }
     .alessandra-card{
-      display:flex;
-      gap:22px;
-      align-items:center;
-      flex-wrap:wrap;
-      padding:22px;
-      border-radius:22px;
+      display:flex; gap:22px; align-items:center; flex-wrap:wrap;
+      padding:22px; border-radius:22px;
       background: rgba(255,255,255,0.06);
       border: 1px solid rgba(255,255,255,0.12);
       backdrop-filter: blur(10px);
       box-shadow: 0 16px 40px rgba(0,0,0,0.25);
     }
     .alessandra-photo{
-      width:130px;
-      height:130px;
-      border-radius:22px;
-      object-fit:cover;
+      width:140px; height:140px; border-radius:22px; object-fit:cover;
       border: 2px solid rgba(227,193,111,0.65);
       box-shadow: 0 14px 30px rgba(0,0,0,0.28);
       background: rgba(255,255,255,0.06);
     }
     .alessandra-title{
       margin:0 0 10px;
-      font-size:18px;
-      font-weight:600;
+      font-size:18px; font-weight:700;
       color: rgba(255,255,255,0.92);
-      letter-spacing:.2px;
-      display:flex;
-      gap:10px;
-      align-items:center;
-      flex-wrap:wrap;
+      display:flex; gap:10px; align-items:center; flex-wrap:wrap;
     }
     .alessandra-badge{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:7px 12px;
-      border-radius:999px;
-      font-size:12.5px;
-      font-weight:600;
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 12px; border-radius:999px;
+      font-size:12.5px; font-weight:700;
       background: rgba(227,193,111,0.14);
       border: 1px solid rgba(227,193,111,0.32);
       color: rgba(255,255,255,0.92);
@@ -124,32 +105,27 @@
     }
     .alessandra-note{
       font-family: "Parisienne", cursive;
-      font-size: 28px;
-      line-height: 1.35;
+      font-size: 28px; line-height: 1.35;
       color: rgba(255,255,255,0.92);
       margin: 0;
       text-shadow: 0 8px 18px rgba(0,0,0,0.25);
     }
-    @media (max-width: 520px){
-      .alessandra-note{font-size:24px;}
-      .alessandra-photo{width:115px;height:115px;}
-    }
     .alessandra-sign{
       margin-top:10px;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
+      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
       color: rgba(255,255,255,0.80);
       font-size:14px;
     }
     .alessandra-sign strong{color: rgba(255,255,255,0.92);}
+    @media (max-width: 520px){
+      .alessandra-note{font-size:24px;}
+      .alessandra-photo{width:120px;height:120px;}
+    }
   </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <header class="header">
   <div class="logo">
     <img src="assets/img/logo-altessa.png" alt="Logo Altessa">
@@ -159,6 +135,7 @@
     </div>
   </div>
 
+  <!-- MENU IDENTIQUE PARTOUT : tous en btn-nav -->
   <nav class="nav">
     <a href="index.html" class="btn-nav active" data-i18n="nav_home">Accueil</a>
     <a href="experts.html" class="btn-nav" data-i18n="nav_experts">Voyance écrite</a>
@@ -178,7 +155,6 @@
 
 <main>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="lotus-wrapper">
       <div class="lotus-trail"></div>
@@ -193,19 +169,18 @@
       Recevez des réponses claires, précises et personnalisées.
     </p>
 
-    <!-- CTA -->
     <div class="hero-actions">
       <a href="experts.html" class="cta-gold">✨ Voyance écrite</a>
       <a href="rdv-telephone.html" class="cta-gold-outline">📞 RDV Téléphone</a>
     </div>
   </section>
 
-  <!-- ✅ MOT D'ALESSANDRA (AJOUT) -->
+  <!-- Mot d'Alessandra -->
   <section class="section">
     <div class="alessandra-wrap">
       <div class="alessandra-card">
 
-        <!-- Photo (tu l'as : assets/img/alessandra-tess.jpeg) -->
+        <!-- ✅ Ton image est dans assets/img/alessandra-tess.jpeg -->
         <img src="assets/img/alessandra-tess.jpeg" class="alessandra-photo" alt="Alessandra Tess">
 
         <div style="flex:1; min-width:260px;">
@@ -215,13 +190,12 @@
           </div>
 
           <p class="alessandra-note">
-            “J’ai créé Altessa pour offrir une voyance élégante, sincère et rassurante —
-            un espace où l’on peut poser ses questions en toute confiance.
-            Pour les consultations écrites, je me suis entourée d’experts talentueux,
-            sélectionnés pour la finesse de leur lecture et la qualité de leurs mots,
-            afin que chaque réponse soit claire, nuancée et apaisante.
-            Je suis heureuse de vous accueillir ici… et de vous accompagner, pas à pas,
-            vers plus de lumière et de sérénité.”
+            “J’ai créé Altessa pour vous offrir une voyance élégante, confidentielle et apaisante —
+            un espace où l’on peut poser ses questions en toute sérénité.
+            Pour les consultations écrites, je me suis entourée de spécialistes choisis avec soin,
+            reconnus pour la finesse de leur lecture et la justesse de leurs mots.
+            Je suis heureuse de vous accueillir ici… et de vous accompagner, avec douceur,
+            vers plus de clarté, de confiance et de lumière.”
           </p>
 
           <div class="alessandra-sign">
@@ -234,7 +208,7 @@
     </div>
   </section>
 
-  <!-- IMAGE 1 -->
+  <!-- Images présentation -->
   <section class="section">
     <div class="altessa-block image-only">
       <div class="altessa-image">
@@ -243,7 +217,6 @@
     </div>
   </section>
 
-  <!-- IMAGE 2 -->
   <section class="section">
     <div class="altessa-block reverse image-only">
       <div class="altessa-image">
@@ -252,7 +225,6 @@
     </div>
   </section>
 
-  <!-- IMAGE 3 -->
   <section class="section">
     <div class="altessa-block image-only">
       <div class="altessa-image">
@@ -261,11 +233,10 @@
     </div>
   </section>
 
-  <!-- IMAGE 4 -->
   <section class="section">
     <div class="altessa-block reverse image-only">
       <div class="altessa-image">
-        <!-- ✅ IMPORTANT : Mets le nom EXACT du fichier. Ici : .png (une seule fois) -->
+        <!-- ✅ ICI : une seule fois .png -->
         <img src="assets/img/presentation/voyance-premium-confidentielle-altessa.png"
              alt="Voyance premium et confidentialité Altessa">
       </div>
@@ -294,7 +265,7 @@
   </div>
 </footer>
 
-<!-- COOKIE BANNER -->
+<!-- Cookie banner -->
 <div id="cookie-banner" style="position:fixed;bottom:0;left:0;width:100%;background:#111;color:white;padding:15px;text-align:center;z-index:9999;">
   Ce site utilise des cookies pour améliorer votre expérience.
   <button type="button" onclick="acceptCookies()" style="margin-left:10px;">Accepter</button>
@@ -315,7 +286,5 @@
   })();
 </script>
 
-</body>
-</html>
 </body>
 </html>
