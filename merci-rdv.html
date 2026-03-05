@@ -7,29 +7,112 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css" />
+  <script src="assets/js/lang.js" defer></script>
 
   <!-- Calendly embed -->
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
   <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
   <style>
-    .wrap{max-width:980px;margin:0 auto;}
+    :root{
+      --gold: rgba(212,175,55,1);
+      --goldSoft: rgba(212,175,55,.22);
+      --glass: rgba(255,255,255,0.06);
+      --glassBorder: rgba(255,255,255,0.12);
+      --textSoft: rgba(255,255,255,0.90);
+      --textMuted: rgba(255,255,255,0.72);
+    }
+
+    .wrap{max-width:1040px;margin:0 auto;}
     .card{
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.10);
+      background: var(--glass);
+      border: 1px solid var(--glassBorder);
       border-radius: 18px;
       padding: 22px;
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
       margin: 18px 0;
+      box-shadow: 0 12px 40px rgba(0,0,0,.25);
     }
-    .muted{opacity:.85;}
+    .muted{color:var(--textMuted);}
+    .fine{font-size:14px;color:var(--textMuted);line-height:1.6;}
+
+    .badge{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 14px;
+      border-radius:999px;
+      background: rgba(0,0,0,0.18);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: var(--textSoft);
+      font-weight:600;
+      letter-spacing:.2px;
+    }
+    .badge-dot{
+      width:10px;height:10px;border-radius:99px;
+      background: var(--gold);
+      box-shadow: 0 0 18px rgba(212,175,55,.55);
+    }
+
     .danger{
       margin-top: 12px;
-      padding: 12px 14px;
-      border-radius: 12px;
+      padding: 14px 14px;
+      border-radius: 14px;
       background: rgba(255,0,0,0.08);
-      border: 1px solid rgba(255,0,0,0.20);
+      border: 1px solid rgba(255,0,0,0.22);
       font-size: 14px;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .ok{
+      margin-top: 12px;
+      padding: 14px 14px;
+      border-radius: 14px;
+      background: rgba(212,175,55,0.10);
+      border: 1px solid rgba(212,175,55,0.22);
+      font-size: 14px;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .cta-row{
+      display:flex; gap:12px; flex-wrap:wrap; align-items:center;
+      margin-top: 12px;
+    }
+    .btn-gold{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 16px;
+      border-radius: 14px;
+      text-decoration:none;
+      font-weight:800;
+      color: rgba(20,14,8,0.95);
+      background: linear-gradient(180deg, rgba(212,175,55,1), rgba(212,175,55,0.72));
+      box-shadow: 0 12px 26px rgba(212,175,55,0.22);
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+    .btn-ghost{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 16px;
+      border-radius: 14px;
+      text-decoration:none;
+      font-weight:800;
+      color: rgba(255,255,255,0.92);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.16);
+    }
+
+    /* menu actif */
+    .nav a.btn-nav.active{
+      background: linear-gradient(180deg, rgba(212,175,55,0.92), rgba(212,175,55,0.55));
+      color: rgba(20,14,8,0.95) !important;
+      border: 1px solid rgba(255,255,255,0.18);
+      box-shadow: 0 10px 24px rgba(212,175,55,0.20);
+    }
+
+    /* mini style du widget */
+    .cal-holder{
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(0,0,0,0.16);
+      box-shadow: 0 14px 36px rgba(0,0,0,.25);
     }
   </style>
 </head>
@@ -45,11 +128,21 @@
     </div>
   </div>
 
+  <!-- ✅ même menu que tes autres pages -->
   <nav class="nav">
-    <a href="index.html">Accueil</a>
-    <a href="experts.html">Experts</a>
-    <a href="tarifs.html">Tarifs</a>
+    <a href="index.html" class="btn-nav">Accueil</a>
+    <a href="experts.html" class="btn-nav">Voyance écrite</a>
+    <a href="tarifs.html" class="btn-nav">Tarifs</a>
     <a href="rdv-telephone.html" class="btn-nav">RDV Téléphone</a>
+    <a href="contact.html" class="btn-nav">Support</a>
+
+    <select id="lang-switcher" aria-label="Langue">
+      <option value="fr">🇫🇷 FR</option>
+      <option value="en">🇬🇧 EN</option>
+      <option value="es">🇪🇸 ES</option>
+      <option value="pt">🇵🇹 PT</option>
+      <option value="it">🇮🇹 IT</option>
+    </select>
   </nav>
 </header>
 
@@ -58,28 +151,46 @@
   <section class="hero hero-inner">
     <h1 class="hero-title hero-title-small">Confirmation</h1>
     <p class="hero-text hero-text-centered">
-      Merci ! Si ton paiement est validé, tu peux maintenant réserver ton créneau.
+      Merci. Vous pouvez maintenant choisir votre créneau.
     </p>
   </section>
 
   <section class="section wrap">
 
     <div class="card">
-      <h2 style="margin:0 0 10px;">Réserver mon créneau</h2>
+      <div class="badge">
+        <span class="badge-dot"></span>
+        <span>Étape finale : choisir un créneau</span>
+      </div>
+
+      <h2 style="margin:14px 0 10px;">Réserver mon créneau</h2>
       <p class="muted" style="margin:0 0 14px;">
-        Choisis ton créneau via Calendly ci-dessous.
+        Sélectionnez une date et une heure directement dans l’agenda ci-dessous.
       </p>
 
-      <!-- Contenu dynamique -->
-      <div id="calendly-zone"></div>
-
-      <div id="blocked" style="display:none;" class="danger">
-        ⚠️ L’agenda est accessible uniquement après paiement.<br>
-        Retourne sur la page RDV Téléphone et règle la consultation avant de réserver.
-        <div style="margin-top:12px;">
-          <a class="btn-primary" href="rdv-telephone.html" style="display:inline-block;">Payer et réserver</a>
-        </div>
+      <!-- Message OK (affiché si accès autorisé) -->
+      <div id="ok-msg" class="ok" style="display:none;">
+        ✅ Accès agenda activé. Choisissez votre créneau puis validez la réservation.
       </div>
+
+      <!-- Zone Calendly -->
+      <div id="calendly-zone" class="cal-holder"></div>
+
+      <!-- Blocage si accès direct -->
+      <div id="blocked" style="display:none;" class="danger">
+        ⚠️ L’agenda est accessible uniquement via le lien de confirmation après paiement.<br>
+        <div class="cta-row">
+          <a class="btn-gold" href="rdv-telephone.html">Retour — Paiement</a>
+          <a class="btn-ghost" href="support.html" onclick="return false;">Besoin d’aide</a>
+        </div>
+        <p class="fine" style="margin:10px 0 0;">
+          Si vous venez de payer, patientez 5 secondes puis rechargez cette page.
+        </p>
+      </div>
+
+      <p class="fine" style="margin-top:12px;">
+        Astuce test : <strong>merci-rdv.html?test=1</strong> (affiche l’agenda sans retour PayPal, pratique pour vérifier le rendu).
+      </p>
     </div>
 
     <p class="muted" style="margin-top:18px;">
@@ -107,23 +218,24 @@
     params.has("pp") ||
     params.has("paid");
 
-  // mode test (si tu veux tester l'affichage calendly) : merci-rdv.html?test=1
+  // mode test : merci-rdv.html?test=1
   const testMode = params.get("test") === "1";
 
   const zone = document.getElementById("calendly-zone");
   const blocked = document.getElementById("blocked");
+  const okMsg = document.getElementById("ok-msg");
 
   if(testMode || hasPaypalReturn){
-    // Affiche Calendly
+    okMsg.style.display = "block";
     zone.innerHTML = `
       <div class="calendly-inline-widget"
-           data-url="https://calendly.com/contact-altessavoyance/30min"
-           style="min-width:320px;height:760px;">
+           data-url="https://calendly.com/contact-altessavoyance/30min?hide_gdpr_banner=1"
+           style="min-width:320px;height:780px;">
       </div>
     `;
   } else {
-    // Bloque si accès direct sans retour PayPal
     blocked.style.display = "block";
+    zone.innerHTML = "";
   }
 })();
 </script>
