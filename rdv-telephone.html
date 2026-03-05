@@ -14,31 +14,209 @@
   </script>
 
   <style>
-    .wrap{max-width:980px;margin:0 auto;}
+    :root{
+      --gold:#D4AF37;
+      --gold2:#F2D27A;
+      --glass: rgba(255,255,255,0.08);
+      --glass2: rgba(255,255,255,0.10);
+      --line: rgba(255,255,255,0.14);
+      --shadow: 0 18px 50px rgba(0,0,0,0.35);
+    }
+
+    /* Layout */
+    .wrap{max-width:1080px;margin:0 auto;padding:0 18px;}
+    .top-space{margin-top: 10px;}
+
+    /* Hero enhancement */
+    .hero.hero-inner{
+      position: relative;
+      overflow: hidden;
+    }
+    .hero.hero-inner::before{
+      content:"";
+      position:absolute;
+      inset:-120px -120px auto -120px;
+      height:420px;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(212,175,55,0.22), transparent 55%),
+        radial-gradient(circle at 70% 25%, rgba(255,255,255,0.10), transparent 60%),
+        radial-gradient(circle at 50% 80%, rgba(160,90,255,0.18), transparent 60%);
+      filter: blur(2px);
+      pointer-events:none;
+    }
+
+    /* Cards */
     .card{
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.10);
+      background: var(--glass);
+      border: 1px solid var(--line);
       border-radius: 18px;
       padding: 22px;
       backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
       margin: 18px 0;
     }
-    .muted{opacity:.85;}
+    .card-title{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin:0 0 12px;
+      letter-spacing: .2px;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 12px;
+      border-radius:999px;
+      font-size:12.5px;
+      font-weight:600;
+      color: rgba(255,255,255,0.92);
+      background: rgba(212,175,55,0.16);
+      border: 1px solid rgba(212,175,55,0.30);
+      box-shadow: 0 10px 26px rgba(0,0,0,0.25);
+      white-space: nowrap;
+    }
+    .muted{opacity:.88;}
+    .grid-2{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 18px;
+    }
+    @media (max-width: 900px){
+      .grid-2{grid-template-columns:1fr;}
+    }
+
+    /* Expert profile */
+    .expert{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .expert img{
+      width:110px;
+      height:110px;
+      border-radius:50%;
+      object-fit:cover;
+      border: 3px solid rgba(212,175,55,0.75);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+      background: rgba(255,255,255,0.08);
+    }
+    .expert h2{
+      margin:0;
+      font-size: 22px;
+      line-height:1.1;
+    }
+    .expert p{
+      margin:6px 0 0;
+      line-height:1.6;
+    }
+    .stars{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      margin-top: 8px;
+      font-size: 13px;
+      opacity:.9;
+    }
+    .stars .s{
+      color: var(--gold2);
+      text-shadow: 0 8px 18px rgba(0,0,0,0.35);
+      letter-spacing: 1px;
+    }
+
+    /* Steps */
+    .steps{
+      margin:0;
+      padding-left: 18px;
+      line-height:1.9;
+    }
+    .steps li{
+      margin: 2px 0;
+    }
+
+    /* PayPal box */
+    .paybox{
+      border-radius: 16px;
+      padding: 16px;
+      background: rgba(0,0,0,0.18);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+    .paypal-title{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin:0 0 12px;
+    }
+    .price{
+      font-weight:700;
+      color: rgba(255,255,255,0.92);
+      padding:7px 12px;
+      border-radius:999px;
+      border: 1px solid rgba(212,175,55,0.38);
+      background: linear-gradient(135deg, rgba(212,175,55,0.18), rgba(255,255,255,0.06));
+      white-space:nowrap;
+    }
+
     .warn{
       margin-top: 14px;
       padding: 12px 14px;
       border-radius: 12px;
-      background: rgba(255,170,0,0.10);
-      border: 1px solid rgba(255,170,0,0.25);
+      background: rgba(255, 170, 0, 0.10);
+      border: 1px solid rgba(255, 170, 0, 0.25);
       font-size: 14px;
     }
+
+    /* Trust row */
+    .trust{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 14px;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      font-size: 13px;
+      opacity: .92;
+    }
+    .dot{
+      width:8px;height:8px;border-radius:50%;
+      background: rgba(80,255,160,0.75);
+      box-shadow: 0 0 18px rgba(80,255,160,0.35);
+    }
+
+    /* CTA button style helper (keeps your theme but makes it pop) */
+    .cta-row{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top: 14px;
+    }
+    .btn-ghost{
+      display:inline-block;
+      padding: 12px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(212,175,55,0.35);
+      background: rgba(0,0,0,0.18);
+      color: rgba(255,255,255,0.90);
+      text-decoration:none;
+      font-weight:600;
+      transition: transform .15s ease, opacity .15s ease;
+    }
+    .btn-ghost:hover{transform: translateY(-1px); opacity:.95;}
   </style>
 </head>
 
 <body>
 
 <header class="header">
-
   <div class="logo">
     <img src="assets/img/logo-altessa.png" alt="Logo Altessa">
     <div class="logo-text">
@@ -47,68 +225,128 @@
     </div>
   </div>
 
+  <!-- ✅ Menu cohérent (mêmes boutons partout) -->
   <nav class="nav">
-
-    <a href="index.html" class="btn-nav active">Accueil</a>
-
+    <a href="index.html" class="btn-nav">Accueil</a>
     <a href="experts.html" class="btn-nav">Voyance écrite</a>
-
     <a href="tarifs.html" class="btn-nav">Tarifs</a>
-
-    <a href="rdv-telephone.html" class="btn-nav">RDV Téléphone</a>
-
+    <a href="rdv-telephone.html" class="btn-nav active">RDV Téléphone</a>
     <a href="contact.html" class="btn-nav">Support</a>
 
-    <select id="lang-switcher">
+    <select id="lang-switcher" aria-label="Langue">
       <option value="fr">🇫🇷 FR</option>
       <option value="en">🇬🇧 EN</option>
       <option value="es">🇪🇸 ES</option>
       <option value="pt">🇵🇹 PT</option>
       <option value="it">🇮🇹 IT</option>
     </select>
-
   </nav>
-
 </header>
+
 <main>
 
   <section class="hero hero-inner">
-    <h1 class="hero-title hero-title-small">Consultation Téléphonique</h1>
-    <p class="hero-text hero-text-centered">
-      Réserve une consultation téléphonique avec Alessandra Tess.<br>
-      <strong>Paiement requis avant la prise de rendez-vous.</strong>
-    </p>
+    <div class="wrap">
+      <div class="top-space">
+        <span class="badge">✨ Consultation humaine par téléphone</span>
+      </div>
+
+      <h1 class="hero-title hero-title-small" style="margin-top:14px;">
+        Consultation Téléphonique
+      </h1>
+
+      <p class="hero-text hero-text-centered" style="max-width:820px;margin-left:auto;margin-right:auto;">
+        Réserve une consultation téléphonique avec <strong>Alessandra Tess</strong>.<br>
+        <strong>Paiement requis avant la prise de rendez-vous.</strong>
+      </p>
+    </div>
   </section>
 
-  <section class="section wrap">
+  <section class="section">
+    <div class="wrap">
 
-    <div class="card">
-      <h2 style="margin:0 0 10px;">Comment ça marche</h2>
-      <ol class="muted" style="margin:0; padding-left:18px; line-height:1.8;">
-        <li>Tu règles la consultation via PayPal</li>
-        <li>Tu es redirigé(e) automatiquement vers la page de confirmation</li>
-        <li>Tu choisis ton créneau dans l’agenda Calendly (page suivante)</li>
-        <li>Alessandra Tess t’appelle à l’heure prévue</li>
-      </ol>
-    </div>
+      <!-- Expert + How it works -->
+      <div class="grid-2">
 
-    <div class="card">
-      <h2 style="margin:0 0 10px;">Paiement PayPal</h2>
-      <p class="muted" style="margin:0 0 14px;">
-        Après paiement, tu seras redirigé(e) vers la page de confirmation pour réserver ton créneau.
-      </p>
+        <div class="card">
+          <div class="card-title">
+            <h2 style="margin:0;">Votre voyante</h2>
+            <span class="badge">📞 Appel 100% humain</span>
+          </div>
 
-      <div id="paypal-container-QB4BM54EDKYFG"></div>
+          <div class="expert">
+            <!-- ✅ Image ajoutée dans assets/img/alessandra-tess.jpeg -->
+            <img src="assets/img/alessandra-tess.jpeg" alt="Alessandra Tess">
+            <div>
+              <h2>Alessandra Tess</h2>
+              <p class="muted">
+                Voyance par téléphone, approche bienveillante et précise.<br>
+                Spécialités : sentimental, décisions de vie, blocages.
+              </p>
+              <div class="stars">
+                <span class="s">★★★★★</span>
+                <span class="muted">— Consultation premium</span>
+              </div>
+            </div>
+          </div>
 
-      <div class="warn">
-        ⚠️ Si tu ne vois pas le bouton PayPal, désactive AdBlock / bloqueur de scripts et recharge la page.
+          <div class="trust">
+            <div class="chip"><span class="dot"></span>Créneaux disponibles après paiement</div>
+            <div class="chip">🔒 Paiement sécurisé PayPal</div>
+            <div class="chip">⏱️ Durée : 30 min</div>
+          </div>
+
+          <div class="cta-row">
+            <a class="btn-ghost" href="tarifs.html">Voir les tarifs</a>
+            <a class="btn-ghost" href="contact.html">Besoin d’aide</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">
+            <h2 style="margin:0;">Comment ça marche</h2>
+            <span class="badge">✅ Simple & rapide</span>
+          </div>
+
+          <ol class="steps muted">
+            <li>Tu règles la consultation via PayPal</li>
+            <li>Tu es redirigé(e) automatiquement vers la page de confirmation</li>
+            <li>Tu choisis ton créneau dans l’agenda Calendly (page suivante)</li>
+            <li>Alessandra Tess t’appelle à l’heure prévue</li>
+          </ol>
+
+          <div class="warn">
+            ⚠️ Le rendez-vous n’est possible qu’après paiement (l’agenda se débloque sur la page de confirmation).
+          </div>
+        </div>
+
       </div>
+
+      <!-- PayPal -->
+      <div class="card">
+        <div class="paypal-title">
+          <h2 style="margin:0;">Paiement PayPal</h2>
+          <div class="price">90,00 €</div>
+        </div>
+
+        <p class="muted" style="margin:0 0 14px;">
+          Après paiement, tu seras redirigé(e) vers la page de confirmation pour réserver ton créneau.
+        </p>
+
+        <div class="paybox">
+          <div id="paypal-container-QB4BM54EDKYFG"></div>
+
+          <div class="warn">
+            ⚠️ Si tu ne vois pas le bouton PayPal, désactive AdBlock / bloqueur de scripts et recharge la page.
+          </div>
+        </div>
+
+        <p class="muted" style="margin-top:14px;">
+          Besoin d’aide : <a href="mailto:contact@altessavoyance.com">contact@altessavoyance.com</a>
+        </p>
+      </div>
+
     </div>
-
-    <p class="muted" style="margin-top:18px;">
-      Besoin d’aide : <a href="mailto:contact@altessavoyance.com">contact@altessavoyance.com</a>
-    </p>
-
   </section>
 
 </main>
@@ -118,6 +356,7 @@
 </footer>
 
 <script>
+  // PayPal Hosted Button render
   paypal.HostedButtons({
     hostedButtonId: "QB4BM54EDKYFG"
   }).render("#paypal-container-QB4BM54EDKYFG");
