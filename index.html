@@ -8,6 +8,9 @@
   <!-- Police -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+  <!-- ✅ Police manuscrite lisible (pour le mot d’Alessandra) -->
+  <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+
   <!-- ✅ Chemins -->
   <link rel="stylesheet" href="assets/css/styles.css">
   <script src="assets/js/lang.js" defer></script>
@@ -67,6 +70,80 @@
       color:#2b0d44;
       box-shadow:0 0 20px rgba(255,215,120,0.80);
     }
+
+    /* ✅ Bloc signature Alessandra */
+    .alessandra-wrap{
+      max-width:1100px;
+      margin:0 auto;
+      padding:0 18px;
+    }
+    .alessandra-card{
+      display:flex;
+      gap:22px;
+      align-items:center;
+      flex-wrap:wrap;
+      padding:22px;
+      border-radius:22px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+    }
+    .alessandra-photo{
+      width:130px;
+      height:130px;
+      border-radius:22px;
+      object-fit:cover;
+      border: 2px solid rgba(227,193,111,0.65);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.28);
+      background: rgba(255,255,255,0.06);
+    }
+    .alessandra-title{
+      margin:0 0 10px;
+      font-size:18px;
+      font-weight:600;
+      color: rgba(255,255,255,0.92);
+      letter-spacing:.2px;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .alessandra-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 12px;
+      border-radius:999px;
+      font-size:12.5px;
+      font-weight:600;
+      background: rgba(227,193,111,0.14);
+      border: 1px solid rgba(227,193,111,0.32);
+      color: rgba(255,255,255,0.92);
+      white-space:nowrap;
+    }
+    .alessandra-note{
+      font-family: "Parisienne", cursive;
+      font-size: 28px;
+      line-height: 1.35;
+      color: rgba(255,255,255,0.92);
+      margin: 0;
+      text-shadow: 0 8px 18px rgba(0,0,0,0.25);
+    }
+    @media (max-width: 520px){
+      .alessandra-note{font-size:24px;}
+      .alessandra-photo{width:115px;height:115px;}
+    }
+    .alessandra-sign{
+      margin-top:10px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      color: rgba(255,255,255,0.80);
+      font-size:14px;
+    }
+    .alessandra-sign strong{color: rgba(255,255,255,0.92);}
   </style>
 </head>
 
@@ -83,18 +160,10 @@
   </div>
 
   <nav class="nav">
-    <!-- ✅ IMPORTANT : un seul "class" par lien -->
     <a href="index.html" class="btn-nav active" data-i18n="nav_home">Accueil</a>
-
-    <!-- ✅ Libellé conseillé : Voyance écrite -->
     <a href="experts.html" class="btn-nav" data-i18n="nav_experts">Voyance écrite</a>
-
     <a href="tarifs.html" class="btn-nav" data-i18n="nav_tarifs">Tarifs</a>
-
-    <!-- ✅ RDV Téléphone -->
     <a href="rdv-telephone.html" class="btn-nav" data-i18n="nav_rdv">RDV Téléphone</a>
-
-    <!-- ✅ Support -->
     <a href="contact.html" class="btn-nav" data-i18n="nav_contact">Support</a>
 
     <select id="lang-switcher" aria-label="Langue">
@@ -124,14 +193,44 @@
       Recevez des réponses claires, précises et personnalisées.
     </p>
 
-    <!-- ✅ CTA plus gros + or + vivant -->
+    <!-- CTA -->
     <div class="hero-actions">
-      <a href="experts.html" class="cta-gold">
-        ✨ Voyance écrite
-      </a>
-      <a href="rdv-telephone.html" class="cta-gold-outline">
-        📞 RDV Téléphone
-      </a>
+      <a href="experts.html" class="cta-gold">✨ Voyance écrite</a>
+      <a href="rdv-telephone.html" class="cta-gold-outline">📞 RDV Téléphone</a>
+    </div>
+  </section>
+
+  <!-- ✅ MOT D'ALESSANDRA (AJOUT) -->
+  <section class="section">
+    <div class="alessandra-wrap">
+      <div class="alessandra-card">
+
+        <!-- Photo (tu l'as : assets/img/alessandra-tess.jpeg) -->
+        <img src="assets/img/alessandra-tess.jpeg" class="alessandra-photo" alt="Alessandra Tess">
+
+        <div style="flex:1; min-width:260px;">
+          <div class="alessandra-title">
+            <span>Mot d’Alessandra</span>
+            <span class="alessandra-badge">Fondatrice d’Altessa</span>
+          </div>
+
+          <p class="alessandra-note">
+            “J’ai créé Altessa pour offrir une voyance élégante, sincère et rassurante —
+            un espace où l’on peut poser ses questions en toute confiance.
+            Pour les consultations écrites, je me suis entourée d’experts talentueux,
+            sélectionnés pour la finesse de leur lecture et la qualité de leurs mots,
+            afin que chaque réponse soit claire, nuancée et apaisante.
+            Je suis heureuse de vous accueillir ici… et de vous accompagner, pas à pas,
+            vers plus de lumière et de sérénité.”
+          </p>
+
+          <div class="alessandra-sign">
+            <span>—</span> <strong>Alessandra Tess</strong>
+            <span class="alessandra-badge">Altessa Voyance</span>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -166,8 +265,8 @@
   <section class="section">
     <div class="altessa-block reverse image-only">
       <div class="altessa-image">
-        <!-- ✅ Garde EXACTEMENT le nom du fichier tel qu'il est dans GitHub -->
-        <img src="assets/img/presentation/voyance-premium-confidentielle-altessa.png.png"
+        <!-- ✅ IMPORTANT : Mets le nom EXACT du fichier. Ici : .png (une seule fois) -->
+        <img src="assets/img/presentation/voyance-premium-confidentielle-altessa.png"
              alt="Voyance premium et confidentialité Altessa">
       </div>
     </div>
@@ -216,5 +315,7 @@
   })();
 </script>
 
+</body>
+</html>
 </body>
 </html>
