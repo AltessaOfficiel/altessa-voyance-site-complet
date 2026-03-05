@@ -8,15 +8,65 @@
   <!-- Police -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- ✅ Chemins CORRECTS (ceux qui marchent sur ton site) -->
+  <!-- ✅ Chemins -->
   <link rel="stylesheet" href="assets/css/styles.css">
   <script src="assets/js/lang.js" defer></script>
 
-  <!-- Petites sécurités d’affichage des images (sans casser ton thème) -->
+  <!-- Petites sécurités + CTA premium (sans casser ton thème) -->
   <style>
     .altessa-image img { width: 100%; height: auto; display: block; border-radius: 18px; }
     .image-only { display: flex; justify-content: center; }
     .image-only .altessa-image { width: 100%; max-width: 1200px; }
+
+    /* CTA HERO premium */
+    .hero-actions{
+      display:flex;
+      justify-content:center;
+      gap:18px;
+      margin-top:26px;
+      flex-wrap:wrap;
+    }
+    .cta-gold{
+      background:linear-gradient(135deg,#f6d47a,#caa24b);
+      color:#2b0d44;
+      font-weight:600;
+      padding:14px 28px;
+      border-radius:40px;
+      text-decoration:none;
+      font-size:18px;
+      box-shadow:0 0 18px rgba(255,215,120,0.50);
+      transition:all .25s ease;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      min-width:220px;
+    }
+    .cta-gold:hover{
+      transform:translateY(-3px);
+      box-shadow:0 0 28px rgba(255,215,120,0.90);
+    }
+    .cta-gold-outline{
+      border:2px solid rgba(227,193,111,0.95);
+      color:#f3d27f;
+      padding:14px 28px;
+      border-radius:40px;
+      text-decoration:none;
+      font-size:18px;
+      font-weight:600;
+      transition:all .25s ease;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      min-width:220px;
+      background: rgba(255,255,255,0.03);
+    }
+    .cta-gold-outline:hover{
+      background:#e3c16f;
+      color:#2b0d44;
+      box-shadow:0 0 20px rgba(255,215,120,0.80);
+    }
   </style>
 </head>
 
@@ -33,18 +83,19 @@
   </div>
 
   <nav class="nav">
-    <a href="index.html" class="btn-nav"   class="active" data-i18n="nav_home">Accueil</a>
+    <!-- ✅ IMPORTANT : un seul "class" par lien -->
+    <a href="index.html" class="btn-nav active" data-i18n="nav_home">Accueil</a>
 
-    <!-- ✅ Libellé conseillé : "Voyance écrite" (au lieu de "Experts") -->
-    <a href="experts.html" class="btn-nav"  data-i18n="nav_experts">Voyance écrite</a>
+    <!-- ✅ Libellé conseillé : Voyance écrite -->
+    <a href="experts.html" class="btn-nav" data-i18n="nav_experts">Voyance écrite</a>
 
-    <a href="tarifs.html" class="btn-nav"  data-i18n="nav_tarifs">Tarifs</a>
+    <a href="tarifs.html" class="btn-nav" data-i18n="nav_tarifs">Tarifs</a>
 
-    <!-- ✅ RDV Téléphone visible partout -->
+    <!-- ✅ RDV Téléphone -->
     <a href="rdv-telephone.html" class="btn-nav" data-i18n="nav_rdv">RDV Téléphone</a>
 
-    <!-- ✅ Support au lieu de Contact (si tu veux différencier) -->
-    <a href="contact.html" class="btn-nav"   data-i18n="nav_contact">Support</a>
+    <!-- ✅ Support -->
+    <a href="contact.html" class="btn-nav" data-i18n="nav_contact">Support</a>
 
     <select id="lang-switcher" aria-label="Langue">
       <option value="fr">🇫🇷 FR</option>
@@ -73,12 +124,13 @@
       Recevez des réponses claires, précises et personnalisées.
     </p>
 
-    <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-      <a href="experts.html" class="btn-primary hero-btn">
-        Choisir un expert (écrit)
+    <!-- ✅ CTA plus gros + or + vivant -->
+    <div class="hero-actions">
+      <a href="experts.html" class="cta-gold">
+        ✨ Voyance écrite
       </a>
-      <a href="rdv-telephone.html" class="btn-primary hero-btn" style="opacity:.95;">
-        RDV Téléphone
+      <a href="rdv-telephone.html" class="cta-gold-outline">
+        📞 RDV Téléphone
       </a>
     </div>
   </section>
@@ -114,7 +166,7 @@
   <section class="section">
     <div class="altessa-block reverse image-only">
       <div class="altessa-image">
-        <!-- ✅ ATTENTION : pas d'espaces / accents dans le nom de fichier -->
+        <!-- ✅ Garde EXACTEMENT le nom du fichier tel qu'il est dans GitHub -->
         <img src="assets/img/presentation/voyance-premium-confidentielle-altessa.png.png"
              alt="Voyance premium et confidentialité Altessa">
       </div>
