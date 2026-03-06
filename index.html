@@ -5,282 +5,201 @@
   <title data-i18n="home_title">Altessa Voyance — Accueil</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Police -->
+  <!-- Polices -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Police manuscrite lisible -->
   <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
 
-  <!-- Styles -->
+  <!-- Styles globaux -->
   <link rel="stylesheet" href="assets/css/styles.css">
 
   <!-- Multilingue -->
   <script src="assets/js/lang.js" defer></script>
-
-  <style>
-    .altessa-image img { width: 100%; height: auto; display: block; border-radius: 18px; }
-    .image-only { display: flex; justify-content: center; }
-    .image-only .altessa-image { width: 100%; max-width: 1200px; }
-
-    /* CTA HERO premium */
-    .hero-actions{
-      display:flex;
-      justify-content:center;
-      gap:18px;
-      margin-top:26px;
-      flex-wrap:wrap;
-    }
-    .cta-gold{
-      background:linear-gradient(135deg,#f6d47a,#caa24b);
-      color:#2b0d44;
-      font-weight:700;
-      padding:14px 28px;
-      border-radius:40px;
-      text-decoration:none;
-      font-size:18px;
-      box-shadow:0 0 18px rgba(255,215,120,0.50);
-      transition:all .25s ease;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      min-width:220px;
-    }
-    .cta-gold:hover{
-      transform:translateY(-3px);
-      box-shadow:0 0 28px rgba(255,215,120,0.90);
-    }
-    .cta-gold-outline{
-      border:2px solid rgba(227,193,111,0.95);
-      color:#f3d27f;
-      padding:14px 28px;
-      border-radius:40px;
-      text-decoration:none;
-      font-size:18px;
-      font-weight:700;
-      transition:all .25s ease;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      min-width:220px;
-      background: rgba(255,255,255,0.03);
-    }
-    .cta-gold-outline:hover{
-      background:#e3c16f;
-      color:#2b0d44;
-      box-shadow:0 0 20px rgba(255,215,120,0.80);
-    }
-
-    /* Bloc signature Alessandra */
-    .alessandra-wrap{ max-width:1100px; margin:0 auto; padding:0 18px; }
-    .alessandra-card{
-      display:flex; gap:22px; align-items:center; flex-wrap:wrap;
-      padding:22px; border-radius:22px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.25);
-    }
-    .alessandra-photo{
-      width:140px; height:140px; border-radius:22px; object-fit:cover;
-      border: 2px solid rgba(227,193,111,0.65);
-      box-shadow: 0 14px 30px rgba(0,0,0,0.28);
-      background: rgba(255,255,255,0.06);
-    }
-    .alessandra-title{
-      margin:0 0 10px;
-      font-size:18px; font-weight:700;
-      color: rgba(255,255,255,0.92);
-      display:flex; gap:10px; align-items:center; flex-wrap:wrap;
-    }
-    .alessandra-badge{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:7px 12px; border-radius:999px;
-      font-size:12.5px; font-weight:700;
-      background: rgba(227,193,111,0.14);
-      border: 1px solid rgba(227,193,111,0.32);
-      color: rgba(255,255,255,0.92);
-      white-space:nowrap;
-    }
-    .alessandra-note{
-      font-family: "Parisienne", cursive;
-      font-size: 28px; line-height: 1.35;
-      color: rgba(255,255,255,0.92);
-      margin: 0;
-      text-shadow: 0 8px 18px rgba(0,0,0,0.25);
-    }
-    .alessandra-sign{
-      margin-top:10px;
-      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
-      color: rgba(255,255,255,0.80);
-      font-size:14px;
-    }
-    .alessandra-sign strong{color: rgba(255,255,255,0.92);}
-    @media (max-width: 520px){
-      .alessandra-note{font-size:24px;}
-      .alessandra-photo{width:120px;height:120px;}
-    }
-  </style>
 </head>
 
 <body>
 
-<header class="header">
-  <div class="logo">
-    <img src="assets/img/logo-altessa.png" alt="Logo Altessa">
-    <div class="logo-text">
-      <span class="logo-main" data-i18n="brand_name">Altessa</span>
-      <span class="logo-sub" data-i18n="brand_sub">Voyance</span>
-    </div>
-  </div>
-
-  <!-- MENU IDENTIQUE PARTOUT : tous en btn-nav -->
-  <nav class="nav">
-    <a href="index.html" class="btn-nav active" data-i18n="nav_home">Accueil</a>
-    <a href="experts.html" class="btn-nav" data-i18n="nav_experts">Voyance écrite</a>
-    <a href="tarifs.html" class="btn-nav" data-i18n="nav_tarifs">Tarifs</a>
-    <a href="rdv-telephone.html" class="btn-nav" data-i18n="nav_rdv">RDV Téléphone</a>
-    <a href="contact.html" class="btn-nav" data-i18n="nav_contact">Support</a>
-
-    <select id="lang-switcher" aria-label="Langue">
-      <option value="fr">🇫🇷 FR</option>
-      <option value="en">🇬🇧 EN</option>
-      <option value="es">🇪🇸 ES</option>
-      <option value="pt">🇵🇹 PT</option>
-      <option value="it">🇮🇹 IT</option>
-    </select>
-  </nav>
-</header>
-
-<main>
-
-  <section class="hero">
-    <div class="lotus-wrapper">
-      <div class="lotus-trail"></div>
-      <img src="assets/img/logo-altessa.png" class="hero-lotus" alt="Lotus Altessa">
+  <header class="header">
+    <div class="logo">
+      <img src="assets/img/logo-altessa.png" alt="Logo Altessa">
+      <div class="logo-text">
+        <span class="logo-main" data-i18n="brand_name">Altessa</span>
+        <span class="logo-sub" data-i18n="brand_sub">Voyance</span>
+      </div>
     </div>
 
-    <h1 class="hero-title">Altessa</h1>
-    <h2 class="hero-subtitle">Voyance</h2>
+    <nav class="nav">
+      <a href="index.html" class="btn-nav active" data-i18n="nav_home">Accueil</a>
+      <a href="experts.html" class="btn-nav" data-i18n="nav_experts">Voyance écrite</a>
+      <a href="tarifs.html" class="btn-nav" data-i18n="nav_tarifs">Tarifs</a>
+      <a href="rdv-telephone.html" class="btn-nav" data-i18n="nav_rdv">RDV Téléphone</a>
+      <a href="contact.html" class="btn-nav" data-i18n="nav_contact">Support</a>
 
-    <p class="hero-text">
-      Découvrez l’avenir avec nos experts en ligne.<br>
-      Recevez des réponses claires, précises et personnalisées.
-    </p>
+      <select id="lang-switcher" aria-label="Langue">
+        <option value="fr">🇫🇷 FR</option>
+        <option value="en">🇬🇧 EN</option>
+        <option value="es">🇪🇸 ES</option>
+        <option value="pt">🇵🇹 PT</option>
+        <option value="it">🇮🇹 IT</option>
+      </select>
+    </nav>
+  </header>
 
-    <div class="hero-actions">
-      <a href="experts.html" class="cta-gold">✨ Voyance écrite</a>
-      <a href="rdv-telephone.html" class="cta-gold-outline">📞 RDV Téléphone</a>
-    </div>
-  </section>
+  <main>
 
-  <!-- Mot d'Alessandra -->
-  <section class="section">
-    <div class="alessandra-wrap">
-      <div class="alessandra-card">
-        <img src="assets/img/alessandra-tess.jpeg" class="alessandra-photo" alt="Alessandra Tess">
+    <!-- HERO PREMIUM -->
+    <section class="hero">
+      <div class="hero-stars">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
 
-        <div style="flex:1; min-width:260px;">
-          <div class="alessandra-title">
-            <span>Mot d’Alessandra</span>
-            <span class="alessandra-badge">Fondatrice d’Altessa</span>
-          </div>
+      <div class="hero-mini-badge">
+        ✦ Voyance élégante • confidentielle • premium
+      </div>
 
-          <p class="alessandra-note">
-            “J’ai créé Altessa pour vous offrir une voyance élégante, confidentielle et apaisante —
-            un espace où l’on peut poser ses questions en toute sérénité.
-            Pour les consultations écrites, je me suis entourée de spécialistes choisis avec soin,
-            reconnus pour la finesse de leur lecture et la justesse de leurs mots.
-            Je suis heureuse de vous accueillir ici… et de vous accompagner, avec douceur,
-            vers plus de clarté, de confiance et de lumière.”
-          </p>
+      <img
+        src="assets/img/hero/altessa-logo-premium.png"
+        class="hero-logo"
+        alt="Altessa Voyance"
+      >
 
-          <div class="alessandra-sign">
-            <span>—</span> <strong>Alessandra Tess</strong>
-            <span class="alessandra-badge">Altessa Voyance</span>
+      <p class="hero-text">
+        Découvrez l’avenir avec nos experts en ligne.<br>
+        Recevez des réponses claires, précises et personnalisées.
+      </p>
+
+      <div class="hero-actions">
+        <a href="experts.html" class="cta-gold">✨ Voyance écrite</a>
+        <a href="rdv-telephone.html" class="cta-gold-outline">📞 RDV Téléphone</a>
+      </div>
+
+      <div class="hero-scroll-glow"></div>
+    </section>
+
+    <!-- Mot d'Alessandra -->
+    <section class="section">
+      <div class="alessandra-wrap">
+        <div class="alessandra-card">
+          <img
+            src="assets/img/alessandra-tess.jpeg"
+            class="alessandra-photo"
+            alt="Alessandra Tess"
+          >
+
+          <div style="flex:1; min-width:260px;">
+            <div class="alessandra-title">
+              <span>Mot d’Alessandra</span>
+              <span class="alessandra-badge">Fondatrice d’Altessa</span>
+            </div>
+
+            <p class="alessandra-note">
+              “J’ai créé Altessa pour vous offrir une voyance élégante, confidentielle et apaisante —
+              un espace où l’on peut poser ses questions en toute sérénité.
+              Pour les consultations écrites, je me suis entourée de spécialistes choisis avec soin,
+              reconnus pour la finesse de leur lecture et la justesse de leurs mots.
+              Je suis heureuse de vous accueillir ici… et de vous accompagner, avec douceur,
+              vers plus de clarté, de confiance et de lumière.”
+            </p>
+
+            <div class="alessandra-sign">
+              <span>—</span>
+              <strong>Alessandra Tess</strong>
+              <span class="alessandra-badge">Altessa Voyance</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Images présentation -->
-  <section class="section">
-    <div class="altessa-block image-only">
-      <div class="altessa-image">
-        <img src="assets/img/presentation/voyance-moderne.jpg" alt="Voyance moderne Altessa">
+    <!-- Images présentation -->
+    <section class="section">
+      <div class="altessa-block image-only">
+        <div class="altessa-image">
+          <img
+            src="assets/img/presentation/voyance-moderne.jpg"
+            alt="Voyance moderne Altessa"
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="altessa-block reverse image-only">
+        <div class="altessa-image">
+          <img
+            src="assets/img/presentation/experts-sensibilites.jpg"
+            alt="Experts aux sensibilités uniques Altessa"
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="altessa-block image-only">
+        <div class="altessa-image">
+          <img
+            src="assets/img/presentation/experience-confidentielle.jpg"
+            alt="Expérience fluide et confidentielle Altessa"
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- IMAGE 4 -->
+    <section class="section">
+      <div class="altessa-block reverse image-only">
+        <div class="altessa-image">
+          <img
+            src="assets/img/presentation/voyance-premium-confidentielle-altessa.png.png"
+            alt="Voyance premium et confidentialité Altessa"
+          >
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top:14px;">
+        <a href="cgv.html" class="btn-primary">
+          Lire les CGV
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <p>© 2026 Altessa Voyance</p>
+
+      <div class="footer-links">
+        <a href="cgv.html">CGV</a>
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="politique-confidentialite.html">Confidentialité</a>
+        <a href="politique-cookies.html">Cookies</a>
+        <a href="contact.html">Support</a>
       </div>
     </div>
-  </section>
+  </footer>
 
-  <section class="section">
-    <div class="altessa-block reverse image-only">
-      <div class="altessa-image">
-        <img src="assets/img/presentation/experts-sensibilites.jpg" alt="Experts aux sensibilités uniques Altessa">
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="altessa-block image-only">
-      <div class="altessa-image">
-        <img src="assets/img/presentation/experience-confidentielle.jpg" alt="Expérience fluide et confidentielle Altessa">
-      </div>
-    </div>
-  </section>
-
-  <!-- IMAGE 4 (UNE SEULE FOIS) -->
-  <section class="section">
-    <div class="altessa-block reverse image-only">
-      <div class="altessa-image">
-        <img src="assets/img/presentation/voyance-premium-confidentielle-altessa.png.png"
-             alt="Voyance premium et confidentialité Altessa">
-      </div>
-    </div>
-
-    <div style="text-align:center; margin-top: 14px;">
-      <a href="cgv.html" class="btn-primary" style="display:inline-block;">
-        Lire les CGV
-      </a>
-    </div>
-  </section>
-
-</main>
-
-<footer class="footer">
-  <div class="footer-container">
-    <p>© 2026 Altessa Voyance</p>
-
-    <div class="footer-links">
-      <a href="cgv.html">CGV</a>
-      <a href="mentions-legales.html">Mentions légales</a>
-      <a href="politique-confidentialite.html">Confidentialité</a>
-      <a href="politique-cookies.html">Cookies</a>
-      <a href="contact.html">Support</a>
-    </div>
+  <!-- Cookie banner -->
+  <div id="cookie-banner" style="position:fixed;bottom:0;left:0;width:100%;background:#111;color:white;padding:15px;text-align:center;z-index:9999;">
+    Ce site utilise des cookies pour améliorer votre expérience.
+    <button type="button" onclick="acceptCookies()" style="margin-left:10px;">Accepter</button>
+    <a href="politique-cookies.html" style="color:#fff;margin-left:10px;">En savoir plus</a>
   </div>
-</footer>
 
-<!-- Cookie banner -->
-<div id="cookie-banner" style="position:fixed;bottom:0;left:0;width:100%;background:#111;color:white;padding:15px;text-align:center;z-index:9999;">
-  Ce site utilise des cookies pour améliorer votre expérience.
-  <button type="button" onclick="acceptCookies()" style="margin-left:10px;">Accepter</button>
-  <a href="politique-cookies.html" style="color:#fff;margin-left:10px;">En savoir plus</a>
-</div>
-
-<script>
-  function acceptCookies(){
-    localStorage.setItem("cookiesAccepted","true");
-    const banner = document.getElementById("cookie-banner");
-    if (banner) banner.style.display="none";
-  }
-  (function(){
-    if(localStorage.getItem("cookiesAccepted")){
+  <script>
+    function acceptCookies() {
+      localStorage.setItem("cookiesAccepted", "true");
       const banner = document.getElementById("cookie-banner");
-      if (banner) banner.style.display="none";
+      if (banner) banner.style.display = "none";
     }
-  })();
-</script>
+
+    (function () {
+      if (localStorage.getItem("cookiesAccepted")) {
+        const banner = document.getElementById("cookie-banner");
+        if (banner) banner.style.display = "none";
+      }
+    })();
+  </script>
 
 </body>
 </html>
