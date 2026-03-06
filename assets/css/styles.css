@@ -1,6 +1,6 @@
 /* =========================================================
-   ALTESSA VOYANCE – THEME MYSTIQUE / FÉERIQUE PREMIUM
-   Remplace entièrement ton styles.css par ce fichier
+   ALTESSA VOYANCE – STYLES.CSS COMPLET
+   Thème mystique / premium / violet & or
    ========================================================= */
 
 /* ========== RESET & BASE ========== */
@@ -11,21 +11,44 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   min-height: 100vh;
-  font-family: 'Poppins', system-ui, sans-serif;
+  font-family: "Poppins", system-ui, sans-serif;
   background: radial-gradient(circle at top, #4b1c7f 0, #080016 55%, #05000d 100%);
   color: #ffffff;
   overflow-x: hidden;
   position: relative;
 }
 
-/* Ciel étoilé animé */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+/* ========== FOND ÉTOILÉ ANIMÉ ========== */
+
 body::before,
 body::after {
   content: "";
@@ -44,26 +67,29 @@ body::before {
   mix-blend-mode: screen;
 }
 
-@keyframes star-drift {
-  0% { transform: translate3d(0,0,0); opacity: .4; }
-  50% { transform: translate3d(-20px,10px,0); opacity: .9; }
-  100% { transform: translate3d(0,0,0); opacity: .4; }
-}
-
 body::after {
   background-image:
     radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.7) 0, transparent 50%),
     radial-gradient(1px 1px at 60% 70%, rgba(255,255,255,0.6) 0, transparent 50%),
     radial-gradient(1px 1px at 80% 20%, rgba(248,224,160,0.7) 0, transparent 50%),
     radial-gradient(2px 2px at 40% 85%, rgba(255,255,255,0.4) 0, transparent 55%);
-  animation: star-drift 45s linear infinite;
   opacity: 0.45;
+  animation: star-drift 45s linear infinite;
 }
 
-/* Liens */
-a {
-  color: inherit;
-  text-decoration: none;
+@keyframes star-drift {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translate3d(-20px, 10px, 0);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.4;
+  }
 }
 
 /* ========== HEADER ========== */
@@ -75,6 +101,7 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 18px;
   padding: 18px 8vw;
   background: radial-gradient(circle at top left, rgba(110,58,196,0.7), rgba(5,0,20,0.96));
   backdrop-filter: blur(16px);
@@ -82,89 +109,83 @@ a {
   box-shadow: 0 10px 40px rgba(0,0,0,0.55);
 }
 
-/* Logo */
 .logo {
   display: flex;
   align-items: center;
   gap: 12px;
+  min-width: 0;
 }
 
 .logo img {
   width: 56px;
   height: 56px;
   border-radius: 999px;
-  filter: drop-shadow(0 0 26px rgba(248,224,160,0.9));
   animation: pulse-glow 3.5s ease-in-out infinite;
+  filter: drop-shadow(0 0 26px rgba(248,224,160,0.9));
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.logo-main {
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+.logo-sub {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #f3d48a;
 }
 
 @keyframes pulse-glow {
-  0%,100% { filter: drop-shadow(0 0 18px rgba(248,224,160,0.8)); }
-  50% { filter: drop-shadow(0 0 38px rgba(255,238,190,1)); }
+  0%, 100% {
+    filter: drop-shadow(0 0 18px rgba(248,224,160,0.8));
+  }
+  50% {
+    filter: drop-shadow(0 0 38px rgba(255,238,190,1));
+  }
 }
 
-.logo-text { display: flex; flex-direction: column; }
-.logo-main { font-size: 1.35rem; font-weight: 600; }
-.logo-sub  { font-size: .78rem; text-transform: uppercase; letter-spacing: .2em; color: #f3d48a; }
+/* ========== NAVIGATION ========== */
 
-/* Navigation */
 .nav {
   display: flex;
   align-items: center;
-  gap: 24px;
-  font-size: .95rem;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  font-size: 0.95rem;
 }
 
 .nav a {
-  opacity: .8;
+  opacity: 0.92;
   position: relative;
-  padding-bottom: 2px;
-}
-
-.nav a::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -6px;
-  width: 0;
-  height: 2px;
-  background-image: linear-gradient(90deg,#f8e0a0,#d9a441,#f8e0a0);
-  border-radius: 999px;
-  transition: width .18s ease, left .18s ease;
 }
 
 @keyframes shimmer-gold {
-  0% { background-position: -120% 0; }
-  100% { background-position: 220% 0; }
+  0% {
+    background-position: -120% 0;
+  }
+  100% {
+    background-position: 220% 0;
+  }
 }
 
-.nav a:hover {
-  opacity: 1;
-}
-
-.nav a:hover::after {
-  width: 100%;
-  left: 0;
-  animation: shimmer-gold 1s linear infinite;
-}
-
-.nav a.active {
-  opacity: 1; font-weight: 500;
-}
-
-.nav a.active::after {
-  width: 100%; left: 0;
-}
-
-/* Bouton contact */
 .btn-nav {
-  padding: 8px 18px;
+  padding: 10px 18px;
   border-radius: 999px;
-  background-image: linear-gradient(120deg,#f8e0a0,#d9a441,#fbeac4);
+  background-image: linear-gradient(120deg, #f8e0a0, #d9a441, #fbeac4);
   color: #2c143c;
   font-weight: 600;
-  box-shadow: 0 0 18px rgba(217,164,65,0.65);
+  box-shadow: 0 0 18px rgba(217,164,65,0.45);
   position: relative;
   overflow: hidden;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, opacity 0.22s ease;
 }
 
 .btn-nav::before {
@@ -177,131 +198,334 @@ a {
 
 .btn-nav:hover::before {
   transform: translateX(120%);
-  transition: transform .6s ease;
+  transition: transform 0.6s ease;
 }
 
-/* Sélecteur langue */
+.btn-nav:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 22px rgba(217,164,65,0.7);
+}
+
+.btn-nav.active {
+  box-shadow: 0 0 24px rgba(248,224,160,0.78);
+}
+
 #lang-switcher {
-  padding: 6px 12px;
+  padding: 8px 12px;
   border-radius: 999px;
   border: 1px solid rgba(243,212,138,0.7);
   background: rgba(5,0,20,0.85);
   color: #fdf7e6;
+  outline: none;
 }
 
-/* ========== HERO + LOTUS ANIMÉ ========== */
+/* ========== HERO PREMIUM ALTESSA ========== */
 
 .hero {
-  padding: 80px 8vw 40px;
-  text-align: center;
   position: relative;
+  overflow: hidden;
+  min-height: 920px;
+  padding: 130px 20px 110px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background:
+    radial-gradient(circle at center, rgba(126,66,185,0.28) 0%, rgba(52,20,90,0.18) 35%, rgba(17,7,35,0.82) 100%),
+    linear-gradient(180deg, #4d1f7d 0%, #2b0d44 50%, #160821 100%);
+  isolation: isolate;
 }
 
-/* Halo lumineux derrière le lotus */
 .hero::before {
   content: "";
   position: absolute;
-  top: 120px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 280px;
-  height: 280px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(248,224,160,0.4) 0, transparent 65%);
-  animation: lotus-aura 5.8s ease-in-out infinite;
+  inset: -8%;
+  background: url("../img/hero/altessa-fond-mystique.png") center center / cover no-repeat;
+  opacity: 0.55;
+  filter: saturate(1.08) contrast(1.04);
+  transform: scale(1.05);
+  animation: heroFloat 16s ease-in-out infinite alternate;
+  z-index: 0;
 }
 
-@keyframes lotus-aura {
-  0%,100% { opacity: .35; transform: translateX(-50%) scale(1); }
-  50% { opacity: .75; transform: translateX(-50%) scale(1.18); }
-}
-
-/* === ANIMATION TAPIS VOLANT === */
-
-.lotus-wrapper {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  animation: lotus-flight 3.8s ease-out forwards;
-}
-
-@keyframes lotus-flight {
-  0%   { transform: translateX(-110%) translateY(30px) rotate(-4deg); }
-  40%  { transform: translateX(15%) translateY(-10px) rotate(2deg); }
-  70%  { transform: translateX(-5%) translateY(8px); }
-  100% { transform: translateX(0) translateY(0); }
-}
-
-/* Lotus géant + flottement */
-.hero-lotus {
-  width: 260px;
-  filter: drop-shadow(0 0 40px rgba(248,224,160,1))
-          drop-shadow(0 0 70px rgba(255,230,150,0.9));
-  animation:
-    lotus-float 4s ease-in-out infinite,
-    lotus-shimmer 3s ease-in-out infinite;
-}
-
-@keyframes lotus-float {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-@keyframes lotus-shimmer {
-  0%,100% { filter: drop-shadow(0 0 35px rgba(255,230,180,0.8)); }
-  50%     { filter: drop-shadow(0 0 65px rgba(255,240,200,1)); }
-}
-
-/* Traînée dorée */
-.lotus-trail {
+.hero::after {
+  content: "";
   position: absolute;
-  left: -200px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 280px;
-  height: 80px;
-  background: radial-gradient(circle,
-    rgba(255,230,180,0.8) 0%,
-    rgba(255,230,180,0.35) 25%,
-    transparent 70%);
-  filter: blur(12px);
-  opacity: 0;
-  animation: trail-fade 4s ease-out forwards;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 32%, rgba(255,214,120,0.20) 0%, rgba(255,214,120,0.08) 18%, rgba(255,214,120,0) 42%),
+    radial-gradient(circle at 50% 58%, rgba(174,103,255,0.16) 0%, rgba(174,103,255,0.08) 24%, rgba(174,103,255,0) 50%);
+  z-index: 1;
+  pointer-events: none;
 }
 
-@keyframes trail-fade {
-  0% { opacity: 0; transform: translateX(0) scaleX(.6); }
-  20% { opacity: .8; }
-  60% { opacity: .4; transform: translateX(120px) scaleX(1.3); }
-  100% { opacity: 0; transform: translateX(250px) scaleX(1.8); }
+.hero-stars {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
 }
 
-/* Titres Hero */
+.hero-stars span {
+  position: absolute;
+  display: block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #ffd977;
+  box-shadow:
+    0 0 6px rgba(255,217,119,0.95),
+    0 0 12px rgba(255,217,119,0.55),
+    0 0 18px rgba(255,217,119,0.30);
+  animation: twinkle 3.8s infinite ease-in-out;
+}
+
+.hero-stars span:nth-child(1)  { top: 14%; left: 18%; animation-delay: .2s; }
+.hero-stars span:nth-child(2)  { top: 22%; left: 76%; animation-delay: 1.1s; }
+.hero-stars span:nth-child(3)  { top: 31%; left: 28%; animation-delay: 2.2s; }
+.hero-stars span:nth-child(4)  { top: 38%; left: 67%; animation-delay: .9s; }
+.hero-stars span:nth-child(5)  { top: 48%; left: 20%; animation-delay: 1.8s; }
+.hero-stars span:nth-child(6)  { top: 52%; left: 80%; animation-delay: 2.8s; }
+.hero-stars span:nth-child(7)  { top: 64%; left: 30%; animation-delay: .5s; }
+.hero-stars span:nth-child(8)  { top: 70%; left: 73%; animation-delay: 1.6s; }
+.hero-stars span:nth-child(9)  { top: 16%; left: 52%; animation-delay: 2.5s; }
+.hero-stars span:nth-child(10) { top: 58%; left: 54%; animation-delay: 3.1s; }
+
+.hero-mini-badge {
+  position: relative;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 22px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  color: #f7deb0;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,222,160,0.22);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.20);
+}
+
+.hero-logo {
+  position: relative;
+  z-index: 3;
+  width: min(760px, 92vw);
+  display: block;
+  margin: 0 auto 18px;
+  animation: logoBreath 6s ease-in-out infinite;
+  filter:
+    drop-shadow(0 0 18px rgba(255,214,120,0.35))
+    drop-shadow(0 0 35px rgba(160,90,255,0.18));
+}
+
 .hero-title {
+  position: relative;
+  z-index: 3;
   font-size: clamp(3rem, 4.5vw, 4rem);
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .hero-subtitle {
+  position: relative;
+  z-index: 3;
   font-size: 1.7rem;
-  letter-spacing: .32em;
+  letter-spacing: 0.32em;
   color: #f3d48a;
   margin-bottom: 16px;
 }
-/* =========================================================
-   SECTION TEXTE HERO
-   ========================================================= */
 
 .hero-text {
-  max-width: 650px;
-  margin: 0 auto 26px;
-  font-weight: 300;
-  opacity: 0.9;
+  position: relative;
+  z-index: 3;
+  max-width: 760px;
+  margin: 14px auto 0;
+  font-size: 22px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.93);
+  text-shadow: 0 10px 24px rgba(0,0,0,0.35);
 }
 
-/* Boutons Hero */
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 3;
+}
+
 .hero-btn {
   margin-top: 8px;
+}
+
+.hero-scroll-glow {
+  position: absolute;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255,215,120,0), rgba(255,215,120,.9), rgba(255,215,120,0));
+  filter: blur(2px);
+  opacity: 0.8;
+  z-index: 2;
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+@keyframes heroFloat {
+  0% {
+    transform: scale(1.05) translateY(0px) translateX(0px);
+  }
+  50% {
+    transform: scale(1.08) translateY(-10px) translateX(4px);
+  }
+  100% {
+    transform: scale(1.11) translateY(8px) translateX(-6px);
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.8);
+  }
+}
+
+@keyframes logoBreath {
+  0%, 100% {
+    transform: translateY(0);
+    filter:
+      drop-shadow(0 0 18px rgba(255,214,120,0.35))
+      drop-shadow(0 0 35px rgba(160,90,255,0.18));
+  }
+  50% {
+    transform: translateY(-4px);
+    filter:
+      drop-shadow(0 0 24px rgba(255,214,120,0.55))
+      drop-shadow(0 0 50px rgba(160,90,255,0.26));
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.45;
+    transform: translateX(-50%) scaleX(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scaleX(1.05);
+  }
+}
+
+/* ========== BOUTONS PREMIUM ========== */
+
+.btn-primary,
+.cta-gold {
+  background: linear-gradient(135deg, #f6d47a, #caa24b);
+  color: #2b0d44;
+  font-weight: 700;
+  padding: 14px 28px;
+  border-radius: 40px;
+  text-decoration: none;
+  font-size: 18px;
+  box-shadow: 0 0 18px rgba(255,215,120,0.50);
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 220px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover,
+.cta-gold:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 28px rgba(255,215,120,0.90);
+}
+
+.cta-gold-outline {
+  border: 2px solid rgba(227,193,111,0.95);
+  color: #f3d27f;
+  padding: 14px 28px;
+  border-radius: 40px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 700;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 220px;
+  background: rgba(255,255,255,0.03);
+}
+
+.cta-gold-outline:hover {
+  background: #e3c16f;
+  color: #2b0d44;
+  box-shadow: 0 0 20px rgba(255,215,120,0.80);
+  transform: translateY(-3px);
+}
+
+.btn-secondary {
+  display: inline-block;
+  padding: 10px 22px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #f8e0a0;
+  border: 1px solid rgba(248,224,160,0.55);
+  background: rgba(20,0,40,0.6);
+  transition: 0.25s ease;
+  box-shadow:
+    0 0 10px rgba(248,224,160,0.35),
+    0 0 18px rgba(248,224,160,0.2);
+}
+
+.btn-secondary:hover {
+  color: #2c143c;
+  background-image: linear-gradient(120deg, #f8e0a0, #d9a441, #fbeac4);
+  border-color: rgba(248,224,160,0.9);
+  box-shadow:
+    0 0 16px rgba(248,224,160,0.85),
+    0 0 32px rgba(248,224,160,0.55),
+    0 0 55px rgba(248,224,160,0.35);
+  transform: translateY(-3px);
+}
+
+.btn-full {
+  width: 100%;
+  padding: 14px;
+  border-radius: 999px;
+  font-size: 1.1rem;
+  background-image: linear-gradient(120deg, #f8e0a0, #d9a441, #fbeac4);
+  color: #2c143c;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 0 12px rgba(248,224,160,0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-full:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 24px rgba(248,224,160,0.7);
 }
 
 /* ========== SECTIONS GÉNÉRIQUES ========== */
@@ -326,489 +550,7 @@ a {
   opacity: 0.85;
 }
 
-/* =========================================================
-   CARTES (Horoscope / Experts / Tarifs)
-   ========================================================= */
-
-.horocard,
-.expert-card,
-.tarif-card {
-  background: radial-gradient(circle at top,#2b134f,#120021 55%,#090013 100%);
-  border-radius: 24px;
-  padding: 20px 18px 22px;
-  border: 1px solid rgba(217,164,65,0.22);
-  box-shadow: 0 0 20px rgba(0,0,0,0.6);
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-
-/* Lueur interne */
-.horocard::before,
-.expert-card::before,
-.tarif-card::before {
-  content: "";
-  position: absolute;
-  inset: -40%;
-  background: radial-gradient(circle at top, rgba(248,224,160,0.25), transparent 60%);
-  opacity: 0;
-  transition: opacity 0.25s ease;
-  pointer-events: none;
-}
-
-.horocard:hover,
-.expert-card:hover,
-.tarif-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.7);
-  border-color: rgba(248,224,160,0.8);
-}
-
-.horocard:hover::before,
-.expert-card:hover::before,
-.tarif-card:hover::before {
-  opacity: 1;
-}
-
-/* =========================================================
-   HOROSCOPE
-   ========================================================= */
-
-.horoscope-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0,1fr));
-  gap: 20px;
-  max-width: 1000px;
-  margin: 0 auto;
-  margin-top: 30px;
-}
-
-.horocard {
-  text-align: center;
-}
-
-.horocard img {
-  width: 52px;
-  height: 52px;
-  margin-bottom: 10px;
-  filter: drop-shadow(0 0 14px rgba(248,224,160,0.8));
-  animation: float-soft 6s ease-in-out infinite;
-}
-
-.horocard h3 {
-  margin: 0 0 6px;
-  font-size: 1.05rem;
-}
-
-.horocard p {
-  margin: 0;
-  font-size: 0.88rem;
-  opacity: 0.88;
-}
-
-/* =========================================================
-   EXPERTS
-   ========================================================= */
-
-.experts-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0,1fr));
-  gap: 24px;
-  margin-top: 30px;
-}
-
-.expert-card {
-  text-align: center;
-  padding-top: 26px;
-}
-
-.expert-photo {
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 12px;
-  border: 3px solid rgba(217,164,65,0.9);
-  box-shadow: 0 0 18px rgba(217,164,65,0.55);
-}
-
-.expert-card h2 {
-  margin: 0 0 4px;
-  font-size: 1.1rem;
-}
-
-.expert-role {
-  margin: 0 0 10px;
-  font-size: 0.9rem;
-  color: #f8e0a0;
-}
-
-.expert-bio {
-  font-size: 0.86rem;
-  opacity: 0.9;
-  margin: 0 0 16px;
-}
-
-/* =========================================================
-   TARIFS
-   ========================================================= */
-
-.tarifs-grid {
-  display: grid;
-  grid-template-columns: repeat(3,minmax(0,1fr));
-  gap: 24px;
-  max-width: 1000px;
-  margin: 0 auto 26px;
-}
-
-.tarif-card h2 {
-  margin: 0 0 6px;
-  font-size: 1.1rem;
-}
-
-.tarif-price {
-  font-size: 1.4rem;
-  color: #f8e0a0;
-  margin: 0 0 10px;
-  font-weight: 600;
-}
-
-.tarif-card p {
-  font-size: 0.88rem;
-  margin: 0;
-  opacity: 0.9;
-}
-
-.tarif-highlight {
-  box-shadow: 0 0 28px rgba(217,164,65,0.7);
-  border-color: rgba(248,224,160,0.85);
-}
-
-.tarifs-actions {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.tarifs-actions a + a {
-  margin-left: 10px;
-}
-
-/* =========================================================
-   FORMULAIRES TARIFS & CONTACT
-   ========================================================= */
-
-.form-section {
-  max-width: 760px;
-  margin: 0 auto;
-}
-
-.form-section h2 {
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.question-form,
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.question-form input,
-.question-form select,
-.question-form textarea,
-.contact-form input,
-.contact-form select,
-.contact-form textarea {
-  background: rgba(10,0,30,0.92);
-  border: 1px solid rgba(217,164,65,0.35);
-  border-radius: 12px;
-  padding: 10px 12px;
-  color: #ffffff;
-  font-family: inherit;
-  font-size: 0.9rem;
-}
-
-.question-form input:focus,
-.question-form select:focus,
-.question-form textarea:focus,
-.contact-form input:focus,
-.contact-form select:focus,
-.contact-form textarea:focus {
-  outline: none;
-  border-color: #f8e0a0;
-  box-shadow: 0 0 0 1px rgba(248,224,160,0.7);
-}
-
-.form-btn {
-  align-self: center;
-  margin-top: 10px;
-}
-
-.form-note {
-  font-size: 0.8rem;
-  opacity: 0.75;
-  text-align: center;
-}
-
-/* =========================================================
-   FOOTER
-   ========================================================= */
-
-.footer {
-  padding: 18px 8vw 22px;
-  text-align: center;
-  font-size: 0.85rem;
-  opacity: 0.75;
-  border-top: 1px solid rgba(217,164,65,0.18);
-  margin-top: 20px;
-}
-
-/* =========================================================
-   RESPONSIVE DESIGN
-   ========================================================= */
-
-@media (max-width: 1024px) {
-  .horoscope-grid {
-    grid-template-columns: repeat(3,1fr);
-  }
-  .experts-grid {
-    grid-template-columns: repeat(3,1fr);
-  }
-  .tarifs-grid {
-    grid-template-columns: repeat(2,1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .header {
-    flex-direction: column;
-    gap: 12px;
-  }
-  .nav {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .hero {
-    padding-top: 60px;
-  }
-  .horoscope-grid {
-    grid-template-columns: repeat(2,1fr);
-  }
-  .experts-grid {
-    grid-template-columns: repeat(2,1fr);
-  }
-  .tarifs-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 520px) {
-  .hero-title { font-size: 2.4rem; }
-  .section-title { font-size: 1.6rem; }
-  .horoscope-grid,
-  .experts-grid {
-    grid-template-columns: 1fr;
-  }
-}
-/* =========================================================
-   PAYPAL – BOÎTE MYSTIQUE PREMIUM
-   ========================================================= */
-
-.mystic-paybox {
-  margin-top: 16px;
-  padding: 20px;
-  border-radius: 18px;
-  background: radial-gradient(circle at top,
-    rgba(248,224,160,0.18),
-    rgba(20,0,40,0.65) 55%,
-    rgba(10,0,25,0.9) 100%
-  );
-  border: 1px solid rgba(248,224,160,0.38);
-  box-shadow:
-    0 0 22px rgba(0,0,0,0.55),
-    inset 0 0 24px rgba(248,224,160,0.12);
-  backdrop-filter: blur(8px);
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Lueur animée interne */
-.mystic-paybox::before {
-  content: "";
-  position: absolute;
-  inset: -50%;
-  background: radial-gradient(circle,
-    rgba(255,245,200,0.15),
-    transparent 70%
-  );
-  animation: mysticGlow 5s ease-in-out infinite;
-  pointer-events: none;
-}
-
-@keyframes mysticGlow {
-  0%,100% { opacity: 0.25; transform: scale(1); }
-  50%     { opacity: 0.65; transform: scale(1.25); }
-}
-
-.mystic-paybox h3 {
-  margin: 0 0 10px;
-  font-size: 1rem;
-  color: #f8e0a0;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  text-shadow: 0 0 8px rgba(248,224,160,0.6);
-
-   .mystic-paybox {
-  margin-top: 18px;
-  padding: 16px;
-  background: radial-gradient(circle at top, rgba(248,224,160,0.15), rgba(110,58,196,0.15));
-  border: 1px solid rgba(248,224,160,0.45);
-  border-radius: 15px;
-  text-align: center;
-  box-shadow: 0 0 25px rgba(248,224,160,0.25);
-  backdrop-filter: blur(6px);
-}
-
-.mystic-paybox h3 {
-  margin-bottom: 12px;
-  font-size: 1rem;
-  color: #f8e0a0;
-  font-weight: 500;
-}
-
-}
-
-/* Ajustement du conteneur PayPal */
-.mystic-paybox > div {
-  margin-top: 12px;
-}
-/* =========================================================
-   CONTACT — MISE EN PAGE COMPLÈTE & CENTRÉE
-   ========================================================= */
-
-.page-contact .section {
-  max-width: 900px;
-  margin: 0 auto;
-  padding-top: 20px;
-}
-
-/* Conteneur du formulaire */
-.contact-form {
-  max-width: 650px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 26px;
-  padding: 20px;
-}
-
-/* Ligne de champ */
-.form-row {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-/* Labels */
-.form-row label {
-  font-size: 1rem;
-  opacity: 0.85;
-  font-weight: 400;
-}
-
-/* Inputs + champs */
-.form-row input,
-.form-row select,
-.form-row textarea {
-  background: rgba(10,0,30,0.92);
-  border: 1px solid rgba(217,164,65,0.35);
-  border-radius: 12px;
-  padding: 12px;
-  color: #ffffff;
-  font-size: 1rem;
-  font-family: inherit;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
-}
-
-/* Focus lumineux */
-.form-row input:focus,
-.form-row select:focus,
-.form-row textarea:focus {
-  outline: none;
-  border-color: #f8e0a0;
-  box-shadow: 0 0 8px rgba(248,224,160,0.7);
-}
-
-/* Animation sentimentale */
-.sentimental-only {
-  animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Note */
-.form-note {
-  font-size: 0.8rem;
-  text-align: center;
-  opacity: 0.7;
-}
-
-/* Bouton full width */
-.btn-full {
-  width: 100%;
-  padding: 14px;
-  border-radius: 999px;
-  font-size: 1.1rem;
-  background-image: linear-gradient(120deg,#f8e0a0,#d9a441,#fbeac4);
-  color: #2c143c;
-  border: none;
-  cursor: pointer;
-  font-weight: 600;
-  box-shadow: 0 0 12px rgba(248,224,160,0.35);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.btn-full:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 24px rgba(248,224,160,0.7);
-}
-/* =========================================================
-   BOUTON CONSULTER — STYLE DORÉ PREMIUM
-   ========================================================= */
-
-.btn-secondary {
-  display: inline-block;
-  padding: 10px 22px;
-  border-radius: 999px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: #f8e0a0;
-  border: 1px solid rgba(248,224,160,0.55);
-  background: rgba(20,0,40,0.6);
-  text-decoration: none;
-  transition: 0.25s ease;
-  box-shadow:
-    0 0 10px rgba(248,224,160,0.35),
-    0 0 18px rgba(248,224,160,0.2);
-}
-
-/* Surbrillance mystique */
-.btn-secondary:hover {
-  color: #2c143c;
-  background-image: linear-gradient(120deg,#f8e0a0,#d9a441,#fbeac4);
-  border-color: rgba(248,224,160,0.9);
-  box-shadow:
-    0 0 16px rgba(248,224,160,0.85),
-    0 0 32px rgba(248,224,160,0.55),
-    0 0 55px rgba(248,224,160,0.35);
-  transform: translateY(-3px);
-}
-/* ===== ALTESSA PREMIUM SECTIONS ===== */
+/* ========== BLOCS ALTESSA ========== */
 
 .altessa-block {
   display: grid;
@@ -853,16 +595,557 @@ a {
 
 .altessa-image img {
   width: 100%;
-  border-radius: 12px;
+  height: auto;
+  border-radius: 18px;
   box-shadow: 0 0 40px rgba(212,175,55,0.15);
 }
 
-/* Responsive */
+.image-only {
+  display: flex;
+  justify-content: center;
+}
+
+.image-only .altessa-image {
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* ========== CARTES ========== */
+
+.horocard,
+.expert-card,
+.tarif-card {
+  background: radial-gradient(circle at top, #2b134f, #120021 55%, #090013 100%);
+  border-radius: 24px;
+  padding: 20px 18px 22px;
+  border: 1px solid rgba(217,164,65,0.22);
+  box-shadow: 0 0 20px rgba(0,0,0,0.6);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.horocard::before,
+.expert-card::before,
+.tarif-card::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(circle at top, rgba(248,224,160,0.25), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.horocard:hover,
+.expert-card:hover,
+.tarif-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.7);
+  border-color: rgba(248,224,160,0.8);
+}
+
+.horocard:hover::before,
+.expert-card:hover::before,
+.tarif-card:hover::before {
+  opacity: 1;
+}
+
+/* ========== HOROSCOPE ========== */
+
+.horoscope-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 30px auto 0;
+}
+
+.horocard {
+  text-align: center;
+}
+
+.horocard img {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 10px;
+  filter: drop-shadow(0 0 14px rgba(248,224,160,0.8));
+  animation: float-soft 6s ease-in-out infinite;
+}
+
+.horocard h3 {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+}
+
+.horocard p {
+  margin: 0;
+  font-size: 0.88rem;
+  opacity: 0.88;
+}
+
+@keyframes float-soft {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* ========== EXPERTS ========== */
+
+.experts-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 30px;
+}
+
+.expert-card {
+  text-align: center;
+  padding-top: 26px;
+}
+
+.expert-photo {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 12px;
+  border: 3px solid rgba(217,164,65,0.9);
+  box-shadow: 0 0 18px rgba(217,164,65,0.55);
+}
+
+.expert-card h2 {
+  margin: 0 0 4px;
+  font-size: 1.1rem;
+}
+
+.expert-role {
+  margin: 0 0 10px;
+  font-size: 0.9rem;
+  color: #f8e0a0;
+}
+
+.expert-bio {
+  font-size: 0.86rem;
+  opacity: 0.9;
+  margin: 0 0 16px;
+}
+
+/* ========== TARIFS ========== */
+
+.tarifs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto 26px;
+}
+
+.tarif-card h2 {
+  margin: 0 0 6px;
+  font-size: 1.1rem;
+}
+
+.tarif-price {
+  font-size: 1.4rem;
+  color: #f8e0a0;
+  margin: 0 0 10px;
+  font-weight: 600;
+}
+
+.tarif-card p {
+  font-size: 0.88rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.tarif-highlight {
+  box-shadow: 0 0 28px rgba(217,164,65,0.7);
+  border-color: rgba(248,224,160,0.85);
+}
+
+.tarifs-actions {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.tarifs-actions a + a {
+  margin-left: 10px;
+}
+
+/* ========== FORMULAIRES ========== */
+
+.form-section {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.form-section h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.question-form,
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.question-form input,
+.question-form select,
+.question-form textarea,
+.contact-form input,
+.contact-form select,
+.contact-form textarea,
+.form-row input,
+.form-row select,
+.form-row textarea {
+  background: rgba(10,0,30,0.92);
+  border: 1px solid rgba(217,164,65,0.35);
+  border-radius: 12px;
+  padding: 12px;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.question-form input:focus,
+.question-form select:focus,
+.question-form textarea:focus,
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus,
+.form-row input:focus,
+.form-row select:focus,
+.form-row textarea:focus {
+  outline: none;
+  border-color: #f8e0a0;
+  box-shadow: 0 0 8px rgba(248,224,160,0.7);
+}
+
+.form-note {
+  font-size: 0.8rem;
+  opacity: 0.75;
+  text-align: center;
+}
+
+/* ========== CONTACT ========== */
+
+.page-contact .section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.contact-form {
+  max-width: 650px;
+  margin: 0 auto;
+  gap: 26px;
+  padding: 20px;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-row label {
+  font-size: 1rem;
+  opacity: 0.85;
+  font-weight: 400;
+}
+
+.sentimental-only {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========== PAYPAL – BOÎTE MYSTIQUE PREMIUM ========== */
+
+.mystic-paybox {
+  margin-top: 18px;
+  padding: 16px;
+  background: radial-gradient(circle at top, rgba(248,224,160,0.15), rgba(110,58,196,0.15));
+  border: 1px solid rgba(248,224,160,0.45);
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(248,224,160,0.25);
+  backdrop-filter: blur(6px);
+  position: relative;
+  overflow: hidden;
+}
+
+.mystic-paybox::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  background: radial-gradient(circle, rgba(255,245,200,0.15), transparent 70%);
+  animation: mysticGlow 5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes mysticGlow {
+  0%, 100% {
+    opacity: 0.25;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.25);
+  }
+}
+
+.mystic-paybox h3 {
+  margin: 0 0 12px;
+  font-size: 1rem;
+  color: #f8e0a0;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 8px rgba(248,224,160,0.6);
+}
+
+.mystic-paybox > div {
+  margin-top: 12px;
+}
+
+/* ========== ALESSANDRA CARD ========== */
+
+.alessandra-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 18px;
+}
+
+.alessandra-card {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 22px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+}
+
+.alessandra-photo {
+  width: 140px;
+  height: 140px;
+  border-radius: 22px;
+  object-fit: cover;
+  border: 2px solid rgba(227,193,111,0.65);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.28);
+  background: rgba(255,255,255,0.06);
+}
+
+.alessandra-title {
+  margin: 0 0 10px;
+  font-size: 18px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.92);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.alessandra-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 700;
+  background: rgba(227,193,111,0.14);
+  border: 1px solid rgba(227,193,111,0.32);
+  color: rgba(255,255,255,0.92);
+  white-space: nowrap;
+}
+
+.alessandra-note {
+  font-family: "Parisienne", cursive;
+  font-size: 28px;
+  line-height: 1.35;
+  color: rgba(255,255,255,0.92);
+  margin: 0;
+  text-shadow: 0 8px 18px rgba(0,0,0,0.25);
+}
+
+.alessandra-sign {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  color: rgba(255,255,255,0.80);
+  font-size: 14px;
+}
+
+.alessandra-sign strong {
+  color: rgba(255,255,255,0.92);
+}
+
+/* ========== FOOTER ========== */
+
+.footer {
+  padding: 22px 8vw 28px;
+  text-align: center;
+  font-size: 0.9rem;
+  opacity: 0.9;
+  border-top: 1px solid rgba(217,164,65,0.18);
+  margin-top: 20px;
+  background: rgba(5,0,20,0.35);
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-links {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  opacity: 0.85;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.footer-links a:hover {
+  opacity: 1;
+  color: #f8e0a0;
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 1024px) {
+  .horoscope-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .experts-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .tarifs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 900px) {
   .altessa-block {
     grid-template-columns: 1fr;
   }
+
   .altessa-block.reverse {
     direction: ltr;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px 5vw;
+  }
+
+  .nav {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .hero {
+    min-height: 760px;
+    padding: 110px 18px 90px;
+  }
+
+  .hero-logo {
+    width: min(520px, 95vw);
+  }
+
+  .hero-text {
+    font-size: 18px;
+    max-width: 92%;
+  }
+
+  .horoscope-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .experts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tarifs-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero {
+    min-height: 690px;
+    padding: 95px 16px 72px;
+  }
+
+  .hero-mini-badge {
+    font-size: 12px;
+    padding: 8px 14px;
+  }
+
+  .hero-text {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .hero-title {
+    font-size: 2.4rem;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+  }
+
+  .horoscope-grid,
+  .experts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-gold,
+  .cta-gold-outline,
+  .btn-primary {
+    min-width: unset;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .alessandra-note {
+    font-size: 24px;
+  }
+
+  .alessandra-photo {
+    width: 120px;
+    height: 120px;
   }
 }
