@@ -24,7 +24,8 @@ html {
 body {
   min-height: 100vh;
   font-family: "Poppins", system-ui, sans-serif;
-  background: radial-gradient(circle at top, #4b1c7f 0, #080016 55%, #05000d 100%);
+  background:
+    radial-gradient(circle at 50% 22%, rgba(114, 56, 180, 0.38) 0%, rgba(50, 18, 84, 0.22) 22%, rgba(8, 3, 18, 0.92) 58%, #000000 100%);
   color: #ffffff;
   overflow-x: hidden;
   position: relative;
@@ -48,16 +49,6 @@ textarea {
 }
 
 /* ========== FOND ÉTOILÉ ANIMÉ ========== */
-
-body {
-  min-height: 100vh;
-  font-family: "Poppins", system-ui, sans-serif;
-  background:
-    radial-gradient(circle at 50% 22%, rgba(114, 56, 180, 0.38) 0%, rgba(50, 18, 84, 0.22) 22%, rgba(8, 3, 18, 0.92) 58%, #000000 100%);
-  color: #ffffff;
-  overflow-x: hidden;
-  position: relative;
-}
 
 body::before,
 body::after {
@@ -92,7 +83,6 @@ body::after {
     radial-gradient(1px 1px at 92% 58%, rgba(255,255,255,0.7) 0, transparent 55%);
   opacity: 0.9;
   animation: star-drift 60s linear infinite;
-}
 }
 
 @keyframes star-drift {
@@ -241,8 +231,8 @@ body::after {
   justify-content: center;
   text-align: center;
   background:
-    radial-gradient(circle at center, rgba(126,66,185,0.28) 0%, rgba(52,20,90,0.18) 35%, rgba(17,7,35,0.82) 100%),
-    linear-gradient(180deg, #4d1f7d 0%, #2b0d44 50%, #160821 100%);
+    radial-gradient(circle at center, rgba(126,66,185,0.20) 0%, rgba(52,20,90,0.12) 30%, rgba(7,3,16,0.78) 62%, rgba(0,0,0,0.96) 100%),
+    linear-gradient(180deg, #14061f 0%, #09030f 50%, #000000 100%);
   isolation: isolate;
 }
 
@@ -251,7 +241,7 @@ body::after {
   position: absolute;
   inset: -8%;
   background: url("../img/hero/altessa-fond-mystique.png") center center / cover no-repeat;
-  opacity: 0.55;
+  opacity: 0.40;
   filter: saturate(1.08) contrast(1.04);
   transform: scale(1.05);
   animation: heroFloat 16s ease-in-out infinite alternate;
@@ -269,9 +259,9 @@ body::after {
   border-radius: 50%;
   background:
     radial-gradient(circle,
-      rgba(255,214,120,0.22) 0%,
-      rgba(174,103,255,0.16) 34%,
-      rgba(174,103,255,0.08) 50%,
+      rgba(255,214,120,0.18) 0%,
+      rgba(174,103,255,0.12) 34%,
+      rgba(174,103,255,0.06) 50%,
       rgba(174,103,255,0) 72%);
   filter: blur(36px);
   z-index: 1;
@@ -342,18 +332,18 @@ body::after {
   border-radius: 28px;
   background:
     radial-gradient(circle at center,
-      rgba(255,230,150,0.12) 0%,
-      rgba(160,90,255,0.12) 42%,
-      rgba(255,255,255,0.02) 64%,
+      rgba(255,230,150,0.08) 0%,
+      rgba(160,90,255,0.08) 42%,
+      rgba(255,255,255,0.015) 64%,
       rgba(255,255,255,0) 78%);
   box-shadow:
-    0 0 40px rgba(255,214,120,0.18),
-    0 0 90px rgba(160,90,255,0.18);
+    0 0 26px rgba(255,214,120,0.10),
+    0 0 65px rgba(160,90,255,0.10);
   backdrop-filter: blur(10px);
   animation: logoBreath 6s ease-in-out infinite, logoFloat 8s ease-in-out infinite;
   filter:
-    drop-shadow(0 0 18px rgba(255,214,120,0.28))
-    drop-shadow(0 0 35px rgba(160,90,255,0.18));
+    drop-shadow(0 0 18px rgba(255,214,120,0.24))
+    drop-shadow(0 0 35px rgba(160,90,255,0.14));
 }
 
 .hero-title {
@@ -450,13 +440,13 @@ body::after {
 @keyframes logoBreath {
   0%, 100% {
     filter:
-      drop-shadow(0 0 18px rgba(255,214,120,0.28))
-      drop-shadow(0 0 35px rgba(160,90,255,0.18));
+      drop-shadow(0 0 18px rgba(255,214,120,0.24))
+      drop-shadow(0 0 35px rgba(160,90,255,0.14));
   }
   50% {
     filter:
-      drop-shadow(0 0 28px rgba(255,214,120,0.42))
-      drop-shadow(0 0 55px rgba(160,90,255,0.24));
+      drop-shadow(0 0 28px rgba(255,214,120,0.34))
+      drop-shadow(0 0 55px rgba(160,90,255,0.18));
   }
 }
 
