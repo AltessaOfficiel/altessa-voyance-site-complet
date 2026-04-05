@@ -2,8 +2,54 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title data-i18n="home_title">Altessa Voyance — Accueil</title>
+<title>Altessa Voyance — Voyance en ligne : Tarot, Astrologie & Médium</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ✅ SEO ESSENTIEL -->
+<meta name="description" content="Altessa Voyance — Consultations de voyance en ligne par écrit ou par téléphone. Tarot, astrologie, médium : des experts choisis pour leur précision et leur bienveillance. Réponses claires et personnalisées.">
+<meta name="keywords" content="voyance en ligne, voyance par écrit, tarot en ligne, astrologie, médium, consultation voyance, voyance téléphone, Altessa Voyance">
+<meta name="author" content="Alessandra Tess — Altessa Voyance">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://altessaofficiel.github.io/altessa-voyance-site-complet/">
+
+<!-- ✅ OPEN GRAPH (Facebook, WhatsApp, LinkedIn) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://altessaofficiel.github.io/altessa-voyance-site-complet/">
+<meta property="og:title" content="Altessa Voyance — Voyance en ligne, Tarot & Médium">
+<meta property="og:description" content="Consultations de voyance élégantes et confidentielles. Tarot, astrologie, médium par écrit ou téléphone. Experts choisis avec soin par Alessandra Tess.">
+<meta property="og:image" content="https://altessaofficiel.github.io/altessa-voyance-site-complet/assets/img/logo-altessa-premium.png">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Altessa Voyance">
+
+<!-- ✅ TWITTER CARD -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Altessa Voyance — Voyance en ligne, Tarot & Médium">
+<meta name="twitter:description" content="Consultations de voyance élégantes et confidentielles. Tarot, astrologie, médium par écrit ou téléphone.">
+<meta name="twitter:image" content="https://altessaofficiel.github.io/altessa-voyance-site-complet/assets/img/logo-altessa-premium.png">
+
+<!-- ✅ SCHEMA.ORG -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Altessa Voyance",
+  "description": "Consultations de voyance en ligne par écrit ou par téléphone. Tarot, astrologie, médium.",
+  "url": "https://altessaofficiel.github.io/altessa-voyance-site-complet/",
+  "logo": "https://altessaofficiel.github.io/altessa-voyance-site-complet/assets/img/logo-altessa-premium.png",
+  "image": "https://altessaofficiel.github.io/altessa-voyance-site-complet/assets/img/logo-altessa-premium.png",
+  "founder": {
+    "@type": "Person",
+    "name": "Alessandra Tess"
+  },
+  "serviceType": ["Voyance par écrit", "Tarot", "Astrologie", "Médium", "Consultation téléphonique"],
+  "inLanguage": ["fr", "en", "es", "pt", "it"],
+  "offers": {
+    "@type": "Offer",
+    "url": "https://altessaofficiel.github.io/altessa-voyance-site-complet/tarifs.html",
+    "priceCurrency": "EUR"
+  }
+}
+</script>
 
 <!-- Polices -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -20,258 +66,194 @@
 <body>
 
 <header class="header">
+  <div class="logo">
+    <img src="assets/img/logo-altessa.png" alt="Altessa Voyance — Logo officiel">
+    <div class="logo-text">
+      <span class="logo-main">Altessa</span>
+      <span class="logo-sub">Voyance</span>
+    </div>
+  </div>
 
-<div class="logo">
-<img src="assets/img/logo-altessa.png" alt="Logo Altessa">
-<div class="logo-text">
-<span class="logo-main">Altessa</span>
-<span class="logo-sub">Voyance</span>
-</div>
-</div>
+  <nav class="nav" aria-label="Navigation principale">
+    <a href="index.html" class="btn-nav active" aria-current="page">Accueil</a>
+    <a href="experts.html" class="btn-nav">Voyance écrite</a>
+    <a href="tarifs.html" class="btn-nav">Tarifs</a>
+    <a href="rdv-telephone.html" class="btn-nav">RDV Téléphone</a>
+    <a href="contact.html" class="btn-nav">Support</a>
 
-<nav class="nav">
-
-<a href="index.html" class="btn-nav active">Accueil</a>
-<a href="experts.html" class="btn-nav">Voyance écrite</a>
-<a href="tarifs.html" class="btn-nav">Tarifs</a>
-<a href="rdv-telephone.html" class="btn-nav">RDV Téléphone</a>
-<a href="contact.html" class="btn-nav">Support</a>
-
-<select id="lang-switcher">
-<option value="fr">🇫🇷 FR</option>
-<option value="en">🇬🇧 EN</option>
-<option value="es">🇪🇸 ES</option>
-<option value="pt">🇵🇹 PT</option>
-<option value="it">🇮🇹 IT</option>
-</select>
-
-</nav>
-
+    <select id="lang-switcher" aria-label="Choisir la langue">
+      <option value="fr">🇫🇷 FR</option>
+      <option value="en">🇬🇧 EN</option>
+      <option value="es">🇪🇸 ES</option>
+      <option value="pt">🇵🇹 PT</option>
+      <option value="it">🇮🇹 IT</option>
+    </select>
+  </nav>
 </header>
 
 <main>
 
-
-<!-- HERO -->
-<section class="hero">
-
-<div class="hero-stars">
-<span></span><span></span><span></span><span></span><span></span>
-<span></span><span></span><span></span><span></span><span></span>
-</div>
-
-
-<img
-src="assets/img/logo-altessa-premium.png"
-class="hero-logo"
-alt="Altessa Voyance">
-
-<p class="hero-text">
-Découvrez l’avenir avec nos experts en ligne.<br>
-Recevez des réponses claires, précises et personnalisées.
-</p>
-
-<div class="hero-actions">
-
-<a href="experts.html" class="cta-gold">
-✨ Voyance écrite
-</a>
-
-<a href="rdv-telephone.html" class="cta-gold-outline">
-📞 RDV Téléphone
-</a>
-
-</div>
-
-</section>
-
-
-
-<!-- Mot d'Alessandra -->
-
-<section class="section">
-
-<div class="alessandra-wrap">
-
-<div class="alessandra-card">
-
-<img
-src="assets/img/alessandra-tess.jpeg"
-class="alessandra-photo"
-alt="Alessandra Tess">
-
-<div style="flex:1">
-
-<div class="alessandra-title">
-<span>Mot d’Alessandra</span>
-<span class="alessandra-badge">Fondatrice d’Altessa</span>
-</div>
-
-<p class="alessandra-note">
-
-“J’ai créé Altessa pour vous offrir une voyance élégante,
-confidentielle et apaisante — un espace où l’on peut poser
-ses questions en toute sérénité.
-
-Pour les consultations écrites, je me suis entourée de
-spécialistes choisis avec soin, reconnus pour la finesse
-de leur lecture et la justesse de leurs mots.
-
-Je suis heureuse de vous accueillir ici…
-et de vous accompagner avec douceur vers plus
-de clarté, de confiance et de lumière.”
-
-</p>
-
-<div class="alessandra-sign">
-— <strong>Alessandra Tess</strong>
-<span class="alessandra-badge">Altessa Voyance</span>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- Images présentation -->
-
-<section class="section">
-
-<div class="altessa-block image-only">
-
-<div class="altessa-image">
-
-<img
-src="assets/img/presentation/voyance-moderne.jpg"
-alt="Voyance moderne Altessa">
-
-</div>
-
-</div>
-
-</section>
-
-
-<section class="section">
-
-<div class="altessa-block reverse image-only">
-
-<div class="altessa-image">
-
-<img
-src="assets/img/presentation/experts-sensibilites.jpg"
-alt="Experts aux sensibilités uniques Altessa">
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<section class="section">
-
-<div class="altessa-block image-only">
-
-<div class="altessa-image">
-
-<img
-src="assets/img/presentation/experience-confidentielle.jpg"
-alt="Expérience fluide et confidentielle Altessa">
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<section class="section">
-
-<div class="altessa-block reverse image-only">
-
-<div class="altessa-image">
-
-<img
-src="assets/img/presentation/voyance-premium-confidentielle-altessa.png.png"
-alt="Voyance premium Altessa">
-
-</div>
-
-</div>
-
-<div class="cgv-link-wrap">
-<a href="cgv.html" class="cgv-link">Lire les CGV</a>
-</div>
-
-</section>
-
+  <!-- HERO -->
+  <section class="hero" aria-label="Présentation Altessa Voyance">
+    <div class="hero-stars" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <h1 class="visually-hidden">Altessa Voyance — Voyance en ligne par écrit, Tarot, Astrologie et Médium</h1>
+
+    <img
+      src="assets/img/logo-altessa-premium.png"
+      class="hero-logo"
+      alt="Altessa Voyance — Voyance en ligne premium"
+      width="300"
+      loading="eager">
+
+    <p class="hero-text">
+      Découvrez l'avenir avec nos experts en voyance en ligne.<br>
+      Recevez des réponses claires, précises et personnalisées — par écrit ou par téléphone.
+    </p>
+
+    <div class="hero-actions">
+      <a href="experts.html" class="cta-gold" aria-label="Consulter un expert en voyance écrite">
+        ✨ Voyance écrite
+      </a>
+      <a href="rdv-telephone.html" class="cta-gold-outline" aria-label="Prendre rendez-vous par téléphone">
+        📞 RDV Téléphone
+      </a>
+    </div>
+  </section>
+
+  <!-- Mot d'Alessandra -->
+  <section class="section" aria-label="Message de la fondatrice Alessandra Tess">
+    <div class="alessandra-wrap">
+      <div class="alessandra-card">
+        <img
+          src="assets/img/alessandra-tess.jpeg"
+          class="alessandra-photo"
+          alt="Alessandra Tess, fondatrice d'Altessa Voyance"
+          width="200"
+          loading="lazy">
+
+        <div style="flex:1">
+          <div class="alessandra-title">
+            <h2>Mot d'Alessandra</h2>
+            <span class="alessandra-badge">Fondatrice d'Altessa</span>
+          </div>
+
+          <p class="alessandra-note">
+            "J'ai créé Altessa pour vous offrir une voyance élégante,
+            confidentielle et apaisante — un espace où l'on peut poser
+            ses questions en toute sérénité.
+
+            Pour les consultations écrites, je me suis entourée de
+            spécialistes choisis avec soin, reconnus pour la finesse
+            de leur lecture et la justesse de leurs mots.
+
+            Je suis heureuse de vous accueillir ici…
+            et de vous accompagner avec douceur vers plus
+            de clarté, de confiance et de lumière."
+          </p>
+
+          <div class="alessandra-sign">
+            — <strong>Alessandra Tess</strong>
+            <span class="alessandra-badge">Altessa Voyance</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Images présentation -->
+  <section class="section" aria-label="Voyance moderne et confidentielle">
+    <div class="altessa-block image-only">
+      <div class="altessa-image">
+        <img src="assets/img/presentation/voyance-moderne.jpg"
+          alt="Voyance en ligne moderne et accessible avec Altessa"
+          loading="lazy" width="800">
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-label="Experts en voyance aux sensibilités uniques">
+    <div class="altessa-block reverse image-only">
+      <div class="altessa-image">
+        <img src="assets/img/presentation/experts-sensibilites.jpg"
+          alt="Experts en tarot, astrologie et médiumnité chez Altessa Voyance"
+          loading="lazy" width="800">
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-label="Expérience confidentielle et fluide">
+    <div class="altessa-block image-only">
+      <div class="altessa-image">
+        <img src="assets/img/presentation/experience-confidentielle.jpg"
+          alt="Consultation de voyance confidentielle et sécurisée en ligne"
+          loading="lazy" width="800">
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-label="Voyance premium Altessa">
+    <div class="altessa-block reverse image-only">
+      <div class="altessa-image">
+        <img src="assets/img/presentation/voyance-premium-confidentielle-altessa.png.png"
+          alt="Voyance premium et personnalisée — Altessa Voyance"
+          loading="lazy" width="800">
+      </div>
+    </div>
+    <div class="cgv-link-wrap">
+      <a href="cgv.html" class="cgv-link">Lire les CGV</a>
+    </div>
+  </section>
 
 </main>
 
-
-
 <footer class="footer">
-
-<div class="footer-container">
-
-<p>© 2026 Altessa Voyance</p>
-
-<div class="footer-links">
-
-<a href="cgv.html">CGV</a>
-<a href="mentions-legales.html">Mentions légales</a>
-<a href="politique-confidentialite.html">Confidentialité</a>
-<a href="politique-cookies.html">Cookies</a>
-<a href="contact.html">Support</a>
-
-</div>
-
-</div>
-
+  <div class="footer-container">
+    <p>© 2026 Altessa Voyance — Voyance en ligne par écrit, tarot, astrologie & médium</p>
+    <div class="footer-links">
+      <a href="cgv.html">CGV</a>
+      <a href="mentions-legales.html">Mentions légales</a>
+      <a href="politique-confidentialite.html">Confidentialité</a>
+      <a href="politique-cookies.html">Cookies</a>
+      <a href="contact.html">Support</a>
+    </div>
+  </div>
 </footer>
 
-
-
 <!-- Cookies -->
-
-<div id="cookie-banner"
-style="position:fixed;bottom:0;left:0;width:100%;background:#111;color:white;padding:15px;text-align:center;z-index:9999;">
-
-Ce site utilise des cookies pour améliorer votre expérience.
-
-<button onclick="acceptCookies()" style="margin-left:10px;">
-Accepter
-</button>
-
-<a href="politique-cookies.html" style="color:#fff;margin-left:10px;">
-En savoir plus
-</a>
-
+<div id="cookie-banner" role="dialog" aria-live="polite" aria-label="Consentement aux cookies"
+  style="position:fixed;bottom:0;left:0;width:100%;background:#111;color:white;padding:15px;text-align:center;z-index:9999;">
+  Ce site utilise des cookies pour améliorer votre expérience.
+  <button onclick="acceptCookies()" style="margin-left:10px;">Accepter</button>
+  <a href="politique-cookies.html" style="color:#fff;margin-left:10px;">En savoir plus</a>
 </div>
 
-
+<style>
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+</style>
 
 <script>
-
 function acceptCookies(){
-localStorage.setItem("cookiesAccepted","true");
-document.getElementById("cookie-banner").style.display="none";
+  localStorage.setItem("cookiesAccepted","true");
+  document.getElementById("cookie-banner").style.display="none";
 }
-
 if(localStorage.getItem("cookiesAccepted")){
-document.getElementById("cookie-banner").style.display="none";
+  document.getElementById("cookie-banner").style.display="none";
 }
-
 </script>
-
 
 </body>
 </html>
