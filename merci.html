@@ -2,104 +2,482 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Merci pour votre confiance — Altessa Voyance</title>
+  <title>Altessa Voyance — Question envoyée</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <style>
-    .merci-section {
-      text-align: center;
-      padding: 120px 8vw 80px;
-      position: relative;
-    }
-    .merci-logo {
-      margin-bottom: 24px;
-      font-weight: 600;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      font-size: 0.9rem;
-      opacity: 0.8;
-    }
-    .merci-title {
-      font-size: clamp(2.4rem, 4vw, 3rem);
-      margin-bottom: 16px;
-    }
-    .merci-text {
-      max-width: 600px;
-      margin: 0 auto 28px;
-      opacity: 0.9;
-      font-weight: 300;
-    }
-    .merci-countdown {
-      margin-top: 18px;
-      font-size: 0.9rem;
-      opacity: 0.8;
-    }
-  </style>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cinzel:wght@400;500;600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --or: #c9a96e;
+  --or-clair: #e8d5b0;
+  --or-sombre: #a07840;
+  --fond: #0a0806;
+  --fond3: #1a1510;
+  --texte: #ede5d8;
+  --texte-doux: #9a8870;
+  --bordure: rgba(201,169,110,0.18);
+  --bordure-forte: rgba(201,169,110,0.38);
+  --vert: #7ecf9a;
+  --vert-fond: rgba(34,180,80,0.08);
+  --vert-bordure: rgba(34,180,80,0.25);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--fond);
+  color: var(--texte);
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,169,110,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 15% 85%, rgba(80,40,110,0.07) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Étoiles ── */
+.stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+.star {
+  position: absolute;
+  width: 2px; height: 2px;
+  background: var(--or-clair);
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: twinkle var(--d, 3s) var(--delay, 0s) ease-in-out infinite alternate;
+}
+@keyframes twinkle {
+  from { opacity: 0.1; transform: scale(0.8); }
+  to   { opacity: 0.7; transform: scale(1.4); }
+}
+
+/* ── Header ── */
+header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 3rem;
+  border-bottom: 1px solid var(--bordure);
+  background: rgba(10,8,6,0.7);
+  backdrop-filter: blur(14px);
+}
+
+.logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+.logo img { height: 36px; width: 36px; object-fit: contain; }
+.logo-main { display: block; font-family: 'Cinzel', serif; font-size: 1.05rem; color: var(--or); letter-spacing: 0.14em; line-height: 1; }
+.logo-sub { display: block; font-family: 'Cinzel', serif; font-size: 0.48rem; color: var(--texte-doux); letter-spacing: 0.25em; text-transform: uppercase; margin-top: 3px; }
+
+nav { display: flex; gap: 0.2rem; }
+.btn-nav { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--texte-doux); text-decoration: none; padding: 0.4rem 0.9rem; border-radius: 4px; transition: color 0.25s, background 0.25s; }
+.btn-nav:hover { color: var(--or); background: rgba(201,169,110,0.07); }
+
+/* ── Main ── */
+main {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+}
+
+/* ── Carte centrale ── */
+.carte {
+  max-width: 560px;
+  width: 100%;
+  background: rgba(201,169,110,0.04);
+  border: 1px solid var(--bordure);
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  animation: fadeUp 0.8s ease both;
+}
+
+.carte::before {
+  content: '';
+  position: absolute;
+  top: -60px; left: 50%;
+  transform: translateX(-50%);
+  width: 240px; height: 240px;
+  background: radial-gradient(circle, rgba(201,169,110,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Icône animée ── */
+.icone-wrap {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.8rem;
+}
+
+.icone-cercle {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid var(--vert-bordure);
+  animation: expandRing 2s ease-out infinite;
+}
+
+.icone-cercle:nth-child(2) { animation-delay: 0.5s; }
+.icone-cercle:nth-child(3) { animation-delay: 1s; }
+
+@keyframes expandRing {
+  0%   { transform: scale(0.8); opacity: 0.8; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+.icone-centre {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--vert-fond);
+  border: 1px solid var(--vert-bordure);
+  border-radius: 50%;
+  font-size: 2rem;
+  z-index: 1;
+}
+
+/* ── Badge ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--vert-fond);
+  border: 1px solid var(--vert-bordure);
+  border-radius: 2rem;
+  padding: 0.4rem 1rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--vert);
+  margin-bottom: 1.5rem;
+  animation: fadeUp 0.6s ease 0.15s both;
+}
+
+/* ── Textes ── */
+.titre {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: var(--or);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.7rem;
+  animation: fadeUp 0.6s ease 0.2s both;
+}
+
+.sous-titre {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--texte-doux);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  animation: fadeUp 0.6s ease 0.25s both;
+}
+
+/* ── Info délai ── */
+.info-delai {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: rgba(201,169,110,0.05);
+  border-left: 3px solid var(--or);
+  border-radius: 0 8px 8px 0;
+  padding: 0.9rem 1.2rem;
+  margin-bottom: 2rem;
+  text-align: left;
+  animation: fadeUp 0.6s ease 0.3s both;
+}
+
+.info-delai-texte {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: var(--texte-doux);
+  line-height: 1.6;
+}
+
+.info-delai-texte strong { color: var(--or-clair); }
+
+/* ── Étapes visuelles ── */
+.etapes {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2.2rem;
+  animation: fadeUp 0.6s ease 0.35s both;
+}
+
+.etape {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  flex: 1;
+  max-width: 110px;
+}
+
+.etape-num {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+}
+
+.etape-num.fait {
+  background: var(--vert-fond);
+  border: 1px solid var(--vert-bordure);
+  color: var(--vert);
+}
+
+.etape-num.attente {
+  background: rgba(201,169,110,0.1);
+  border: 1px solid var(--bordure-forte);
+  color: var(--or);
+}
+
+.etape-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--texte-doux);
+  text-align: center;
+  line-height: 1.4;
+}
+
+.etape-separateur {
+  width: 30px;
+  height: 1px;
+  background: var(--bordure);
+  align-self: center;
+  margin-top: -18px;
+  flex-shrink: 0;
+}
+
+/* ── Bouton retour ── */
+.btn-accueil {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--or);
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.85rem 2rem;
+  border-radius: 6px;
+  border: 1px solid var(--bordure-forte);
+  transition: background 0.3s, transform 0.2s;
+  animation: fadeUp 0.6s ease 0.4s both;
+}
+.btn-accueil:hover { background: rgba(201,169,110,0.08); transform: translateY(-2px); }
+
+/* ── Compte à rebours ── */
+.compte-rebours {
+  margin-top: 1.2rem;
+  font-size: 0.75rem;
+  color: var(--texte-doux);
+  letter-spacing: 0.05em;
+  animation: fadeUp 0.6s ease 0.45s both;
+}
+
+.compte-rebours strong { color: var(--or); font-family: 'Cinzel', serif; }
+
+/* Barre progression */
+.barre-wrap {
+  width: 100%;
+  height: 2px;
+  background: var(--bordure);
+  border-radius: 2px;
+  margin-top: 0.8rem;
+  overflow: hidden;
+  animation: fadeUp 0.6s ease 0.5s both;
+}
+
+.barre-progress {
+  height: 100%;
+  background: linear-gradient(90deg, var(--or), var(--or-clair));
+  border-radius: 2px;
+  transform-origin: left;
+  animation: barreVide 15s linear forwards;
+}
+
+@keyframes barreVide {
+  from { transform: scaleX(1); }
+  to   { transform: scaleX(0); }
+}
+
+/* ── Footer ── */
+footer {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid var(--bordure);
+  padding: 1.5rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-copy { font-size: 0.7rem; color: var(--texte-doux); }
+.footer-links { display: flex; gap: 1.2rem; }
+.footer-links a { font-size: 0.68rem; color: var(--texte-doux); text-decoration: none; transition: color 0.25s; }
+.footer-links a:hover { color: var(--or); }
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  header { padding: 1rem 1.2rem; }
+  nav .btn-nav { display: none; }
+  .carte { padding: 2rem 1.5rem; }
+  footer { flex-direction: column; align-items: center; text-align: center; padding: 1.5rem; }
+}
+</style>
 </head>
 
 <body>
 
-<header class="header">
-  <div class="logo">
-    <img src="assets/img/logo-altessa.png" alt="Logo Altessa">
-    <div class="logo-text">
+<div class="stars" id="stars" aria-hidden="true"></div>
+
+<!-- ── Header ── -->
+<header>
+  <a href="index.html" class="logo" aria-label="Altessa Voyance">
+    <img src="assets/img/logo-altessa.png" alt="Logo Altessa" width="36" height="36">
+    <div>
       <span class="logo-main">Altessa</span>
       <span class="logo-sub">Voyance</span>
     </div>
-  </div>
-
-  <nav class="nav">
-    <a href="index.html">Accueil</a>
-    <a href="experts.html">Experts</a>
-    <a href="tarifs.html">Tarifs</a>
-    <a href="contact.html" class="btn-nav">Contact</a>
+  </a>
+  <nav>
+    <a href="index.html" class="btn-nav">Accueil</a>
+    <a href="experts.html" class="btn-nav">Experts</a>
+    <a href="tarifs.html" class="btn-nav">Tarifs</a>
+    <a href="contact.html" class="btn-nav">Support</a>
   </nav>
 </header>
 
+<!-- ── Main ── -->
 <main>
-  <section class="merci-section">
-    <div class="merci-logo">Lotus Altessa</div>
-    <h1 class="merci-title">Merci pour votre confiance ✨</h1>
+  <div class="carte">
 
-    <p class="merci-text">
-      Votre message a bien été transmis à l’un de nos voyants experts.
-      <br>Votre paiement a été validé et votre demande est maintenant en cours de traitement.
-      <br><br>
-      Vous recevrez votre réponse directement par e-mail dans un délai d’environ
-      <strong>15 à 45 minutes</strong>.
+    <!-- Icône animée -->
+    <div class="icone-wrap" aria-hidden="true">
+      <div class="icone-cercle"></div>
+      <div class="icone-cercle"></div>
+      <div class="icone-cercle"></div>
+      <div class="icone-centre">✨</div>
+    </div>
+
+    <div class="badge">✓ Question transmise</div>
+
+    <h1 class="titre">Merci pour votre confiance</h1>
+    <p class="sous-titre">
+      Votre question a bien été transmise à votre expert.<br>
+      Consultez votre boîte email dans quelques minutes.
     </p>
 
-    <a href="index.html" class="btn-primary">
-      Retour à l’accueil
-    </a>
+    <!-- Info délai -->
+    <div class="info-delai">
+      <span style="font-size:1.3rem">🕯️</span>
+      <p class="info-delai-texte">
+        Votre expert se concentre sur votre situation.<br>
+        <strong>Réponse envoyée par email sous 5 à 12 minutes.</strong><br>
+        <span style="font-size:0.82rem">Vérifiez également vos spams si nécessaire.</span>
+      </p>
+    </div>
 
-    <p class="merci-countdown" id="merci-countdown">
-      Redirection automatique vers l’accueil dans 10 secondes…
+    <!-- Étapes visuelles -->
+    <div class="etapes" aria-label="Étapes de votre consultation">
+      <div class="etape">
+        <div class="etape-num fait">✓</div>
+        <span class="etape-label">Paiement validé</span>
+      </div>
+      <div class="etape-separateur"></div>
+      <div class="etape">
+        <div class="etape-num fait">✓</div>
+        <span class="etape-label">Question envoyée</span>
+      </div>
+      <div class="etape-separateur"></div>
+      <div class="etape">
+        <div class="etape-num attente">✦</div>
+        <span class="etape-label">Réponse en cours</span>
+      </div>
+      <div class="etape-separateur"></div>
+      <div class="etape">
+        <div class="etape-num attente">✉</div>
+        <span class="etape-label">Email reçu</span>
+      </div>
+    </div>
+
+    <a href="index.html" class="btn-accueil">← Retour à l'accueil</a>
+
+    <p class="compte-rebours">
+      Redirection dans <strong id="countdown">15</strong> secondes…
     </p>
-  </section>
+    <div class="barre-wrap">
+      <div class="barre-progress"></div>
+    </div>
+
+  </div>
 </main>
 
-<footer class="footer">
-  Altessa Voyance © — Voyance en ligne.
+<!-- ── Footer ── -->
+<footer>
+  <p class="footer-copy">© 2026 Altessa Voyance — Service réservé aux personnes majeures.</p>
+  <div class="footer-links">
+    <a href="cgv.html">CGV</a>
+    <a href="contact.html">Support</a>
+  </div>
 </footer>
 
 <script>
-  // Petit compte à rebours avant redirection
-  let seconds = 10;
-  const countdownEl = document.getElementById("merci-countdown");
+  // ── Étoiles ──────────────────────────────────────────────────────
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 45; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    s.style.cssText = `top:${Math.random()*100}%;left:${Math.random()*100}%;--d:${2+Math.random()*4}s;--delay:${Math.random()*5}s;`;
+    starsEl.appendChild(s);
+  }
 
-  const interval = setInterval(() => {
-    seconds--;
-    if (seconds <= 0) {
-      clearInterval(interval);
-      window.location.href = "index.html";
-    } else {
-      countdownEl.textContent = "Redirection automatique vers l’accueil dans " + seconds + " secondes…";
-    }
+  // ── Compte à rebours 15s ─────────────────────────────────────────
+  let t = 15;
+  const el = document.getElementById('countdown');
+  const timer = setInterval(() => {
+    t--;
+    if (t <= 0) { clearInterval(timer); window.location.href = 'index.html'; }
+    else el.textContent = t;
   }, 1000);
 </script>
 
 </body>
 </html>
-
