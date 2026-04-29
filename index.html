@@ -815,11 +815,11 @@ footer {
   </a>
 
   <nav aria-label="Navigation principale">
-    <a href="index.html" class="btn-nav active">Accueil</a>
-    <a href="experts.html" class="btn-nav">Voyance écrite</a>
-    <a href="tarifs.html" class="btn-nav">Tarifs</a>
-    <a href="rdv-telephone.html" class="btn-nav">RDV Téléphone</a>
-    <a href="contact.html" class="btn-nav">Support</a>
+    <a href="index.html" class="btn-nav active" data-i18n="nav_home">Accueil</a>
+    <a href="experts.html" class="btn-nav" data-i18n="nav_experts">Voyance écrite</a>
+    <a href="tarifs.html" class="btn-nav" data-i18n="nav_tarifs">Tarifs</a>
+    <a href="rdv-telephone.html" class="btn-nav" data-i18n="nav_rdv">RDV Téléphone</a>
+    <a href="contact.html" class="btn-nav" data-i18n="nav_contact">Support</a>
     <select id="lang-switcher" class="lang-select" aria-label="Choisir la langue">
       <option value="fr">🇫🇷 FR</option>
       <option value="en">🇬🇧 EN</option>
@@ -836,11 +836,11 @@ footer {
 
 <!-- Menu mobile -->
 <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu navigation">
-  <a href="index.html" onclick="closeMenu()">Accueil</a>
-  <a href="experts.html" onclick="closeMenu()">Voyance écrite</a>
-  <a href="tarifs.html" onclick="closeMenu()">Tarifs</a>
-  <a href="rdv-telephone.html" onclick="closeMenu()">RDV Téléphone</a>
-  <a href="contact.html" onclick="closeMenu()">Support</a>
+  <a href="index.html" onclick="closeMenu()" data-i18n="nav_home">Accueil</a>
+  <a href="experts.html" onclick="closeMenu()" data-i18n="nav_experts">Voyance écrite</a>
+  <a href="tarifs.html" onclick="closeMenu()" data-i18n="nav_tarifs">Tarifs</a>
+  <a href="rdv-telephone.html" onclick="closeMenu()" data-i18n="nav_rdv">RDV Téléphone</a>
+  <a href="contact.html" onclick="closeMenu()" data-i18n="nav_contact">Support</a>
   <div class="sep-or" style="max-width:120px;margin:0 auto">
     <div class="sep-or-ligne"></div>
     <span class="sep-or-sym">✦</span>
@@ -875,26 +875,26 @@ footer {
       <div class="hero-divider-line"></div>
     </div>
 
-    <h2 class="hero-titre">Altessa Voyance</h2>
-    <p class="hero-sous-titre">Tarot · Astrologie · Médiumnité</p>
+    <h2 class="hero-titre" data-i18n="hero_titre">Altessa Voyance</h2>
+    <p class="hero-sous-titre" data-i18n="hero_sous">Tarot · Astrologie · Médiumnité</p>
 
-    <p class="hero-desc">
+    <p class="hero-desc" data-i18n="hero_desc">
       Découvrez l'avenir avec nos experts en voyance en ligne.<br>
       Réponses claires, précises et personnalisées —<br>
       par écrit ou par téléphone.
     </p>
 
     <div class="hero-actions">
-      <a href="experts.html" class="cta-or" aria-label="Consulter un expert en voyance écrite">
+      <a href="experts.html" class="cta-or" aria-label="Consulter un expert en voyance écrite" data-i18n="hero_cta1">
         ✨ Voyance écrite
       </a>
-      <a href="rdv-telephone.html" class="cta-contour" aria-label="Prendre rendez-vous par téléphone">
+      <a href="rdv-telephone.html" class="cta-contour" aria-label="Prendre rendez-vous par téléphone" data-i18n="hero_cta2">
         📞 RDV Téléphone
       </a>
     </div>
 
     <div class="scroll-hint" aria-hidden="true">
-      <span class="scroll-hint-texte">Découvrir</span>
+      <span class="scroll-hint-texte" data-i18n="hero_decouvrir">Découvrir</span>
       <div class="scroll-hint-line"></div>
     </div>
   </section>
@@ -903,9 +903,9 @@ footer {
   <section class="section" aria-label="Nos services de voyance">
     <div class="section-inner">
       <div class="reveal">
-        <p class="section-label">Nos expertises</p>
-        <h2 class="section-titre">Un art, plusieurs sensibilités</h2>
-        <p class="section-texte" style="max-width:560px">
+        <p class="section-label" data-i18n="section_expertises_label">Nos expertises</p>
+        <h2 class="section-titre" data-i18n="section_expertises_titre">Un art, plusieurs sensibilités</h2>
+        <p class="section-texte" style="max-width:560px" data-i18n="section_expertises_texte">
           Chaque voyant d'Altessa possède une spécialité unique,
           choisie avec soin pour vous offrir la lecture la plus juste.
         </p>
@@ -914,33 +914,33 @@ footer {
       <div class="grille-services reveal" style="transition-delay:0.15s">
         <a href="experts.html?specialite=tarot" class="carte-service">
           <span class="service-icone">🃏</span>
-          <p class="service-nom">Tarot</p>
-          <p class="service-desc">Lecture des lames pour éclairer vos décisions et révéler les énergies en présence.</p>
+          <p class="service-nom" data-i18n="service_tarot_nom">Tarot</p>
+          <p class="service-desc" data-i18n="service_tarot_desc">Lecture des lames pour éclairer vos décisions et révéler les énergies en présence.</p>
         </a>
         <a href="experts.html?specialite=astrologie" class="carte-service">
           <span class="service-icone">♈</span>
-          <p class="service-nom">Astrologie</p>
-          <p class="service-desc">Analyse de votre thème astral et de vos cycles pour mieux comprendre votre chemin.</p>
+          <p class="service-nom" data-i18n="service_astro_nom">Astrologie</p>
+          <p class="service-desc" data-i18n="service_astro_desc">Analyse de votre thème astral et de vos cycles pour mieux comprendre votre chemin.</p>
         </a>
         <a href="experts.html?specialite=medium" class="carte-service">
           <span class="service-icone">🔮</span>
-          <p class="service-nom">Médiumnité</p>
-          <p class="service-desc">Perceptions fines et connexions subtiles pour lever le voile sur vos situations complexes.</p>
+          <p class="service-nom" data-i18n="service_medium_nom">Médiumnité</p>
+          <p class="service-desc" data-i18n="service_medium_desc">Perceptions fines et connexions subtiles pour lever le voile sur vos situations complexes.</p>
         </a>
         <a href="experts.html?specialite=numerologie" class="carte-service">
           <span class="service-icone">✦</span>
-          <p class="service-nom">Numérologie</p>
-          <p class="service-desc">Décryptage de vos nombres de vie pour guider vos décisions avec précision.</p>
+          <p class="service-nom" data-i18n="service_num_nom">Numérologie</p>
+          <p class="service-desc" data-i18n="service_num_desc">Décryptage de vos nombres de vie pour guider vos décisions avec précision.</p>
         </a>
         <a href="experts.html?specialite=energie" class="carte-service">
           <span class="service-icone">🌿</span>
-          <p class="service-nom">Soin énergétique</p>
-          <p class="service-desc">Nettoyage et réalignement de votre champ énergétique pour retrouver équilibre et clarté.</p>
+          <p class="service-nom" data-i18n="service_energie_nom">Soin énergétique</p>
+          <p class="service-desc" data-i18n="service_energie_desc">Nettoyage et réalignement de votre champ énergétique pour retrouver équilibre et clarté.</p>
         </a>
         <a href="tarifs.html" class="carte-service">
           <span class="service-icone">📞</span>
-          <p class="service-nom">Consultation vocale</p>
-          <p class="service-desc">Échangez directement avec votre expert par téléphone sur rendez-vous.</p>
+          <p class="service-nom" data-i18n="service_vocal_nom">Consultation vocale</p>
+          <p class="service-desc" data-i18n="service_vocal_desc">Échangez directement avec votre expert par téléphone sur rendez-vous.</p>
         </a>
       </div>
     </div>
@@ -956,7 +956,7 @@ footer {
   <!-- ── Mot d'Alessandra ── -->
   <section class="section" style="padding-top:0" aria-label="Message de la fondatrice">
     <div class="alessandra-wrap reveal">
-      <p class="section-label" style="margin-bottom:1.5rem">La fondatrice</p>
+      <p class="section-label" style="margin-bottom:1.5rem" data-i18n="section_fondatrice_label">La fondatrice</p>
       <div class="alessandra-card">
         <img src="assets/img/alessandra-tess.jpeg"
              class="alessandra-photo"
@@ -985,8 +985,8 @@ Je suis heureuse de vous accueillir ici… et de vous accompagner avec douceur v
   <section class="section" aria-label="Univers Altessa Voyance">
     <div class="section-inner">
       <div class="reveal">
-        <p class="section-label">L'univers Altessa</p>
-        <h2 class="section-titre">Élégance & Confidentialité</h2>
+        <p class="section-label" data-i18n="section_univers_label">L'univers Altessa</p>
+        <h2 class="section-titre" data-i18n="section_univers_titre">Élégance & Confidentialité</h2>
       </div>
       <div class="galerie reveal" style="transition-delay:0.1s">
         <div class="galerie-img">
@@ -1011,12 +1011,12 @@ Je suis heureuse de vous accueillir ici… et de vous accompagner avec douceur v
 
   <!-- ── CTA final ── -->
   <section class="cta-section reveal" aria-label="Commencer votre consultation">
-    <p class="cta-pre">Prêt à commencer ?</p>
-    <h2 class="cta-titre">Votre question mérite une réponse</h2>
-    <p class="cta-sous">Choisissez votre expert et recevez votre consultation par écrit<br>en toute confidentialité — sous 5 à 12 minutes.</p>
+    <p class="cta-pre" data-i18n="cta_pre">Prêt à commencer ?</p>
+    <h2 class="cta-titre" data-i18n="cta_titre">Votre question mérite une réponse</h2>
+    <p class="cta-sous" data-i18n="cta_sous">Choisissez votre expert et recevez votre consultation par écrit<br>en toute confidentialité — sous 5 à 12 minutes.</p>
     <div class="hero-actions">
-      <a href="experts.html" class="cta-or">✨ Choisir mon expert</a>
-      <a href="tarifs.html" class="cta-contour">Voir les tarifs</a>
+      <a href="experts.html" class="cta-or" data-i18n="cta_expert">✨ Choisir mon expert</a>
+      <a href="tarifs.html" class="cta-contour" data-i18n="cta_tarifs">Voir les tarifs</a>
     </div>
     <p style="margin-top:2rem">
       <a href="cgv.html" style="font-size:0.7rem;color:var(--texte-doux);text-decoration:underline;text-underline-offset:3px">Lire les CGV</a>
@@ -1027,13 +1027,13 @@ Je suis heureuse de vous accueillir ici… et de vous accompagner avec douceur v
 
 <!-- ── Footer ── -->
 <footer>
-  <p class="footer-copy">© 2026 Altessa Voyance — Voyance en ligne par écrit, tarot, astrologie & médium</p>
+  <p class="footer-copy" data-i18n="footer_copy">© 2026 Altessa Voyance — Voyance en ligne par écrit, tarot, astrologie & médium</p>
   <div class="footer-links">
-    <a href="cgv.html">CGV</a>
-    <a href="mentions-legales.html">Mentions légales</a>
-    <a href="politique-confidentialite.html">Confidentialité</a>
-    <a href="politique-cookies.html">Cookies</a>
-    <a href="contact.html">Support</a>
+    <a href="cgv.html" data-i18n="footer_cgv">CGV</a>
+    <a href="mentions-legales.html" data-i18n="footer_mentions">Mentions légales</a>
+    <a href="politique-confidentialite.html" data-i18n="footer_privacy">Confidentialité</a>
+    <a href="politique-cookies.html" data-i18n="footer_cookies">Cookies</a>
+    <a href="contact.html" data-i18n="footer_support">Support</a>
   </div>
 </footer>
 
