@@ -1,174 +1,431 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <title>Merci pour votre paiement — Altessa Voyance</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css" />
-  <style>
-    .merci-section {
-      text-align: center;
-      padding: 120px 8vw 80px;
-      position: relative;
-    }
-    .merci-section::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at center, rgba(248,224,160,0.25), transparent 60%);
-      opacity: 0.4;
-      pointer-events: none;
-    }
-    .merci-card {
-      max-width: 640px;
-      margin: 0 auto;
-      padding: 40px 26px 32px;
-      border-radius: 28px;
-      background: radial-gradient(circle at top, #2b134f, #120021 55%, #090013 100%);
-      border: 1px solid rgba(248,224,160,0.35);
-      box-shadow: 0 24px 60px rgba(0,0,0,0.8);
-      position: relative;
-      overflow: hidden;
-    }
-    .merci-title {
-      font-size: 2.2rem;
-      margin-bottom: 10px;
-    }
-    .merci-sub {
-      font-size: 1.1rem;
-      opacity: 0.9;
-      margin-bottom: 24px;
-    }
-    .merci-highlight {
-      color: #f8e0a0;
-      font-weight: 600;
-    }
-    .merci-resume {
-      text-align: left;
-      margin: 0 auto 26px;
-      max-width: 420px;
-      font-size: 0.95rem;
-    }
-    .merci-resume dt {
-      font-weight: 600;
-      color: #f8e0a0;
-    }
-    .merci-resume dd {
-      margin: 0 0 10px;
-      opacity: 0.9;
-    }
-    .btn-primary.big {
-      display: inline-block;
-      padding: 14px 30px;
-      border-radius: 999px;
-      font-size: 1rem;
-      margin-top: 6px;
-    }
-    .merci-timer {
-      margin-top: 14px;
-      font-size: 0.9rem;
-      opacity: 0.8;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title>Altessa Voyance — Paiement confirmé</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cinzel:wght@400;500;600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --or: #c9a96e;
+  --or-clair: #e8d5b0;
+  --or-sombre: #a07840;
+  --fond: #0a0806;
+  --fond2: #120f0b;
+  --fond3: #1a1510;
+  --texte: #ede5d8;
+  --texte-doux: #9a8870;
+  --bordure: rgba(201,169,110,0.18);
+  --bordure-forte: rgba(201,169,110,0.38);
+  --vert: #7ecf9a;
+  --vert-fond: rgba(34,180,80,0.08);
+  --vert-bordure: rgba(34,180,80,0.25);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--fond);
+  color: var(--texte);
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 30%, rgba(201,169,110,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 20% 80%, rgba(80,40,110,0.08) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Étoiles ── */
+.stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.star {
+  position: absolute;
+  width: 2px; height: 2px;
+  background: var(--or-clair);
+  border-radius: 50%;
+  animation: twinkle var(--d, 3s) var(--delay, 0s) ease-in-out infinite alternate;
+  opacity: 0.3;
+}
+@keyframes twinkle {
+  from { opacity: 0.1; transform: scale(0.8); }
+  to   { opacity: 0.6; transform: scale(1.4); }
+}
+
+/* ── Header ── */
+header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 3rem;
+  border-bottom: 1px solid var(--bordure);
+  background: rgba(10,8,6,0.6);
+  backdrop-filter: blur(14px);
+}
+
+.logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+.logo img { height: 36px; width: 36px; object-fit: contain; }
+.logo-main { display: block; font-family: 'Cinzel', serif; font-size: 1.05rem; color: var(--or); letter-spacing: 0.14em; line-height: 1; }
+.logo-sub { display: block; font-family: 'Cinzel', serif; font-size: 0.48rem; color: var(--texte-doux); letter-spacing: 0.25em; text-transform: uppercase; margin-top: 3px; }
+
+nav { display: flex; gap: 0.2rem; }
+.btn-nav { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--texte-doux); text-decoration: none; padding: 0.4rem 0.9rem; border-radius: 4px; transition: color 0.25s, background 0.25s; }
+.btn-nav:hover { color: var(--or); background: rgba(201,169,110,0.07); }
+
+/* ── Contenu principal ── */
+main {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+}
+
+.carte {
+  max-width: 580px;
+  width: 100%;
+  background: rgba(201,169,110,0.04);
+  border: 1px solid var(--bordure);
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  animation: fadeUp 0.8s ease both;
+}
+
+/* Halo central */
+.carte::before {
+  content: '';
+  position: absolute;
+  top: -40px; left: 50%;
+  transform: translateX(-50%);
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(201,169,110,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Badge confirmé ── */
+.badge-confirme {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--vert-fond);
+  border: 1px solid var(--vert-bordure);
+  border-radius: 2rem;
+  padding: 0.45rem 1.1rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--vert);
+  margin-bottom: 1.8rem;
+  animation: fadeUp 0.6s ease 0.1s both;
+}
+
+.badge-confirme::before { content: '✓'; font-weight: bold; }
+
+/* ── Icône ── */
+.icone-principale {
+  font-size: 3rem;
+  margin-bottom: 1.2rem;
+  display: block;
+  animation: fadeUp 0.6s ease 0.2s both;
+}
+
+/* ── Titre ── */
+.titre-merci {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: var(--or);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.6rem;
+  animation: fadeUp 0.6s ease 0.25s both;
+}
+
+.sous-titre {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--texte-doux);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  animation: fadeUp 0.6s ease 0.3s both;
+}
+
+/* ── Récap commande ── */
+.recap {
+  background: rgba(201,169,110,0.05);
+  border: 1px solid var(--bordure);
+  border-radius: 12px;
+  padding: 1.3rem 1.5rem;
+  margin-bottom: 2rem;
+  text-align: left;
+  animation: fadeUp 0.6s ease 0.35s both;
+}
+
+.recap-ligne {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--bordure);
+  font-size: 0.85rem;
+}
+
+.recap-ligne:last-child { border-bottom: none; }
+
+.recap-cle {
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--texte-doux);
+}
+
+.recap-val {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: var(--or-clair);
+}
+
+/* ── Bouton principal ── */
+.btn-principal {
+  display: block;
+  width: 100%;
+  background: linear-gradient(135deg, #c9a96e, #a07840);
+  border: none;
+  border-radius: 8px;
+  padding: 1.1rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #0a0806;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.3s, transform 0.2s;
+  font-weight: 500;
+  margin-bottom: 1.2rem;
+  animation: fadeUp 0.6s ease 0.4s both;
+}
+.btn-principal:hover { opacity: 0.87; transform: translateY(-2px); }
+
+/* ── Compte à rebours ── */
+.compte-rebours {
+  font-size: 0.78rem;
+  color: var(--texte-doux);
+  letter-spacing: 0.06em;
+  animation: fadeUp 0.6s ease 0.45s both;
+}
+
+.compte-rebours strong {
+  color: var(--or);
+  font-size: 1rem;
+  font-family: 'Cinzel', serif;
+}
+
+/* ── Barre de progression ── */
+.barre-wrap {
+  width: 100%;
+  height: 3px;
+  background: var(--bordure);
+  border-radius: 2px;
+  margin-top: 1rem;
+  overflow: hidden;
+  animation: fadeUp 0.6s ease 0.5s both;
+}
+
+.barre-progress {
+  height: 100%;
+  background: linear-gradient(90deg, #c9a96e, #e8d5b0);
+  border-radius: 2px;
+  width: 100%;
+  transform-origin: left;
+  animation: barreVide 10s linear forwards;
+}
+
+@keyframes barreVide {
+  from { transform: scaleX(1); }
+  to   { transform: scaleX(0); }
+}
+
+/* ── Footer ── */
+footer {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid var(--bordure);
+  padding: 1.5rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+.footer-copy { font-size: 0.7rem; color: var(--texte-doux); }
+.footer-links { display: flex; gap: 1.2rem; }
+.footer-links a { font-size: 0.68rem; color: var(--texte-doux); text-decoration: none; transition: color 0.25s; }
+.footer-links a:hover { color: var(--or); }
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  header { padding: 1rem 1.2rem; }
+  nav .btn-nav { display: none; }
+  .carte { padding: 2rem 1.5rem; }
+  footer { flex-direction: column; align-items: center; text-align: center; padding: 1.5rem; }
+}
+</style>
 </head>
 
 <body>
 
-<header class="header">
-  <div class="logo">
-    <img src="assets/img/logo-altessa.png" alt="Logo Altessa">
-    <div class="logo-text">
+<!-- Étoiles -->
+<div class="stars" id="stars" aria-hidden="true"></div>
+
+<!-- ── Header ── -->
+<header>
+  <a href="index.html" class="logo" aria-label="Altessa Voyance">
+    <img src="assets/img/logo-altessa.png" alt="Logo Altessa" width="36" height="36">
+    <div>
       <span class="logo-main">Altessa</span>
       <span class="logo-sub">Voyance</span>
     </div>
-  </div>
-
-  <nav class="nav">
-    <a href="index.html">Accueil</a>
-    <a href="experts.html">Experts</a>
-    <a href="tarifs.html">Tarifs</a>
-    <a href="contact.html" class="btn-nav">Contact</a>
+  </a>
+  <nav aria-label="Navigation">
+    <a href="index.html" class="btn-nav">Accueil</a>
+    <a href="experts.html" class="btn-nav">Experts</a>
+    <a href="contact.html" class="btn-nav">Support</a>
   </nav>
 </header>
 
+<!-- ── Contenu ── -->
 <main>
-  <section class="merci-section">
-    <div class="merci-card">
-      <h1 class="merci-title">Merci pour votre confiance ✨</h1>
-      <p class="merci-sub">
-        Votre paiement a bien été <span class="merci-highlight">validé</span>.
-        Votre demande va être transmise à l’un de nos voyants experts.
-      </p>
+  <div class="carte">
 
-      <dl class="merci-resume">
-        <dt>Expert sélectionné</dt>
-        <dd id="resume-expert">—</dd>
-        <dt>Type de consultation</dt>
-        <dd id="resume-type">—</dd>
-        <dt>Montant réglé</dt>
-        <dd id="resume-price">—</dd>
-      </dl>
+    <div class="badge-confirme">Paiement confirmé</div>
 
-      <p>
-        Vous pouvez maintenant passer à l’étape 2 :  
-        <span class="merci-highlight">rédiger votre question détaillée</span>.
-      </p>
+    <span class="icone-principale">✨</span>
 
-      <a id="go-step2" href="contact.html?paid=1" class="btn-primary big">
-        Passer à l’étape 2 — Poser ma question
-      </a>
+    <h1 class="titre-merci">Merci pour votre confiance</h1>
+    <p class="sous-titre">
+      Votre paiement a bien été validé.<br>
+      Vous pouvez maintenant poser votre question à votre expert.
+    </p>
 
-      <p class="merci-timer">
-        Redirection automatique vers le formulaire dans <span id="countdown">10</span> secondes…
-      </p>
+    <!-- Récapitulatif -->
+    <div class="recap">
+      <div class="recap-ligne">
+        <span class="recap-cle">Expert sélectionné</span>
+        <span class="recap-val" id="resumeExpert">—</span>
+      </div>
+      <div class="recap-ligne">
+        <span class="recap-cle">Consultation</span>
+        <span class="recap-val" id="resumeType">—</span>
+      </div>
+      <div class="recap-ligne">
+        <span class="recap-cle">Montant réglé</span>
+        <span class="recap-val" id="resumePrix">—</span>
+      </div>
     </div>
-  </section>
+
+    <!-- Bouton étape 2 -->
+    <a id="btnEtape2" href="consultation.html" class="btn-principal">
+      ✦ Poser ma question maintenant
+    </a>
+
+    <!-- Compte à rebours -->
+    <p class="compte-rebours">
+      Redirection automatique dans <strong id="countdown">10</strong> secondes…
+    </p>
+
+    <!-- Barre de progression -->
+    <div class="barre-wrap">
+      <div class="barre-progress" id="barre"></div>
+    </div>
+
+  </div>
 </main>
 
-<footer class="footer">
-  Altessa Voyance © — Service réservé aux personnes majeures.
+<!-- ── Footer ── -->
+<footer>
+  <p class="footer-copy">© 2026 Altessa Voyance — Service réservé aux personnes majeures.</p>
+  <div class="footer-links">
+    <a href="cgv.html">CGV</a>
+    <a href="politique-confidentialite.html">Confidentialité</a>
+    <a href="contact.html">Support</a>
+  </div>
 </footer>
 
 <script>
-(function () {
-  // Récupère les infos stockées lors de l'étape 1
-  const expert = localStorage.getItem("altessaExpert") || "Votre expert Altessa";
-  const type   = localStorage.getItem("altessaType")   || "";
+  // ── Étoiles ──────────────────────────────────────────────────────
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 40; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    s.style.cssText = `top:${Math.random()*100}%;left:${Math.random()*100}%;--d:${2+Math.random()*4}s;--delay:${Math.random()*4}s;`;
+    starsEl.appendChild(s);
+  }
 
-  const typeInfo = {
-    question:       { label: "À la question",           price: "8 €" },
-    sentimentale:   { label: "Voyance sentimentale",    price: "20 €" },
-    professionnelle:{ label: "Voyance professionnelle", price: "20 €" },
-    financiere:     { label: "Voyance financière",      price: "20 €" },
-    generale:       { label: "Voyance générale",        price: "45 €" },
-    soin:           { label: "Soin énergétique",        price: "50 €" }
-  };
+  // ── Récupérer les paramètres URL ─────────────────────────────────
+  const params    = new URLSearchParams(window.location.search);
+  const expert    = params.get('expert')     || '';
+  const prestation = params.get('prestation') || 'Consultation';
+  const prix      = params.get('prix')       || '—';
+  const paypalId  = params.get('paypal_id')  || '';
 
-  const info = typeInfo[type] || { label: "Consultation Altessa", price: "—" };
+  // ── Afficher le récap ─────────────────────────────────────────────
+  document.getElementById('resumeExpert').textContent = expert || 'Votre expert Altessa';
+  document.getElementById('resumeType').textContent   = prestation;
+  document.getElementById('resumePrix').textContent   = prix;
 
-  document.getElementById("resume-expert").textContent = expert;
-  document.getElementById("resume-type").textContent   = info.label;
-  document.getElementById("resume-price").textContent  = info.price;
+  // ── Construire le lien vers consultation.html ─────────────────────
+  const urlConsultation = new URL('consultation.html', window.location.href);
+  if (expert)    urlConsultation.searchParams.set('expert', expert);
+  urlConsultation.searchParams.set('prestation', prestation);
+  urlConsultation.searchParams.set('prix', prix);
+  if (paypalId)  urlConsultation.searchParams.set('paypal_id', paypalId);
 
-  // Lien vers l'étape 2 (débloquée)
-  const step2Link = document.getElementById("go-step2");
-  step2Link.href = "contact.html?paid=1";
+  document.getElementById('btnEtape2').href = urlConsultation.toString();
 
-  // Compte à rebours auto
+  // ── Compte à rebours 10 secondes ─────────────────────────────────
   let timeLeft = 10;
-  const countdownSpan = document.getElementById("countdown");
+  const countdownEl = document.getElementById('countdown');
 
   const timer = setInterval(() => {
-    timeLeft -= 1;
+    timeLeft--;
     if (timeLeft <= 0) {
       clearInterval(timer);
-      window.location.href = step2Link.href;
+      window.location.href = urlConsultation.toString();
     } else {
-      countdownSpan.textContent = String(timeLeft);
+      countdownEl.textContent = timeLeft;
     }
   }, 1000);
-})();
 </script>
 
 </body>
