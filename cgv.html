@@ -1,206 +1,414 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Conditions Générales de Vente – Altessa Voyance</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css">
+  <meta charset="UTF-8">
+  <title>Altessa Voyance — Conditions Générales de Vente</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cinzel:wght@400;500;600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --or: #c9a96e;
+  --or-clair: #e8d5b0;
+  --fond: #0a0806;
+  --fond3: #1a1510;
+  --texte: #ede5d8;
+  --texte-doux: #9a8870;
+  --bordure: rgba(201,169,110,0.18);
+  --bordure-forte: rgba(201,169,110,0.35);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--fond);
+  color: var(--texte);
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 40% at 50% 0%, rgba(201,169,110,0.05) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Header ── */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 3rem;
+  background: rgba(10,8,6,0.92);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--bordure);
+}
+
+.logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+.logo img { height: 34px; width: 34px; object-fit: contain; }
+.logo-main { display: block; font-family: 'Cinzel', serif; font-size: 1rem; color: var(--or); letter-spacing: 0.14em; line-height: 1; }
+.logo-sub { display: block; font-family: 'Cinzel', serif; font-size: 0.46rem; color: var(--texte-doux); letter-spacing: 0.25em; text-transform: uppercase; margin-top: 3px; }
+
+nav { display: flex; gap: 0.2rem; }
+.btn-nav { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--texte-doux); text-decoration: none; padding: 0.4rem 0.9rem; border-radius: 4px; transition: color 0.25s, background 0.25s; }
+.btn-nav:hover { color: var(--or); background: rgba(201,169,110,0.07); }
+
+/* ── Hero ── */
+.hero {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 5rem 2rem 3.5rem;
+}
+
+.hero-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--or);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}
+.hero-label::before, .hero-label::after { content: ''; width: 40px; height: 1px; background: var(--or); display: inline-block; }
+
+.hero-titre {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  color: var(--or);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.6rem;
+}
+
+.hero-meta {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--texte-doux);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.hero-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* ── Contenu ── */
+.contenu {
+  position: relative;
+  z-index: 1;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 1rem 2rem 6rem;
+}
+
+/* ── Article CGV ── */
+.article {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--bordure);
+  animation: fadeUp 0.5s ease both;
+}
+
+.article:last-child {
+  border-bottom: none;
+}
+
+.article-num {
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--or);
+  margin-bottom: 0.4rem;
+}
+
+.article-titre {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  color: var(--or-clair);
+  letter-spacing: 0.06em;
+  margin-bottom: 1rem;
+}
+
+.article p {
+  font-size: 0.9rem;
+  color: var(--texte-doux);
+  line-height: 1.9;
+  margin-bottom: 0.8rem;
+}
+
+.article p:last-child { margin-bottom: 0; }
+
+.article ul, .article ol {
+  margin: 0.5rem 0 0.8rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.article li {
+  font-size: 0.88rem;
+  color: var(--texte-doux);
+  line-height: 1.7;
+}
+
+.article li::marker { color: var(--or); }
+
+.article strong { color: var(--or-clair); font-weight: 400; }
+
+/* ── Info box ── */
+.info-box {
+  background: rgba(201,169,110,0.05);
+  border-left: 3px solid var(--or);
+  border-radius: 0 8px 8px 0;
+  padding: 1rem 1.2rem;
+  margin: 1rem 0;
+  font-size: 0.85rem;
+  color: var(--texte-doux);
+  line-height: 1.8;
+}
+
+/* ── Fiche identité ── */
+.fiche {
+  background: rgba(201,169,110,0.04);
+  border: 1px solid var(--bordure);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.fiche-item { display: flex; flex-direction: column; gap: 0.2rem; }
+.fiche-cle { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--texte-doux); }
+.fiche-val { font-size: 0.9rem; color: var(--or-clair); }
+
+/* ── Footer ── */
+footer {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid var(--bordure);
+  padding: 2rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-copy { font-size: 0.7rem; color: var(--texte-doux); }
+.footer-links { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+.footer-links a { font-size: 0.68rem; color: var(--texte-doux); text-decoration: none; transition: color 0.25s; }
+.footer-links a:hover { color: var(--or); }
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  header { padding: 0.9rem 1.2rem; }
+  nav .btn-nav:not(:last-child) { display: none; }
+  .fiche { grid-template-columns: 1fr; }
+  footer { flex-direction: column; align-items: center; text-align: center; }
+}
+</style>
 </head>
 
 <body>
 
-<main style="max-width:1000px;margin:60px auto;padding:20px;">
+<!-- ── Header ── -->
+<header>
+  <a href="index.html" class="logo" aria-label="Altessa Voyance — Accueil">
+    <img src="assets/img/logo-altessa.png" alt="Logo Altessa" width="34" height="34">
+    <div>
+      <span class="logo-main">Altessa</span>
+      <span class="logo-sub">Voyance</span>
+    </div>
+  </a>
+  <nav>
+    <a href="index.html" class="btn-nav">Accueil</a>
+    <a href="experts.html" class="btn-nav">Experts</a>
+    <a href="tarifs.html" class="btn-nav">Tarifs</a>
+    <a href="contact.html" class="btn-nav">Support</a>
+  </nav>
+</header>
 
-<h1>Conditions Générales de Vente – Version Internationale</h1>
+<main>
 
-<p><strong>Nom commercial :</strong> Altessa Voyance</p>
-<p><strong>NIF :</strong> X5177296L</p>
-<p><strong>Pays d’établissement :</strong> Espagne</p>
-<p><strong>Email :</strong> contact@altessavoyance.com</p>
+  <!-- ── Hero ── -->
+  <section class="hero">
+    <p class="hero-label">Altessa Voyance</p>
+    <h1 class="hero-titre">Conditions Générales de Vente</h1>
+    <div class="hero-meta">
+      <span>📋 Version internationale</span>
+      <span>🇪🇸 Droit espagnol</span>
+      <span>✦ Dernière mise à jour : 2026</span>
+    </div>
+  </section>
 
-<hr>
+  <div class="contenu">
 
-<h2>1. Nature des services</h2>
+    <!-- Fiche identité -->
+    <div class="fiche">
+      <div class="fiche-item">
+        <span class="fiche-cle">Nom commercial</span>
+        <span class="fiche-val">Altessa Voyance</span>
+      </div>
+      <div class="fiche-item">
+        <span class="fiche-cle">NIF</span>
+        <span class="fiche-val">X5177296L</span>
+      </div>
+      <div class="fiche-item">
+        <span class="fiche-cle">Pays d'établissement</span>
+        <span class="fiche-val">Espagne</span>
+      </div>
+      <div class="fiche-item">
+        <span class="fiche-cle">Email</span>
+        <span class="fiche-val">contact@altessavoyance.com</span>
+      </div>
+    </div>
 
-<p>
-Les services proposés relèvent exclusivement d’un accompagnement spirituel,
-intuitif et divertissant.
-</p>
+    <!-- Article 1 -->
+    <div class="article" style="animation-delay:0.05s">
+      <p class="article-num">Article 1</p>
+      <h2 class="article-titre">Nature des services</h2>
+      <p>Les services proposés relèvent exclusivement d'un accompagnement spirituel, intuitif et divertissant.</p>
+      <p>Ils ne constituent en aucun cas :</p>
+      <ul>
+        <li>Un service médical ou psychologique</li>
+        <li>Un conseil juridique</li>
+        <li>Un conseil financier ou d'investissement</li>
+        <li>Une garantie de résultat</li>
+      </ul>
+      <p>Les prestations sont fournies à titre récréatif et ne sauraient se substituer à une consultation professionnelle réglementée.</p>
+    </div>
 
-<p>Ils ne constituent en aucun cas :</p>
+    <!-- Article 2 -->
+    <div class="article" style="animation-delay:0.1s">
+      <p class="article-num">Article 2</p>
+      <h2 class="article-titre">Responsabilité du client</h2>
+      <p>Le client reconnaît être <strong>majeur dans son pays de résidence</strong>. Il demeure seul responsable de ses décisions, actions et interprétations.</p>
+      <p>Altessa Voyance ne pourra être tenue responsable :</p>
+      <ul>
+        <li>Des décisions prises suite à une consultation</li>
+        <li>D'une rupture, perte financière, conflit ou dommage indirect</li>
+        <li>D'un résultat différent des attentes du client</li>
+        <li>D'une interprétation personnelle des contenus fournis</li>
+      </ul>
+      <div class="info-box">Les prestations sont soumises à une obligation de moyens et non de résultat.</div>
+    </div>
 
-<ul>
-<li>Un service médical ou psychologique</li>
-<li>Un conseil juridique</li>
-<li>Un conseil financier ou d’investissement</li>
-<li>Une garantie de résultat</li>
-</ul>
+    <!-- Article 3 -->
+    <div class="article" style="animation-delay:0.15s">
+      <p class="article-num">Article 3</p>
+      <h2 class="article-titre">Absence de droit de rétractation</h2>
+      <p>Conformément à la Directive européenne 2011/83/UE et à la législation espagnole en vigueur :</p>
+      <ul>
+        <li>Le droit de rétractation ne s'applique pas aux prestations pleinement exécutées avec l'accord préalable du client</li>
+        <li>Il ne s'applique pas aux contenus numériques fournis immédiatement après paiement</li>
+        <li>Il ne s'applique pas aux services personnalisés</li>
+      </ul>
+      <p>En validant sa commande, le client <strong>renonce expressément à son droit de rétractation</strong> dès le commencement d'exécution de la prestation.</p>
+      <div class="info-box">⚠️ Toute commande validée et commencée est ferme et définitive.</div>
+    </div>
 
-<p>
-Les prestations sont fournies à titre récréatif et ne sauraient se substituer
-à une consultation professionnelle réglementée.
-</p>
+    <!-- Article 4 -->
+    <div class="article" style="animation-delay:0.2s">
+      <p class="article-num">Article 4</p>
+      <h2 class="article-titre">Paiement et contestations (chargebacks)</h2>
+      <p>Tout paiement effectué est réputé définitif.</p>
+      <p>En cas de contestation abusive ou tentative de chargeback injustifiée :</p>
+      <ul>
+        <li>Les preuves de prestation (horodatage, envoi, contenu fourni) seront transmises à l'établissement bancaire</li>
+        <li>Les frais bancaires et administratifs pourront être réclamés au client</li>
+        <li>Des poursuites civiles pourront être engagées</li>
+      </ul>
+      <p>Toute fraude ou fausse déclaration pourra être signalée aux autorités compétentes.</p>
+    </div>
 
-<hr>
+    <!-- Article 5 -->
+    <div class="article" style="animation-delay:0.25s">
+      <p class="article-num">Article 5</p>
+      <h2 class="article-titre">Produits numériques</h2>
+      <p>Les e-books, PDF, oracles numériques et contenus téléchargeables :</p>
+      <ul>
+        <li>Sont <strong>non remboursables</strong></li>
+        <li>Ne peuvent être échangés</li>
+        <li>Sont protégés par le droit d'auteur</li>
+      </ul>
+      <p>Toute reproduction, diffusion ou revente non autorisée entraînera des poursuites.</p>
+    </div>
 
-<h2>2. Responsabilité du client</h2>
+    <!-- Article 6 -->
+    <div class="article" style="animation-delay:0.3s">
+      <p class="article-num">Article 6</p>
+      <h2 class="article-titre">Modalités techniques d'exécution</h2>
+      <p>Les consultations téléphoniques sont réalisées exclusivement par des praticiens humains.</p>
+      <p>Les consultations écrites peuvent être préparées, structurées ou rédigées avec l'assistance d'outils numériques d'aide à la formulation et à la structuration des contenus.</p>
+      <div class="info-box">Le client reconnaît et accepte que certaines réponses puissent être élaborées ou générées à partir de systèmes automatisés d'assistance rédactionnelle, utilisés dans le cadre d'un service à visée spirituelle et divertissante. Cette modalité technique n'altère pas la nature du service proposé.</div>
+    </div>
 
-<p>
-Le client reconnaît être majeur dans son pays de résidence.
-Il demeure seul responsable de ses décisions, actions et interprétations.
-</p>
+    <!-- Article 7 -->
+    <div class="article" style="animation-delay:0.35s">
+      <p class="article-num">Article 7</p>
+      <h2 class="article-titre">Clause internationale</h2>
+      <p>Le client accepte que le service soit fourni depuis l'Espagne.</p>
+      <p>Pour les clients situés hors Union Européenne (USA, Canada, etc.), le service est expressément qualifié de <strong>contenu spirituel à visée divertissante</strong> et ne relève d'aucune réglementation médicale ou professionnelle locale.</p>
+      <p>Il appartient au client de vérifier la conformité du service avec la législation de son pays de résidence.</p>
+    </div>
 
-<p>Altessa Voyance ne pourra être tenue responsable :</p>
+    <!-- Article 8 -->
+    <div class="article" style="animation-delay:0.4s">
+      <p class="article-num">Article 8</p>
+      <h2 class="article-titre">Limitation maximale de responsabilité</h2>
+      <p>En tout état de cause, la responsabilité d'Altessa Voyance, si elle devait être retenue, sera <strong>strictement limitée au montant payé</strong> par le client pour la prestation concernée.</p>
+      <p>Aucun dommage indirect, moral, financier ou commercial ne pourra être indemnisé.</p>
+    </div>
 
-<ul>
-<li>Des décisions prises suite à une consultation</li>
-<li>D’une rupture, perte financière, conflit ou dommage indirect</li>
-<li>D’un résultat différent des attentes du client</li>
-<li>D’une interprétation personnelle des contenus fournis</li>
-</ul>
+    <!-- Article 9 -->
+    <div class="article" style="animation-delay:0.45s">
+      <p class="article-num">Article 9</p>
+      <h2 class="article-titre">Litiges</h2>
+      <p>Les présentes conditions sont régies par le <strong>droit espagnol</strong>.</p>
+      <p>Tout litige relatif à l'interprétation ou à l'exécution des présentes sera soumis aux tribunaux compétents en Espagne, sauf disposition impérative contraire applicable au consommateur.</p>
+      <div class="info-box">Pour toute question : <a href="mailto:contact@altessavoyance.com" style="color:var(--or);text-decoration:none">contact@altessavoyance.com</a></div>
+    </div>
 
-<p>
-Les prestations sont soumises à une obligation de moyens et non de résultat.
-</p>
-
-<hr>
-
-<h2>3. Absence de droit de rétractation</h2>
-
-<p>
-Conformément à la Directive européenne 2011/83/UE
-et à la législation espagnole en vigueur :
-</p>
-
-<ul>
-<li>Le droit de rétractation ne s’applique pas aux prestations pleinement exécutées avec l’accord préalable du client</li>
-<li>Il ne s’applique pas aux contenus numériques fournis immédiatement après paiement</li>
-<li>Il ne s’applique pas aux services personnalisés</li>
-</ul>
-
-<p>
-En validant sa commande, le client renonce expressément à son droit de rétractation
-dès le commencement d’exécution de la prestation.
-</p>
-
-<p>
-Toute commande validée et commencée est ferme et définitive.
-</p>
-
-<hr>
-
-<h2>4. Paiement et contestations (chargebacks)</h2>
-
-<p>
-Tout paiement effectué est réputé définitif.
-</p>
-
-<p>
-En cas de contestation abusive ou tentative de chargeback injustifiée :
-</p>
-
-<ul>
-<li>Les preuves de prestation (horodatage, envoi, contenu fourni) seront transmises à l’établissement bancaire</li>
-<li>Les frais bancaires et administratifs pourront être réclamés au client</li>
-<li>Des poursuites civiles pourront être engagées</li>
-</ul>
-
-<p>
-Toute fraude ou fausse déclaration pourra être signalée aux autorités compétentes.
-</p>
-
-<hr>
-
-<h2>5. Produits numériques</h2>
-
-<p>
-Les e-books, PDF, oracles numériques et contenus téléchargeables :
-</p>
-
-<ul>
-<li>Sont non remboursables</li>
-<li>Ne peuvent être échangés</li>
-<li>Sont protégés par le droit d’auteur</li>
-</ul>
-
-<p>
-Toute reproduction, diffusion ou revente non autorisée entraînera des poursuites.
-</p>
-
-<hr>
-
-<h2>6. Modalités techniques d’exécution</h2>
-
-<p>
-Les consultations téléphoniques sont réalisées exclusivement par des praticiens humains.
-</p>
-
-<p>
-Les consultations écrites peuvent être préparées, structurées ou rédigées
-avec l’assistance d’outils numériques d’aide à la formulation et à la structuration des contenus.
-</p>
-
-<p>
-Le client reconnaît et accepte que certaines réponses puissent être élaborées
-ou générées à partir de systèmes automatisés d’assistance rédactionnelle,
-utilisés dans le cadre d’un service à visée spirituelle et divertissante.
-</p>
-
-<p>
-Cette modalité technique n’altère pas la nature du service proposé.
-</p>
-
-<hr>
-
-<h2>7. Clause internationale</h2>
-
-<p>
-Le client accepte que le service soit fourni depuis l’Espagne.
-</p>
-
-<p>
-Pour les clients situés hors Union Européenne (USA, Canada, etc.),
-le service est expressément qualifié de contenu spirituel à visée divertissante
-et ne relève d’aucune réglementation médicale ou professionnelle locale.
-</p>
-
-<p>
-Il appartient au client de vérifier la conformité du service
-avec la législation de son pays de résidence.
-</p>
-
-<hr>
-
-<h2>8. Limitation maximale de responsabilité</h2>
-
-<p>
-En tout état de cause, la responsabilité d’Altessa Voyance,
-si elle devait être retenue,
-sera strictement limitée au montant payé par le client
-pour la prestation concernée.
-</p>
-
-<p>
-Aucun dommage indirect, moral, financier ou commercial
-ne pourra être indemnisé.
-</p>
-
-<hr>
-
-<h2>9. Litiges</h2>
-
-<p>
-Les présentes conditions sont régies par le droit espagnol.
-</p>
-
-<p>
-Tout litige relatif à l’interprétation ou à l’exécution des présentes
-sera soumis aux tribunaux compétents en Espagne,
-sauf disposition impérative contraire applicable au consommateur.
-</p>
-
+  </div>
 </main>
+
+<!-- ── Footer ── -->
+<footer>
+  <p class="footer-copy">© 2026 Altessa Voyance — Service réservé aux personnes majeures.</p>
+  <div class="footer-links">
+    <a href="index.html">Accueil</a>
+    <a href="mentions-legales.html">Mentions légales</a>
+    <a href="politique-confidentialite.html">Confidentialité</a>
+    <a href="politique-cookies.html">Cookies</a>
+    <a href="contact.html">Support</a>
+  </div>
+</footer>
 
 </body>
 </html>
