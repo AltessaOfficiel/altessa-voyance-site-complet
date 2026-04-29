@@ -2,250 +2,898 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Altessa Voyance — Nos experts</title>
+  <title>Altessa Voyance — Nos experts en voyance</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <meta name="description" content="Découvrez les experts en voyance d'Altessa — tarologues, astrologues, médiums, numérologues et énergéticiens choisis avec soin par Alessandra Tess.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://altessavoyance.com/experts.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cinzel:wght@400;500;600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+  <script src="assets/js/lang.js" defer></script>
+
+<style>
+:root {
+  --or: #c9a96e;
+  --or-clair: #e8d5b0;
+  --or-sombre: #a07840;
+  --fond: #0a0806;
+  --fond2: #120f0b;
+  --fond3: #1a1510;
+  --texte: #ede5d8;
+  --texte-doux: #9a8870;
+  --bordure: rgba(201,169,110,0.18);
+  --bordure-forte: rgba(201,169,110,0.38);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--fond);
+  color: var(--texte);
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 10% 5%, rgba(201,169,110,0.06) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 90% 95%, rgba(80,40,110,0.08) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Header ── */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 3rem;
+  background: rgba(10,8,6,0.9);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--bordure);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+.logo img { height: 36px; width: 36px; object-fit: contain; }
+.logo-main {
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-size: 1.05rem;
+  color: var(--or);
+  letter-spacing: 0.14em;
+  line-height: 1;
+}
+.logo-sub {
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-size: 0.48rem;
+  color: var(--texte-doux);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+
+nav { display: flex; align-items: center; gap: 0.2rem; }
+.btn-nav {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--texte-doux);
+  text-decoration: none;
+  padding: 0.4rem 0.9rem;
+  border-radius: 4px;
+  transition: color 0.25s, background 0.25s;
+}
+.btn-nav:hover, .btn-nav.active { color: var(--or); background: rgba(201,169,110,0.07); }
+
+.lang-select {
+  background: transparent;
+  border: 1px solid var(--bordure);
+  border-radius: 4px;
+  color: var(--texte-doux);
+  font-size: 0.72rem;
+  padding: 0.3rem 0.5rem;
+  margin-left: 1rem;
+  cursor: pointer;
+  outline: none;
+}
+.lang-select option { background: var(--fond3); }
+
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+}
+.burger span { display: block; width: 22px; height: 1px; background: var(--or); }
+
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: rgba(10,8,6,0.98);
+  z-index: 200;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: 'Cinzel', serif;
+  font-size: 1.2rem;
+  color: var(--or);
+  text-decoration: none;
+  letter-spacing: 0.15em;
+}
+
+/* ── Hero ── */
+.hero {
+  position: relative;
+  z-index: 1;
+  padding: 10rem 2rem 5rem;
+  text-align: center;
+}
+
+.hero-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--or);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}
+.hero-label::before, .hero-label::after {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: var(--or);
+  display: inline-block;
+}
+
+.hero-titre {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  color: var(--or);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.8rem;
+  animation: fadeUp 0.8s ease both;
+}
+
+.hero-sous {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--texte-doux);
+  max-width: 520px;
+  margin: 0 auto 3rem;
+  line-height: 1.8;
+  animation: fadeUp 0.8s ease 0.1s both;
+}
+
+/* ── Filtres ── */
+.filtres {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  max-width: 760px;
+  margin: 0 auto 4rem;
+  animation: fadeUp 0.8s ease 0.2s both;
+  position: relative;
+  z-index: 1;
+}
+
+.filtre-btn {
+  background: transparent;
+  border: 1px solid var(--bordure);
+  border-radius: 2rem;
+  padding: 0.45rem 1.1rem;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--texte-doux);
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.filtre-btn:hover {
+  border-color: var(--bordure-forte);
+  color: var(--or);
+}
+
+.filtre-btn.actif {
+  background: rgba(201,169,110,0.12);
+  border-color: var(--bordure-forte);
+  color: var(--or);
+}
+
+/* ── Grille experts ── */
+.experts-wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem 6rem;
+}
+
+.experts-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+/* ── Carte expert ── */
+.carte-expert {
+  background: rgba(201,169,110,0.04);
+  border: 1px solid var(--bordure);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s;
+  display: flex;
+  flex-direction: column;
+  animation: fadeUp 0.6s ease both;
+}
+
+.carte-expert:hover {
+  border-color: var(--bordure-forte);
+  transform: translateY(-5px);
+}
+
+.carte-expert.masquee {
+  display: none;
+}
+
+.expert-photo-wrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+}
+
+.expert-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: sepia(20%) brightness(0.85);
+  transition: filter 0.4s, transform 0.5s;
+}
+
+.carte-expert:hover .expert-photo {
+  filter: sepia(5%) brightness(0.95);
+  transform: scale(1.05);
+}
+
+.expert-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,8,6,0.9) 0%, rgba(10,8,6,0.1) 50%, transparent 100%);
+  pointer-events: none;
+}
+
+.expert-badge {
+  position: absolute;
+  top: 0.8rem;
+  right: 0.8rem;
+  background: rgba(10,8,6,0.75);
+  border: 1px solid var(--bordure);
+  border-radius: 2rem;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--or);
+  backdrop-filter: blur(6px);
+}
+
+.expert-corps {
+  padding: 1.2rem 1.2rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.5rem;
+}
+
+.expert-nom {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  color: var(--or);
+  letter-spacing: 0.08em;
+}
+
+.expert-role {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--texte-doux);
+}
+
+.expert-bio {
+  font-size: 0.8rem;
+  color: var(--texte-doux);
+  line-height: 1.7;
+  flex: 1;
+}
+
+.expert-sep {
+  height: 1px;
+  background: var(--bordure);
+  margin: 0.3rem 0;
+}
+
+.btn-consulter {
+  display: block;
+  text-align: center;
+  background: transparent;
+  border: 1px solid var(--bordure-forte);
+  border-radius: 6px;
+  padding: 0.65rem 1rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--or);
+  text-decoration: none;
+  transition: background 0.25s, border-color 0.25s;
+}
+
+.btn-consulter:hover {
+  background: rgba(201,169,110,0.1);
+  border-color: var(--or);
+}
+
+/* ── CTA bas ── */
+.cta-bas {
+  text-align: center;
+  padding: 3rem 2rem 6rem;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-bas p {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--texte-doux);
+  margin-bottom: 1.5rem;
+}
+
+.cta-or {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #c9a96e, #a07840);
+  color: #0a0806;
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.95rem 2rem;
+  border-radius: 6px;
+  transition: opacity 0.3s, transform 0.2s;
+  font-weight: 500;
+}
+.cta-or:hover { opacity: 0.85; transform: translateY(-2px); }
+
+/* ── Footer ── */
+footer {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid var(--bordure);
+  padding: 2.5rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-copy { font-size: 0.72rem; color: var(--texte-doux); letter-spacing: 0.06em; }
+.footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.footer-links a {
+  font-size: 0.7rem;
+  color: var(--texte-doux);
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  transition: color 0.25s;
+}
+.footer-links a:hover { color: var(--or); }
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 1000px) {
+  .experts-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 700px) {
+  .experts-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  header { padding: 0.9rem 1.5rem; }
+  nav .btn-nav { display: none; }
+  .burger { display: flex; }
+  footer { flex-direction: column; align-items: center; text-align: center; padding: 2rem 1.5rem; }
+}
+
+@media (max-width: 420px) {
+  .experts-grid { grid-template-columns: 1fr; }
+}
+</style>
 </head>
 
 <body>
 
-<header class="header">
-
-  <div class="logo">
-    <img src="assets/img/logo-altessa.png" alt="Logo Altessa">
-    <div class="logo-text">
+<!-- ── Header ── -->
+<header>
+  <a href="index.html" class="logo" aria-label="Altessa Voyance — Accueil">
+    <img src="assets/img/logo-altessa.png" alt="Logo Altessa" width="36" height="36">
+    <div>
       <span class="logo-main">Altessa</span>
       <span class="logo-sub">Voyance</span>
     </div>
-  </div>
-
-  <nav class="nav">
-
-    <a href="index.html" class="btn-nav active">Accueil</a>
-
-    <a href="experts.html" class="btn-nav">Voyance écrite</a>
-
+  </a>
+  <nav aria-label="Navigation principale">
+    <a href="index.html" class="btn-nav">Accueil</a>
+    <a href="experts.html" class="btn-nav active">Voyance écrite</a>
     <a href="tarifs.html" class="btn-nav">Tarifs</a>
-
     <a href="rdv-telephone.html" class="btn-nav">RDV Téléphone</a>
-
     <a href="contact.html" class="btn-nav">Support</a>
-
-    <select id="lang-switcher">
+    <select id="lang-switcher" class="lang-select" aria-label="Choisir la langue">
       <option value="fr">🇫🇷 FR</option>
       <option value="en">🇬🇧 EN</option>
       <option value="es">🇪🇸 ES</option>
       <option value="pt">🇵🇹 PT</option>
       <option value="it">🇮🇹 IT</option>
     </select>
-
   </nav>
-
+  <div class="burger" id="burger" role="button" tabindex="0" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
 </header>
 
-<main class="section">
+<!-- Menu mobile -->
+<div class="mobile-menu" id="mobileMenu" role="dialog">
+  <a href="index.html" onclick="closeMenu()">Accueil</a>
+  <a href="experts.html" onclick="closeMenu()">Voyance écrite</a>
+  <a href="tarifs.html" onclick="closeMenu()">Tarifs</a>
+  <a href="rdv-telephone.html" onclick="closeMenu()">RDV Téléphone</a>
+  <a href="contact.html" onclick="closeMenu()">Support</a>
+</div>
 
-  <section class="experts-hero">
-    <h1 class="section-title">Nos experts en ligne</h1>
-    <p class="section-subtitle">
-      Consultez nos voyants professionnels pour obtenir des conseils
-      et des prédictions personnalisées.
+<main>
+
+  <!-- ── Hero ── -->
+  <section class="hero">
+    <p class="hero-label">Altessa Voyance</p>
+    <h1 class="hero-titre">Nos experts en ligne</h1>
+    <p class="hero-sous">
+      Choisissez le voyant qui vous correspond. Chaque expert a été sélectionné
+      pour la finesse de sa lecture et la justesse de ses mots.
     </p>
-  </section>
 
-  <section class="experts-section">
-
-    <div class="experts-grid">
-
-      <!-- 1 -->
-      <article class="expert-card">
-        <img class="expert-photo" src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Ariane">
-        <h2>Ariane</h2>
-        <p class="expert-role">Tarologue</p>
-        <p class="expert-bio">Spécialiste du Tarot de Marseille, Ariane éclaire vos décisions sentimentales et professionnelles.</p>
-        <a href="contact.html?expert=Ariane" class="btn-secondary">Consulter</a>
-      </article>
-
-      <!-- 2 -->
-      <article class="expert-card">
-        <img class="expert-photo" src="https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Noémie">
-        <h2>Noémie</h2>
-        <p class="expert-role">Astrologue</p>
-        <p class="expert-bio">Analyse complète de votre thème astral pour révéler vos cycles et opportunités.</p>
-        <a href="contact.html?expert=Noémie" class="btn-secondary">Consulter</a>
-      </article>
-
-      <!-- 3 -->
-      <article class="expert-card">
-        <img class="expert-photo" src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Nicolas">
-        <h2>Nicolas</h2>
-        <p class="expert-role">Médium</p>
-        <p class="expert-bio">Perceptions fines pour débloquer les situations complexes.</p>
-        <a href="contact.html?expert=Nicolas" class="btn-secondary">Consulter</a>
-      </article>
-
-      <!-- 4 -->
-      <article class="expert-card">
-        <img class="expert-photo" src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Élise">
-        <h2>Élise</h2>
-        <p class="expert-role">Voyante</p>
-        <p class="expert-bio">Approche douce et bienveillante pour vos questions sentimentales.</p>
-        <a href="contact.html?expert=Élise" class="btn-secondary">Consulter</a>
-      </article>
-
-      <!-- 5 -->
-      <article class="expert-card">
-        <img class="expert-photo" src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Maël">
-        <h2>Maël</h2>
-        <p class="expert-role">Numérologue</p>
-        <p class="expert-bio">Décrypte vos nombres de vie pour guider vos décisions.</p>
-        <a href="contact.html?expert=Maël" class="btn-secondary">Consulter</a>
-      </article>
-
-      <!-- 6 -->
-      <article class="expert-card">
-        <img class="expert-photo" src="https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Clara">
-        <h2>Clara</h2>
-        <p class="expert-role">Voyante clairvoyante</p>
-        <p class="expert-bio">Vision globale et précise grâce à la clairvoyance.</p>
-        <a href="contact.html?expert=Clara" class="btn-secondary">Consulter</a>
-      </article>
-
-      <!-- 7 -->
-      <article class="expert-card">
-        <img class="expert-photo" src="https://images.pexels.com/photos/3812743/pexels-photo-3812743.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Sofia">
-        <h2>Sofia</h2>
-        <p class="expert-role">Médium spirituelle</p>
-        <p class="expert-bio">Connexion aux guides pour éclairer vos choix de vie.</p>
-        <a href="contact.html?expert=Sofia" class="btn-secondary">Consulter</a>
-      </article>
-
-      <!-- 8 -->
-      <article class="expert-card">
-        <img class="expert-photo" src="https://images.pexels.com/photos/3760852/pexels-photo-3760852.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Jeanne">
-        <h2>Jeanne</h2>
-        <p class="expert-role">Cartomancienne</p>
-        <p class="expert-bio">Oracles et tarots pour comprendre les enjeux cachés.</p>
-        <a href="contact.html?expert=Jeanne" class="btn-secondary">Consulter</a>
-      </article>
-
-      <!-- 9 -->
-      <article class="expert-card">
-        <img class="expert-photo" src="https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Lila">
-        <h2>Lila</h2>
-        <p class="expert-role">Voyante karmique</p>
-        <p class="expert-bio">Analyse vos mémoires karmiques pour éclairer vos schémas répétitifs.</p>
-        <a href="contact.html?expert=Lila" class="btn-secondary">Consulter</a>
-      </article>
-
-      <!-- 10 -->
-      <article class="expert-card">
-        <img class="expert-photo" src="https://images.pexels.com/photos/770595/pexels-photo-770595.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Amélie">
-        <h2>Amélie</h2>
-        <p class="expert-role">Voyante émotionnelle</p>
-        <p class="expert-bio">Ressent profondément les émotions pour guider votre cœur.</p>
-        <a href="contact.html?expert=Amélie" class="btn-secondary">Consulter</a>
-      </article>
-
-      <!-- 11 -->
-      <article class="expert-card">
-        <img class="expert-photo" src="https://images.pexels.com/photos/1587009/pexels-photo-1587009.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Yara">
-        <h2>Yara</h2>
-        <p class="expert-role">Énergéticienne</p>
-        <p class="expert-bio">Nettoyage énergétique et harmonisation intérieure.</p>
-        <a href="contact.html?expert=Yara" class="btn-secondary">Consulter</a>
-      </article>
-
-      <!-- 12 -->
-      <article class="expert-card">
-        <img class="expert-photo" src="https://images.pexels.com/photos/774165/pexels-photo-774165.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Selene">
-        <h2>Selene</h2>
-        <p class="expert-role">Voyante lunaire</p>
-        <p class="expert-bio">Travaille avec les cycles lunaires pour guider vos choix.</p>
-        <a href="contact.html?expert=Selene" class="btn-secondary">Consulter</a>
-      </article>
-
-      <!-- 13 -->
-      <article class="expert-card">
-        <img class="expert-photo" src="https://images.pexels.com/photos/774373/pexels-photo-774373.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Iris">
-        <h2>Iris</h2>
-        <p class="expert-role">Médium onirique</p>
-        <p class="expert-bio">Décrypte vos rêves et symboles inconscients.</p>
-        <a href="contact.html?expert=Iris" class="btn-secondary">Consulter</a>
-      </article>
-
-      <!-- 14 -->
-      <article class="expert-card">
-        <img class="expert-photo" src="https://images.pexels.com/photos/3229335/pexels-photo-3229335.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Zélie">
-        <h2>Zélie</h2>
-        <p class="expert-role">Cartomancienne</p>
-        <p class="expert-bio">Guidance claire et précise grâce aux oracles.</p>
-        <a href="contact.html?expert=Zélie" class="btn-secondary">Consulter</a>
-      </article>
-
-      <!-- 15 -->
-      <article class="expert-card">
-        <img class="expert-photo" src="https://images.pexels.com/photos/3194672/pexels-photo-3194672.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Maud">
-        <h2>Maud</h2>
-        <p class="expert-role">Médium auditif</p>
-        <p class="expert-bio">Messages intuitifs perçus sous forme sonore.</p>
-        <a href="contact.html?expert=Maud" class="btn-secondary">Consulter</a>
-      </article>
-
-      <!-- 16 -->
-      <article class="expert-card">
-        <img class="expert-photo" src="https://images.pexels.com/photos/428361/pexels-photo-428361.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Anaïs">
-        <h2>Anaïs</h2>
-        <p class="expert-role">Astrologue karmique</p>
-        <p class="expert-bio">Analyse profonde de vos cycles karmiques.</p>
-        <a href="contact.html?expert=Anaïs" class="btn-secondary">Consulter</a>
-      </article>
-
-      <!-- 17 -->
-      <article class="expert-card">
-        <img class="expert-photo" src="https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Jade">
-        <h2>Jade</h2>
-        <p class="expert-role">Médium & tarologue</p>
-        <p class="expert-bio">Guidance directe grâce au tarot et à la médiumnité.</p>
-        <a href="contact.html?expert=Jade" class="btn-secondary">Consulter</a>
-      </article>
-
-      <!-- 18 -->
-      <article class="expert-card">
-        <img class="expert-photo" src="https://images.pexels.com/photos/774167/pexels-photo-774167.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Luna">
-        <h2>Luna</h2>
-        <p class="expert-role">Chamane énergétique</p>
-        <p class="expert-bio">Travaille avec les éléments et les ancêtres.</p>
-        <a href="contact.html?expert=Luna" class="btn-secondary">Consulter</a>
-      </article>
-
-      <!-- 19 -->
-      <article class="expert-card">
-        <img class="expert-photo" src="https://images.pexels.com/photos/3965544/pexels-photo-3965544.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Camille">
-        <h2>Camille</h2>
-        <p class="expert-role">Voyante</p>
-        <p class="expert-bio">Lecture claire pour comprendre vos choix sentimentaux.</p>
-        <a href="contact.html?expert=Camille" class="btn-secondary">Consulter</a>
-      </article>
-
-      <!-- 20 -->
-      <article class="expert-card">
-        <img class="expert-photo" src="https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Ophélie">
-        <h2>Ophélie</h2>
-        <p class="expert-role">Voyante intuitive</p>
-        <p class="expert-bio">Messages spontanés et intuitifs pour éclairer vos décisions.</p>
-        <a href="contact.html?expert=Ophélie" class="btn-secondary">Consulter</a>
-      </article>
-
+    <!-- Filtres par spécialité -->
+    <div class="filtres" role="group" aria-label="Filtrer par spécialité">
+      <button class="filtre-btn actif" data-filtre="tous">✦ Tous</button>
+      <button class="filtre-btn" data-filtre="tarot">🃏 Tarot</button>
+      <button class="filtre-btn" data-filtre="astrologie">♈ Astrologie</button>
+      <button class="filtre-btn" data-filtre="medium">🔮 Médium</button>
+      <button class="filtre-btn" data-filtre="numerologie">✦ Numérologie</button>
+      <button class="filtre-btn" data-filtre="energie">🌿 Énergie</button>
+      <button class="filtre-btn" data-filtre="voyante">👁 Voyante</button>
     </div>
   </section>
 
+  <!-- ── Grille experts ── -->
+  <div class="experts-wrap">
+    <div class="experts-grid" id="expertsGrid">
+
+      <!-- 1 — Ariane -->
+      <article class="carte-expert" data-categorie="tarot" style="animation-delay:0.05s">
+        <div class="expert-photo-wrap">
+          <img class="expert-photo" src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Ariane — Tarologue">
+          <div class="expert-overlay"></div>
+          <span class="expert-badge">Tarologue</span>
+        </div>
+        <div class="expert-corps">
+          <p class="expert-nom">Ariane</p>
+          <p class="expert-role">Tarot de Marseille</p>
+          <p class="expert-bio">Spécialiste du Tarot de Marseille, Ariane éclaire vos décisions sentimentales et professionnelles avec une précision remarquable.</p>
+          <div class="expert-sep"></div>
+          <a href="tarifs.html?expert=Ariane" class="btn-consulter">✦ Consulter</a>
+        </div>
+      </article>
+
+      <!-- 2 — Noémie -->
+      <article class="carte-expert" data-categorie="astrologie" style="animation-delay:0.08s">
+        <div class="expert-photo-wrap">
+          <img class="expert-photo" src="https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Noémie — Astrologue">
+          <div class="expert-overlay"></div>
+          <span class="expert-badge">Astrologue</span>
+        </div>
+        <div class="expert-corps">
+          <p class="expert-nom">Noémie</p>
+          <p class="expert-role">Thème astral & cycles</p>
+          <p class="expert-bio">Analyse complète de votre thème astral pour révéler vos cycles, opportunités et défis à venir.</p>
+          <div class="expert-sep"></div>
+          <a href="tarifs.html?expert=Noémie" class="btn-consulter">✦ Consulter</a>
+        </div>
+      </article>
+
+      <!-- 3 — Nicolas -->
+      <article class="carte-expert" data-categorie="medium" style="animation-delay:0.11s">
+        <div class="expert-photo-wrap">
+          <img class="expert-photo" src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Nicolas — Médium">
+          <div class="expert-overlay"></div>
+          <span class="expert-badge">Médium</span>
+        </div>
+        <div class="expert-corps">
+          <p class="expert-nom">Nicolas</p>
+          <p class="expert-role">Perceptions fines</p>
+          <p class="expert-bio">Perceptions fines et médiumnité pour débloquer les situations complexes et retrouver clarté.</p>
+          <div class="expert-sep"></div>
+          <a href="tarifs.html?expert=Nicolas" class="btn-consulter">✦ Consulter</a>
+        </div>
+      </article>
+
+      <!-- 4 — Élise -->
+      <article class="carte-expert" data-categorie="voyante" style="animation-delay:0.14s">
+        <div class="expert-photo-wrap">
+          <img class="expert-photo" src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Élise — Voyante">
+          <div class="expert-overlay"></div>
+          <span class="expert-badge">Voyante</span>
+        </div>
+        <div class="expert-corps">
+          <p class="expert-nom">Élise</p>
+          <p class="expert-role">Guidance sentimentale</p>
+          <p class="expert-bio">Approche douce et bienveillante pour vos questions sentimentales et de cœur.</p>
+          <div class="expert-sep"></div>
+          <a href="tarifs.html?expert=Élise" class="btn-consulter">✦ Consulter</a>
+        </div>
+      </article>
+
+      <!-- 5 — Maël -->
+      <article class="carte-expert" data-categorie="numerologie" style="animation-delay:0.17s">
+        <div class="expert-photo-wrap">
+          <img class="expert-photo" src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Maël — Numérologue">
+          <div class="expert-overlay"></div>
+          <span class="expert-badge">Numérologue</span>
+        </div>
+        <div class="expert-corps">
+          <p class="expert-nom">Maël</p>
+          <p class="expert-role">Nombres de vie</p>
+          <p class="expert-bio">Décrypte vos nombres de vie pour guider vos décisions avec la sagesse des chiffres.</p>
+          <div class="expert-sep"></div>
+          <a href="tarifs.html?expert=Maël" class="btn-consulter">✦ Consulter</a>
+        </div>
+      </article>
+
+      <!-- 6 — Clara -->
+      <article class="carte-expert" data-categorie="voyante" style="animation-delay:0.20s">
+        <div class="expert-photo-wrap">
+          <img class="expert-photo" src="https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Clara — Voyante clairvoyante">
+          <div class="expert-overlay"></div>
+          <span class="expert-badge">Clairvoyante</span>
+        </div>
+        <div class="expert-corps">
+          <p class="expert-nom">Clara</p>
+          <p class="expert-role">Vision globale</p>
+          <p class="expert-bio">Vision globale et précise grâce à la clairvoyance pour éclairer toutes vos situations.</p>
+          <div class="expert-sep"></div>
+          <a href="tarifs.html?expert=Clara" class="btn-consulter">✦ Consulter</a>
+        </div>
+      </article>
+
+      <!-- 7 — Sofia -->
+      <article class="carte-expert" data-categorie="medium" style="animation-delay:0.23s">
+        <div class="expert-photo-wrap">
+          <img class="expert-photo" src="https://images.pexels.com/photos/3812743/pexels-photo-3812743.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Sofia — Médium spirituelle">
+          <div class="expert-overlay"></div>
+          <span class="expert-badge">Médium</span>
+        </div>
+        <div class="expert-corps">
+          <p class="expert-nom">Sofia</p>
+          <p class="expert-role">Connexion spirituelle</p>
+          <p class="expert-bio">Connexion aux guides spirituels pour éclairer vos choix de vie avec douceur.</p>
+          <div class="expert-sep"></div>
+          <a href="tarifs.html?expert=Sofia" class="btn-consulter">✦ Consulter</a>
+        </div>
+      </article>
+
+      <!-- 8 — Jeanne -->
+      <article class="carte-expert" data-categorie="tarot" style="animation-delay:0.26s">
+        <div class="expert-photo-wrap">
+          <img class="expert-photo" src="https://images.pexels.com/photos/3760852/pexels-photo-3760852.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Jeanne — Cartomancienne">
+          <div class="expert-overlay"></div>
+          <span class="expert-badge">Cartomancienne</span>
+        </div>
+        <div class="expert-corps">
+          <p class="expert-nom">Jeanne</p>
+          <p class="expert-role">Oracles & tarots</p>
+          <p class="expert-bio">Oracles et tarots pour comprendre les enjeux cachés et les dynamiques invisibles.</p>
+          <div class="expert-sep"></div>
+          <a href="tarifs.html?expert=Jeanne" class="btn-consulter">✦ Consulter</a>
+        </div>
+      </article>
+
+      <!-- 9 — Lila -->
+      <article class="carte-expert" data-categorie="voyante" style="animation-delay:0.29s">
+        <div class="expert-photo-wrap">
+          <img class="expert-photo" src="https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Lila — Voyante karmique">
+          <div class="expert-overlay"></div>
+          <span class="expert-badge">Karmique</span>
+        </div>
+        <div class="expert-corps">
+          <p class="expert-nom">Lila</p>
+          <p class="expert-role">Mémoires karmiques</p>
+          <p class="expert-bio">Analyse vos mémoires karmiques pour éclairer vos schémas répétitifs et vous libérer.</p>
+          <div class="expert-sep"></div>
+          <a href="tarifs.html?expert=Lila" class="btn-consulter">✦ Consulter</a>
+        </div>
+      </article>
+
+      <!-- 10 — Amélie -->
+      <article class="carte-expert" data-categorie="voyante" style="animation-delay:0.32s">
+        <div class="expert-photo-wrap">
+          <img class="expert-photo" src="https://images.pexels.com/photos/770595/pexels-photo-770595.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Amélie — Voyante émotionnelle">
+          <div class="expert-overlay"></div>
+          <span class="expert-badge">Émotionnelle</span>
+        </div>
+        <div class="expert-corps">
+          <p class="expert-nom">Amélie</p>
+          <p class="expert-role">Guidance du cœur</p>
+          <p class="expert-bio">Ressent profondément les émotions et les énergies pour guider votre cœur avec justesse.</p>
+          <div class="expert-sep"></div>
+          <a href="tarifs.html?expert=Amélie" class="btn-consulter">✦ Consulter</a>
+        </div>
+      </article>
+
+      <!-- 11 — Yara -->
+      <article class="carte-expert" data-categorie="energie" style="animation-delay:0.35s">
+        <div class="expert-photo-wrap">
+          <img class="expert-photo" src="https://images.pexels.com/photos/1587009/pexels-photo-1587009.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Yara — Énergéticienne">
+          <div class="expert-overlay"></div>
+          <span class="expert-badge">Énergéticienne</span>
+        </div>
+        <div class="expert-corps">
+          <p class="expert-nom">Yara</p>
+          <p class="expert-role">Harmonisation intérieure</p>
+          <p class="expert-bio">Nettoyage énergétique et harmonisation intérieure pour retrouver équilibre et sérénité.</p>
+          <div class="expert-sep"></div>
+          <a href="tarifs.html?expert=Yara" class="btn-consulter">✦ Consulter</a>
+        </div>
+      </article>
+
+      <!-- 12 — Selene -->
+      <article class="carte-expert" data-categorie="voyante" style="animation-delay:0.38s">
+        <div class="expert-photo-wrap">
+          <img class="expert-photo" src="https://images.pexels.com/photos/774165/pexels-photo-774165.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Selene — Voyante lunaire">
+          <div class="expert-overlay"></div>
+          <span class="expert-badge">Lunaire</span>
+        </div>
+        <div class="expert-corps">
+          <p class="expert-nom">Selene</p>
+          <p class="expert-role">Cycles lunaires</p>
+          <p class="expert-bio">Travaille avec les cycles lunaires et les marées célestes pour guider vos choix.</p>
+          <div class="expert-sep"></div>
+          <a href="tarifs.html?expert=Selene" class="btn-consulter">✦ Consulter</a>
+        </div>
+      </article>
+
+      <!-- 13 — Iris -->
+      <article class="carte-expert" data-categorie="medium" style="animation-delay:0.41s">
+        <div class="expert-photo-wrap">
+          <img class="expert-photo" src="https://images.pexels.com/photos/774373/pexels-photo-774373.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Iris — Médium onirique">
+          <div class="expert-overlay"></div>
+          <span class="expert-badge">Onirique</span>
+        </div>
+        <div class="expert-corps">
+          <p class="expert-nom">Iris</p>
+          <p class="expert-role">Symboles & rêves</p>
+          <p class="expert-bio">Décrypte vos rêves et symboles inconscients pour révéler les messages de votre âme.</p>
+          <div class="expert-sep"></div>
+          <a href="tarifs.html?expert=Iris" class="btn-consulter">✦ Consulter</a>
+        </div>
+      </article>
+
+      <!-- 14 — Zélie -->
+      <article class="carte-expert" data-categorie="tarot" style="animation-delay:0.44s">
+        <div class="expert-photo-wrap">
+          <img class="expert-photo" src="https://images.pexels.com/photos/3229335/pexels-photo-3229335.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Zélie — Cartomancienne">
+          <div class="expert-overlay"></div>
+          <span class="expert-badge">Cartomancienne</span>
+        </div>
+        <div class="expert-corps">
+          <p class="expert-nom">Zélie</p>
+          <p class="expert-role">Guidance par les oracles</p>
+          <p class="expert-bio">Guidance claire et précise grâce aux oracles pour prendre vos décisions en confiance.</p>
+          <div class="expert-sep"></div>
+          <a href="tarifs.html?expert=Zélie" class="btn-consulter">✦ Consulter</a>
+        </div>
+      </article>
+
+      <!-- 15 — Maud -->
+      <article class="carte-expert" data-categorie="medium" style="animation-delay:0.47s">
+        <div class="expert-photo-wrap">
+          <img class="expert-photo" src="https://images.pexels.com/photos/3194672/pexels-photo-3194672.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Maud — Médium auditif">
+          <div class="expert-overlay"></div>
+          <span class="expert-badge">Médium auditif</span>
+        </div>
+        <div class="expert-corps">
+          <p class="expert-nom">Maud</p>
+          <p class="expert-role">Perception sonore</p>
+          <p class="expert-bio">Messages intuitifs perçus sous forme sonore — une sensibilité rare et précieuse.</p>
+          <div class="expert-sep"></div>
+          <a href="tarifs.html?expert=Maud" class="btn-consulter">✦ Consulter</a>
+        </div>
+      </article>
+
+      <!-- 16 — Anaïs -->
+      <article class="carte-expert" data-categorie="astrologie" style="animation-delay:0.50s">
+        <div class="expert-photo-wrap">
+          <img class="expert-photo" src="https://images.pexels.com/photos/428361/pexels-photo-428361.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Anaïs — Astrologue karmique">
+          <div class="expert-overlay"></div>
+          <span class="expert-badge">Astrologue</span>
+        </div>
+        <div class="expert-corps">
+          <p class="expert-nom">Anaïs</p>
+          <p class="expert-role">Cycles karmiques</p>
+          <p class="expert-bio">Analyse profonde de vos cycles karmiques à travers le prisme de l'astrologie.</p>
+          <div class="expert-sep"></div>
+          <a href="tarifs.html?expert=Anaïs" class="btn-consulter">✦ Consulter</a>
+        </div>
+      </article>
+
+      <!-- 17 — Jade -->
+      <article class="carte-expert" data-categorie="tarot" style="animation-delay:0.53s">
+        <div class="expert-photo-wrap">
+          <img class="expert-photo" src="https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Jade — Médium & tarologue">
+          <div class="expert-overlay"></div>
+          <span class="expert-badge">Médium & Tarot</span>
+        </div>
+        <div class="expert-corps">
+          <p class="expert-nom">Jade</p>
+          <p class="expert-role">Tarot & médiumnité</p>
+          <p class="expert-bio">Guidance directe et puissante grâce à la combinaison du tarot et de la médiumnité.</p>
+          <div class="expert-sep"></div>
+          <a href="tarifs.html?expert=Jade" class="btn-consulter">✦ Consulter</a>
+        </div>
+      </article>
+
+      <!-- 18 — Luna -->
+      <article class="carte-expert" data-categorie="energie" style="animation-delay:0.56s">
+        <div class="expert-photo-wrap">
+          <img class="expert-photo" src="https://images.pexels.com/photos/774167/pexels-photo-774167.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Luna — Chamane énergétique">
+          <div class="expert-overlay"></div>
+          <span class="expert-badge">Chamane</span>
+        </div>
+        <div class="expert-corps">
+          <p class="expert-nom">Luna</p>
+          <p class="expert-role">Éléments & ancêtres</p>
+          <p class="expert-bio">Travaille avec les éléments naturels et la sagesse des ancêtres pour vous guider.</p>
+          <div class="expert-sep"></div>
+          <a href="tarifs.html?expert=Luna" class="btn-consulter">✦ Consulter</a>
+        </div>
+      </article>
+
+      <!-- 19 — Camille -->
+      <article class="carte-expert" data-categorie="voyante" style="animation-delay:0.59s">
+        <div class="expert-photo-wrap">
+          <img class="expert-photo" src="https://images.pexels.com/photos/3965544/pexels-photo-3965544.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Camille — Voyante">
+          <div class="expert-overlay"></div>
+          <span class="expert-badge">Voyante</span>
+        </div>
+        <div class="expert-corps">
+          <p class="expert-nom">Camille</p>
+          <p class="expert-role">Choix sentimentaux</p>
+          <p class="expert-bio">Lecture claire et lumineuse pour comprendre et éclairer vos choix sentimentaux.</p>
+          <div class="expert-sep"></div>
+          <a href="tarifs.html?expert=Camille" class="btn-consulter">✦ Consulter</a>
+        </div>
+      </article>
+
+      <!-- 20 — Ophélie -->
+      <article class="carte-expert" data-categorie="voyante" style="animation-delay:0.62s">
+        <div class="expert-photo-wrap">
+          <img class="expert-photo" src="https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Ophélie — Voyante intuitive">
+          <div class="expert-overlay"></div>
+          <span class="expert-badge">Intuitive</span>
+        </div>
+        <div class="expert-corps">
+          <p class="expert-nom">Ophélie</p>
+          <p class="expert-role">Messages spontanés</p>
+          <p class="expert-bio">Messages spontanés et intuitifs pour éclairer vos décisions avec authenticité.</p>
+          <div class="expert-sep"></div>
+          <a href="tarifs.html?expert=Ophélie" class="btn-consulter">✦ Consulter</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- ── CTA bas ── -->
+  <div class="cta-bas">
+    <p>Pas sûr de votre choix ? Consultez nos tarifs pour trouver la prestation qui vous convient.</p>
+    <a href="tarifs.html" class="cta-or">✦ Voir les tarifs</a>
+  </div>
+
 </main>
 
-<footer class="footer">
-  Altessa Voyance © — Voyance en ligne.
+<!-- ── Footer ── -->
+<footer>
+  <p class="footer-copy">© 2026 Altessa Voyance — Voyance en ligne par écrit, tarot, astrologie & médium</p>
+  <div class="footer-links">
+    <a href="cgv.html">CGV</a>
+    <a href="mentions-legales.html">Mentions légales</a>
+    <a href="politique-confidentialite.html">Confidentialité</a>
+    <a href="politique-cookies.html">Cookies</a>
+    <a href="contact.html">Support</a>
+  </div>
 </footer>
+
+<script>
+// ── Filtres ───────────────────────────────────────────────────────
+const filtres = document.querySelectorAll('.filtre-btn');
+const cartes  = document.querySelectorAll('.carte-expert');
+
+filtres.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filtres.forEach(b => b.classList.remove('actif'));
+    btn.classList.add('actif');
+
+    const filtre = btn.dataset.filtre;
+
+    cartes.forEach((carte, i) => {
+      const cat = carte.dataset.categorie;
+      const visible = filtre === 'tous' || cat === filtre;
+      carte.classList.toggle('masquee', !visible);
+      if (visible) carte.style.animationDelay = (i * 0.04) + 's';
+    });
+  });
+});
+
+// ── Menu burger ───────────────────────────────────────────────────
+const burger = document.getElementById('burger');
+const menu   = document.getElementById('mobileMenu');
+burger.addEventListener('click', () => menu.classList.toggle('open'));
+function closeMenu() { menu.classList.remove('open'); }
+
+// ── Expert pré-sélectionné via URL (?expert=Noémie) ───────────────
+const params = new URLSearchParams(window.location.search);
+const expertParam = params.get('expert');
+if (expertParam) {
+  const carte = [...cartes].find(c =>
+    c.querySelector('.expert-nom')?.textContent === expertParam
+  );
+  if (carte) {
+    carte.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    carte.style.borderColor = 'var(--bordure-forte)';
+  }
+}
+</script>
 
 </body>
 </html>
