@@ -2,43 +2,162 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Test Webhook n8n</title>
+  <title>Altessa — Test Webhook Make</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
-    input, textarea { width: 100%; margin: 10px 0; padding: 10px; box-sizing: border-box; }
-    button { padding: 10px 20px; background: #7c4dff; color: white; border: none; cursor: pointer; }
-    button:hover { background: #5b35d1; }
+    body { font-family: Arial, sans-serif; padding: 30px; background: #0f0c0a; color: #ede5d8; max-width: 600px; margin: 0 auto; }
+    h2 { color: #c9a96e; margin-bottom: 8px; }
+    p { color: #9a8870; margin-bottom: 24px; font-size: 0.9rem; }
+    label { display: block; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: #9a8870; margin-bottom: 6px; margin-top: 16px; }
+    input, textarea, select {
+      width: 100%; padding: 10px 12px; background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(201,169,110,0.3); border-radius: 6px;
+      color: #ede5d8; font-size: 0.9rem; box-sizing: border-box;
+    }
+    textarea { min-height: 100px; resize: vertical; }
+    button {
+      margin-top: 24px; width: 100%; padding: 14px;
+      background: linear-gradient(135deg, #c9a96e, #a07840);
+      border: none; border-radius: 6px; color: #0f0c0a;
+      font-size: 0.9rem; font-weight: bold; cursor: pointer;
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    button:hover { opacity: 0.85; }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+    .result {
+      margin-top: 20px; padding: 16px;
+      border-radius: 8px; font-size: 0.85rem; display: none;
+    }
+    .result.ok { background: rgba(34,180,80,0.1); border: 1px solid rgba(34,180,80,0.3); color: #7ecf9a; }
+    .result.err { background: rgba(220,50,50,0.1); border: 1px solid rgba(220,50,50,0.3); color: #f08080; }
   </style>
 </head>
 <body>
 
-<h2>Test Webhook n8n (sans paiement)</h2>
-<p>Ce formulaire envoie directement vers ton Webhook n8n.</p>
+  <h2>🔮 Test Webhook Altessa</h2>
+  <p>Ce formulaire envoie directement vers Make sans passer par PayPal. Pour tester le flux complet.</p>
 
-<form method="POST" action="https://altessa.app.n8n.cloud/webhook-test/voyance">
-    <label>Expert :</label>
-    <input type="text" name="expert" value="Ariane">
+  <label>Expert</label>
+  <select id="expert">
+    <option value="Ariane">Ariane — Tarologue</option>
+    <option value="Noémie">Noémie — Astrologue</option>
+    <option value="Nicolas">Nicolas — Médium</option>
+    <option value="Élise">Élise — Voyante</option>
+    <option value="Maël">Maël — Numérologue</option>
+    <option value="Clara">Clara — Clairvoyante</option>
+    <option value="Sofia">Sofia — Médium spirituelle</option>
+    <option value="Jeanne">Jeanne — Cartomancienne</option>
+    <option value="Amélie">Amélie — Voyante émotionnelle</option>
+    <option value="Lila">Lila — Voyante karmique</option>
+  </select>
 
-    <label>Type de consultation :</label>
-    <input type="text" name="type" value="sentimentale">
+  <label>Prestation</label>
+  <select id="prestation">
+    <option value="Voyance sentimentale">Voyance sentimentale — 20€</option>
+    <option value="À la question">À la question — 8€</option>
+    <option value="Voyance professionnelle">Voyance professionnelle — 20€</option>
+    <option value="Voyance financière">Voyance financière — 20€</option>
+    <option value="Voyance générale">Voyance générale — 45€</option>
+    <option value="Soin énergétique">Soin énergétique — 50€</option>
+  </select>
 
-    <label>Nom :</label>
-    <input type="text" name="nom" value="Test User">
+  <label>Votre prénom</label>
+  <input type="text" id="prenom" value="Test" />
 
-    <label>Email :</label>
-    <input type="email" name="email" value="test@example.com">
+  <label>Votre email (tu recevras la réponse ici)</label>
+  <input type="email" id="email" placeholder="ton@email.com" />
 
-    <label>Date de naissance :</label>
-    <input type="date" name="date_naissance" value="1990-05-10">
+  <label>Votre question</label>
+  <textarea id="question">Comment va se passer ma situation sentimentale dans les prochaines semaines ?</textarea>
 
-    <label>Autre personne :</label>
-    <input type="text" name="autre_personne" value="Thomas">
+  <button onclick="envoyer()" id="btn">🚀 Envoyer le test vers Make</button>
 
-    <label>Message :</label>
-    <textarea name="message">Ceci est un test pour vérifier le Webhook.</textarea>
+  <div class="result" id="result"></div>
 
-    <button type="submit">Envoyer vers n8n</button>
-</form>
+<script>
+  const PROMPTS = {
+    'Ariane': `Tu es Ariane, tarologue experte au sein d'Altessa Voyance. Tu maîtrises le Tarot de Marseille avec une précision et une sensibilité remarquables. Pour répondre, tu procèdes toujours à un tirage de 3 cartes. Tu décris chaque carte tirée, son symbolisme dans le contexte de la question, puis tu offres une synthèse claire et bienveillante. Ton ton est élégant, rassurant et précis. Tu tutoies le consultant avec douceur. Tu termines toujours par : "Que les lames éclairent ton chemin. — Ariane"`,
+    'Noémie': `Tu es Noémie, astrologue au sein d'Altessa Voyance. Tu analyses les thèmes astraux et les cycles planétaires. Tu références les planètes et signes pertinents. Ton ton est lumineux et bienveillant. Tu termines par : "Que les astres guident tes pas. — Noémie"`,
+    'Nicolas': `Tu es Nicolas, médium au sein d'Altessa Voyance. Tu perçois les énergies subtiles et les messages invisibles. Ton ton est calme et profond. Tu termines par : "Le voile se lève. — Nicolas"`,
+    'Élise': `Tu es Élise, voyante sentimentale au sein d'Altessa Voyance. Ton approche est douce et empathique. Tu termines par : "Le cœur trouve toujours son chemin. — Élise"`,
+    'Maël': `Tu es Maël, numérologue au sein d'Altessa Voyance. Tu décryptes les nombres de vie et les vibrations. Tu termines par : "Les nombres ne mentent jamais. — Maël"`,
+    'Clara': `Tu es Clara, voyante clairvoyante au sein d'Altessa Voyance. Tu perçois des images et des visions précises. Tu termines par : "La vision est là. — Clara"`,
+    'Sofia': `Tu es Sofia, médium spirituelle au sein d'Altessa Voyance. Tu te connectes aux guides et aux énergies supérieures. Tu termines par : "La lumière t'accompagne. — Sofia"`,
+    'Jeanne': `Tu es Jeanne, cartomancienne au sein d'Altessa Voyance. Tu utilises les oracles pour révéler les enjeux cachés. Tu termines par : "Les cartes parlent pour ceux qui savent écouter. — Jeanne"`,
+    'Amélie': `Tu es Amélie, voyante émotionnelle au sein d'Altessa Voyance. Tu ressens profondément les émotions en présence. Tu termines par : "Le cœur sait ce que la tête oublie. — Amélie"`,
+    'Lila': `Tu es Lila, voyante karmique au sein d'Altessa Voyance. Tu analyses les mémoires karmiques et les schémas répétitifs. Tu termines par : "L'âme avance, toujours. — Lila"`,
+  };
+
+  const PRIX = {
+    'Voyance sentimentale': '20€',
+    'À la question': '8€',
+    'Voyance professionnelle': '20€',
+    'Voyance financière': '20€',
+    'Voyance générale': '45€',
+    'Soin énergétique': '50€',
+  };
+
+  const WEBHOOK = 'https://hook.eu1.make.com/h7cvoahqoeglop2f3g6bye5jpfzli8';
+
+  async function envoyer() {
+    const btn     = document.getElementById('btn');
+    const result  = document.getElementById('result');
+    const expert  = document.getElementById('expert').value;
+    const presta  = document.getElementById('prestation').value;
+    const prenom  = document.getElementById('prenom').value.trim();
+    const email   = document.getElementById('email').value.trim();
+    const question = document.getElementById('question').value.trim();
+
+    if (!email || !question || !prenom) {
+      result.className = 'result err';
+      result.style.display = 'block';
+      result.textContent = '⚠️ Remplis tous les champs avant d\'envoyer.';
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = '⏳ Envoi en cours…';
+    result.style.display = 'none';
+
+    const payload = {
+      prenom,
+      email,
+      question,
+      expert,
+      specialite: expert,
+      prestation: presta,
+      prix: PRIX[presta] || '20€',
+      paypal_id: 'TEST_' + Date.now(),
+      prompt_expert: PROMPTS[expert] || PROMPTS['Ariane'],
+      date_envoi: new Date().toLocaleString('fr-FR', { timeZone: 'Europe/Paris' }),
+    };
+
+    try {
+      const res = await fetch(WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      result.className = 'result ok';
+      result.style.display = 'block';
+      result.innerHTML = `✅ Données envoyées à Make !<br><br>
+        <strong>Expert :</strong> ${expert}<br>
+        <strong>Email :</strong> ${email}<br>
+        <strong>Question :</strong> ${question}<br><br>
+        🕯️ Make va attendre 5 minutes puis envoyer la réponse par email.`;
+
+    } catch (err) {
+      result.className = 'result err';
+      result.style.display = 'block';
+      result.textContent = '❌ Erreur : ' + err.message;
+    }
+
+    btn.disabled = false;
+    btn.textContent = '🚀 Envoyer le test vers Make';
+  }
+</script>
 
 </body>
 </html>
