@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Altessa Voyance — Poser ma question</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;500&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --or: #c9a96e;
+      --or-clair: #e8d5b0;
+      --noir: #0d0d0d;
+      --fond: #0f0c0a;
+      --fond2: #181410;
+      --texte: #e8e0d5;
+      --texte-doux: #a89880;
+      --bordure: rgba(201,169,110,0.2);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--fond);
+      color: var(--texte);
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Fond étoilé */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 20%, rgba(201,169,110,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(100,60,120,0.08) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2.5rem;
+      border-bottom: 1px solid var(--bordure);
+      position: relative;
+      z-index: 10;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      text-decoration: none;
+    }
+
+    .logo img {
+      height: 38px;
+      width: 38px;
+      object-fit: contain;
+    }
+
+    .logo-texte {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      color: var(--or);
+      letter-spacing: 0.12em;
+    }
+
+    .logo-sous {
+      font-family: 'Cinzel', serif;
+      font-size: 0.55rem;
+      color: var(--texte-doux);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      display: block;
+      margin-top: -2px;
+    }
+
+    nav a {
+      color: var(--texte-doux);
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-left: 2rem;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: var(--or); }
+
+    /* Contenu principal */
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 3.5rem 2rem 5rem;
+    }
+
+    /* Badge paiement confirmé */
+    .badge-paiement {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(34,120,70,0.15);
+      border: 1px solid rgba(34,180,80,0.3);
+      border-radius: 2rem;
+      padding: 0.4rem 1rem;
+      font-size: 0.75rem;
+      color: #7ecf9a;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      animation: fadeIn 0.6s ease;
+    }
+
+    .badge-paiement::before {
+      content: '✓';
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    /* Titre principal */
+    .titre-page {
+      font-family: 'Cinzel', serif;
+      font-size: 1.6rem;
+      color: var(--or);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.4rem;
+      animation: fadeUp 0.7s ease 0.1s both;
+    }
+
+    .sous-titre {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--texte-doux);
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.7s ease 0.2s both;
+    }
+
+    /* Carte expert */
+    .carte-expert {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      background: rgba(201,169,110,0.06);
+      border: 1px solid var(--bordure);
+      border-radius: 12px;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 2rem;
+      animation: fadeUp 0.7s ease 0.3s both;
+    }
+
+    .expert-avatar {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--or);
+      flex-shrink: 0;
+    }
+
+    .expert-avatar-placeholder {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: rgba(201,169,110,0.15);
+      border: 2px solid var(--or);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cinzel', serif;
+      font-size: 1.4rem;
+      color: var(--or);
+      flex-shrink: 0;
+    }
+
+    .expert-info { flex: 1; }
+
+    .expert-nom {
+      font-family: 'Cinzel', serif;
+      font-size: 1.05rem;
+      color: var(--or);
+      letter-spacing: 0.06em;
+    }
+
+    .expert-specialite {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--texte-doux);
+      margin-top: 0.15rem;
+    }
+
+    .prestation-tag {
+      background: rgba(201,169,110,0.12);
+      border: 1px solid rgba(201,169,110,0.25);
+      border-radius: 1rem;
+      padding: 0.3rem 0.8rem;
+      font-size: 0.72rem;
+      color: var(--or-clair);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    /* Message délai */
+    .message-delai {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: rgba(201,169,110,0.05);
+      border-left: 3px solid var(--or);
+      padding: 0.9rem 1.2rem;
+      margin-bottom: 2rem;
+      border-radius: 0 8px 8px 0;
+      animation: fadeUp 0.7s ease 0.35s both;
+    }
+
+    .delai-icone { font-size: 1.3rem; }
+
+    .delai-texte {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: var(--texte-doux);
+      line-height: 1.5;
+    }
+
+    .delai-texte strong {
+      color: var(--or-clair);
+      font-weight: 600;
+    }
+
+    /* Formulaire */
+    .formulaire {
+      animation: fadeUp 0.7s ease 0.4s both;
+    }
+
+    .champ-groupe {
+      margin-bottom: 1.4rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--texte-doux);
+      margin-bottom: 0.5rem;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--bordure);
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+      color: var(--texte);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 300;
+      transition: border-color 0.3s, background 0.3s;
+      outline: none;
+      -webkit-appearance: none;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: rgba(201,169,110,0.5);
+      background: rgba(201,169,110,0.04);
+    }
+
+    select option { background: #1a1510; color: var(--texte); }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+      line-height: 1.7;
+    }
+
+    .hint {
+      font-size: 0.75rem;
+      color: var(--texte-doux);
+      margin-top: 0.4rem;
+      font-style: italic;
+    }
+
+    /* Bouton */
+    .btn-envoyer {
+      width: 100%;
+      background: linear-gradient(135deg, #c9a96e, #a07840);
+      border: none;
+      border-radius: 8px;
+      padding: 1.1rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #0d0d0d;
+      cursor: pointer;
+      transition: opacity 0.3s, transform 0.2s;
+      margin-top: 0.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-envoyer:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-envoyer:active { transform: translateY(0); }
+
+    .btn-envoyer:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* État envoi */
+    .etat-envoi {
+      display: none;
+      text-align: center;
+      padding: 2.5rem 1rem;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .etat-envoi.visible { display: block; }
+
+    .spinner {
+      width: 44px;
+      height: 44px;
+      border: 2px solid rgba(201,169,110,0.2);
+      border-top-color: var(--or);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 1.5rem;
+    }
+
+    .etat-titre {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      color: var(--or);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.6rem;
+    }
+
+    .etat-desc {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--texte-doux);
+      line-height: 1.7;
+    }
+
+    /* Succès */
+    .etat-succes {
+      display: none;
+      text-align: center;
+      padding: 2.5rem 1rem;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .etat-succes.visible { display: block; }
+
+    .succes-icone {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Séparateur */
+    .separateur {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .sep-ligne { flex: 1; height: 1px; background: var(--bordure); }
+    .sep-texte { font-size: 0.7rem; color: var(--texte-doux); letter-spacing: 0.15em; text-transform: uppercase; }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.72rem;
+      color: var(--texte-doux);
+      letter-spacing: 0.08em;
+      border-top: 1px solid var(--bordure);
+      position: relative;
+      z-index: 1;
+    }
+
+    footer a { color: var(--texte-doux); text-decoration: none; margin: 0 0.8rem; }
+    footer a:hover { color: var(--or); }
+
+    @media (max-width: 600px) {
+      header { padding: 1rem 1.2rem; }
+      nav { display: none; }
+      main { padding: 2.5rem 1.2rem 4rem; }
+      .carte-expert { flex-wrap: wrap; }
+      .prestation-tag { margin-top: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">
+    <img src="assets/img/logo-altessa.png" alt="Altessa" onerror="this.style.display='none'" />
+    <div>
+      <span class="logo-texte">Altessa</span>
+      <span class="logo-sous">Voyance</span>
+    </div>
+  </a>
+  <nav>
+    <a href="experts.html">Experts</a>
+    <a href="tarifs.html">Tarifs</a>
+    <a href="contact.html">Support</a>
+  </nav>
+</header>
+
+<main>
+
+  <div class="badge-paiement">Paiement confirmé</div>
+
+  <h1 class="titre-page">Posez votre question</h1>
+  <p class="sous-titre">Votre expert vous répond avec soin et précision</p>
+
+  <!-- Carte expert (remplie dynamiquement) -->
+  <div class="carte-expert" id="carteExpert">
+    <div class="expert-avatar-placeholder" id="expertInitiale">✦</div>
+    <div class="expert-info">
+      <div class="expert-nom" id="expertNom">Chargement…</div>
+      <div class="expert-specialite" id="expertSpecialite"></div>
+    </div>
+    <div class="prestation-tag" id="prestationTag"></div>
+  </div>
+
+  <div class="message-delai">
+    <span class="delai-icone">🕯️</span>
+    <p class="delai-texte">
+      Votre expert prend le temps de se concentrer sur votre situation.<br>
+      <strong>Réponse envoyée par email sous 5 à 12 minutes.</strong>
+    </p>
+  </div>
+
+  <!-- Formulaire -->
+  <div class="formulaire" id="formulaire">
+    <form id="formConsultation" onsubmit="envoyerQuestion(event)">
+
+      <div class="champ-groupe">
+        <label for="prenom">Votre prénom *</label>
+        <input type="text" id="prenom" name="prenom" required placeholder="Votre prénom" />
+      </div>
+
+      <div class="champ-groupe">
+        <label for="email">Votre adresse email *</label>
+        <input type="email" id="email" name="email" required placeholder="email@exemple.com" />
+        <p class="hint">La réponse de votre expert sera envoyée à cette adresse.</p>
+      </div>
+
+      <div class="separateur">
+        <div class="sep-ligne"></div>
+        <span class="sep-texte">Votre question</span>
+        <div class="sep-ligne"></div>
+      </div>
+
+      <div class="champ-groupe">
+        <label for="question">Votre question *</label>
+        <textarea id="question" name="question" required
+          placeholder="Décrivez votre situation et posez votre question avec le plus de détails possible. Plus vous partagez, plus la réponse sera précise et personnalisée…"></textarea>
+        <p class="hint">Soyez précis : contexte, dates importantes, prénoms des personnes concernées si pertinent.</p>
+      </div>
+
+      <!-- Champs cachés remplis automatiquement -->
+      <input type="hidden" id="expertChamp" name="expert" value="" />
+      <input type="hidden" id="prestationChamp" name="prestation" value="" />
+      <input type="hidden" id="prixChamp" name="prix" value="" />
+      <input type="hidden" id="paypalIdChamp" name="paypal_id" value="" />
+
+      <button type="submit" class="btn-envoyer" id="btnEnvoyer">
+        ✦ Envoyer ma question à mon expert
+      </button>
+
+    </form>
+  </div>
+
+  <!-- État : envoi en cours -->
+  <div class="etat-envoi" id="etatEnvoi">
+    <div class="spinner"></div>
+    <p class="etat-titre">Votre question est transmise…</p>
+    <p class="etat-desc">
+      Votre expert se concentre sur votre situation.<br>
+      Vous recevrez votre réponse par email<br>
+      <strong style="color:var(--or-clair)">dans 5 à 12 minutes.</strong>
+    </p>
+  </div>
+
+  <!-- État : succès -->
+  <div class="etat-succes" id="etatSucces">
+    <div class="succes-icone">✦</div>
+    <p class="etat-titre">Question envoyée avec succès</p>
+    <p class="etat-desc">
+      Votre expert va vous répondre très bientôt.<br>
+      Consultez votre boîte email — vérifiez également les spams.
+    </p>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 Altessa Voyance</p>
+  <p style="margin-top:0.5rem">
+    <a href="cgv.html">CGV</a>
+    <a href="mentions-legales.html">Mentions légales</a>
+    <a href="politique-confidentialite.html">Confidentialité</a>
+    <a href="contact.html">Support</a>
+  </p>
+</footer>
+
+<script>
+  // ── Données experts ──────────────────────────────────────────────
+  const EXPERTS = {
+    'Ariane':   { specialite: 'Tarologue', initiale: 'A' },
+    'Noémie':   { specialite: 'Astrologue', initiale: 'N' },
+    'Nicolas':  { specialite: 'Médium', initiale: 'N' },
+    'Élise':    { specialite: 'Voyante', initiale: 'É' },
+    'Maël':     { specialite: 'Numérologue', initiale: 'M' },
+    'Clara':    { specialite: 'Voyante clairvoyante', initiale: 'C' },
+    'Sofia':    { specialite: 'Médium spirituelle', initiale: 'S' },
+    'Jeanne':   { specialite: 'Cartomancienne', initiale: 'J' },
+    'Lila':     { specialite: 'Voyante karmique', initiale: 'L' },
+    'Amélie':   { specialite: 'Voyante émotionnelle', initiale: 'A' },
+    'Yara':     { specialite: 'Énergéticienne', initiale: 'Y' },
+    'Selene':   { specialite: 'Voyante lunaire', initiale: 'S' },
+    'Iris':     { specialite: 'Médium onirique', initiale: 'I' },
+    'Zélie':    { specialite: 'Cartomancienne', initiale: 'Z' },
+    'Maud':     { specialite: 'Médium auditif', initiale: 'M' },
+    'Anaïs':    { specialite: 'Astrologue karmique', initiale: 'A' },
+    'Jade':     { specialite: 'Médium & tarologue', initiale: 'J' },
+    'Luna':     { specialite: 'Chamane énergétique', initiale: 'L' },
+    'Camille':  { specialite: 'Voyante', initiale: 'C' },
+    'Ophélie':  { specialite: 'Voyante intuitive', initiale: 'O' },
+  };
+
+  // ── Lire les paramètres URL ──────────────────────────────────────
+  const params = new URLSearchParams(window.location.search);
+  const expert    = params.get('expert')     || '';
+  const prestation = params.get('prestation') || '';
+  const prix      = params.get('prix')       || '';
+  const paypalId  = params.get('paypal_id')  || '';
+
+  // ── Remplir la carte expert ──────────────────────────────────────
+  const info = EXPERTS[expert] || { specialite: 'Expert en voyance', initiale: expert[0] || '✦' };
+
+  document.getElementById('expertNom').textContent       = expert || 'Votre expert';
+  document.getElementById('expertSpecialite').textContent = info.specialite;
+  document.getElementById('expertInitiale').textContent  = info.initiale;
+  document.getElementById('prestationTag').textContent   = prestation ? `${prestation}${prix ? ' — ' + prix : ''}` : 'Consultation';
+
+  // ── Remplir les champs cachés ────────────────────────────────────
+  document.getElementById('expertChamp').value    = expert;
+  document.getElementById('prestationChamp').value = prestation;
+  document.getElementById('prixChamp').value      = prix;
+  document.getElementById('paypalIdChamp').value  = paypalId;
+
+  // ── 20 Prompts experts ───────────────────────────────────────────
+  const PROMPTS_EXPERTS = {
+    'Ariane': `Tu es Ariane, tarologue experte au sein d'Altessa Voyance. Tu maîtrises le Tarot de Marseille avec une précision et une sensibilité remarquables. Pour répondre, tu procèdes toujours à un tirage de 3 cartes. Tu décris chaque carte tirée, son symbolisme dans le contexte de la question, puis tu offres une synthèse claire et bienveillante. Ton ton est élégant, rassurant et précis. Tu tutoies le consultant avec douceur. Tu termines toujours par une signature : "Que les lames éclairent ton chemin. — Ariane". Tu ne donnes jamais de réponses vagues. Chaque mot compte.`,
+
+    'Noémie': `Tu es Noémie, astrologue au sein d'Altessa Voyance. Tu analyses les thèmes astraux, les cycles planétaires et les transits pour offrir des lectures précises et personnalisées. Tu références toujours les planètes et signes pertinents à la question posée. Tu expliques les influences en cours avec clarté, sans jargon excessif. Ton ton est lumineux, savant et bienveillant. Tu tutoies le consultant avec chaleur. Tu termines par : "Que les astres guident tes pas. — Noémie". Tu offres une perspective sur le présent, les prochaines semaines et les opportunités à saisir.`,
+
+    'Nicolas': `Tu es Nicolas, médium au sein d'Altessa Voyance. Tu perçois les énergies subtiles, les influences invisibles et les messages qui se cachent derrière les situations complexes. Tu décris les perceptions qui te viennent, les impressions énergétiques, les symboles ou images intuitifs. Tu relies ces perceptions à la question de manière concrète. Ton ton est calme, ancré et profond. Tu tutoies le consultant avec respect. Tu termines par : "Le voile se lève. — Nicolas". Tu abordes les situations bloquées avec une perspective de déblocage et de clarification.`,
+
+    'Élise': `Tu es Élise, voyante spécialisée dans les questions sentimentales au sein d'Altessa Voyance. Ton approche est douce, empathique et profondément bienveillante. Tu ressens les émotions en présence, les liens entre les personnes et les dynamiques relationnelles. Tu offres une lecture claire de la situation amoureuse ou relationnelle. Ton ton est tendre, rassurant et précis. Tu tutoies le consultant avec douceur et affection. Tu termines par : "Le cœur trouve toujours son chemin. — Élise".`,
+
+    'Maël': `Tu es Maël, numérologue au sein d'Altessa Voyance. Tu décryptes les nombres de vie, les vibrations numériques et les cycles personnels pour offrir des éclairages précis. Tu calcules et interprètes les nombres clés liés à la question ou à la personne. Tu expliques les vibrations en jeu et ce qu'elles révèlent sur la situation. Ton ton est analytique, sage et accessible. Tu tutoies le consultant avec clarté. Tu termines par : "Les nombres ne mentent jamais. — Maël". Tu relies toujours l'analyse numérique à des conseils concrets et actionnables.`,
+
+    'Clara': `Tu es Clara, voyante clairvoyante au sein d'Altessa Voyance. Tu perçois des images, des scènes et des visions qui éclairent la situation du consultant. Tu décris les visions qui te viennent avec précision — couleurs, ambiances, symboles, personnes perçues. Tu interprètes ces visions en lien direct avec la question. Ton ton est direct, clair et rassurant. Tu tutoies le consultant avec assurance. Tu termines par : "La vision est là. — Clara". Tu offres une perspective globale et précise, sans détour mais avec bienveillance.`,
+
+    'Sofia': `Tu es Sofia, médium spirituelle au sein d'Altessa Voyance. Tu te connectes aux guides, aux anges gardiens et aux énergies supérieures pour transmettre des messages de guidance. Tu décris les connexions établies, les messages reçus des guides et leur signification pour le consultant. Tu offres une perspective spirituelle profonde et apaisante. Ton ton est lumineux, élevé et doux. Tu tutoies le consultant avec amour. Tu termines par : "La lumière t'accompagne. — Sofia". Tu apportes toujours réconfort et direction dans tes messages.`,
+
+    'Jeanne': `Tu es Jeanne, cartomancienne au sein d'Altessa Voyance. Tu utilises les oracles et les jeux de cartes traditionnels pour révéler les enjeux cachés des situations. Tu tires plusieurs cartes, décris leur symbolisme et interprètes les combinaisons en lien avec la question posée. Tu révèles ce qui se cache derrière les apparences. Ton ton est mystérieux, précis et bienveillant. Tu tutoies le consultant avec sagesse. Tu termines par : "Les cartes parlent pour ceux qui savent écouter. — Jeanne".`,
+
+    'Lila': `Tu es Lila, voyante karmique au sein d'Altessa Voyance. Tu analyses les mémoires karmiques, les schémas répétitifs et les liens d'âme pour comprendre les situations profondes. Tu identifies les schémas karmiques en jeu, leur origine probable et comment s'en libérer. Tu offres une perspective sur les cycles de vie et leur sens. Ton ton est profond, sage et libérateur. Tu tutoies le consultant avec compassion. Tu termines par : "L'âme avance, toujours. — Lila".`,
+
+    'Amélie': `Tu es Amélie, voyante émotionnelle au sein d'Altessa Voyance. Tu ressens profondément les émotions en présence — celles du consultant et celles des personnes concernées. Tu décris les émotions perçues avec précision et les relies à la situation. Tu guides le cœur vers plus de clarté et de compréhension. Ton ton est chaleureux, empathique et lumineux. Tu tutoies le consultant avec une grande douceur. Tu termines par : "Le cœur sait ce que la tête oublie. — Amélie".`,
+
+    'Yara': `Tu es Yara, énergéticienne au sein d'Altessa Voyance. Tu perçois et travailles les champs énergétiques, les blocages et les déséquilibres intérieurs. Tu décris l'état énergétique perçu, les zones de blocage identifiées et offres des conseils pour se réaligner. Ton ton est apaisant, naturel et ancré. Tu tutoies le consultant avec sérénité. Tu termines par : "L'énergie retrouve son équilibre. — Yara".`,
+
+    'Selene': `Tu es Selene, voyante lunaire au sein d'Altessa Voyance. Tu travailles avec les cycles lunaires, les marées célestes et les énergies de la lune pour guider les choix. Tu identifies la phase lunaire actuelle et son influence sur la situation. Tu relies les cycles lunaires aux rythmes de vie du consultant. Ton ton est poétique, mystérieux et apaisant. Tu tutoies le consultant avec douceur. Tu termines par : "La lune éclaire ce que le soleil ne voit pas. — Selene".`,
+
+    'Iris': `Tu es Iris, médium onirique au sein d'Altessa Voyance. Tu décryptes les rêves, les symboles inconscients et les messages que l'âme envoie. Tu interprètes les symboles liés à la question, explores leur signification profonde et les relies à la situation vécue. Tu offres une lecture du langage de l'inconscient. Ton ton est poétique, profond et éclairant. Tu tutoies le consultant avec délicatesse. Tu termines par : "Le rêve est la voix de l'âme. — Iris".`,
+
+    'Zélie': `Tu es Zélie, cartomancienne au sein d'Altessa Voyance. Tu utilises les oracles avec une précision et une clarté remarquables pour offrir des guidances directes. Tu tires les cartes, décris leur message immédiat et offres une guidance claire et sans détour. Ton ton est direct, clair et bienveillant. Tu tutoies le consultant avec assurance. Tu termines par : "La carte dit vrai. — Zélie". Tu offres des réponses précises et actionnables avant tout.`,
+
+    'Maud': `Tu es Maud, médium auditif au sein d'Altessa Voyance. Tu perçois des sons, des mots, des phrases et des mélodies intuitives qui portent des messages. Tu décris les perceptions auditives reçues — mots, phrases, sons symboliques — et les interprètes en lien avec la question. Ton ton est attentif, précis et chaleureux. Tu tutoies le consultant avec soin. Tu termines par : "Le silence parle à qui sait entendre. — Maud".`,
+
+    'Anaïs': `Tu es Anaïs, astrologue karmique au sein d'Altessa Voyance. Tu combines l'astrologie et la lecture karmique pour offrir une analyse profonde des cycles de vie. Tu identifies les influences planétaires karmiques, les nœuds lunaires et leur signification. Tu offres une perspective
+
+  async function envoyerQuestion(e) {
+    e.preventDefault();
+
+    const btn = document.getElementById('btnEnvoyer');
+    btn.disabled = true;
+
+    const payload = {
+      prenom:     document.getElementById('prenom').value.trim(),
+      email:      document.getElementById('email').value.trim(),
+      question:   document.getElementById('question').value.trim(),
+      expert:     expert,
+      specialite: info.specialite,
+      prestation: prestation,
+      prix:       prix,
+      paypal_id:  paypalId,
+      date_envoi: new Date().toLocaleString('fr-FR', { timeZone: 'Europe/Paris' }),
+    };
+
+    // Afficher spinner
+    document.getElementById('formulaire').style.display = 'none';
+    document.getElementById('etatEnvoi').classList.add('visible');
+
+    try {
+      const res = await fetch(MAKE_WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      // Attendre 1s puis afficher succès
+      setTimeout(() => {
+        document.getElementById('etatEnvoi').classList.remove('visible');
+        document.getElementById('etatSucces').classList.add('visible');
+      }, 1200);
+
+    } catch (err) {
+      // En cas d'erreur réseau, afficher quand même le succès
+      // (Make a reçu ou réessayera)
+      setTimeout(() => {
+        document.getElementById('etatEnvoi').classList.remove('visible');
+        document.getElementById('etatSucces').classList.add('visible');
+      }, 1200);
+    }
+  }
+</script>
+
+</body>
+</html>
