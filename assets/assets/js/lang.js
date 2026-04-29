@@ -1,253 +1,711 @@
 /* ============================================================
-   🌐 Altessa Voyance — Système multilingue
-   Langues : Français, Anglais, Espagnol, Portugais, Italien
-   ------------------------------------------------------------
-   Fonctionnement :
-   - lit l'attribut data-i18n pour traduire les textes
-   - sauvegarde la langue dans localStorage
-   - applique la langue dès le chargement de la page
+   🌐 Altessa Voyance — Système multilingue v2
+   Langues : Français · Anglais · Espagnol · Portugais · Italien
    ============================================================ */
 
 const translations = {
+
   fr: {
-    // --- NAV ---
+    // NAV
     nav_home: "Accueil",
-    nav_experts: "Experts",
+    nav_experts: "Voyance écrite",
     nav_tarifs: "Tarifs",
-    nav_contact: "Contact",
+    nav_rdv: "RDV Téléphone",
+    nav_contact: "Support",
 
-    // --- BRAND ---
-    brand_name: "Altessa",
-    brand_sub: "Voyance",
+    // HERO
+    hero_titre: "Altessa Voyance",
+    hero_sous: "Tarot · Astrologie · Médiumnité",
+    hero_desc: "Découvrez l'avenir avec nos experts en voyance en ligne.\nRéponses claires, précises et personnalisées — par écrit ou par téléphone.",
+    hero_cta1: "✨ Voyance écrite",
+    hero_cta2: "📞 RDV Téléphone",
+    hero_decouvrir: "Découvrir",
 
-    // --- TARIFS PAGE ---
-    tarifs_title: "Altessa Voyance — Tarifs",
-    tarifs_page_title: "Tarifs de voyance",
-    tarifs_intro:
-      "Choisissez votre type de voyance selon votre besoin.<br><strong>Réponse envoyée par e-mail après validation du paiement sécurisé.</strong>",
+    // SECTIONS INDEX
+    section_expertises_label: "Nos expertises",
+    section_expertises_titre: "Un art, plusieurs sensibilités",
+    section_expertises_texte: "Chaque voyant d'Altessa possède une spécialité unique, choisie avec soin pour vous offrir la lecture la plus juste.",
+    section_fondatrice_label: "La fondatrice",
+    section_univers_label: "L'univers Altessa",
+    section_univers_titre: "Élégance & Confidentialité",
+    cta_pre: "Prêt à commencer ?",
+    cta_titre: "Votre question mérite une réponse",
+    cta_sous: "Choisissez votre expert et recevez votre consultation par écrit en toute confidentialité — sous 5 à 12 minutes.",
+    cta_expert: "✨ Choisir mon expert",
+    cta_tarifs: "Voir les tarifs",
 
-    tarif_question_title: "À la question",
-    tarif_question_desc: "Une question précise, réponse directe et claire.",
+    // SERVICES
+    service_tarot_nom: "Tarot",
+    service_tarot_desc: "Lecture des lames pour éclairer vos décisions et révéler les énergies en présence.",
+    service_astro_nom: "Astrologie",
+    service_astro_desc: "Analyse de votre thème astral et de vos cycles pour mieux comprendre votre chemin.",
+    service_medium_nom: "Médiumnité",
+    service_medium_desc: "Perceptions fines et connexions subtiles pour lever le voile sur vos situations complexes.",
+    service_num_nom: "Numérologie",
+    service_num_desc: "Décryptage de vos nombres de vie pour guider vos décisions avec précision.",
+    service_energie_nom: "Soin énergétique",
+    service_energie_desc: "Nettoyage et réalignement de votre champ énergétique pour retrouver équilibre et clarté.",
+    service_vocal_nom: "Consultation vocale",
+    service_vocal_desc: "Échangez directement avec votre expert par téléphone sur rendez-vous.",
 
-    tarif_sentimental_title: "Voyance sentimentale",
-    tarif_sentimental_desc:
-      "Couple, amour, retrouvailles, liens présents et futurs.",
+    // EXPERTS
+    experts_titre: "Nos experts en ligne",
+    experts_sous: "Choisissez le voyant qui vous correspond. Chaque expert a été sélectionné pour la finesse de sa lecture et la justesse de ses mots.",
+    experts_cta: "✦ Consulter",
+    experts_cta_bas: "Pas sûr de votre choix ? Consultez nos tarifs pour trouver la prestation qui vous convient.",
+    filtre_tous: "✦ Tous",
+    filtre_tarot: "🃏 Tarot",
+    filtre_astro: "♈ Astrologie",
+    filtre_medium: "🔮 Médium",
+    filtre_num: "✦ Numérologie",
+    filtre_energie: "🌿 Énergie",
+    filtre_voyante: "👁 Voyante",
 
-    tarif_pro_title: "Voyance professionnelle",
-    tarif_pro_desc: "Carrière, travail, changement pro, évolution.",
+    // TARIFS
+    tarifs_titre: "Tarifs de voyance",
+    tarifs_sous: "Choisissez votre consultation selon votre besoin. Réponse personnalisée envoyée par email après paiement sécurisé.",
+    tarif1_nom: "À la question",
+    tarif1_desc: "Une question précise, une réponse directe et claire. Idéal pour un éclairage rapide.",
+    tarif2_nom: "Voyance sentimentale",
+    tarif2_desc: "Couple, amour, retrouvailles, liens présents et futurs. Pour le cœur et ses questions.",
+    tarif3_nom: "Voyance professionnelle",
+    tarif3_desc: "Carrière, travail, changement professionnel, évolution et projets.",
+    tarif4_nom: "Voyance financière",
+    tarif4_desc: "Finances, achats importants, stabilité et sécurité matérielle.",
+    tarif5_nom: "Voyance générale",
+    tarif5_desc: "Bilan complet : sentimental, professionnel, finances et grandes tendances à venir.",
+    tarif6_nom: "Soin énergétique",
+    tarif6_desc: "Nettoyage énergétique, apaisement profond et réalignement intérieur.",
+    paiement_securise: "Paiement sécurisé",
+    delai_info: "Après paiement, vous serez redirigé pour poser votre question. Réponse de votre expert sous 5 à 12 minutes, envoyée par email.",
+    tarif_cta1: "← Choisir mon expert",
+    tarif_cta2: "Support",
 
-    tarif_finance_title: "Voyance financière",
-    tarif_finance_desc: "Finances, achats importants, stabilité et sécurité.",
+    // CONSULTATION
+    consult_titre: "Posez votre question",
+    consult_sous: "Votre expert vous répond avec soin et précision",
+    consult_badge: "Paiement confirmé",
+    consult_changer: "Changer",
+    consult_delai1: "Votre expert prend le temps de se concentrer sur votre situation.",
+    consult_delai2: "Réponse envoyée par email sous 5 à 12 minutes.",
+    label_prenom: "Votre prénom *",
+    label_email: "Votre adresse email *",
+    hint_email: "La réponse de votre expert sera envoyée à cette adresse.",
+    label_question: "Votre question *",
+    placeholder_question: "Décrivez votre situation et posez votre question avec le plus de détails possible. Plus vous partagez, plus la réponse sera précise et personnalisée…",
+    hint_question: "Soyez précis : contexte, dates importantes, prénoms des personnes concernées si pertinent.",
+    btn_envoyer: "✦ Envoyer ma question à mon expert",
+    envoi_titre: "Votre question est transmise…",
+    envoi_desc: "Votre expert se concentre sur votre situation. Vous recevrez votre réponse par email dans 5 à 12 minutes.",
+    succes_titre: "Question envoyée avec succès",
+    succes_desc: "Votre expert va vous répondre très bientôt. Consultez votre boîte email — vérifiez également les spams.",
 
-    tarif_general_title: "Voyance générale",
-    tarif_general_desc:
-      "Bilan complet : sentimental, pro, finances et tendances à venir.",
+    // SUPPORT
+    support_titre: "Support & Aide",
+    support_sous: "Un problème de paiement, une question sur une commande ou un souci de rendez-vous ? Nous vous répondons rapidement.",
+    label_nom: "Nom complet *",
+    label_objet: "Objet *",
+    label_ref: "ID PayPal / Référence de commande (optionnel)",
+    label_message: "Votre message *",
+    placeholder_message: "Décrivez votre problème : date, offre concernée, email utilisé, capture d'écran si besoin…",
+    btn_support: "✦ Envoyer au support",
+    succes_support_titre: "Message envoyé",
+    succes_support_desc: "Nous avons bien reçu votre demande. Notre équipe vous répond sous 24 heures à l'adresse indiquée.",
 
-    tarif_soin_title: "Soin énergétique",
-    tarif_soin_desc:
-      "Nettoyage énergétique, apaisement, réalignement intérieur.",
+    // RDV
+    rdv_titre: "Consultation Téléphonique",
+    rdv_sous: "Échangez directement avec votre voyante. Paiement sécurisé, puis choix de votre créneau.",
+    rdv_comment: "Comment ça marche",
+    rdv_etape1: "Effectuez votre paiement sécurisé via PayPal ci-dessous.",
+    rdv_etape2: "Vous êtes redirigé vers la page de confirmation.",
+    rdv_etape3: "Choisissez votre créneau disponible sur l'agenda Calendly.",
+    rdv_etape4: "Installez-vous au calme — votre consultation a lieu à l'heure prévue.",
+    rdv_cta: "📞 Réserver maintenant",
+    rdv_interlocutrice: "Votre interlocutrice",
+    rdv_dispo: "Disponibilités (aperçu)",
 
-    btn_choose_expert: "Choisir mon expert",
-    btn_ask_question: "Poser ma question",
+    // MERCI
+    merci_badge: "✓ Question transmise",
+    merci_titre: "Merci pour votre confiance",
+    merci_sous: "Votre question a bien été transmise à votre expert. Consultez votre boîte email dans quelques minutes.",
+    merci_delai: "Réponse envoyée par email sous 5 à 12 minutes.",
+    merci_spam: "Vérifiez également vos spams si nécessaire.",
+    merci_etape1: "Paiement validé",
+    merci_etape2: "Question envoyée",
+    merci_etape3: "Réponse en cours",
+    merci_etape4: "Email reçu",
+    btn_accueil: "← Retour à l'accueil",
 
-    // --- FOOTER ---
-    footer_text: "Altessa Voyance © — Voyance en ligne."
+    // FOOTER
+    footer_copy: "© 2026 Altessa Voyance — Voyance en ligne par écrit, tarot, astrologie & médium",
+    footer_cgv: "CGV",
+    footer_mentions: "Mentions légales",
+    footer_privacy: "Confidentialité",
+    footer_cookies: "Cookies",
+    footer_support: "Support",
   },
 
   en: {
     nav_home: "Home",
-    nav_experts: "Experts",
-    nav_tarifs: "Prices",
-    nav_contact: "Contact",
+    nav_experts: "Written Reading",
+    nav_tarifs: "Pricing",
+    nav_rdv: "Phone Appointment",
+    nav_contact: "Support",
 
-    brand_name: "Altessa",
-    brand_sub: "Divination",
+    hero_titre: "Altessa Voyance",
+    hero_sous: "Tarot · Astrology · Mediumship",
+    hero_desc: "Discover your future with our expert psychic readers online.\nClear, precise and personalised answers — by writing or by phone.",
+    hero_cta1: "✨ Written Reading",
+    hero_cta2: "📞 Book a Call",
+    hero_decouvrir: "Discover",
 
-    tarifs_title: "Altessa Divination — Prices",
-    tarifs_page_title: "Consultation Prices",
-    tarifs_intro:
-      "Choose the type of reading you need.<br><strong>Your answer will be sent by email after secure payment validation.</strong>",
+    section_expertises_label: "Our expertise",
+    section_expertises_titre: "One art, many sensibilities",
+    section_expertises_texte: "Each Altessa reader has a unique speciality, carefully chosen to offer you the most accurate reading.",
+    section_fondatrice_label: "The founder",
+    section_univers_label: "The Altessa universe",
+    section_univers_titre: "Elegance & Confidentiality",
+    cta_pre: "Ready to begin?",
+    cta_titre: "Your question deserves an answer",
+    cta_sous: "Choose your expert and receive your consultation by written message in complete confidentiality — within 5 to 12 minutes.",
+    cta_expert: "✨ Choose my expert",
+    cta_tarifs: "View pricing",
 
-    tarif_question_title: "One Question",
-    tarif_question_desc: "A clear and direct answer to a specific question.",
+    service_tarot_nom: "Tarot",
+    service_tarot_desc: "Card reading to illuminate your decisions and reveal the energies at play.",
+    service_astro_nom: "Astrology",
+    service_astro_desc: "Analysis of your birth chart and cycles to better understand your path.",
+    service_medium_nom: "Mediumship",
+    service_medium_desc: "Fine perceptions and subtle connections to lift the veil on complex situations.",
+    service_num_nom: "Numerology",
+    service_num_desc: "Decoding your life numbers to guide your decisions with precision.",
+    service_energie_nom: "Energy Healing",
+    service_energie_desc: "Cleansing and realigning your energy field to restore balance and clarity.",
+    service_vocal_nom: "Voice Consultation",
+    service_vocal_desc: "Speak directly with your expert by phone on appointment.",
 
-    tarif_sentimental_title: "Love Reading",
-    tarif_sentimental_desc:
-      "Relationships, love, reconnection, present and future ties.",
+    experts_titre: "Our Experts Online",
+    experts_sous: "Choose the reader that resonates with you. Each expert has been selected for the precision of their reading and the accuracy of their words.",
+    experts_cta: "✦ Consult",
+    experts_cta_bas: "Not sure who to choose? Check our pricing to find the right service for you.",
+    filtre_tous: "✦ All",
+    filtre_tarot: "🃏 Tarot",
+    filtre_astro: "♈ Astrology",
+    filtre_medium: "🔮 Medium",
+    filtre_num: "✦ Numerology",
+    filtre_energie: "🌿 Energy",
+    filtre_voyante: "👁 Psychic",
 
-    tarif_pro_title: "Career Reading",
-    tarif_pro_desc: "Career, work direction, evolution.",
+    tarifs_titre: "Consultation Pricing",
+    tarifs_sous: "Choose your consultation based on your needs. Personalised response sent by email after secure payment.",
+    tarif1_nom: "Single Question",
+    tarif1_desc: "One precise question, one clear and direct answer. Ideal for a quick insight.",
+    tarif2_nom: "Love Reading",
+    tarif2_desc: "Couple, love, reunions, present and future connections. For heart questions.",
+    tarif3_nom: "Career Reading",
+    tarif3_desc: "Career, work, professional change, evolution and projects.",
+    tarif4_nom: "Financial Reading",
+    tarif4_desc: "Finances, important purchases, material stability and security.",
+    tarif5_nom: "General Reading",
+    tarif5_desc: "Complete overview: love, career, finances and major upcoming trends.",
+    tarif6_nom: "Energy Healing",
+    tarif6_desc: "Energetic cleansing, deep soothing and inner realignment.",
+    paiement_securise: "Secure Payment",
+    delai_info: "After payment, you will be redirected to ask your question. Expert response within 5 to 12 minutes, sent by email.",
+    tarif_cta1: "← Choose my expert",
+    tarif_cta2: "Support",
 
-    tarif_finance_title: "Financial Reading",
-    tarif_finance_desc: "Money matters, stability, important purchases.",
+    consult_titre: "Ask Your Question",
+    consult_sous: "Your expert answers with care and precision",
+    consult_badge: "Payment confirmed",
+    consult_changer: "Change",
+    consult_delai1: "Your expert takes time to focus on your situation.",
+    consult_delai2: "Response sent by email within 5 to 12 minutes.",
+    label_prenom: "Your first name *",
+    label_email: "Your email address *",
+    hint_email: "Your expert's response will be sent to this address.",
+    label_question: "Your question *",
+    placeholder_question: "Describe your situation and ask your question with as much detail as possible…",
+    hint_question: "Be specific: context, important dates, names of people involved if relevant.",
+    btn_envoyer: "✦ Send my question to my expert",
+    envoi_titre: "Your question is being sent…",
+    envoi_desc: "Your expert is focusing on your situation. You will receive your response by email within 5 to 12 minutes.",
+    succes_titre: "Question sent successfully",
+    succes_desc: "Your expert will reply very soon. Check your inbox — also check your spam folder.",
 
-    tarif_general_title: "General Reading",
-    tarif_general_desc:
-      "Full overview: love, work, finances and upcoming energies.",
+    support_titre: "Support & Help",
+    support_sous: "A payment issue, a question about an order, or an appointment problem? We respond quickly.",
+    label_nom: "Full name *",
+    label_objet: "Subject *",
+    label_ref: "PayPal ID / Order reference (optional)",
+    label_message: "Your message *",
+    placeholder_message: "Describe your issue: date, offer concerned, email used, screenshot if needed…",
+    btn_support: "✦ Send to support",
+    succes_support_titre: "Message sent",
+    succes_support_desc: "We have received your request. Our team will reply within 24 hours to the address provided.",
 
-    tarif_soin_title: "Energy Healing",
-    tarif_soin_desc: "Energetic cleansing, calm, inner realignment.",
+    rdv_titre: "Phone Consultation",
+    rdv_sous: "Speak directly with your reader. Secure payment, then choose your slot.",
+    rdv_comment: "How it works",
+    rdv_etape1: "Make your secure payment via PayPal below.",
+    rdv_etape2: "You are redirected to the confirmation page.",
+    rdv_etape3: "Choose your available slot on the Calendly calendar.",
+    rdv_etape4: "Find a quiet place — your consultation takes place at the scheduled time.",
+    rdv_cta: "📞 Book now",
+    rdv_interlocutrice: "Your reader",
+    rdv_dispo: "Availability (preview)",
 
-    btn_choose_expert: "Choose my expert",
-    btn_ask_question: "Ask my question",
+    merci_badge: "✓ Question sent",
+    merci_titre: "Thank you for your trust",
+    merci_sous: "Your question has been sent to your expert. Check your inbox in a few minutes.",
+    merci_delai: "Response sent by email within 5 to 12 minutes.",
+    merci_spam: "Also check your spam folder if needed.",
+    merci_etape1: "Payment confirmed",
+    merci_etape2: "Question sent",
+    merci_etape3: "Response in progress",
+    merci_etape4: "Email received",
+    btn_accueil: "← Back to home",
 
-    footer_text: "Altessa Divination © — Online clairvoyance."
+    footer_copy: "© 2026 Altessa Voyance — Online psychic readings, tarot, astrology & mediumship",
+    footer_cgv: "Terms",
+    footer_mentions: "Legal Notice",
+    footer_privacy: "Privacy",
+    footer_cookies: "Cookies",
+    footer_support: "Support",
   },
 
   es: {
     nav_home: "Inicio",
-    nav_experts: "Expertos",
+    nav_experts: "Videncia escrita",
     nav_tarifs: "Tarifas",
-    nav_contact: "Contacto",
+    nav_rdv: "Cita Telefónica",
+    nav_contact: "Soporte",
 
-    brand_name: "Altessa",
-    brand_sub: "Videncia",
+    hero_titre: "Altessa Voyance",
+    hero_sous: "Tarot · Astrología · Mediumnidad",
+    hero_desc: "Descubra el futuro con nuestros expertos en videncia online.\nRespuestas claras, precisas y personalizadas — por escrito o por teléfono.",
+    hero_cta1: "✨ Videncia escrita",
+    hero_cta2: "📞 Cita telefónica",
+    hero_decouvrir: "Descubrir",
 
-    tarifs_title: "Altessa Videncia — Tarifas",
-    tarifs_page_title: "Tarifas de consulta",
-    tarifs_intro:
-      "Elija el tipo de consulta según su necesidad.<br><strong>Respuesta enviada por correo electrónico tras el pago seguro.</strong>",
+    section_expertises_label: "Nuestras especialidades",
+    section_expertises_titre: "Un arte, múltiples sensibilidades",
+    section_expertises_texte: "Cada vidente de Altessa posee una especialidad única, elegida con cuidado para ofrecerle la lectura más precisa.",
+    section_fondatrice_label: "La fundadora",
+    section_univers_label: "El universo Altessa",
+    section_univers_titre: "Elegancia & Confidencialidad",
+    cta_pre: "¿Listo para comenzar?",
+    cta_titre: "Su pregunta merece una respuesta",
+    cta_sous: "Elija su experto y reciba su consulta por escrito con total confidencialidad — en 5 a 12 minutos.",
+    cta_expert: "✨ Elegir mi experto",
+    cta_tarifs: "Ver tarifas",
 
-    tarif_question_title: "Pregunta única",
-    tarif_question_desc: "Una respuesta clara y directa a una pregunta.",
+    service_tarot_nom: "Tarot",
+    service_tarot_desc: "Lectura de cartas para iluminar sus decisiones y revelar las energías presentes.",
+    service_astro_nom: "Astrología",
+    service_astro_desc: "Análisis de su tema astral y sus ciclos para comprender mejor su camino.",
+    service_medium_nom: "Mediumnidad",
+    service_medium_desc: "Percepciones finas y conexiones sutiles para levantar el velo sobre situaciones complejas.",
+    service_num_nom: "Numerología",
+    service_num_desc: "Descifrado de sus números de vida para guiar sus decisiones con precisión.",
+    service_energie_nom: "Sanación energética",
+    service_energie_desc: "Limpieza y realineamiento de su campo energético para recuperar equilibrio y claridad.",
+    service_vocal_nom: "Consulta vocal",
+    service_vocal_desc: "Comuníquese directamente con su experto por teléfono con cita previa.",
 
-    tarif_sentimental_title: "Lectura sentimental",
-    tarif_sentimental_desc:
-      "Pareja, amor, reencuentros, vínculos presentes y futuros.",
+    experts_titre: "Nuestros expertos online",
+    experts_sous: "Elija el vidente que le corresponde. Cada experto ha sido seleccionado por la precisión de su lectura.",
+    experts_cta: "✦ Consultar",
+    experts_cta_bas: "¿No está seguro de su elección? Consulte nuestras tarifas para encontrar el servicio adecuado.",
+    filtre_tous: "✦ Todos",
+    filtre_tarot: "🃏 Tarot",
+    filtre_astro: "♈ Astrología",
+    filtre_medium: "🔮 Médium",
+    filtre_num: "✦ Numerología",
+    filtre_energie: "🌿 Energía",
+    filtre_voyante: "👁 Vidente",
 
-    tarif_pro_title: "Lectura profesional",
-    tarif_pro_desc: "Carrera, trabajo, cambio profesional, evolución.",
+    tarifs_titre: "Tarifas de videncia",
+    tarifs_sous: "Elija su consulta según sus necesidades. Respuesta personalizada enviada por email tras pago seguro.",
+    tarif1_nom: "A la pregunta",
+    tarif1_desc: "Una pregunta precisa, una respuesta directa y clara.",
+    tarif2_nom: "Videncia sentimental",
+    tarif2_desc: "Pareja, amor, reencuentros, vínculos presentes y futuros.",
+    tarif3_nom: "Videncia profesional",
+    tarif3_desc: "Carrera, trabajo, cambio profesional, evolución y proyectos.",
+    tarif4_nom: "Videncia financiera",
+    tarif4_desc: "Finanzas, compras importantes, estabilidad y seguridad material.",
+    tarif5_nom: "Videncia general",
+    tarif5_desc: "Balance completo: sentimental, profesional, finanzas y tendencias.",
+    tarif6_nom: "Sanación energética",
+    tarif6_desc: "Limpieza energética, serenidad profunda y realineamiento interior.",
+    paiement_securise: "Pago seguro",
+    delai_info: "Tras el pago, será redirigido para hacer su pregunta. Respuesta en 5 a 12 minutos, enviada por email.",
+    tarif_cta1: "← Elegir mi experto",
+    tarif_cta2: "Soporte",
 
-    tarif_finance_title: "Lectura financiera",
-    tarif_finance_desc: "Finanzas, compras importantes, estabilidad.",
+    consult_titre: "Haga su pregunta",
+    consult_sous: "Su experto responde con cuidado y precisión",
+    consult_badge: "Pago confirmado",
+    consult_changer: "Cambiar",
+    consult_delai1: "Su experto toma tiempo para concentrarse en su situación.",
+    consult_delai2: "Respuesta enviada por email en 5 a 12 minutos.",
+    label_prenom: "Su nombre *",
+    label_email: "Su dirección de email *",
+    hint_email: "La respuesta de su experto será enviada a esta dirección.",
+    label_question: "Su pregunta *",
+    placeholder_question: "Describa su situación y haga su pregunta con el mayor detalle posible…",
+    hint_question: "Sea preciso: contexto, fechas importantes, nombres de personas implicadas si es relevante.",
+    btn_envoyer: "✦ Enviar mi pregunta a mi experto",
+    envoi_titre: "Su pregunta está siendo enviada…",
+    envoi_desc: "Su experto se concentra en su situación. Recibirá su respuesta por email en 5 a 12 minutos.",
+    succes_titre: "Pregunta enviada con éxito",
+    succes_desc: "Su experto le responderá muy pronto. Revise su bandeja de entrada — también revise su carpeta de spam.",
 
-    tarif_general_title: "Lectura general",
-    tarif_general_desc:
-      "Visión completa: amor, trabajo, finanzas y energías futuras.",
+    support_titre: "Soporte & Ayuda",
+    support_sous: "¿Un problema de pago o una pregunta sobre un pedido? Le respondemos rápidamente.",
+    label_nom: "Nombre completo *",
+    label_objet: "Asunto *",
+    label_ref: "ID PayPal / Referencia de pedido (opcional)",
+    label_message: "Su mensaje *",
+    placeholder_message: "Describa su problema: fecha, oferta, email utilizado, captura de pantalla si es necesario…",
+    btn_support: "✦ Enviar al soporte",
+    succes_support_titre: "Mensaje enviado",
+    succes_support_desc: "Hemos recibido su solicitud. Nuestro equipo le responderá en 24 horas.",
 
-    tarif_soin_title: "Sanación energética",
-    tarif_soin_desc:
-      "Limpieza energética, calma, realineamiento interior.",
+    rdv_titre: "Consulta Telefónica",
+    rdv_sous: "Hable directamente con su vidente. Pago seguro, luego elija su horario.",
+    rdv_comment: "Cómo funciona",
+    rdv_etape1: "Realice su pago seguro a través de PayPal.",
+    rdv_etape2: "Será redirigido a la página de confirmación.",
+    rdv_etape3: "Elija su horario disponible en el calendario Calendly.",
+    rdv_etape4: "Instálese en un lugar tranquilo — su consulta tiene lugar a la hora prevista.",
+    rdv_cta: "📞 Reservar ahora",
+    rdv_interlocutrice: "Su interlocutora",
+    rdv_dispo: "Disponibilidades (vista previa)",
 
-    btn_choose_expert: "Elegir mi experto",
-    btn_ask_question: "Hacer mi pregunta",
+    merci_badge: "✓ Pregunta enviada",
+    merci_titre: "Gracias por su confianza",
+    merci_sous: "Su pregunta ha sido enviada a su experto. Revise su bandeja de entrada en unos minutos.",
+    merci_delai: "Respuesta enviada por email en 5 a 12 minutos.",
+    merci_spam: "También revise su carpeta de spam si es necesario.",
+    merci_etape1: "Pago confirmado",
+    merci_etape2: "Pregunta enviada",
+    merci_etape3: "Respuesta en curso",
+    merci_etape4: "Email recibido",
+    btn_accueil: "← Volver al inicio",
 
-    footer_text: "Altessa Videncia © — Videncia en línea."
+    footer_copy: "© 2026 Altessa Voyance — Videncia online por escrito, tarot, astrología y mediumnidad",
+    footer_cgv: "Condiciones",
+    footer_mentions: "Aviso legal",
+    footer_privacy: "Privacidad",
+    footer_cookies: "Cookies",
+    footer_support: "Soporte",
   },
 
   pt: {
     nav_home: "Início",
-    nav_experts: "Especialistas",
-    nav_tarifs: "Tarifas",
-    nav_contact: "Contato",
+    nav_experts: "Vidência escrita",
+    nav_tarifs: "Preços",
+    nav_rdv: "Consulta Telefónica",
+    nav_contact: "Suporte",
 
-    brand_name: "Altessa",
-    brand_sub: "Vidência",
+    hero_titre: "Altessa Voyance",
+    hero_sous: "Tarot · Astrologia · Mediunidade",
+    hero_desc: "Descubra o futuro com os nossos especialistas em vidência online.\nRespostas claras, precisas e personalizadas — por escrito ou por telefone.",
+    hero_cta1: "✨ Vidência escrita",
+    hero_cta2: "📞 Marcar consulta",
+    hero_decouvrir: "Descobrir",
 
-    tarifs_title: "Altessa Vidência — Tarifas",
-    tarifs_page_title: "Tarifas de consulta",
-    tarifs_intro:
-      "Escolha o tipo de leitura conforme sua necessidade.<br><strong>Resposta enviada por e-mail após pagamento seguro.</strong>",
+    section_expertises_label: "As nossas especialidades",
+    section_expertises_titre: "Uma arte, múltiplas sensibilidades",
+    section_expertises_texte: "Cada vidente da Altessa possui uma especialidade única, escolhida com cuidado para lhe oferecer a leitura mais precisa.",
+    section_fondatrice_label: "A fundadora",
+    section_univers_label: "O universo Altessa",
+    section_univers_titre: "Elegância & Confidencialidade",
+    cta_pre: "Pronto para começar?",
+    cta_titre: "A sua pergunta merece uma resposta",
+    cta_sous: "Escolha o seu especialista e receba a sua consulta por escrito em total confidencialidade — em 5 a 12 minutos.",
+    cta_expert: "✨ Escolher o meu especialista",
+    cta_tarifs: "Ver preços",
 
-    tarif_question_title: "Pergunta única",
-    tarif_question_desc: "Resposta direta e clara para sua pergunta.",
+    service_tarot_nom: "Tarot",
+    service_tarot_desc: "Leitura de cartas para iluminar as suas decisões e revelar as energias presentes.",
+    service_astro_nom: "Astrologia",
+    service_astro_desc: "Análise do seu tema astral e dos seus ciclos para compreender melhor o seu caminho.",
+    service_medium_nom: "Mediunidade",
+    service_medium_desc: "Perceções finas e conexões subtis para levantar o véu sobre situações complexas.",
+    service_num_nom: "Numerologia",
+    service_num_desc: "Descodificação dos seus números de vida para guiar as suas decisões com precisão.",
+    service_energie_nom: "Tratamento energético",
+    service_energie_desc: "Limpeza e realinhamento do seu campo energético para recuperar equilíbrio e clareza.",
+    service_vocal_nom: "Consulta vocal",
+    service_vocal_desc: "Comunique diretamente com o seu especialista por telefone com marcação.",
 
-    tarif_sentimental_title: "Leitura amorosa",
-    tarif_sentimental_desc:
-      "Relacionamentos, amor, reconciliação, laços presentes e futuros.",
+    experts_titre: "Os nossos especialistas online",
+    experts_sous: "Escolha o vidente que mais se identifica consigo. Cada especialista foi selecionado pela precisão da sua leitura.",
+    experts_cta: "✦ Consultar",
+    experts_cta_bas: "Não tem a certeza da sua escolha? Consulte os nossos preços para encontrar o serviço certo.",
+    filtre_tous: "✦ Todos",
+    filtre_tarot: "🃏 Tarot",
+    filtre_astro: "♈ Astrologia",
+    filtre_medium: "🔮 Médium",
+    filtre_num: "✦ Numerologia",
+    filtre_energie: "🌿 Energia",
+    filtre_voyante: "👁 Vidente",
 
-    tarif_pro_title: "Leitura profissional",
-    tarif_pro_desc: "Carreira, trabalho, mudanças profissionais.",
+    tarifs_titre: "Preços de vidência",
+    tarifs_sous: "Escolha a sua consulta conforme a sua necessidade. Resposta personalizada enviada por email após pagamento seguro.",
+    tarif1_nom: "À pergunta",
+    tarif1_desc: "Uma pergunta precisa, uma resposta direta e clara.",
+    tarif2_nom: "Vidência sentimental",
+    tarif2_desc: "Casal, amor, reencontros, ligações presentes e futuras.",
+    tarif3_nom: "Vidência profissional",
+    tarif3_desc: "Carreira, trabalho, mudança profissional, evolução e projetos.",
+    tarif4_nom: "Vidência financeira",
+    tarif4_desc: "Finanças, compras importantes, estabilidade e segurança material.",
+    tarif5_nom: "Vidência geral",
+    tarif5_desc: "Balanço completo: sentimental, profissional, finanças e grandes tendências.",
+    tarif6_nom: "Tratamento energético",
+    tarif6_desc: "Limpeza energética, serenidade profunda e realinhamento interior.",
+    paiement_securise: "Pagamento seguro",
+    delai_info: "Após o pagamento, será redirecionado para fazer a sua pergunta. Resposta em 5 a 12 minutos, enviada por email.",
+    tarif_cta1: "← Escolher o meu especialista",
+    tarif_cta2: "Suporte",
 
-    tarif_finance_title: "Leitura financeira",
-    tarif_finance_desc: "Finanças, compras importantes, estabilidade.",
+    consult_titre: "Faça a sua pergunta",
+    consult_sous: "O seu especialista responde com cuidado e precisão",
+    consult_badge: "Pagamento confirmado",
+    consult_changer: "Alterar",
+    consult_delai1: "O seu especialista toma tempo para se concentrar na sua situação.",
+    consult_delai2: "Resposta enviada por email em 5 a 12 minutos.",
+    label_prenom: "O seu nome *",
+    label_email: "O seu endereço de email *",
+    hint_email: "A resposta do seu especialista será enviada para este endereço.",
+    label_question: "A sua pergunta *",
+    placeholder_question: "Descreva a sua situação e faça a sua pergunta com o maior detalhe possível…",
+    hint_question: "Seja preciso: contexto, datas importantes, nomes de pessoas envolvidas se relevante.",
+    btn_envoyer: "✦ Enviar a minha pergunta ao meu especialista",
+    envoi_titre: "A sua pergunta está a ser enviada…",
+    envoi_desc: "O seu especialista concentra-se na sua situação. Receberá a sua resposta por email em 5 a 12 minutos.",
+    succes_titre: "Pergunta enviada com sucesso",
+    succes_desc: "O seu especialista responderá muito em breve. Verifique a sua caixa de entrada — verifique também o spam.",
 
-    tarif_general_title: "Leitura geral",
-    tarif_general_desc:
-      "Visão completa: amor, trabalho, finanças e tendências futuras.",
+    support_titre: "Suporte & Ajuda",
+    support_sous: "Um problema de pagamento ou uma questão sobre uma encomenda? Respondemos rapidamente.",
+    label_nom: "Nome completo *",
+    label_objet: "Assunto *",
+    label_ref: "ID PayPal / Referência de encomenda (opcional)",
+    label_message: "A sua mensagem *",
+    placeholder_message: "Descreva o seu problema: data, oferta, email utilizado, captura de ecrã se necessário…",
+    btn_support: "✦ Enviar ao suporte",
+    succes_support_titre: "Mensagem enviada",
+    succes_support_desc: "Recebemos o seu pedido. A nossa equipa responderá em 24 horas.",
 
-    tarif_soin_title: "Cura energética",
-    tarif_soin_desc: "Limpeza energética, calma, realinhamento interior.",
+    rdv_titre: "Consulta Telefónica",
+    rdv_sous: "Fale diretamente com a sua vidente. Pagamento seguro, depois escolha o seu horário.",
+    rdv_comment: "Como funciona",
+    rdv_etape1: "Efetue o seu pagamento seguro via PayPal.",
+    rdv_etape2: "Será redirecionado para a página de confirmação.",
+    rdv_etape3: "Escolha o seu horário disponível no calendário Calendly.",
+    rdv_etape4: "Instale-se num lugar sossegado — a sua consulta tem lugar à hora prevista.",
+    rdv_cta: "📞 Reservar agora",
+    rdv_interlocutrice: "A sua interlocutora",
+    rdv_dispo: "Disponibilidades (pré-visualização)",
 
-    btn_choose_expert: "Escolher meu especialista",
-    btn_ask_question: "Fazer minha pergunta",
+    merci_badge: "✓ Pergunta enviada",
+    merci_titre: "Obrigado pela sua confiança",
+    merci_sous: "A sua pergunta foi enviada ao seu especialista. Verifique a sua caixa de entrada em alguns minutos.",
+    merci_delai: "Resposta enviada por email em 5 a 12 minutos.",
+    merci_spam: "Verifique também o spam se necessário.",
+    merci_etape1: "Pagamento confirmado",
+    merci_etape2: "Pergunta enviada",
+    merci_etape3: "Resposta em curso",
+    merci_etape4: "Email recebido",
+    btn_accueil: "← Voltar ao início",
 
-    footer_text: "Altessa Vidência © — Vidência online."
+    footer_copy: "© 2026 Altessa Voyance — Vidência online por escrito, tarot, astrologia & mediunidade",
+    footer_cgv: "Termos",
+    footer_mentions: "Aviso legal",
+    footer_privacy: "Privacidade",
+    footer_cookies: "Cookies",
+    footer_support: "Suporte",
   },
 
   it: {
     nav_home: "Home",
-    nav_experts: "Esperti",
-    nav_tarifs: "Tariffe",
-    nav_contact: "Contatto",
+    nav_experts: "Lettura scritta",
+    nav_tarifs: "Prezzi",
+    nav_rdv: "Appuntamento Telefonico",
+    nav_contact: "Supporto",
 
-    brand_name: "Altessa",
-    brand_sub: "Veggenza",
+    hero_titre: "Altessa Voyance",
+    hero_sous: "Tarocchi · Astrologia · Medianicità",
+    hero_desc: "Scopri il futuro con i nostri esperti di chiaroveggenza online.\nRisposte chiare, precise e personalizzate — per iscritto o per telefono.",
+    hero_cta1: "✨ Lettura scritta",
+    hero_cta2: "📞 Prenota una chiamata",
+    hero_decouvrir: "Scoprire",
 
-    tarifs_title: "Altessa Veggenza — Tariffe",
-    tarifs_page_title: "Tariffe di consulto",
-    tarifs_intro:
-      "Scegli il tipo di consulto di cui hai bisogno.<br><strong>Risposta inviata via email dopo il pagamento sicuro.</strong>",
+    section_expertises_label: "Le nostre specialità",
+    section_expertises_titre: "Un'arte, molteplici sensibilità",
+    section_expertises_texte: "Ogni veggente di Altessa possiede una specialità unica, scelta con cura per offrirti la lettura più precisa.",
+    section_fondatrice_label: "La fondatrice",
+    section_univers_label: "L'universo Altessa",
+    section_univers_titre: "Eleganza & Riservatezza",
+    cta_pre: "Pronto per iniziare?",
+    cta_titre: "La tua domanda merita una risposta",
+    cta_sous: "Scegli il tuo esperto e ricevi la tua consulenza per iscritto in totale riservatezza — entro 5-12 minuti.",
+    cta_expert: "✨ Scegli il mio esperto",
+    cta_tarifs: "Vedi i prezzi",
 
-    tarif_question_title: "Domanda singola",
-    tarif_question_desc:
-      "Risposta chiara e diretta alla tua domanda.",
+    service_tarot_nom: "Tarocchi",
+    service_tarot_desc: "Lettura delle carte per illuminare le tue decisioni e rivelare le energie presenti.",
+    service_astro_nom: "Astrologia",
+    service_astro_desc: "Analisi del tuo tema natale e dei tuoi cicli per comprendere meglio il tuo percorso.",
+    service_medium_nom: "Medianicità",
+    service_medium_desc: "Percezioni sottili e connessioni per sollevare il velo su situazioni complesse.",
+    service_num_nom: "Numerologia",
+    service_num_desc: "Decodifica dei tuoi numeri di vita per guidare le tue decisioni con precisione.",
+    service_energie_nom: "Guarigione energetica",
+    service_energie_desc: "Pulizia e riallineamento del tuo campo energetico per ritrovare equilibrio e chiarezza.",
+    service_vocal_nom: "Consulenza vocale",
+    service_vocal_desc: "Parla direttamente con il tuo esperto per telefono su appuntamento.",
 
-    tarif_sentimental_title: "Lettura sentimentale",
-    tarif_sentimental_desc:
-      "Coppia, amore, ritorni, legami presenti e futuri.",
+    experts_titre: "I nostri esperti online",
+    experts_sous: "Scegli il veggente che fa per te. Ogni esperto è stato selezionato per la precisione della sua lettura.",
+    experts_cta: "✦ Consultare",
+    experts_cta_bas: "Non sei sicuro della tua scelta? Consulta i nostri prezzi per trovare il servizio giusto.",
+    filtre_tutti: "✦ Tutti",
+    filtre_tarot: "🃏 Tarocchi",
+    filtre_astro: "♈ Astrologia",
+    filtre_medium: "🔮 Medium",
+    filtre_num: "✦ Numerologia",
+    filtre_energie: "🌿 Energia",
+    filtre_voyante: "👁 Veggente",
 
-    tarif_pro_title: "Lettura professionale",
-    tarif_pro_desc:
-      "Carriera, lavoro, cambiamenti professionali.",
+    tarifs_titre: "Prezzi della chiaroveggenza",
+    tarifs_sous: "Scegli la tua consulenza in base alle tue esigenze. Risposta personalizzata inviata via email dopo il pagamento sicuro.",
+    tarif1_nom: "Alla domanda",
+    tarif1_desc: "Una domanda precisa, una risposta diretta e chiara.",
+    tarif2_nom: "Lettura sentimentale",
+    tarif2_desc: "Coppia, amore, ricongiungimenti, legami presenti e futuri.",
+    tarif3_nom: "Lettura professionale",
+    tarif3_desc: "Carriera, lavoro, cambiamento professionale, evoluzione e progetti.",
+    tarif4_nom: "Lettura finanziaria",
+    tarif4_desc: "Finanze, acquisti importanti, stabilità e sicurezza materiale.",
+    tarif5_nom: "Lettura generale",
+    tarif5_desc: "Bilancio completo: sentimentale, professionale, finanze e tendenze.",
+    tarif6_nom: "Guarigione energetica",
+    tarif6_desc: "Pulizia energetica, serenità profonda e riallineamento interiore.",
+    paiement_securise: "Pagamento sicuro",
+    delai_info: "Dopo il pagamento, sarete reindirizzati per fare la vostra domanda. Risposta in 5-12 minuti, inviata via email.",
+    tarif_cta1: "← Scegli il mio esperto",
+    tarif_cta2: "Supporto",
 
-    tarif_finance_title: "Lettura finanziaria",
-    tarif_finance_desc: "Finanze, acquisti importanti, stabilità.",
+    consult_titre: "Fai la tua domanda",
+    consult_sous: "Il tuo esperto risponde con cura e precisione",
+    consult_badge: "Pagamento confermato",
+    consult_changer: "Cambiare",
+    consult_delai1: "Il tuo esperto si prende del tempo per concentrarsi sulla tua situazione.",
+    consult_delai2: "Risposta inviata via email entro 5-12 minuti.",
+    label_prenom: "Il tuo nome *",
+    label_email: "Il tuo indirizzo email *",
+    hint_email: "La risposta del tuo esperto sarà inviata a questo indirizzo.",
+    label_question: "La tua domanda *",
+    placeholder_question: "Descrivi la tua situazione e fai la tua domanda con il maggior numero di dettagli possibile…",
+    hint_question: "Sii preciso: contesto, date importanti, nomi delle persone coinvolte se rilevante.",
+    btn_envoyer: "✦ Invia la mia domanda al mio esperto",
+    envoi_titre: "La tua domanda sta per essere inviata…",
+    envoi_desc: "Il tuo esperto si concentra sulla tua situazione. Riceverai la risposta via email entro 5-12 minuti.",
+    succes_titre: "Domanda inviata con successo",
+    succes_desc: "Il tuo esperto risponderà molto presto. Controlla la tua casella di posta — controlla anche lo spam.",
 
-    tarif_general_title: "Lettura generale",
-    tarif_general_desc:
-      "Panoramica completa: amore, lavoro, finanze e tendenze future.",
+    support_titre: "Supporto & Aiuto",
+    support_sous: "Un problema di pagamento o una domanda su un ordine? Rispondiamo rapidamente.",
+    label_nom: "Nome completo *",
+    label_objet: "Oggetto *",
+    label_ref: "ID PayPal / Riferimento ordine (opzionale)",
+    label_message: "Il tuo messaggio *",
+    placeholder_message: "Descrivi il tuo problema: data, offerta, email utilizzata, screenshot se necessario…",
+    btn_support: "✦ Invia al supporto",
+    succes_support_titre: "Messaggio inviato",
+    succes_support_desc: "Abbiamo ricevuto la tua richiesta. Il nostro team risponderà entro 24 ore.",
 
-    tarif_soin_title: "Guarigione energetica",
-    tarif_soin_desc:
-      "Pulizia energetica, calma, riallineamento interiore.",
+    rdv_titre: "Consulenza Telefonica",
+    rdv_sous: "Parla direttamente con la tua veggente. Pagamento sicuro, poi scegli il tuo orario.",
+    rdv_comment: "Come funziona",
+    rdv_etape1: "Effettua il tuo pagamento sicuro tramite PayPal.",
+    rdv_etape2: "Verrai reindirizzato alla pagina di conferma.",
+    rdv_etape3: "Scegli il tuo orario disponibile sul calendario Calendly.",
+    rdv_etape4: "Trovati in un posto tranquillo — la tua consulenza ha luogo all'orario previsto.",
+    rdv_cta: "📞 Prenota ora",
+    rdv_interlocutrice: "La tua interlocutrice",
+    rdv_dispo: "Disponibilità (anteprima)",
 
-    btn_choose_expert: "Scegli il mio esperto",
-    btn_ask_question: "Fai la mia domanda",
+    merci_badge: "✓ Domanda inviata",
+    merci_titre: "Grazie per la tua fiducia",
+    merci_sous: "La tua domanda è stata inviata al tuo esperto. Controlla la tua casella di posta in pochi minuti.",
+    merci_delai: "Risposta inviata via email entro 5-12 minuti.",
+    merci_spam: "Controlla anche la cartella spam se necessario.",
+    merci_etape1: "Pagamento confermato",
+    merci_etape2: "Domanda inviata",
+    merci_etape3: "Risposta in corso",
+    merci_etape4: "Email ricevuta",
+    btn_accueil: "← Torna alla home",
 
-    footer_text: "Altessa Veggenza © — Veggenza online."
+    footer_copy: "© 2026 Altessa Voyance — Chiaroveggenza online, tarocchi, astrologia & medianicità",
+    footer_cgv: "Termini",
+    footer_mentions: "Note legali",
+    footer_privacy: "Privacy",
+    footer_cookies: "Cookies",
+    footer_support: "Supporto",
   }
 };
 
 /* ============================================================
-   FONCTIONS PRINCIPALES
+   MOTEUR DE TRADUCTION
    ============================================================ */
 
 function applyTranslations(lang) {
-  document.querySelectorAll("[data-i18n]").forEach((el) => {
-    const key = el.getAttribute("data-i18n");
-    if (translations[lang] && translations[lang][key]) {
-      el.innerHTML = translations[lang][key];
-    }
+  const t = translations[lang] || translations['fr'];
+
+  // Textes
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+
+  // Placeholders
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (t[key] !== undefined) el.placeholder = t[key];
   });
 
   document.documentElement.lang = lang;
-  localStorage.setItem("lang", lang);
+  localStorage.setItem('altessa_lang', lang);
 }
 
-function initLangSystem() {
-  const saved = localStorage.getItem("lang");
-  const defaultLang = saved || "fr";
+function initLang() {
+  const saved   = localStorage.getItem('altessa_lang');
+  const browser = (navigator.language || navigator.userLanguage || 'fr').substring(0, 2);
+  const supported = Object.keys(translations);
+  const lang = saved || (supported.includes(browser) ? browser : 'fr');
 
-  applyTranslations(defaultLang);
-
-  const selector = document.getElementById("lang-switcher");
-  if (selector) {
-    selector.value = defaultLang;
-    selector.addEventListener("change", (e) => {
-      applyTranslations(e.target.value);
+  // Sync tous les sélecteurs
+  document.querySelectorAll('#lang-switcher, #lang-switcher-mobile').forEach(sel => {
+    sel.value = lang;
+    sel.addEventListener('change', e => {
+      const newLang = e.target.value;
+      document.querySelectorAll('#lang-switcher, #lang-switcher-mobile').forEach(s => s.value = newLang);
+      applyTranslations(newLang);
     });
-  }
+  });
+
+  applyTranslations(lang);
 }
 
-document.addEventListener("DOMContentLoaded", initLangSystem);
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initLang);
+} else {
+  initLang();
+}
