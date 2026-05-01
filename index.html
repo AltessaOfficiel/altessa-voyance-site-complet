@@ -616,42 +616,48 @@ function astraTyping(show) {
 }
 
 async function astraSend() {
-  const inp = document.getElementById('astra-input');
-  const txt = inp.value.trim();
-  if (!txt || astraBusy) return;
-  inp.value = '';
+ <script>
+const ASTRA_WEBHOOK='https://astra-proxy.altessavoyance.workers.dev';
+let astraOpen=false,astraBusy=false,astraHistory=[];
+
+function toggleAstra(){astraOpen=!astraOpen;const w=document.getElementById('astra-widget');if(astraOpen){w.classList.add('open');if(document.getElementById('astra-messages').children.length===0){setTimeout(()=>astraAppend('astra-msg',"✨ Les étoiles m'ont guidée jusqu'à toi... Je suis Astra, messagère des âmes lumineuses d'Altessa Voyance. Quelle question habite ton cœur en ce moment ?"),600)}document.getElementById('astra-input').focus()}else{w.classList.remove('open')}}
+
+function astraAppend(cls,text){const c=document.getElementById('astra-messages');const d=document.createElement('div');d.className=`amsg ${cls}`;d.innerHTML=text.replace(/(https?:\/\/[^\s]+)/g,'<a href="$1" target="_blank" style="color:#f0d080;font-weight:600;text-decoration:none;border:1px solid #c9a84c;padding:4px 10px;border-radius:20px;display:inline-block;margin-top:6px">✨ Réserver ma consultation</a>');c.appendChild(d);c.scrollTop=c.scrollHeight}
+
+function astraTyping(show){const c=document.getElementById('astra-messages');if(show){const d=document.createElement('div');d.className='atyping';d.id='atyping';d.innerHTML='<div class="adot"></div><div class="adot"></div><div class="adot"></div>';c.appendChild(d);c.scrollTop=c.scrollHeight}else{const t=document.getElementById('atyping');if(t)t.remove()}}
+
+async function astraSend(){
+  const inp=document.getElementById('astra-input');
+  const txt=inp.value.trim();
+  if(!txt||astraBusy)return;
+  inp.value='';
   astraResize(inp);
-  document.getElementById('astra-suggestions').style.display = 'none';
-  astraAppend('user-msg', txt);
-  astraBusy = true;
-  document.getElementById('astra-send').disabled = true;
+  document.getElementById('astra-suggestions').style.display='none';
+  astraAppend('user-msg',txt);
+  astraHistory.push({role:'user',content:txt});
+  astraBusy=true;
+  document.getElementById('astra-send').disabled=true;
   astraTyping(true);
-  try {
-    const res = await fetch(ASTRA_WEBHOOK, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ source: 'chatbot', message: txt })
+  try{
+    const res=await fetch(ASTRA_WEBHOOK,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({message:txt,history:astraHistory.slice(-10)})
     });
     astraTyping(false);
-    if (res.ok) {
-      const data = await res.text();
-      let reply = data;
-      try { const j = JSON.parse(data); reply = j.response || j.message || j.text || j.content || data; } catch(e) {}
-      astraAppend('astra-msg', reply || "Les astres sont silencieux... Réessaie dans un instant. 🌙");
-    } else {
-      astraAppend('astra-msg', "Les voiles se sont troublés... Réessaie dans un instant. 🌙");
-    }
-  } catch(e) {
-    astraTyping(false);
-    astraAppend('astra-msg', "La connexion avec les étoiles est interrompue... 🌙");
-  }
-  astraBusy = false;
-  document.getElementById('astra-send').disabled = false;
+    if(res.ok){
+      const reply=await res.text();
+      astraHistory.push({role:'assistant',content:reply});
+      astraAppend('astra-msg',reply||"Les astres sont silencieux... 🌙");
+    }else{astraAppend('astra-msg',"Les voiles se sont troublés... Réessaie. 🌙")}
+  }catch(e){astraTyping(false);astraAppend('astra-msg',"Connexion interrompue... 🌙")}
+  astraBusy=false;
+  document.getElementById('astra-send').disabled=false;
 }
 
-function astraSendSugg(t) { document.getElementById('astra-input').value = t; astraSend(); }
-function astraHandleKey(e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); astraSend(); } }
-function astraResize(el) { el.style.height = 'auto'; el.style.height = Math.min(el.scrollHeight, 100) + 'px'; }
+function astraSendSugg(t){document.getElementById('astra-input').value=t;astraSend()}
+function astraHandleKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();astraSend()}}
+function astraResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,100)+'px'}
 </script>
 </body>
 </html>
