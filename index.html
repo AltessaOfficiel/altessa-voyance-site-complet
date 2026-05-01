@@ -1093,6 +1093,13 @@ if (localStorage.getItem('cookiesAccepted')) {
   document.getElementById('cookieBanner').style.display = 'none';
 }
 </script>
-
+<!-- Chatbot Astra -->
+<script>
+  fetch('https://raw.githubusercontent.com/AltessaOfficiel/altessa-voyance-site-complet/main/altessa-chatbot.html')
+    .then(r => r.text())
+    .then(html => {
+      document.body.insertAdjacentHTML('beforeend', html);
+    });
+</script>
 </body>
 </html>
