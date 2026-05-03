@@ -211,7 +211,6 @@ nav { display: flex; align-items: center; gap: 0.2rem; }
   transform: translateY(-4px);
 }
 
-/* Badge populaire */
 .tarif-card.populaire::before {
   content: '✦ Populaire';
   position: absolute;
@@ -229,72 +228,18 @@ nav { display: flex; align-items: center; gap: 0.2rem; }
   border-color: rgba(201,169,110,0.35);
 }
 
-.tarif-icone {
-  font-size: 1.8rem;
-  margin-bottom: 0.3rem;
-}
-
-.tarif-nom {
-  font-family: 'Cinzel', serif;
-  font-size: 1rem;
-  color: var(--or);
-  letter-spacing: 0.08em;
-}
-
-.tarif-prix {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 2.4rem;
-  color: var(--or-clair);
-  font-weight: 300;
-  line-height: 1;
-}
-
-.tarif-prix span {
-  font-size: 1rem;
-  color: var(--texte-doux);
-  vertical-align: middle;
-}
-
-.tarif-desc {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 0.95rem;
-  color: var(--texte-doux);
-  line-height: 1.7;
-  flex: 1;
-}
-
-.tarif-sep {
-  height: 1px;
-  background: var(--bordure);
-  margin: 0.4rem 0;
-}
+.tarif-icone { font-size: 1.8rem; margin-bottom: 0.3rem; }
+.tarif-nom { font-family: 'Cinzel', serif; font-size: 1rem; color: var(--or); letter-spacing: 0.08em; }
+.tarif-prix { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; color: var(--or-clair); font-weight: 300; line-height: 1; }
+.tarif-prix span { font-size: 1rem; color: var(--texte-doux); vertical-align: middle; }
+.tarif-desc { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.95rem; color: var(--texte-doux); line-height: 1.7; flex: 1; }
+.tarif-sep { height: 1px; background: var(--bordure); margin: 0.4rem 0; }
 
 /* ── Zone PayPal ── */
-.paypal-zone {
-  margin-top: 0.3rem;
-}
-
-.paypal-label {
-  font-size: 0.65rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--texte-doux);
-  margin-bottom: 0.7rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.paypal-label::before {
-  content: '🔒';
-  font-size: 0.7rem;
-}
-
-/* Override style PayPal pour s'intégrer */
-.paypal-zone iframe {
-  border-radius: 6px !important;
-}
+.paypal-zone { margin-top: 0.3rem; }
+.paypal-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--texte-doux); margin-bottom: 0.7rem; display: flex; align-items: center; gap: 0.5rem; }
+.paypal-label::before { content: '🔒'; font-size: 0.7rem; }
+.paypal-zone iframe { border-radius: 6px !important; }
 
 /* ── Info délai ── */
 .info-delai {
@@ -311,13 +256,7 @@ nav { display: flex; align-items: center; gap: 0.2rem; }
   padding: 0.9rem 1.3rem;
 }
 
-.info-delai-texte {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1rem;
-  color: var(--texte-doux);
-  line-height: 1.6;
-}
-
+.info-delai-texte { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--texte-doux); line-height: 1.6; }
 .info-delai-texte strong { color: var(--or-clair); }
 
 /* ── Actions bas ── */
@@ -331,70 +270,21 @@ nav { display: flex; align-items: center; gap: 0.2rem; }
   padding: 3rem 2rem 5rem;
 }
 
-.cta-or {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: linear-gradient(135deg, #c9a96e, #a07840);
-  color: #0a0806;
-  font-family: 'Cinzel', serif;
-  font-size: 0.78rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 0.95rem 2rem;
-  border-radius: 6px;
-  transition: opacity 0.3s, transform 0.2s;
-  font-weight: 500;
-}
+.cta-or { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #c9a96e, #a07840); color: #0a0806; font-family: 'Cinzel', serif; font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; padding: 0.95rem 2rem; border-radius: 6px; transition: opacity 0.3s, transform 0.2s; font-weight: 500; }
 .cta-or:hover { opacity: 0.85; transform: translateY(-2px); }
-
-.cta-contour {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: transparent;
-  color: var(--or);
-  font-family: 'Cinzel', serif;
-  font-size: 0.78rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 0.95rem 2rem;
-  border-radius: 6px;
-  border: 1px solid var(--bordure-forte);
-  transition: background 0.3s, transform 0.2s;
-}
+.cta-contour { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--or); font-family: 'Cinzel', serif; font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; padding: 0.95rem 2rem; border-radius: 6px; border: 1px solid var(--bordure-forte); transition: background 0.3s, transform 0.2s; }
 .cta-contour:hover { background: rgba(201,169,110,0.08); transform: translateY(-2px); }
 
 /* ── Footer ── */
-footer {
-  position: relative;
-  z-index: 1;
-  border-top: 1px solid var(--bordure);
-  padding: 2.5rem 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
+footer { position: relative; z-index: 1; border-top: 1px solid var(--bordure); padding: 2.5rem 3rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
 .footer-copy { font-size: 0.72rem; color: var(--texte-doux); letter-spacing: 0.06em; }
 .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
 .footer-links a { font-size: 0.7rem; color: var(--texte-doux); text-decoration: none; letter-spacing: 0.08em; transition: color 0.25s; }
 .footer-links a:hover { color: var(--or); }
 
-/* ── Animations ── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(18px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+@keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 
-/* ── Responsive ── */
-@media (max-width: 900px) {
-  .tarifs-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
+@media (max-width: 900px) { .tarifs-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 600px) {
   .tarifs-grid { grid-template-columns: 1fr; }
   header { padding: 0.9rem 1.5rem; }
@@ -408,7 +298,6 @@ footer {
 
 <body>
 
-<!-- ── Header ── -->
 <header>
   <a href="index.html" class="logo" aria-label="Altessa Voyance — Accueil">
     <img src="assets/img/logo-altessa.png" alt="Logo Altessa" width="36" height="36">
@@ -436,7 +325,6 @@ footer {
   </div>
 </header>
 
-<!-- Menu mobile -->
 <div class="mobile-menu" id="mobileMenu" role="dialog">
   <a href="index.html" onclick="closeMenu()">Accueil</a>
   <a href="experts.html" onclick="closeMenu()">Voyance écrite</a>
@@ -447,7 +335,6 @@ footer {
 
 <main>
 
-  <!-- ── Hero ── -->
   <section class="hero">
     <p class="hero-label">Altessa Voyance</p>
     <h1 class="hero-titre">Tarifs de voyance</h1>
@@ -456,7 +343,6 @@ footer {
       Réponse personnalisée envoyée par email après paiement sécurisé.
     </p>
 
-    <!-- Bannière expert pré-sélectionné -->
     <div class="expert-selectionne" id="expertBanner">
       <div class="expert-sel-initiale" id="expertInitiale">✦</div>
       <div class="expert-sel-info">
@@ -467,11 +353,9 @@ footer {
     </div>
   </section>
 
-  <!-- ── Grille tarifs ── -->
   <div class="tarifs-wrap">
     <div class="tarifs-grid">
 
-      <!-- 1 — À la question 8€ -->
       <article class="tarif-card" style="animation-delay:0.05s">
         <div class="tarif-icone">🔮</div>
         <p class="tarif-nom">À la question</p>
@@ -484,7 +368,6 @@ footer {
         </div>
       </article>
 
-      <!-- 2 — Sentimentale 20€ -->
       <article class="tarif-card" style="animation-delay:0.1s">
         <div class="tarif-icone">❤️</div>
         <p class="tarif-nom">Voyance sentimentale</p>
@@ -497,7 +380,6 @@ footer {
         </div>
       </article>
 
-      <!-- 3 — Professionnelle 20€ -->
       <article class="tarif-card" style="animation-delay:0.15s">
         <div class="tarif-icone">💼</div>
         <p class="tarif-nom">Voyance professionnelle</p>
@@ -510,7 +392,6 @@ footer {
         </div>
       </article>
 
-      <!-- 4 — Financière 20€ -->
       <article class="tarif-card" style="animation-delay:0.2s">
         <div class="tarif-icone">✨</div>
         <p class="tarif-nom">Voyance financière</p>
@@ -523,7 +404,6 @@ footer {
         </div>
       </article>
 
-      <!-- 5 — Générale 45€ — POPULAIRE -->
       <article class="tarif-card populaire" style="animation-delay:0.25s">
         <div class="tarif-icone">🌟</div>
         <p class="tarif-nom">Voyance générale</p>
@@ -536,7 +416,6 @@ footer {
         </div>
       </article>
 
-      <!-- 6 — Soin énergétique 50€ -->
       <article class="tarif-card" style="animation-delay:0.3s">
         <div class="tarif-icone">🌿</div>
         <p class="tarif-nom">Soin énergétique</p>
@@ -551,7 +430,6 @@ footer {
 
     </div>
 
-    <!-- Info délai -->
     <div class="info-delai">
       <span style="font-size:1.4rem">🕯️</span>
       <p class="info-delai-texte">
@@ -561,7 +439,6 @@ footer {
     </div>
   </div>
 
-  <!-- Actions bas -->
   <div class="tarifs-actions">
     <a href="experts.html" class="cta-contour">← Choisir mon expert</a>
     <a href="contact.html" class="cta-or">Support</a>
@@ -569,7 +446,6 @@ footer {
 
 </main>
 
-<!-- ── Footer ── -->
 <footer>
   <p class="footer-copy">© 2026 Altessa Voyance — Voyance en ligne par écrit, tarot, astrologie & médium</p>
   <div class="footer-links">
@@ -581,9 +457,7 @@ footer {
   </div>
 </footer>
 
-<!-- ── PayPal init (une seule fois) ── -->
 <script>
-  // ── Données experts ──────────────────────────────────────────────
   const EXPERTS = {
     'Ariane':  { role: 'Tarologue',           initiale: 'A' },
     'Noémie':  { role: 'Astrologue',           initiale: 'N' },
@@ -607,7 +481,6 @@ footer {
     'Ophélie': { role: 'Voyante intuitive',    initiale: 'O' },
   };
 
-  // ── Tarifs (pour la redirection après paiement) ──────────────────
   const TARIFS = {
     'LGCWPQ9JHDT5U': { nom: 'À la question',          prix: '8€'  },
     'H8LA54EZY2T46': { nom: 'Voyance sentimentale',    prix: '20€' },
@@ -629,10 +502,23 @@ footer {
     document.getElementById('expertRole').textContent     = info.role;
   }
 
+  // ── Sauvegarder l'expert dans localStorage avant PayPal ──────────
+  // (au cas où PayPal ne transmet pas les paramètres dans l'URL de retour)
+  if (expertChoisi) {
+    localStorage.setItem('altessa_expert', expertChoisi);
+    localStorage.setItem('altessa_role', expertChoisi && EXPERTS[expertChoisi] ? EXPERTS[expertChoisi].role : '');
+  }
+
   // ── Fonction redirection après paiement ──────────────────────────
+  // ✅ CORRECTION : redirige vers apres-paiement.html (et non consultation.html)
   function redigerApresPayment(hostedButtonId, orderId) {
     const tarif = TARIFS[hostedButtonId] || { nom: 'Consultation', prix: '' };
-    const url = new URL('consultation.html', window.location.href);
+
+    // Sauvegarder la prestation dans localStorage
+    localStorage.setItem('altessa_prestation', tarif.nom);
+    localStorage.setItem('altessa_prix', tarif.prix);
+
+    const url = new URL('apres-paiement.html', window.location.href);
     if (expertChoisi) url.searchParams.set('expert', expertChoisi);
     url.searchParams.set('prestation', tarif.nom);
     url.searchParams.set('prix', tarif.prix);
