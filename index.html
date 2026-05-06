@@ -528,7 +528,7 @@ function astraSendSugg(t) { document.getElementById('astra-input').value = t; as
 function astraHandleKey(e) { if (e.key==='Enter'&&!e.shiftKey) { e.preventDefault(); astraSend(); } }
 function astraResize(el) { el.style.height='auto'; el.style.height=Math.min(el.scrollHeight,100)+'px'; }
 </script>
-  <style>
+<style>
 .maman-popup{
   position:fixed;
   inset:0;
@@ -596,7 +596,7 @@ function astraResize(el) { el.style.height='auto'; el.style.height=Math.min(el.s
 
 <div class="maman-popup" id="mamanPopup">
   <div class="maman-box">
-    <button class="maman-close" onclick="closeMamanPopup()">×</button>
+    <button class="maman-close" type="button" onclick="closeMamanPopup()">×</button>
 
     <h2>🎁 Offre Fête des Mères</h2>
 
@@ -618,18 +618,20 @@ function astraResize(el) { el.style.height='auto'; el.style.height=Math.min(el.s
 
 <script>
 function closeMamanPopup(){
-  document.getElementById('mamanPopup').style.display = 'none';
-  sessionStorage.setItem('mamanPopupClosed','true');
+  var popup = document.getElementById('mamanPopup');
+  if(popup){
+    popup.style.display = 'none';
+  }
 }
 
-window.addEventListener('load', function(){
-  if(!sessionStorage.getItem('mamanPopupClosed')){
-    setTimeout(function(){
-      document.getElementById('mamanPopup').style.display = 'flex';
-    }, 2500);
+setTimeout(function(){
+  var popup = document.getElementById('mamanPopup');
+  if(popup){
+    popup.style.display = 'flex';
   }
-});
+}, 2500);
 </script>
+
 
 </body>
 </html>
