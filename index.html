@@ -528,5 +528,113 @@ function astraSendSugg(t) { document.getElementById('astra-input').value = t; as
 function astraHandleKey(e) { if (e.key==='Enter'&&!e.shiftKey) { e.preventDefault(); astraSend(); } }
 function astraResize(el) { el.style.height='auto'; el.style.height=Math.min(el.scrollHeight,100)+'px'; }
 </script>
+  <style>
+.maman-popup{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.72);
+  z-index:99999;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+.maman-box{
+  max-width:430px;
+  background:linear-gradient(160deg,#120b08,#050403);
+  border:1px solid rgba(212,175,55,.45);
+  border-radius:18px;
+  padding:28px 22px;
+  text-align:center;
+  box-shadow:0 0 45px rgba(212,175,55,.18);
+  position:relative;
+}
+.maman-close{
+  position:absolute;
+  top:10px;
+  right:14px;
+  background:none;
+  border:none;
+  color:#d4af37;
+  font-size:24px;
+  cursor:pointer;
+}
+.maman-box h2{
+  color:#d4af37;
+  font-family:'Cinzel',serif;
+  font-size:26px;
+  margin-bottom:10px;
+}
+.maman-box p{
+  color:#eee0c8;
+  font-size:15px;
+  line-height:1.6;
+}
+.maman-price{
+  color:#d4af37;
+  font-size:28px;
+  font-weight:bold;
+  margin:15px 0;
+}
+.maman-btn{
+  display:inline-block;
+  margin-top:18px;
+  padding:14px 24px;
+  border-radius:8px;
+  background:linear-gradient(135deg,#d4af37,#a67c00);
+  color:#090604;
+  text-decoration:none;
+  font-weight:bold;
+  letter-spacing:.08em;
+}
+.maman-small{
+  margin-top:14px;
+  font-size:12px!important;
+  color:#a99876!important;
+}
+</style>
+
+<div class="maman-popup" id="mamanPopup">
+  <div class="maman-box">
+    <button class="maman-close" onclick="closeMamanPopup()">×</button>
+
+    <h2>🎁 Offre Fête des Mères</h2>
+
+    <p>
+      Offrez-lui un cadeau original, intime et plein de sens.
+    </p>
+
+    <div class="maman-price">2 voyances écrites — 35€</div>
+
+    <p>
+      ✨ Bon cadeau à offrir<br>
+      🔮 Réponse personnalisée<br>
+      🔒 100% confidentiel
+    </p>
+
+    <a href="fete-des-meres.html" class="maman-btn">
+      Offrir maintenant
+    </a>
+
+    <p class="maman-small">
+      Offre limitée spéciale Fête des Mères
+    </p>
+  </div>
+</div>
+
+<script>
+function closeMamanPopup(){
+  document.getElementById('mamanPopup').style.display = 'none';
+  sessionStorage.setItem('mamanPopupClosed','true');
+}
+
+window.addEventListener('load', function(){
+  if(!sessionStorage.getItem('mamanPopupClosed')){
+    setTimeout(function(){
+      document.getElementById('mamanPopup').style.display = 'flex';
+    }, 2500);
+  }
+});
+</script>
 </body>
 </html>
