@@ -655,7 +655,7 @@
       const res = await fetch(MAKE_WEBHOOK_URL, {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(payload),
+  body: JSON.stringify({ value: JSON.stringify(payload) })
 });
 
       // Attendre 1s puis afficher succès
