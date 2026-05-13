@@ -652,9 +652,10 @@ const MAKE_WEBHOOK_URL = 'https://hook.eu1.make.com/8g3o3ttfkbpo0949k9v6r234bnmj
     document.getElementById('etatEnvoi').classList.add('visible');
 
     try {
-      const res = await fetch(MAKE_WEBHOOK_URL, {
+      await fetch(MAKE_WEBHOOK_URL, {
   method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
+  mode: 'no-cors',
+  headers: { 'Content-Type': 'text/plain' },
   body: JSON.stringify(payload)
 });
 
