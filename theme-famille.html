@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Altessa Voyance — Famille & Liens</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Les liens familiaux sont souvent les plus complexes. Conflits, distances, incompréhensions ou simplement le désir de renforcer ces liens précieux — vo">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://altessavoyance.com/theme-famille.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cinzel:wght@400;500;600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+  <script src="assets/assets/js/lang.js" defer></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=BAA3LPdWYhDwfbYcXsmBhfCHXhRtcth_XEFw9tpnDSr42xeS7cdHDPl4kkudskfXSomt0uyjCfsdvzBBz8&components=hosted-buttons&disable-funding=venmo&currency=EUR"></script>
+<style>
+:root{
+  --or:#c9a96e;--or-clair:#e8d5b0;--or-sombre:#a07840;
+  --fond:#0a0806;--fond2:#120f0b;--fond3:#1a1510;
+  --texte:#ede5d8;--texte-doux:#9a8870;
+  --bordure:rgba(201,169,110,0.18);--bordure-forte:rgba(201,169,110,0.35);
+  --theme:rgba(80,180,120,0.12);--theme-bordure:rgba(80,180,120,0.3);--theme-texte:#60c080;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--fond);color:var(--texte);font-family:"Lato",sans-serif;font-weight:300;overflow-x:hidden;line-height:1.6}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse 80% 60% at 15% 10%,rgba(201,169,110,0.07) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 85% 90%,rgba(80,180,120,0.12) 0%,transparent 55%);pointer-events:none;z-index:0}
+
+/* Header */
+header{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;background:rgba(10,8,6,0.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--bordure)}
+.logo{display:flex;align-items:center;gap:.75rem;text-decoration:none}
+.logo img{height:36px;width:36px;object-fit:contain}
+.logo-main{display:block;font-family:"Cinzel",serif;font-size:1.05rem;color:var(--or);letter-spacing:.14em;line-height:1}
+.logo-sub{display:block;font-family:"Cinzel",serif;font-size:.48rem;color:var(--texte-doux);letter-spacing:.25em;text-transform:uppercase;margin-top:3px}
+nav{display:flex;align-items:center;gap:.2rem}
+.btn-nav{font-family:"Lato",sans-serif;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--texte-doux);text-decoration:none;padding:.4rem .9rem;border-radius:4px;transition:color .25s,background .25s}
+.btn-nav:hover{color:var(--or);background:rgba(201,169,110,0.07)}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.burger span{display:block;width:22px;height:1px;background:var(--or)}
+.mobile-menu{position:fixed;inset:0;background:rgba(10,8,6,0.98);z-index:200;display:none;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-family:"Cinzel",serif;font-size:1.2rem;color:var(--or);text-decoration:none;letter-spacing:.15em}
+
+/* Stars */
+.stars{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.star{position:absolute;width:2px;height:2px;background:var(--or-clair);border-radius:50%;animation:twinkle var(--d,3s) var(--delay,0s) ease-in-out infinite alternate;opacity:.4}
+@keyframes twinkle{from{opacity:.1;transform:scale(.8)}to{opacity:.7;transform:scale(1.3)}}
+
+/* Hero */
+.hero{position:relative;min-height:75vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:9rem 2rem 5rem;overflow:hidden}
+.hero::after{content:"";position:absolute;bottom:0;left:0;right:0;height:150px;background:linear-gradient(to bottom,transparent,var(--fond));pointer-events:none}
+
+.hero-icone{font-size:4rem;margin-bottom:1.5rem;animation:fadeUp .8s ease .1s both;display:block}
+.hero-badge-theme{display:inline-flex;align-items:center;gap:.5rem;background:var(--theme);border:1px solid var(--theme-bordure);border-radius:2rem;padding:.4rem 1.1rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--theme-texte);margin-bottom:1.5rem;animation:fadeUp .8s ease .15s both}
+.hero-titre{font-family:"Cinzel",serif;font-size:clamp(1.8rem,4vw,3rem);color:var(--or);letter-spacing:.08em;margin-bottom:.8rem;animation:fadeUp .8s ease .2s both}
+.hero-accroche{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:clamp(1.1rem,2.2vw,1.4rem);color:var(--texte-doux);margin-bottom:1.5rem;animation:fadeUp .8s ease .25s both}
+.hero-intro{font-size:.95rem;color:var(--texte-doux);max-width:560px;line-height:1.9;animation:fadeUp .8s ease .3s both}
+
+/* Contenu */
+.contenu{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:3rem 2rem 6rem}
+
+/* Section questions */
+.questions-section{background:rgba(201,169,110,0.04);border:1px solid var(--bordure);border-radius:16px;padding:2.5rem;margin-bottom:2.5rem}
+.section-titre{font-family:"Cinzel",serif;font-size:1.1rem;color:var(--or);letter-spacing:.08em;margin-bottom:1.5rem}
+.questions-liste{list-style:none;display:flex;flex-direction:column;gap:.8rem}
+.question-item{display:flex;align-items:flex-start;gap:1rem;padding:.7rem 1rem;background:rgba(201,169,110,0.04);border:1px solid var(--bordure);border-radius:8px}
+.question-icone{color:var(--or);font-size:.9rem;flex-shrink:0;margin-top:2px}
+.question-texte{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.05rem;color:var(--texte-doux)}
+
+/* Experts */
+.experts-grille{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2.5rem}
+.expert-mini{background:rgba(201,169,110,0.04);border:1px solid var(--bordure);border-radius:12px;padding:1.2rem;text-align:center}
+.expert-mini-initiale{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,rgba(42,10,74,0.8),rgba(201,169,110,0.2));border:2px solid var(--or);display:flex;align-items:center;justify-content:center;font-family:"Cinzel",serif;font-size:1.2rem;color:var(--or);margin:0 auto .8rem}
+.expert-mini-nom{font-family:"Cinzel",serif;font-size:.85rem;color:var(--or);letter-spacing:.06em;margin-bottom:.3rem}
+.expert-mini-specialite{font-size:.72rem;color:var(--texte-doux);font-style:italic}
+
+/* Paiement */
+.paiement-section{background:linear-gradient(135deg,rgba(201,169,110,0.08),rgba(201,169,110,0.03));border:1px solid var(--bordure-forte);border-radius:16px;padding:2.5rem;text-align:center}
+.paiement-titre{font-family:"Cinzel",serif;font-size:1.3rem;color:var(--or);letter-spacing:.08em;margin-bottom:.5rem}
+.paiement-sous{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1rem;color:var(--texte-doux);margin-bottom:2rem}
+.tarifs-grille{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem}
+.tarif-carte{background:rgba(201,169,110,0.05);border:1px solid var(--bordure);border-radius:12px;padding:1.5rem 1rem;cursor:pointer;transition:border-color .3s,transform .2s;position:relative}
+.tarif-carte:hover,.tarif-carte.actif{border-color:var(--or);transform:translateY(-2px)}
+.tarif-carte.actif{background:rgba(201,169,110,0.1)}
+.tarif-carte.populaire::before{content:"Populaire";position:absolute;top:-.7rem;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#c9a96e,#a07840);color:#0a0806;font-size:.6rem;letter-spacing:.12em;padding:.2rem .6rem;border-radius:2rem;font-family:"Cinzel",serif;white-space:nowrap}
+.tarif-prix{font-family:"Cinzel",serif;font-size:1.8rem;color:var(--or);line-height:1}
+.tarif-label{font-size:.72rem;color:var(--texte-doux);margin-top:.3rem;letter-spacing:.08em}
+.tarif-desc{font-size:.75rem;color:var(--texte-doux);margin-top:.5rem;font-style:italic}
+.paypal-zone{margin-top:1.5rem}
+.paypal-label{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--texte-doux);margin-bottom:.8rem;display:flex;align-items:center;justify-content:center;gap:.5rem}
+.paypal-label::before{content:"🔒";font-size:.7rem}
+.avertissement{margin-top:1rem;padding:.7rem 1rem;background:rgba(201,169,110,0.06);border-left:3px solid var(--or);border-radius:0 8px 8px 0;font-size:.75rem;color:var(--texte-doux);line-height:1.6}
+
+/* Autres thèmes */
+.autres-themes{margin-top:3rem;text-align:center}
+.autres-titre{font-family:"Cinzel",serif;font-size:.85rem;color:var(--texte-doux);letter-spacing:.1em;margin-bottom:1.2rem;text-transform:uppercase}
+.themes-mini{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center}
+.theme-mini-badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(201,169,110,0.05);border:1px solid var(--bordure);border-radius:2rem;padding:.35rem .9rem;text-decoration:none;font-size:.75rem;color:var(--texte-doux);transition:border-color .25s,color .25s}
+.theme-mini-badge:hover{border-color:var(--or);color:var(--or)}
+
+/* Footer */
+footer{position:relative;z-index:1;border-top:1px solid var(--bordure);padding:2rem 3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-copy{font-size:.72rem;color:var(--texte-doux)}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{font-size:.7rem;color:var(--texte-doux);text-decoration:none;transition:color .25s}
+.footer-links a:hover{color:var(--or)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  header{padding:.9rem 1.5rem}
+  nav .btn-nav{display:none}
+  .burger{display:flex}
+  .experts-grille{grid-template-columns:repeat(3,1fr)}
+  .tarifs-grille{grid-template-columns:1fr;gap:.8rem}
+  footer{flex-direction:column;align-items:center;text-align:center;padding:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">
+    <img src="assets/img/logo-altessa.png" alt="Logo Altessa" width="36" height="36">
+    <div><span class="logo-main">Altessa</span><span class="logo-sub">Voyance</span></div>
+  </a>
+  <nav>
+    <a href="index.html" class="btn-nav">Accueil</a>
+    <a href="experts.html" class="btn-nav">Voyance écrite</a>
+    <a href="tarifs.html" class="btn-nav">Tarifs</a>
+    <a href="rdv-telephone.html" class="btn-nav">RDV Téléphone</a>
+    <a href="contact.html" class="btn-nav">Support</a>
+  </nav>
+  <div class="burger" id="burger"><span></span><span></span><span></span></div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="closeMenu()">Accueil</a>
+  <a href="experts.html" onclick="closeMenu()">Voyance écrite</a>
+  <a href="tarifs.html" onclick="closeMenu()">Tarifs</a>
+  <a href="contact.html" onclick="closeMenu()">Support</a>
+</div>
+
+<main>
+  <section class="hero">
+    <div class="stars" id="stars"></div>
+    <span class="hero-icone">👨‍👩‍👧</span>
+    <div class="hero-badge-theme">👨‍👩‍👧 Famille & Liens</div>
+    <h1 class="hero-titre">La paix familiale est possible</h1>
+    <p class="hero-accroche">Posez votre question — réponse personnalisée par email en 5 à 12 minutes</p>
+    <p class="hero-intro">Les liens familiaux sont souvent les plus complexes. Conflits, distances, incompréhensions ou simplement le désir de renforcer ces liens précieux — votre famille mérite l'harmonie.</p>
+  </section>
+
+  <div class="contenu">
+
+    <!-- Questions fréquentes -->
+    <div class="questions-section reveal">
+      <p class="section-titre">✦ Vous vous posez peut-être ces questions…</p>
+      <ul class="questions-liste">
+        <li class="question-item"><span class="question-icone">✦</span><span class="question-texte">Comment améliorer ma relation avec [membre de la famille] ?</span></li>
+        <li class="question-item"><span class="question-icone">✦</span><span class="question-texte">Vais-je me réconcilier avec un proche ?</span></li>
+        <li class="question-item"><span class="question-icone">✦</span><span class="question-texte">Quels schémas familiaux me pèsent ?</span></li>
+        <li class="question-item"><span class="question-icone">✦</span><span class="question-texte">Comment protéger l'harmonie de ma famille ?</span></li>
+      </ul>
+    </div>
+
+    <!-- Experts recommandés -->
+    <div class="reveal" style="margin-bottom:1rem">
+      <p class="section-titre" style="font-family:'Cinzel',serif;font-size:1rem;color:var(--or);letter-spacing:.08em;margin-bottom:1rem">Nos experts pour ce thème</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.95rem;color:var(--texte-doux);margin-bottom:1.5rem">Nos voyantes karmiques et médiums spirituelles perçoivent les liens familiaux profonds et les schémas transgénérationnels.</p>
+    </div>
+    <div class="experts-grille reveal" style="transition-delay:.1s">
+      <div class="expert-mini">
+        <div class="expert-mini-initiale">L</div>
+        <div class="expert-mini-nom">Lila</div>
+        <div class="expert-mini-specialite">Voyante karmique</div>
+      </div>
+      <div class="expert-mini">
+        <div class="expert-mini-initiale">S</div>
+        <div class="expert-mini-nom">Sofia</div>
+        <div class="expert-mini-specialite">Médium spirituelle</div>
+      </div>
+      <div class="expert-mini">
+        <div class="expert-mini-initiale">A</div>
+        <div class="expert-mini-nom">Amélie</div>
+        <div class="expert-mini-specialite">Voyante émotionnelle</div>
+      </div>
+    </div>
+
+    <!-- Paiement -->
+    <div class="paiement-section reveal" id="paiement" style="transition-delay:.15s">
+      <p class="paiement-titre">✨ Choisissez votre consultation</p>
+      <p class="paiement-sous">Sélectionnez le niveau de détail souhaité — réponse par email en 5 à 12 minutes</p>
+
+      <div class="tarifs-grille">
+        <div class="tarif-carte" onclick="selectTarif('8')">
+          <div class="tarif-prix">8€</div>
+          <div class="tarif-label">Consultation essentielle</div>
+          <div class="tarif-desc">Réponse directe à votre question</div>
+        </div>
+        <div class="tarif-carte populaire actif" onclick="selectTarif('20')">
+          <div class="tarif-prix">20€</div>
+          <div class="tarif-label">Consultation détaillée</div>
+          <div class="tarif-desc">Analyse approfondie par thème</div>
+        </div>
+        <div class="tarif-carte" onclick="selectTarif('45')">
+          <div class="tarif-prix">45€</div>
+          <div class="tarif-label">Consultation complète</div>
+          <div class="tarif-desc">Vision globale & conseils détaillés</div>
+        </div>
+      </div>
+
+      <div class="paypal-zone">
+        <p class="paypal-label">Paiement sécurisé PayPal</p>
+        <div id="paypal-container-8" style="display:none"><div id="paypal-btn-8"></div></div>
+        <div id="paypal-container-20"><div id="paypal-btn-20"></div></div>
+        <div id="paypal-container-45" style="display:none"><div id="paypal-btn-45"></div></div>
+      </div>
+
+      <div class="avertissement">
+        ⚠️ Si le bouton PayPal n'apparaît pas, désactivez temporairement votre bloqueur de publicités et rechargez la page.
+      </div>
+    </div>
+
+    <!-- Autres thèmes -->
+    <div class="autres-themes reveal" style="transition-delay:.2s">
+      <p class="autres-titre">Explorer d'autres thèmes</p>
+      <div class="themes-mini">
+        <a href="theme-amour.html" class="theme-mini-badge">💕 Amour</a>
+        <a href="theme-rupture.html" class="theme-mini-badge">💔 Rupture</a>
+        <a href="theme-travail.html" class="theme-mini-badge">💼 Travail</a>
+        <a href="theme-argent.html" class="theme-mini-badge">💰 Argent</a>
+        <a href="theme-famille.html" class="theme-mini-badge">👨‍👩‍👧 Famille</a>
+        <a href="theme-avenir.html" class="theme-mini-badge">🔮 Avenir</a>
+        <a href="theme-energie.html" class="theme-mini-badge">🌿 Énergie</a>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <p class="footer-copy">© 2026 Altessa Voyance — Service réservé aux personnes majeures.</p>
+  <div class="footer-links">
+    <a href="cgv.html">CGV</a>
+    <a href="mentions-legales.html">Mentions légales</a>
+    <a href="politique-confidentialite.html">Confidentialité</a>
+    <a href="contact.html">Support</a>
+  </div>
+</footer>
+
+<script>
+// Étoiles
+const starsEl=document.getElementById('stars');
+for(let i=0;i<45;i++){const s=document.createElement('div');s.className='star';s.style.cssText=`top:${Math.random()*100}%;left:${Math.random()*100}%;--d:${2+Math.random()*4}s;--delay:${Math.random()*4}s;`;starsEl.appendChild(s)}
+
+// Reveal
+const obs=new IntersectionObserver(e=>e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Burger
+const burger=document.getElementById('burger'),menu=document.getElementById('mobileMenu');
+burger.addEventListener('click',()=>menu.classList.toggle('open'));
+function closeMenu(){menu.classList.remove('open')}
+
+// Sélection tarif
+let tarifsRendus = {};
+function selectTarif(prix){
+  document.querySelectorAll('.tarif-carte').forEach(c=>c.classList.remove('actif'));
+  event.currentTarget.classList.add('actif');
+  ['8','20','45'].forEach(p=>{
+    document.getElementById('paypal-container-'+p).style.display = p===prix ? 'block' : 'none';
+  });
+  if(!tarifsRendus[prix]){
+    tarifsRendus[prix] = true;
+    renderPayPal(prix);
+  }
+}
+
+// PayPal
+const PAYPAL_IDS = {'8':'LGCWPQ9JHDTSU','20':'H8LA54EZY2T46','45':'GT986X6GT42PA'};
+function renderPayPal(prix){
+  const id = PAYPAL_IDS[prix];
+  if(!id) return;
+  paypal.HostedButtons({
+    hostedButtonId: id,
+    onApprove: function(data){
+      window.location.href = 'apres-paiement.html?expert=Lila&prestation=Consultation+Famille+%26+Liens&prix='+prix+'€&paypal_id='+(data.orderID||'');
+    }
+  }).render('#paypal-btn-'+prix);
+}
+
+// Rendu initial (tarif 20€ sélectionné par défaut)
+window.addEventListener('load', function(){
+  tarifsRendus['20'] = true;
+  renderPayPal('20');
+});
+</script>
+
+</body>
+</html>
