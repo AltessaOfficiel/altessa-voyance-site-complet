@@ -189,32 +189,20 @@ footer{position:relative;z-index:1;border-top:1px solid var(--bordure);padding:2
 
     <!-- Paiement -->
     <div class="paiement-section reveal" id="paiement" style="transition-delay:.15s">
-      <p class="paiement-titre">✨ Choisissez votre consultation</p>
+      <p class="paiement-titre">🌿 Soin énergétique</p>
       <p class="paiement-sous">Sélectionnez le niveau de détail souhaité — réponse par email en 5 à 12 minutes</p>
 
-      <div class="tarifs-grille">
-        <div class="tarif-carte" onclick="selectTarif('8')">
-          <div class="tarif-prix">8€</div>
-          <div class="tarif-label">Consultation essentielle</div>
-          <div class="tarif-desc">Réponse directe à votre question</div>
-        </div>
-        <div class="tarif-carte populaire actif" onclick="selectTarif('20')">
-          <div class="tarif-prix">20€</div>
-          <div class="tarif-label">Consultation détaillée</div>
-          <div class="tarif-desc">Analyse approfondie par thème</div>
-        </div>
-        <div class="tarif-carte" onclick="selectTarif('45')">
-          <div class="tarif-prix">45€</div>
-          <div class="tarif-label">Consultation complète</div>
-          <div class="tarif-desc">Vision globale & conseils détaillés</div>
+      <div class="tarifs-grille" style="grid-template-columns:1fr;max-width:320px;margin:0 auto">
+        <div class="tarif-carte actif" style="cursor:default">
+          <div class="tarif-prix">50€</div>
+          <div class="tarif-label">Soin énergétique complet</div>
+          <div class="tarif-desc">Nettoyage, réalignement & guidance énergétique</div>
         </div>
       </div>
 
       <div class="paypal-zone">
         <p class="paypal-label">Paiement sécurisé PayPal</p>
-        <div id="paypal-container-8" style="display:none"><div id="paypal-btn-8"></div></div>
-        <div id="paypal-container-20"><div id="paypal-btn-20"></div></div>
-        <div id="paypal-container-45" style="display:none"><div id="paypal-btn-45"></div></div>
+        <div id="paypal-container-50"><div id="paypal-btn-50"></div></div>
       </div>
 
       <div class="avertissement">
@@ -264,18 +252,7 @@ burger.addEventListener('click',()=>menu.classList.toggle('open'));
 function closeMenu(){menu.classList.remove('open')}
 
 // Sélection tarif
-let tarifsRendus = {};
-function selectTarif(prix){
-  document.querySelectorAll('.tarif-carte').forEach(c=>c.classList.remove('actif'));
-  event.currentTarget.classList.add('actif');
-  ['8','20','45'].forEach(p=>{
-    document.getElementById('paypal-container-'+p).style.display = p===prix ? 'block' : 'none';
-  });
-  if(!tarifsRendus[prix]){
-    tarifsRendus[prix] = true;
-    renderPayPal(prix);
-  }
-}
+// Pas de sélection de tarif pour énergie
 
 // PayPal
 const PAYPAL_IDS = {'8':'LGCWPQ9JHDTSU','20':'AY42SMUCPK3YU','45':'GT986X6GT42PA'};
