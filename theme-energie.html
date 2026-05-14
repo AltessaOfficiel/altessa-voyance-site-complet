@@ -251,26 +251,14 @@ const burger=document.getElementById('burger'),menu=document.getElementById('mob
 burger.addEventListener('click',()=>menu.classList.toggle('open'));
 function closeMenu(){menu.classList.remove('open')}
 
-// Sélection tarif
-// Pas de sélection de tarif pour énergie
-
-// PayPal
-const PAYPAL_IDS = {'8':'LGCWPQ9JHDT5U','20':'AY42SMUCPK3YU','45':'GT986X6GT42PA'};
-function renderPayPal(prix){
-  const id = PAYPAL_IDS[prix];
-  if(!id) return;
-  paypal.HostedButtons({
-    hostedButtonId: id,
-    onApprove: function(data){
-      window.location.href = 'apres-paiement.html?expert=Yara&prestation=Consultation+Énergie+%26+Bien-être&prix='+prix+'€&paypal_id='+(data.orderID||'');
-    }
-  }).render('#paypal-btn-'+prix);
-}
-
-// Rendu initial (tarif 20€ sélectionné par défaut)
+// PayPal Soin énergétique 50€
 window.addEventListener('load', function(){
-  tarifsRendus['20'] = true;
-  renderPayPal('20');
+  paypal.HostedButtons({
+    hostedButtonId: 'AY42SMUCPK3YU',
+    onApprove: function(data){
+      window.location.href = 'apres-paiement.html?expert=Yara&prestation=Soin+%C3%A9nerg%C3%A9tique&prix=50%E2%82%AC&paypal_id='+(data.orderID||'');
+    }
+  }).render('#paypal-btn-50');
 });
 </script>
 
