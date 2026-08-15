@@ -4,6 +4,14 @@
   <meta charset="UTF-8">
   <title>Altessa Voyance — Support & Aide</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q09YDMYHE0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Q09YDMYHE0');
+  </script>
   <meta name="description" content="Contactez le support Altessa Voyance pour toute question sur un paiement, une commande ou un rendez-vous.">
   <meta name="robots" content="noindex, follow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -480,8 +488,20 @@ footer {
 </footer>
 
 <script>
-  // 🔧 Remplace par ton webhook Make support
   const MAKE_SUPPORT_URL = 'https://hook.eu2.make.com/WEBHOOK_SUPPORT_ICI';
+  const SUPPORT_EMAIL = 'contact@altessavoyance.com';
+
+  function ouvrirEmailSupport(payload) {
+    const subject = encodeURIComponent(`[Support Altessa] ${payload.objet || 'Demande client'}`);
+    const body = encodeURIComponent(
+      `Nom: ${payload.nom}\n` +
+      `Email: ${payload.email}\n` +
+      `Reference: ${payload.reference || '-'}\n` +
+      `Date: ${payload.date}\n\n` +
+      payload.message
+    );
+    window.location.href = `mailto:${SUPPORT_EMAIL}?subject=${subject}&body=${body}`;
+  }
 
   async function envoyerSupport(e) {
     e.preventDefault();
@@ -499,14 +519,28 @@ footer {
       date:      new Date().toLocaleString('fr-FR', { timeZone: 'Europe/Paris' }),
     };
 
-    try {
-      await fetch(MAKE_SUPPORT_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-    } catch (err) {
-      console.warn('Webhook support:', err);
+    const webhookConfigure = MAKE_SUPPORT_URL && !MAKE_SUPPORT_URL.includes('WEBHOOK_SUPPORT_ICI');
+
+    if (webhookConfigure) {
+      try {
+        await fetch(MAKE_SUPPORT_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        if (window.gtag) {
+          gtag('event', 'generate_lead', {
+            event_category: 'support',
+            event_label: payload.objet || 'support'
+          });
+        }
+      } catch (err) {
+        console.warn('Webhook support:', err);
+        ouvrirEmailSupport(payload);
+      }
+    } else {
+      ouvrirEmailSupport(payload);
     }
 
     document.getElementById('formSupport').style.display = 'none';

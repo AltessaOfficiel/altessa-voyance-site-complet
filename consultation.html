@@ -3,7 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q09YDMYHE0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Q09YDMYHE0');
+  </script>
   <title>Altessa Voyance — Poser ma question</title>
+  <meta name="description" content="Après votre paiement Altessa Voyance, transmettez votre question pour recevoir votre réponse personnalisée par email.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://altessavoyance.com/consultation.html">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;500&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
   <style>
@@ -658,6 +669,13 @@ const MAKE_WEBHOOK_URL = 'https://hook.eu1.make.com/8g3o3ttfkbpo0949k9v6r234bnmj
   headers: { 'Content-Type': 'text/plain' },
   body: JSON.stringify(payload)
 });
+
+      if (window.gtag) {
+        gtag('event', 'generate_lead', {
+          event_category: 'make',
+          event_label: 'consultation_question'
+        });
+      }
 
       // Attendre 1s puis afficher succès
       setTimeout(() => {

@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /test-altessa.html
+Disallow: /test-webhook.html
+Disallow: /consultation.html
+Disallow: /consultation-offerte.html
+Disallow: /relance-client.html
+Disallow: /merci.html
+Disallow: /merci-rdv.html
+Disallow: /apres-paiement.html
+
+Sitemap: https://altessavoyance.com/sitemap.xml
