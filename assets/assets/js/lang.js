@@ -61,11 +61,17 @@ function ensureGuideLinks() {
 }
 
 function ensureFreeReadingLinks() {
-  const href = 'tirage-tarot-gratuit.html';
-  const label = 'Tirage gratuit';
+  const href = 'tirages-gratuits.html';
+  const label = 'Tirages gratuits';
 
   document.querySelectorAll('header nav').forEach(nav => {
     if (nav.querySelector(`a[href="${href}"]`)) return;
+    const existing = nav.querySelector('a[href="tirage-tarot-gratuit.html"]');
+    if (existing) {
+      existing.href = href;
+      existing.textContent = label;
+      return;
+    }
     const guideLink = nav.querySelector('a[href="guide-voyance-en-ligne.html"]');
     const homeLink = nav.querySelector('a[href="index.html"]');
     const anchor = guideLink || homeLink;
@@ -80,6 +86,12 @@ function ensureFreeReadingLinks() {
 
   document.querySelectorAll('.mobile-menu').forEach(menu => {
     if (menu.querySelector(`a[href="${href}"]`)) return;
+    const existing = menu.querySelector('a[href="tirage-tarot-gratuit.html"]');
+    if (existing) {
+      existing.href = href;
+      existing.textContent = label;
+      return;
+    }
     const guideLink = menu.querySelector('a[href="guide-voyance-en-ligne.html"]');
     const homeLink = menu.querySelector('a[href="index.html"]');
     const anchor = guideLink || homeLink;
@@ -94,6 +106,12 @@ function ensureFreeReadingLinks() {
 
   document.querySelectorAll('footer .footer-links').forEach(links => {
     if (links.querySelector(`a[href="${href}"]`)) return;
+    const existing = links.querySelector('a[href="tirage-tarot-gratuit.html"]');
+    if (existing) {
+      existing.href = href;
+      existing.textContent = label;
+      return;
+    }
     const link = document.createElement('a');
     link.href = href;
     link.textContent = label;
