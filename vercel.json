@@ -1,5 +1,18 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/tirage-tarot-gratuit.html",
+      "missing": [
+        {
+          "type": "query",
+          "key": "direct"
+        }
+      ],
+      "destination": "/tirages-gratuits.html",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     {
       "source": "/",
@@ -18,6 +31,15 @@
     },
     {
       "source": "/index.html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache, no-store, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/tirages-gratuits.html",
       "headers": [
         {
           "key": "Cache-Control",
