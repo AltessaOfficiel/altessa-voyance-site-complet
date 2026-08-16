@@ -60,9 +60,51 @@ function ensureGuideLinks() {
   });
 }
 
+function ensureFreeReadingLinks() {
+  const href = 'tirage-tarot-gratuit.html';
+  const label = 'Tirage gratuit';
+
+  document.querySelectorAll('header nav').forEach(nav => {
+    if (nav.querySelector(`a[href="${href}"]`)) return;
+    const guideLink = nav.querySelector('a[href="guide-voyance-en-ligne.html"]');
+    const homeLink = nav.querySelector('a[href="index.html"]');
+    const anchor = guideLink || homeLink;
+    if (!anchor) return;
+
+    const link = document.createElement('a');
+    link.href = href;
+    link.className = anchor.classList.contains('btn-nav') ? 'btn-nav' : '';
+    link.textContent = label;
+    anchor.insertAdjacentElement('afterend', link);
+  });
+
+  document.querySelectorAll('.mobile-menu').forEach(menu => {
+    if (menu.querySelector(`a[href="${href}"]`)) return;
+    const guideLink = menu.querySelector('a[href="guide-voyance-en-ligne.html"]');
+    const homeLink = menu.querySelector('a[href="index.html"]');
+    const anchor = guideLink || homeLink;
+    if (!anchor) return;
+
+    const link = document.createElement('a');
+    link.href = href;
+    link.textContent = label;
+    link.setAttribute('onclick', 'closeMenu()');
+    anchor.insertAdjacentElement('afterend', link);
+  });
+
+  document.querySelectorAll('footer .footer-links').forEach(links => {
+    if (links.querySelector(`a[href="${href}"]`)) return;
+    const link = document.createElement('a');
+    link.href = href;
+    link.textContent = label;
+    links.prepend(link);
+  });
+}
+
 function initAltessaNavigation() {
   initLang();
   ensureGuideLinks();
+  ensureFreeReadingLinks();
 }
 
 if (document.readyState === 'loading') {
