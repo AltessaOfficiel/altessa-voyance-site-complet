@@ -257,8 +257,8 @@ nav { display: flex; align-items: center; gap: 0.2rem; }
 .ai-banner a { color: var(--or); }
 
 /* ── Consentement ── */
-.consentement { max-width: 700px; margin: 0 auto 2rem; position: relative; z-index: 1; background: rgba(201,169,110,0.04); border: 1px solid var(--bordure); border-radius: 12px; padding: 1.1rem 1.4rem; display: flex; align-items: flex-start; gap: 0.8rem; }
-.consentement input[type="checkbox"] { width: 18px; height: 18px; margin-top: 0.2rem; flex-shrink: 0; accent-color: var(--or); cursor: pointer; }
+.consentement { width: fit-content; margin: 0 auto 2rem; position: relative; z-index: 1; background: rgba(201,169,110,0.04); border: 1px solid var(--bordure); border-radius: 2rem; padding: 0.55rem 1.1rem; display: flex; align-items: center; gap: 0.6rem; }
+.consentement input[type="checkbox"] { width: 16px; height: 16px; flex-shrink: 0; accent-color: var(--or); cursor: pointer; }
 .consentement label { font-size: 0.82rem; color: var(--texte-doux); line-height: 1.6; cursor: pointer; }
 .consentement a { color: var(--or); }
 .consentement.manquant { border-color: rgba(220,110,90,0.5); animation: shake 0.4s; }
@@ -376,11 +376,9 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--bordure); p
     </div>
   </section>
 
-  <div class="ai-banner">✦ <strong>À savoir avant de payer :</strong> les réponses écrites sont générées par une intelligence artificielle configurée dans le style de l'expert choisi. Les consultations téléphoniques restent assurées par des praticiens humains. <a href="cgv.html#article-6">Détails à l'article 6 des CGV →</a></div>
-
   <div class="consentement" id="blocConsentement">
     <input type="checkbox" id="consentPaiement">
-    <label for="consentPaiement">J'ai lu et j'accepte les <a href="cgv.html" target="_blank">CGV</a>, y compris l'article 6 sur le rôle de l'IA dans les réponses écrites et l'article 3 sur la renonciation à mon droit de rétractation dès le début de la prestation.</label>
+    <label for="consentPaiement">J'accepte les <a href="cgv.html" target="_blank">CGV</a></label>
   </div>
 
   <div class="tarifs-wrap">
