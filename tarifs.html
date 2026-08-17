@@ -244,10 +244,25 @@ nav { display: flex; align-items: center; gap: 0.2rem; }
 .tarif-sep { height: 1px; background: var(--bordure); margin: 0.4rem 0; }
 
 /* ── Zone PayPal ── */
-.paypal-zone { margin-top: 0.3rem; }
+.paypal-zone { margin-top: 0.3rem; position: relative; }
 .paypal-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--texte-doux); margin-bottom: 0.7rem; display: flex; align-items: center; gap: 0.5rem; }
 .paypal-label::before { content: '🔒'; font-size: 0.7rem; }
 .paypal-zone iframe { border-radius: 6px !important; }
+.paypal-zone.locked [id^="paypal-container"] { opacity: 0.35; pointer-events: none; filter: grayscale(0.4); transition: opacity 0.25s, filter 0.25s; }
+.paypal-zone.locked { cursor: pointer; }
+
+/* ── Bandeau transparence IA ── */
+.ai-banner { max-width: 760px; margin: 0 auto 1rem; background: rgba(201,169,110,0.06); border: 1px solid var(--bordure); border-radius: 10px; padding: 0.9rem 1.3rem; font-size: 0.85rem; color: var(--texte-doux); text-align: center; line-height: 1.7; position: relative; z-index: 1; }
+.ai-banner strong { color: var(--or-clair); }
+.ai-banner a { color: var(--or); }
+
+/* ── Consentement ── */
+.consentement { max-width: 700px; margin: 0 auto 2rem; position: relative; z-index: 1; background: rgba(201,169,110,0.04); border: 1px solid var(--bordure); border-radius: 12px; padding: 1.1rem 1.4rem; display: flex; align-items: flex-start; gap: 0.8rem; }
+.consentement input[type="checkbox"] { width: 18px; height: 18px; margin-top: 0.2rem; flex-shrink: 0; accent-color: var(--or); cursor: pointer; }
+.consentement label { font-size: 0.82rem; color: var(--texte-doux); line-height: 1.6; cursor: pointer; }
+.consentement a { color: var(--or); }
+.consentement.manquant { border-color: rgba(220,110,90,0.5); animation: shake 0.4s; }
+@keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-4px)} 75%{transform:translateX(4px)} }
 
 /* ── Info délai ── */
 .info-delai {
@@ -361,6 +376,13 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--bordure); p
     </div>
   </section>
 
+  <div class="ai-banner">✦ <strong>À savoir avant de payer :</strong> les réponses écrites sont générées par une intelligence artificielle configurée dans le style de l'expert choisi. Les consultations téléphoniques restent assurées par des praticiens humains. <a href="cgv.html#article-6">Détails à l'article 6 des CGV →</a></div>
+
+  <div class="consentement" id="blocConsentement">
+    <input type="checkbox" id="consentPaiement">
+    <label for="consentPaiement">J'ai lu et j'accepte les <a href="cgv.html" target="_blank">CGV</a>, y compris l'article 6 sur le rôle de l'IA dans les réponses écrites et l'article 3 sur la renonciation à mon droit de rétractation dès le début de la prestation.</label>
+  </div>
+
   <div class="tarifs-wrap">
     <div class="tarifs-grid">
 
@@ -370,7 +392,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--bordure); p
         <p class="tarif-prix">8 <span>€</span></p>
         <p class="tarif-desc">Une question précise, une réponse directe et claire. Idéal pour un éclairage rapide.</p>
         <div class="tarif-sep"></div>
-        <div class="paypal-zone">
+        <div class="paypal-zone locked">
           <p class="paypal-label">Paiement sécurisé</p>
           <div id="paypal-container-LGCWPQ9JHDT5U"></div>
         </div>
@@ -382,7 +404,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--bordure); p
         <p class="tarif-prix">20 <span>€</span></p>
         <p class="tarif-desc">Couple, amour, retrouvailles, liens présents et futurs. Pour le cœur et ses questions.</p>
         <div class="tarif-sep"></div>
-        <div class="paypal-zone">
+        <div class="paypal-zone locked">
           <p class="paypal-label">Paiement sécurisé</p>
           <div id="paypal-container-H8LA54EZY2T46"></div>
         </div>
@@ -394,7 +416,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--bordure); p
         <p class="tarif-prix">20 <span>€</span></p>
         <p class="tarif-desc">Carrière, travail, changement professionnel, évolution et projets.</p>
         <div class="tarif-sep"></div>
-        <div class="paypal-zone">
+        <div class="paypal-zone locked">
           <p class="paypal-label">Paiement sécurisé</p>
           <div id="paypal-container-A3DZS2TAYSGYS"></div>
         </div>
@@ -406,7 +428,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--bordure); p
         <p class="tarif-prix">20 <span>€</span></p>
         <p class="tarif-desc">Finances, achats importants, stabilité et sécurité matérielle.</p>
         <div class="tarif-sep"></div>
-        <div class="paypal-zone">
+        <div class="paypal-zone locked">
           <p class="paypal-label">Paiement sécurisé</p>
           <div id="paypal-container-AJDZ94JCHR8U8"></div>
         </div>
@@ -418,7 +440,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--bordure); p
         <p class="tarif-prix">45 <span>€</span></p>
         <p class="tarif-desc">Bilan complet : sentimental, professionnel, finances et grandes tendances à venir.</p>
         <div class="tarif-sep"></div>
-        <div class="paypal-zone">
+        <div class="paypal-zone locked">
           <p class="paypal-label">Paiement sécurisé</p>
           <div id="paypal-container-GT986X6GT42PA"></div>
         </div>
@@ -430,7 +452,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--bordure); p
         <p class="tarif-prix">50 <span>€</span></p>
         <p class="tarif-desc">Nettoyage énergétique, apaisement profond et réalignement intérieur.</p>
         <div class="tarif-sep"></div>
-        <div class="paypal-zone">
+        <div class="paypal-zone locked">
           <p class="paypal-label">Paiement sécurisé</p>
           <div id="paypal-container-AY42SMUCPK3YU"></div>
         </div>
@@ -440,7 +462,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--bordure); p
 
     <div class="info-delai">
       <span style="font-size:1.4rem">🕯️</span>
-      <p class="info-delai-texte">
+      <p class="info-delai-texte" id="infoDelaiTexte">
         Après paiement, vous serez redirigé pour poser votre question.<br>
         <strong>Réponse de votre expert sous 5 à 12 minutes</strong>, envoyée par email.
       </p>
@@ -510,6 +532,14 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--bordure); p
     document.getElementById('expertRole').textContent     = info.role;
   }
 
+  // ── Si la question a déjà été transmise (nouveau tunnel), adapter le message ──
+  const questionDejaPosee = localStorage.getItem('altessa_question_expert') === expertChoisi
+    && !!localStorage.getItem('altessa_question') && !!localStorage.getItem('altessa_email');
+  if (questionDejaPosee) {
+    document.getElementById('infoDelaiTexte').innerHTML =
+      'Votre question est déjà transmise.<br><strong>Après paiement, votre expert vous répond sous 5 à 12 minutes</strong>, envoyée par email — sans autre étape.';
+  }
+
   // ── Sauvegarder l'expert dans localStorage avant PayPal ──────────
   // (au cas où PayPal ne transmet pas les paramètres dans l'URL de retour)
   if (expertChoisi) {
@@ -568,6 +598,27 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--bordure); p
   const menu   = document.getElementById('mobileMenu');
   burger.addEventListener('click', () => menu.classList.toggle('open'));
   function closeMenu() { menu.classList.remove('open'); }
+
+  // ── Consentement obligatoire avant paiement ───────────────────────
+  const consentCheckbox = document.getElementById('consentPaiement');
+  const blocConsentement = document.getElementById('blocConsentement');
+  const zonesPaypal = document.querySelectorAll('.paypal-zone');
+
+  function majVerrouillage() {
+    zonesPaypal.forEach(zone => zone.classList.toggle('locked', !consentCheckbox.checked));
+  }
+  consentCheckbox.addEventListener('change', majVerrouillage);
+  majVerrouillage();
+
+  zonesPaypal.forEach(zone => {
+    zone.addEventListener('click', () => {
+      if (!consentCheckbox.checked) {
+        blocConsentement.classList.add('manquant');
+        blocConsentement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => blocConsentement.classList.remove('manquant'), 500);
+      }
+    });
+  });
 </script>
 
 </body>
