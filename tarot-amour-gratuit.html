@@ -12,7 +12,7 @@
 </style>
 </head><body><div class="wrap"><div class="top"><a class="brand" href="index.html">ALTESSA VOYANCE</a><a class="back" href="tirages-gratuits.html">Tous les tirages</a></div>
 <section class="hero"><div style="color:#c9a96e;text-transform:uppercase;letter-spacing:.25em;font-size:.65rem">Tarot gratuit · amour</div><h1>Votre tirage amour en 3 cartes</h1><p>Pensez à votre situation sentimentale. Le tirage explore trois angles symboliques : vous, la dynamique relationnelle et la tendance à observer.</p></section>
-<div class="question"><input id="q" maxlength="120" placeholder="Votre question sentimentale (facultatif)"><small>Votre texte reste dans votre navigateur et n’est pas envoyé par ce tirage.</small></div>
+<div class="question"><input id="q" maxlength="120" placeholder="Votre question sentimentale (facultatif)"><small>Aide à personnaliser votre lecture.</small></div>
 <div class="email-gate"><p>Laissez votre email pour découvrir votre tirage</p><input type="email" id="emailGateInput" placeholder="votre@email.com"></div>
 <section class="cards" id="cards"></section>
 <div class="actions"><button class="btn primary" id="draw">💕 Tirer mes 3 cartes</button><button class="btn" id="share" hidden>Partager mon tirage</button><a class="btn" id="deepBtn" href="experts.html" hidden data-track="love_tarot_to_experts">Approfondir avec un expert</a></div>
@@ -32,7 +32,11 @@ document.getElementById('draw').onclick=()=>{
  emailInput.classList.remove('err');
  const copy=[...deck],out=[];while(out.length<3){out.push(copy.splice(Math.floor(Math.random()*copy.length),1)[0])}
  last=out;render(out);document.getElementById('share').hidden=false;document.getElementById('deepBtn').hidden=false;
- if(!emailEnvoye){envoyerLead(emailVal,out.map(c=>c[0]).join(', '));emailEnvoye=true}
+ if(!emailEnvoye){
+  const questionTexte=document.getElementById('q').value.trim();
+  envoyerLead(emailVal,out.map(c=>c[0]).join(', ')+(questionTexte?' | Question : '+questionTexte:''));
+  emailEnvoye=true
+ }
  window.altessaTrack&&window.altessaTrack('event','love_tarot_draw')
 };
 document.getElementById('share').onclick=async()=>{if(!last.length)return;const text=`Mon tirage amour Altessa : ${last.map((c,i)=>positions[i]+' — '+c[0]).join(' | ')}`;try{if(navigator.share){await navigator.share({title:'Mon tirage amour Altessa',text,url:location.href})}else{await navigator.clipboard.writeText(text+' '+location.href);alert('Tirage copié !')}}catch(e){}window.altessaTrack&&window.altessaTrack('event','love_tarot_share')};

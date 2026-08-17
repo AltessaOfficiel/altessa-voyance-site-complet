@@ -53,6 +53,7 @@
       <div class="email-gate" id="emailGate">
         <p class="gate-label">Laissez votre email pour découvrir votre carte</p>
         <form id="emailGateForm" onsubmit="validerGate(event)">
+          <input type="text" id="q" maxlength="140" placeholder="Votre question (facultatif)">
           <input type="email" id="emailGateInput" placeholder="votre@email.com" required>
           <button type="submit" class="draw">✦ Découvrir ma carte</button>
         </form>
@@ -109,7 +110,11 @@ function drawCard(){
  document.getElementById('shareBtn').style.display='inline-flex';
  document.getElementById('deepBtn').style.display='inline-flex';
  track('tarot_free_draw');
- if(pendingEmail){envoyerLead(pendingEmail,current.name);pendingEmail='';}
+ if(pendingEmail){
+  const questionTexte=document.getElementById('q').value.trim();
+  envoyerLead(pendingEmail,current.name+(questionTexte?' | Question : '+questionTexte:''));
+  pendingEmail='';
+ }
 }
 async function envoyerLead(email,carte){
  try{
