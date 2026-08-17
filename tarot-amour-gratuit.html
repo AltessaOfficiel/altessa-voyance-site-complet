@@ -15,7 +15,7 @@
 <div class="question"><input id="q" maxlength="120" placeholder="Votre question sentimentale (facultatif)"><small>Votre texte reste dans votre navigateur et n’est pas envoyé par ce tirage.</small></div>
 <div class="email-gate"><p>Laissez votre email pour découvrir votre tirage</p><input type="email" id="emailGateInput" placeholder="votre@email.com"></div>
 <section class="cards" id="cards"></section>
-<div class="actions"><button class="btn primary" id="draw">💕 Tirer mes 3 cartes</button><button class="btn" id="share" hidden>Partager mon tirage</button><a class="btn" href="tirages-gratuits.html">Autre tirage</a></div>
+<div class="actions"><button class="btn primary" id="draw">💕 Tirer mes 3 cartes</button><button class="btn" id="share" hidden>Partager mon tirage</button><a class="btn" id="deepBtn" href="experts.html" hidden data-track="love_tarot_to_experts">Approfondir avec un expert</a></div>
 <p class="note">Lecture symbolique proposée à titre de guidance et de divertissement. Elle n’établit pas un fait certain sur les sentiments ou l’avenir d’une personne.</p>
 <section class="conversion"><h2>Votre situation demande plus de contexte ?</h2><p>Un tirage automatique reste général. Pour une lecture personnalisée, choisissez un expert et décrivez votre situation avec vos propres mots.</p><a class="btn primary" href="experts.html" data-track="love_tarot_experts">Choisir mon expert</a></section></div>
 <script>
@@ -31,7 +31,7 @@ document.getElementById('draw').onclick=()=>{
  if(!emailVal||emailVal.indexOf('@')===-1){emailInput.classList.add('err');emailInput.focus();return}
  emailInput.classList.remove('err');
  const copy=[...deck],out=[];while(out.length<3){out.push(copy.splice(Math.floor(Math.random()*copy.length),1)[0])}
- last=out;render(out);document.getElementById('share').hidden=false;
+ last=out;render(out);document.getElementById('share').hidden=false;document.getElementById('deepBtn').hidden=false;
  if(!emailEnvoye){envoyerLead(emailVal,out.map(c=>c[0]).join(', '));emailEnvoye=true}
  window.altessaTrack&&window.altessaTrack('event','love_tarot_draw')
 };
