@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Altessa Voyance — Poser ma question</title>
+  <meta name="description" content="Décrivez votre situation avant de choisir votre formule et de payer en toute confiance.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://altessavoyance.com/poser-ma-question.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;500&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --or: #c9a96e;
+      --or-clair: #e8d5b0;
+      --noir: #0d0d0d;
+      --fond: #0f0c0a;
+      --fond2: #181410;
+      --texte: #e8e0d5;
+      --texte-doux: #a89880;
+      --bordure: rgba(201,169,110,0.2);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--fond); color: var(--texte); font-family: 'Lato', sans-serif; font-weight: 300; min-height: 100vh; overflow-x: hidden; }
+    body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(ellipse at 20% 20%, rgba(201,169,110,0.06) 0%, transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(100,60,120,0.08) 0%, transparent 50%); pointer-events: none; z-index: 0; }
+    header { display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 2.5rem; border-bottom: 1px solid var(--bordure); position: relative; z-index: 10; }
+    .logo { display: flex; align-items: center; gap: 0.8rem; text-decoration: none; }
+    .logo img { height: 38px; width: 38px; object-fit: contain; }
+    .logo-texte { font-family: 'Cinzel', serif; font-size: 1.1rem; color: var(--or); letter-spacing: 0.12em; }
+    .logo-sous { font-family: 'Cinzel', serif; font-size: 0.55rem; color: var(--texte-doux); letter-spacing: 0.2em; text-transform: uppercase; display: block; margin-top: -2px; }
+    nav a { color: var(--texte-doux); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; margin-left: 2rem; transition: color 0.3s; }
+    nav a:hover { color: var(--or); }
+    main { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; padding: 3.5rem 2rem 5rem; }
+    .badge-etape { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(201,169,110,0.1); border: 1px solid var(--bordure); border-radius: 2rem; padding: 0.4rem 1rem; font-size: 0.72rem; color: var(--or-clair); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2rem; }
+    .titre-page { font-family: 'Cinzel', serif; font-size: 1.6rem; color: var(--or); letter-spacing: 0.08em; margin-bottom: 0.4rem; }
+    .sous-titre { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: var(--texte-doux); margin-bottom: 2rem; }
+    .carte-expert { display: flex; align-items: center; gap: 1.2rem; background: rgba(201,169,110,0.06); border: 1px solid var(--bordure); border-radius: 12px; padding: 1.2rem 1.5rem; margin-bottom: 2rem; }
+    .expert-avatar-placeholder { width: 58px; height: 58px; border-radius: 50%; background: rgba(201,169,110,0.15); border: 2px solid var(--or); display: flex; align-items: center; justify-content: center; font-family: 'Cinzel', serif; font-size: 1.4rem; color: var(--or); flex-shrink: 0; }
+    .expert-info { flex: 1; }
+    .expert-nom { font-family: 'Cinzel', serif; font-size: 1.05rem; color: var(--or); letter-spacing: 0.06em; }
+    .expert-specialite { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.95rem; color: var(--texte-doux); margin-top: 0.15rem; }
+    .expert-changer { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--texte-doux); text-decoration: none; border: 1px solid var(--bordure); border-radius: 2rem; padding: 0.3rem 0.8rem; white-space: nowrap; }
+    .expert-changer:hover { color: var(--or); }
+    .ai-note { display: flex; align-items: center; gap: 0.8rem; background: rgba(201,169,110,0.05); border-left: 3px solid var(--or); padding: 0.9rem 1.2rem; margin-bottom: 2rem; border-radius: 0 8px 8px 0; font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--texte-doux); line-height: 1.6; }
+    .ai-note a { color: var(--or-clair); }
+    .champ-groupe { margin-bottom: 1.4rem; }
+    label { display: block; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--texte-doux); margin-bottom: 0.5rem; }
+    input, textarea { width: 100%; background: rgba(255,255,255,0.03); border: 1px solid var(--bordure); border-radius: 8px; padding: 0.85rem 1rem; color: var(--texte); font-family: 'Lato', sans-serif; font-size: 0.95rem; font-weight: 300; transition: border-color 0.3s, background 0.3s; outline: none; -webkit-appearance: none; }
+    input:focus, textarea:focus { border-color: rgba(201,169,110,0.5); background: rgba(201,169,110,0.04); }
+    textarea { min-height: 150px; resize: vertical; line-height: 1.7; }
+    .hint { font-size: 0.75rem; color: var(--texte-doux); margin-top: 0.4rem; font-style: italic; }
+    .separateur { display: flex; align-items: center; gap: 1rem; margin: 2rem 0; }
+    .sep-ligne { flex: 1; height: 1px; background: var(--bordure); }
+    .sep-texte { font-size: 0.7rem; color: var(--texte-doux); letter-spacing: 0.15em; text-transform: uppercase; }
+    .btn-continuer { width: 100%; background: linear-gradient(135deg, #c9a96e, #a07840); border: none; border-radius: 8px; padding: 1.1rem; font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.18em; text-transform: uppercase; color: #0d0d0d; cursor: pointer; transition: opacity 0.3s, transform 0.2s; margin-top: 0.5rem; }
+    .btn-continuer:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-continuer:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+    footer { text-align: center; padding: 2rem; font-size: 0.72rem; color: var(--texte-doux); letter-spacing: 0.08em; border-top: 1px solid var(--bordure); position: relative; z-index: 1; }
+    footer a { color: var(--texte-doux); text-decoration: none; margin: 0 0.8rem; }
+    footer a:hover { color: var(--or); }
+    @media (max-width: 600px) { header { padding: 1rem 1.2rem; } nav { display: none; } main { padding: 2.5rem 1.2rem 4rem; } .carte-expert { flex-wrap: wrap; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">
+    <img src="assets/img/logo-altessa.png" alt="Altessa" onerror="this.style.display='none'" />
+    <div><span class="logo-texte">Altessa</span><span class="logo-sous">Voyance</span></div>
+  </a>
+  <nav>
+    <a href="experts.html">Experts</a>
+    <a href="tarifs.html">Tarifs</a>
+    <a href="contact.html">Support</a>
+  </nav>
+</header>
+
+<main>
+
+  <div class="badge-etape">Étape 1 sur 2 — Votre question</div>
+
+  <h1 class="titre-page">Décrivez votre situation</h1>
+  <p class="sous-titre">Vous choisirez votre formule et paierez à l'étape suivante</p>
+
+  <div class="carte-expert" id="carteExpert">
+    <div class="expert-avatar-placeholder" id="expertInitiale">✦</div>
+    <div class="expert-info">
+      <div class="expert-nom" id="expertNom">Chargement…</div>
+      <div class="expert-specialite" id="expertSpecialite"></div>
+    </div>
+    <a href="experts.html" class="expert-changer">Changer</a>
+  </div>
+
+  <div class="ai-note">
+    ✦ Cette réponse écrite sera générée par une intelligence artificielle configurée dans le style de l'expert choisi. <a href="cgv.html#article-6">En savoir plus</a>
+  </div>
+
+  <form id="formQuestion" onsubmit="continuerVersPaiement(event)">
+
+    <div class="champ-groupe">
+      <label for="prenom">Votre prénom *</label>
+      <input type="text" id="prenom" name="prenom" required placeholder="Votre prénom" />
+    </div>
+
+    <div class="champ-groupe">
+      <label for="email">Votre adresse email *</label>
+      <input type="email" id="email" name="email" required placeholder="email@exemple.com" />
+      <p class="hint">La réponse de votre expert sera envoyée à cette adresse.</p>
+    </div>
+
+    <div class="separateur">
+      <div class="sep-ligne"></div>
+      <span class="sep-texte">Votre question</span>
+      <div class="sep-ligne"></div>
+    </div>
+
+    <div class="champ-groupe">
+      <label for="question">Votre question *</label>
+      <textarea id="question" name="question" required
+        placeholder="Décrivez votre situation et posez votre question avec le plus de détails possible. Plus vous partagez, plus la réponse sera précise et personnalisée…"></textarea>
+      <p class="hint">Soyez précis : contexte, dates importantes, prénoms des personnes concernées si pertinent.</p>
+    </div>
+
+    <button type="submit" class="btn-continuer" id="btnContinuer">
+      ✦ Continuer vers le paiement
+    </button>
+
+  </form>
+
+</main>
+
+<footer>
+  <p>© 2026 Altessa Voyance</p>
+  <p style="margin-top:0.5rem">
+    <a href="cgv.html">CGV</a>
+    <a href="mentions-legales.html">Mentions légales</a>
+    <a href="politique-confidentialite.html">Confidentialité</a>
+    <a href="contact.html">Support</a>
+  </p>
+</footer>
+
+<script>
+  const EXPERTS = {
+    'Ariane':   { specialite: 'Tarologue', initiale: 'A' },
+    'Noémie':   { specialite: 'Astrologue', initiale: 'N' },
+    'Nicolas':  { specialite: 'Médium', initiale: 'N' },
+    'Élise':    { specialite: 'Voyante', initiale: 'É' },
+    'Maël':     { specialite: 'Numérologue', initiale: 'M' },
+    'Clara':    { specialite: 'Voyante clairvoyante', initiale: 'C' },
+    'Sofia':    { specialite: 'Médium spirituelle', initiale: 'S' },
+    'Jeanne':   { specialite: 'Cartomancienne', initiale: 'J' },
+    'Lila':     { specialite: 'Voyante karmique', initiale: 'L' },
+    'Amélie':   { specialite: 'Voyante émotionnelle', initiale: 'A' },
+    'Yara':     { specialite: 'Énergéticienne', initiale: 'Y' },
+    'Selene':   { specialite: 'Voyante lunaire', initiale: 'S' },
+    'Iris':     { specialite: 'Médium onirique', initiale: 'I' },
+    'Zélie':    { specialite: 'Cartomancienne', initiale: 'Z' },
+    'Maud':     { specialite: 'Médium auditif', initiale: 'M' },
+    'Anaïs':    { specialite: 'Astrologue karmique', initiale: 'A' },
+    'Jade':     { specialite: 'Médium & tarologue', initiale: 'J' },
+    'Luna':     { specialite: 'Chamane énergétique', initiale: 'L' },
+    'Camille':  { specialite: 'Voyante', initiale: 'C' },
+    'Ophélie':  { specialite: 'Voyante intuitive', initiale: 'O' },
+  };
+
+  const params = new URLSearchParams(window.location.search);
+  const expert = params.get('expert') || '';
+  const info = EXPERTS[expert] || { specialite: 'Expert en voyance', initiale: expert[0] || '✦' };
+
+  document.getElementById('expertNom').textContent        = expert || 'Choisissez un expert';
+  document.getElementById('expertSpecialite').textContent = info.specialite;
+  document.getElementById('expertInitiale').textContent   = info.initiale;
+
+  // Pré-remplir si l'utilisateur revient en arrière depuis tarifs.html
+  const prenomStocke = localStorage.getItem('altessa_prenom');
+  const emailStocke  = localStorage.getItem('altessa_email');
+  const questionStockee = localStorage.getItem('altessa_question');
+  const expertStocke = localStorage.getItem('altessa_question_expert');
+  if (expertStocke === expert) {
+    if (prenomStocke) document.getElementById('prenom').value = prenomStocke;
+    if (emailStocke) document.getElementById('email').value = emailStocke;
+    if (questionStockee) document.getElementById('question').value = questionStockee;
+  }
+
+  function continuerVersPaiement(e) {
+    e.preventDefault();
+    const btn = document.getElementById('btnContinuer');
+    btn.disabled = true;
+
+    localStorage.setItem('altessa_prenom', document.getElementById('prenom').value.trim());
+    localStorage.setItem('altessa_email', document.getElementById('email').value.trim());
+    localStorage.setItem('altessa_question', document.getElementById('question').value.trim());
+    localStorage.setItem('altessa_question_expert', expert);
+
+    const url = new URL('tarifs.html', window.location.href);
+    if (expert) url.searchParams.set('expert', expert);
+    window.location.href = url.toString();
+  }
+</script>
+
+</body>
+</html>

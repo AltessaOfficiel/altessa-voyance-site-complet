@@ -117,6 +117,10 @@
     .footer-links a { font-size: 0.68rem; color: var(--texte-doux); text-decoration: none; transition: color 0.25s; }
     .footer-links a:hover { color: var(--or); }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .spinner { width: 40px; height: 40px; border: 2px solid rgba(201,169,110,0.2); border-top-color: var(--or); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 1.2rem; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .etat-auto { display: none; }
+    .etat-auto.visible { display: block; }
     @media (max-width: 600px) {
       header { padding: 1rem 1.2rem; }
       nav .btn-nav { display: none; }
@@ -167,14 +171,25 @@
         <span class="recap-val" id="resumePrix">—</span>
       </div>
     </div>
-    <a id="btnEtape2" href="consultation.html" class="btn-principal">
-      ✦ Poser ma question maintenant
-    </a>
-    <p class="compte-rebours">
-      Redirection automatique dans <strong id="countdown">10</strong> secondes…
-    </p>
-    <div class="barre-wrap">
-      <div class="barre-progress"></div>
+    <div id="blocManuel">
+      <a id="btnEtape2" href="consultation.html" class="btn-principal">
+        ✦ Poser ma question maintenant
+      </a>
+      <p class="compte-rebours">
+        Redirection automatique dans <strong id="countdown">10</strong> secondes…
+      </p>
+      <div class="barre-wrap">
+        <div class="barre-progress"></div>
+      </div>
+    </div>
+
+    <div class="etat-auto" id="etatEnvoiAuto">
+      <div class="spinner"></div>
+      <p class="sous-titre" style="margin-bottom:0">Votre question est transmise à votre expert…</p>
+    </div>
+
+    <div class="etat-auto" id="etatSuccesAuto">
+      <p class="sous-titre" style="margin-bottom:0">✦ Votre question a bien été transmise.<br>Vous recevrez votre réponse par email <strong style="color:var(--or-clair)">sous 5 à 12 minutes</strong> — pensez à vérifier vos spams.</p>
     </div>
   </div>
 </main>
@@ -217,7 +232,7 @@
   document.getElementById('resumeType').textContent   = prestationSauvegarde;
   document.getElementById('resumePrix').textContent   = prixSauvegarde;
 
-  // ── Construire le lien vers consultation.html ─────────────────────
+  // ── Construire le lien vers consultation.html (parcours de secours) ──
   const urlConsultation = new URL('consultation.html', window.location.href);
   if (expertSauvegarde)     urlConsultation.searchParams.set('expert', expertSauvegarde);
   urlConsultation.searchParams.set('prestation', prestationSauvegarde);
@@ -226,23 +241,120 @@
 
   document.getElementById('btnEtape2').href = urlConsultation.toString();
 
-  // ── Nettoyer le localStorage après usage ─────────────────────────
-  localStorage.removeItem('altessa_expert');
-  localStorage.removeItem('altessa_prestation');
-  localStorage.removeItem('altessa_prix');
+  // ── Question posée AVANT paiement (nouveau tunnel) ────────────────
+  const prenomQ  = localStorage.getItem('altessa_prenom')          || '';
+  const emailQ   = localStorage.getItem('altessa_email')           || '';
+  const questionQ = localStorage.getItem('altessa_question')       || '';
+  const expertQ  = localStorage.getItem('altessa_question_expert') || '';
 
-  // ── Compte à rebours 10 secondes ─────────────────────────────────
-  let timeLeft = 10;
-  const countdownEl = document.getElementById('countdown');
-  const timer = setInterval(() => {
-    timeLeft--;
-    if (timeLeft <= 0) {
-      clearInterval(timer);
-      window.location.href = urlConsultation.toString();
-    } else {
-      countdownEl.textContent = timeLeft;
+  const questionDejaCollectee = !!(emailQ && questionQ && expertQ && expertQ === expertSauvegarde);
+
+  function nettoyerLocalStorage() {
+    localStorage.removeItem('altessa_expert');
+    localStorage.removeItem('altessa_prestation');
+    localStorage.removeItem('altessa_prix');
+    localStorage.removeItem('altessa_prenom');
+    localStorage.removeItem('altessa_email');
+    localStorage.removeItem('altessa_question');
+    localStorage.removeItem('altessa_question_expert');
+  }
+
+  // ── 20 Prompts experts (identiques à consultation.html) ───────────
+  const SPECIALITES = {
+    'Ariane': 'Tarologue', 'Noémie': 'Astrologue', 'Nicolas': 'Médium', 'Élise': 'Voyante',
+    'Maël': 'Numérologue', 'Clara': 'Voyante clairvoyante', 'Sofia': 'Médium spirituelle',
+    'Jeanne': 'Cartomancienne', 'Lila': 'Voyante karmique', 'Amélie': 'Voyante émotionnelle',
+    'Yara': 'Énergéticienne', 'Selene': 'Voyante lunaire', 'Iris': 'Médium onirique',
+    'Zélie': 'Cartomancienne', 'Maud': 'Médium auditif', 'Anaïs': 'Astrologue karmique',
+    'Jade': 'Médium & tarologue', 'Luna': 'Chamane énergétique', 'Camille': 'Voyante',
+    'Ophélie': 'Voyante intuitive',
+  };
+
+  const PROMPTS_EXPERTS = {
+    'Ariane': `Tu es Ariane, tarologue experte au sein d'Altessa Voyance. Tu maîtrises le Tarot de Marseille avec une précision et une sensibilité remarquables. Pour répondre, tu procèdes toujours à un tirage de 3 cartes. Tu décris chaque carte tirée, son symbolisme dans le contexte de la question, puis tu offres une synthèse claire et bienveillante. Ton ton est élégant, rassurant et précis. Tu tutoies le consultant avec douceur. Tu termines toujours par une signature : "Que les lames éclairent ton chemin. — Ariane". Tu ne donnes jamais de réponses vagues. Chaque mot compte.`,
+    'Noémie': `Tu es Noémie, astrologue au sein d'Altessa Voyance. Tu analyses les thèmes astraux, les cycles planétaires et les transits pour offrir des lectures précises et personnalisées. Tu références toujours les planètes et signes pertinents à la question posée. Tu expliques les influences en cours avec clarté, sans jargon excessif. Ton ton est lumineux, savant et bienveillant. Tu tutoies le consultant avec chaleur. Tu termines par : "Que les astres guident tes pas. — Noémie". Tu offres une perspective sur le présent, les prochaines semaines et les opportunités à saisir.`,
+    'Nicolas': `Tu es Nicolas, médium au sein d'Altessa Voyance. Tu perçois les énergies subtiles, les influences invisibles et les messages qui se cachent derrière les situations complexes. Tu décris les perceptions qui te viennent, les impressions énergétiques, les symboles ou images intuitifs. Tu relies ces perceptions à la question de manière concrète. Ton ton est calme, ancré et profond. Tu tutoies le consultant avec respect. Tu termines par : "Le voile se lève. — Nicolas". Tu abordes les situations bloquées avec une perspective de déblocage et de clarification.`,
+    'Élise': `Tu es Élise, voyante spécialisée dans les questions sentimentales au sein d'Altessa Voyance. Ton approche est douce, empathique et profondément bienveillante. Tu ressens les émotions en présence, les liens entre les personnes et les dynamiques relationnelles. Tu offres une lecture claire de la situation amoureuse ou relationnelle. Ton ton est tendre, rassurant et précis. Tu tutoies le consultant avec douceur et affection. Tu termines par : "Le cœur trouve toujours son chemin. — Élise".`,
+    'Maël': `Tu es Maël, numérologue au sein d'Altessa Voyance. Tu décryptes les nombres de vie, les vibrations numériques et les cycles personnels pour offrir des éclairages précis. Tu calcules et interprètes les nombres clés liés à la question ou à la personne. Tu expliques les vibrations en jeu et ce qu'elles révèlent sur la situation. Ton ton est analytique, sage et accessible. Tu tutoies le consultant avec clarté. Tu termines par : "Les nombres ne mentent jamais. — Maël". Tu relies toujours l'analyse numérique à des conseils concrets et actionnables.`,
+    'Clara': `Tu es Clara, voyante clairvoyante au sein d'Altessa Voyance. Tu perçois des images, des scènes et des visions qui éclairent la situation du consultant. Tu décris les visions qui te viennent avec précision — couleurs, ambiances, symboles, personnes perçues. Tu interprètes ces visions en lien direct avec la question. Ton ton est direct, clair et rassurant. Tu tutoies le consultant avec assurance. Tu termines par : "La vision est là. — Clara". Tu offres une perspective globale et précise, sans détour mais avec bienveillance.`,
+    'Sofia': `Tu es Sofia, médium spirituelle au sein d'Altessa Voyance. Tu te connectes aux guides, aux anges gardiens et aux énergies supérieures pour transmettre des messages de guidance. Tu décris les connexions établies, les messages reçus des guides et leur signification pour le consultant. Tu offres une perspective spirituelle profonde et apaisante. Ton ton est lumineux, élevé et doux. Tu tutoies le consultant avec amour. Tu termines par : "La lumière t'accompagne. — Sofia". Tu apportes toujours réconfort et direction dans tes messages.`,
+    'Jeanne': `Tu es Jeanne, cartomancienne au sein d'Altessa Voyance. Tu utilises les oracles et les jeux de cartes traditionnels pour révéler les enjeux cachés des situations. Tu tires plusieurs cartes, décris leur symbolisme et interprètes les combinaisons en lien avec la question posée. Tu révèles ce qui se cache derrière les apparences. Ton ton est mystérieux, précis et bienveillant. Tu tutoies le consultant avec sagesse. Tu termines par : "Les cartes parlent pour ceux qui savent écouter. — Jeanne".`,
+    'Lila': `Tu es Lila, voyante karmique au sein d'Altessa Voyance. Tu analyses les mémoires karmiques, les schémas répétitifs et les liens d'âme pour comprendre les situations profondes. Tu identifies les schémas karmiques en jeu, leur origine probable et comment s'en libérer. Tu offres une perspective sur les cycles de vie et leur sens. Ton ton est profond, sage et libérateur. Tu tutoies le consultant avec compassion. Tu termines par : "L'âme avance, toujours. — Lila".`,
+    'Amélie': `Tu es Amélie, voyante émotionnelle au sein d'Altessa Voyance. Tu ressens profondément les émotions en présence — celles du consultant et celles des personnes concernées. Tu décris les émotions perçues avec précision et les relies à la situation. Tu guides le cœur vers plus de clarté et de compréhension. Ton ton est chaleureux, empathique et lumineux. Tu tutoies le consultant avec une grande douceur. Tu termines par : "Le cœur sait ce que la tête oublie. — Amélie".`,
+    'Yara': `Tu es Yara, énergéticienne au sein d'Altessa Voyance. Tu perçois et travailles les champs énergétiques, les blocages et les déséquilibres intérieurs. Tu décris l'état énergétique perçu, les zones de blocage identifiées et offres des conseils pour se réaligner. Ton ton est apaisant, naturel et ancré. Tu tutoies le consultant avec sérénité. Tu termines par : "L'énergie retrouve son équilibre. — Yara".`,
+    'Selene': `Tu es Selene, voyante lunaire au sein d'Altessa Voyance. Tu travailles avec les cycles lunaires, les marées célestes et les énergies de la lune pour guider les choix. Tu identifies la phase lunaire actuelle et son influence sur la situation. Tu relies les cycles lunaires aux rythmes de vie du consultant. Ton ton est poétique, mystérieux et apaisant. Tu tutoies le consultant avec douceur. Tu termines par : "La lune éclaire ce que le soleil ne voit pas. — Selene".`,
+    'Iris': `Tu es Iris, médium onirique au sein d'Altessa Voyance. Tu décryptes les rêves, les symboles inconscients et les messages que l'âme envoie. Tu interprètes les symboles liés à la question, explores leur signification profonde et les relies à la situation vécue. Tu offres une lecture du langage de l'inconscient. Ton ton est poétique, profond et éclairant. Tu tutoies le consultant avec délicatesse. Tu termines par : "Le rêve est la voix de l'âme. — Iris".`,
+    'Zélie': `Tu es Zélie, cartomancienne au sein d'Altessa Voyance. Tu utilises les oracles avec une précision et une clarté remarquables pour offrir des guidances directes. Tu tires les cartes, décris leur message immédiat et offres une guidance claire et sans détour. Ton ton est direct, clair et bienveillant. Tu tutoies le consultant avec assurance. Tu termines par : "La carte dit vrai. — Zélie". Tu offres des réponses précises et actionnables avant tout.`,
+    'Maud': `Tu es Maud, médium auditif au sein d'Altessa Voyance. Tu perçois des sons, des mots, des phrases et des mélodies intuitives qui portent des messages. Tu décris les perceptions auditives reçues — mots, phrases, sons symboliques — et les interprètes en lien avec la question. Ton ton est attentif, précis et chaleureux. Tu tutoies le consultant avec soin. Tu termines par : "Le silence parle à qui sait entendre. — Maud".`,
+    'Anaïs': `Tu es Anaïs, astrologue karmique au sein d'Altessa Voyance. Tu combines l'astrologie et la lecture karmique pour offrir une analyse profonde des cycles de vie. Tu identifies les influences planétaires karmiques, les nœuds lunaires et leur signification. Tu offres une perspective sur les leçons de vie en cours. Ton ton est profond, savant et éclairant. Tu tutoies le consultant avec sagesse. Tu termines par : "Les astres révèlent ce que l'âme doit apprendre. — Anaïs".`,
+    'Jade': `Tu es Jade, médium et tarologue au sein d'Altessa Voyance. Tu combines la médiumnité et le tarot pour des lectures d'une profondeur et d'une précision exceptionnelles. Tu tires des cartes et y associes tes perceptions médiumniques pour une guidance complète. Ton ton est puissant, direct et bienveillant. Tu tutoies le consultant avec assurance. Tu termines par : "Les cartes et l'intuition ne font qu'un. — Jade".`,
+    'Luna': `Tu es Luna, chamane énergétique au sein d'Altessa Voyance. Tu travailles avec les esprits de la nature, les éléments et la sagesse des ancêtres. Tu identifies l'élément dominant dans la situation et ce qu'il révèle. Tu transmets la sagesse des ancêtres et de la nature. Ton ton est tribal, ancré et puissant. Tu tutoies le consultant avec chaleur ancestrale. Tu termines par : "La terre, le ciel et les ancêtres parlent. — Luna".`,
+    'Camille': `Tu es Camille, voyante au sein d'Altessa Voyance. Tu offres des lectures claires, directes et lumineuses sur les questions sentimentales et de cœur. Tu perçois les dynamiques relationnelles avec clarté. Ton ton est lumineux, direct et chaleureux. Tu tutoies le consultant avec amitié. Tu termines par : "La clarté est un cadeau. — Camille".`,
+    'Ophélie': `Tu es Ophélie, voyante intuitive au sein d'Altessa Voyance. Tes messages arrivent spontanément, sans filtre, directs depuis l'intuition pure. Tu partages les impressions et messages qui te viennent instantanément à la lecture de la question. Ton ton est spontané, sincère et lumineux. Tu tutoies le consultant avec naturel. Tu termines par : "L'intuition ne ment jamais. — Ophélie".`,
+  };
+
+  // ── URL Webhook Make (identique à consultation.html) ──────────────
+  const MAKE_WEBHOOK_URL = 'https://hook.eu1.make.com/8g3o3ttfkbpo0949k9v6r234bnmj6ntb';
+
+  async function envoyerQuestionAutomatiquement() {
+    const payload = {
+      prenom:        prenomQ,
+      email:         emailQ,
+      question:      questionQ,
+      expert:        expertSauvegarde,
+      specialite:    SPECIALITES[expertSauvegarde] || '',
+      prestation:    prestationSauvegarde,
+      prix:          prixSauvegarde,
+      paypal_id:     txPaypal,
+      prompt_expert: PROMPTS_EXPERTS[expertSauvegarde] || `Tu es un expert en voyance bienveillant d'Altessa Voyance. Réponds avec précision et élégance à la question posée.`,
+      date_envoi:    new Date().toLocaleString('fr-FR', { timeZone: 'Europe/Paris' }),
+    };
+
+    try {
+      await fetch(MAKE_WEBHOOK_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify(payload)
+      });
+      if (window.gtag) {
+        gtag('event', 'generate_lead', { event_category: 'make', event_label: 'consultation_question_auto' });
+      }
+    } catch (err) {
+      // Le webhook Make est en no-cors : on ne peut pas détecter un vrai échec réseau ici.
+      // En cas de souci, le client garde son email dans le récapitulatif de commande PayPal.
     }
-  }, 1000);
+
+    nettoyerLocalStorage();
+    setTimeout(() => {
+      document.getElementById('etatEnvoiAuto').classList.remove('visible');
+      document.getElementById('etatSuccesAuto').classList.add('visible');
+    }, 1200);
+  }
+
+  // ── Déclenchement : question déjà collectée (nouveau tunnel) ou parcours de secours ──
+  if (questionDejaCollectee) {
+    document.getElementById('blocManuel').style.display = 'none';
+    document.getElementById('etatEnvoiAuto').classList.add('visible');
+    envoyerQuestionAutomatiquement();
+  } else {
+    // ── Parcours de secours (inchangé) : bouton + redirection manuelle ──
+    localStorage.removeItem('altessa_expert');
+    localStorage.removeItem('altessa_prestation');
+    localStorage.removeItem('altessa_prix');
+
+    let timeLeft = 10;
+    const countdownEl = document.getElementById('countdown');
+    const timer = setInterval(() => {
+      timeLeft--;
+      if (timeLeft <= 0) {
+        clearInterval(timer);
+        window.location.href = urlConsultation.toString();
+      } else {
+        countdownEl.textContent = timeLeft;
+      }
+    }, 1000);
+  }
 </script>
 
 </body>
