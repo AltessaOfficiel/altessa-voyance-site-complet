@@ -1,20 +1,48 @@
 /* Altessa Voyance - navigation helpers */
 
 function initLang() {
-  const supported = ['fr', 'en', 'es', 'pt', 'it'];
+  const supported = ['fr', 'en', 'es'];
+  // Pages that have real translated versions under /en/ and /es/.
+  const translatedPages = ['index.html', 'tarifs.html', 'experts.html', 'tirages-gratuits.html', 'guide-voyance-en-ligne.html'];
+
+  // Bare filename of the current page, with any /en/ or /es/ prefix stripped.
+  function getCurrentFilename() {
+    const stripped = window.location.pathname.replace(/^\/(en|es)(\/|$)/, '/');
+    const parts = stripped.split('/').filter(Boolean);
+    if (parts.length === 0) return 'index.html';
+    const last = parts[parts.length - 1];
+    return last.includes('.') ? last : 'index.html';
+  }
+
+  // Language implied by the current URL itself (/en/..., /es/...), if any.
+  function getUrlLang() {
+    const m = window.location.pathname.match(/^\/(en|es)(\/|$)/);
+    return m ? m[1] : null;
+  }
+
+  function navigateToLang(newLang) {
+    const filename = getCurrentFilename();
+    if (newLang === 'fr') {
+      window.location.href = filename === 'index.html' ? '/' : '/' + filename;
+      return;
+    }
+    if (translatedPages.includes(filename)) {
+      window.location.href = filename === 'index.html' ? '/' + newLang + '/' : '/' + newLang + '/' + filename;
+    } else {
+      // No translation for this specific page yet: fall back to the translated homepage.
+      window.location.href = '/' + newLang + '/';
+    }
+  }
+
+  const urlLang = getUrlLang();
   const saved = localStorage.getItem('altessa_lang');
   const browser = (navigator.language || navigator.userLanguage || 'fr').substring(0, 2);
-  const lang = saved || (supported.includes(browser) ? browser : 'fr');
+  const lang = urlLang || saved || (supported.includes(browser) ? browser : 'fr');
 
   document.querySelectorAll('#lang-switcher, #lang-switcher-mobile').forEach(select => {
     select.value = lang;
     select.addEventListener('change', event => {
-      const newLang = event.target.value;
-      document.documentElement.lang = newLang;
-      localStorage.setItem('altessa_lang', newLang);
-      document.querySelectorAll('#lang-switcher, #lang-switcher-mobile').forEach(item => {
-        item.value = newLang;
-      });
+      navigateToLang(event.target.value);
     });
   });
 
