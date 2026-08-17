@@ -15,7 +15,31 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","name":"Tarot amour en ligne","description":"Consultation de tarot sentimental pour éclairer une situation amoureuse.","provider":{"@type":"ProfessionalService","name":"Altessa Voyance","url":"https://altessavoyance.com/"},"serviceType":"Tarot et voyance sentimentale","url":"https://altessavoyance.com/tarot-amour.html","offers":{"@type":"Offer","priceCurrency":"EUR","url":"https://altessavoyance.com/tarifs.html"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"À quoi sert un tirage tarot amour ?","acceptedAnswer":{"@type":"Answer","text":"Un tirage tarot amour aide à explorer une situation sentimentale, les blocages, les tendances et les points d'attention autour d'une relation."}},{"@type":"Question","name":"Le tarot amour peut-il parler d'un retour de l'ex ?","acceptedAnswer":{"@type":"Answer","text":"Il peut apporter un éclairage symbolique sur la dynamique de rupture, les émotions présentes et les conditions d'une possible évolution, sans garantir un événement."}},{"@type":"Question","name":"Quelle question poser pour un tarot amour ?","acceptedAnswer":{"@type":"Answer","text":"Une bonne question décrit la situation et demande ce qui doit être compris : silence, lien, évolution, blocage ou choix sentimental."}}]}]}</script>
 </head>
 <body>
-<header><a href="index.html" class="logo" aria-label="Altessa Voyance - Accueil"><img src="assets/img/logo-altessa.png" alt="Logo Altessa" width="36" height="36"><span><span class="logo-main">Altessa</span><span class="logo-sub">Voyance</span></span></a><nav aria-label="Navigation principale"><a href="index.html" class="btn-nav">Accueil</a><a href="guide-voyance-en-ligne.html" class="btn-nav">Guide</a><a href="theme-amour.html" class="btn-nav">Amour</a><a href="experts.html" class="btn-nav">Experts</a><a href="tarifs.html" class="btn-nav">Tarifs</a></nav></header>
+<header><a href="index.html" class="logo" aria-label="Altessa Voyance - Accueil"><img src="assets/img/logo-altessa.png" alt="Logo Altessa" width="36" height="36"><span><span class="logo-main">Altessa</span><span class="logo-sub">Voyance</span></span></a><nav aria-label="Navigation principale">
+    <a href="index.html" class="btn-nav">Accueil</a>
+    <a href="guide-voyance-en-ligne.html" class="btn-nav">Guide</a>
+    <a href="tirages-gratuits.html" class="btn-nav">Tirages gratuits</a>
+    <a href="experts.html" class="btn-nav">Voyance écrite</a>
+    <a href="tarifs.html" class="btn-nav">Tarifs</a>
+    <a href="rdv-telephone.html" class="btn-nav">RDV Téléphone</a>
+    <a href="contact.html" class="btn-nav">Support</a>
+    <select id="lang-switcher" class="lang-select" aria-label="Choisir la langue">
+      <option value="fr">🇫🇷 FR</option><option value="en">🇬🇧 EN</option>
+      <option value="es">🇪🇸 ES</option><option value="pt">🇵🇹 PT</option><option value="it">🇮🇹 IT</option>
+    </select>
+  </nav>
+  <div class="burger" id="burger" role="button" tabindex="0" aria-label="Menu"><span></span><span></span><span></span></div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu" role="dialog">
+  <a href="index.html" onclick="closeMenu()">Accueil</a>
+  <a href="guide-voyance-en-ligne.html" onclick="closeMenu()">Guide</a>
+  <a href="tirages-gratuits.html" onclick="closeMenu()">Tirages gratuits</a>
+  <a href="experts.html" onclick="closeMenu()">Voyance écrite</a>
+  <a href="tarifs.html" onclick="closeMenu()">Tarifs</a>
+  <a href="rdv-telephone.html" onclick="closeMenu()">RDV Téléphone</a>
+  <a href="contact.html" onclick="closeMenu()">Support</a>
+</div>
 <main>
   <section class="hero"><p class="label">Sentiments</p><h1>Tarot amour : éclairer une relation, un doute ou un retour</h1><p class="intro">Le tarot amour s'adresse aux questions sentimentales : attirance, silence, rupture, jalousie, distance, rencontre ou décision de cœur. Il aide à mettre de l'ordre dans ce qui paraît confus.</p><div class="cta-row"><a href="theme-amour.html" class="cta-primary">Consultation amour</a><a href="tarifs.html" class="cta-secondary">Voir les tarifs</a></div></section>
   <section class="content">
@@ -27,5 +51,11 @@
   </section>
 </main>
 <footer><p>© 2026 Altessa Voyance - Tarot amour et voyance sentimentale.</p><div class="footer-links"><a href="theme-amour.html">Amour</a><a href="tarifs.html">Tarifs</a><a href="experts.html">Experts</a><a href="mentions-legales.html">Mentions légales</a><a href="contact.html">Support</a></div></footer>
+<script>
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => menu.classList.toggle('open'));
+  function closeMenu() { menu.classList.remove('open'); }
+</script>
 </body>
 </html>

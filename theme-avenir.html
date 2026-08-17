@@ -39,9 +39,11 @@ header{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:
 .logo-main{display:block;font-family:"Cinzel",serif;font-size:1.05rem;color:var(--or);letter-spacing:.14em;line-height:1}
 .logo-sub{display:block;font-family:"Cinzel",serif;font-size:.48rem;color:var(--texte-doux);letter-spacing:.25em;text-transform:uppercase;margin-top:3px}
 nav{display:flex;align-items:center;gap:.2rem}
-.btn-nav{font-family:"Lato",sans-serif;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--texte-doux);text-decoration:none;padding:.4rem .9rem;border-radius:4px;transition:color .25s,background .25s}
-.btn-nav:hover{color:var(--or);background:rgba(201,169,110,0.07)}
-.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.btn-nav{font-family:"Lato",sans-serif;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--texte-doux);text-decoration:none;padding:.4rem .9rem;border-radius:4px;transition:color .25s,background .25s;white-space:nowrap}
+.btn-nav:hover,.btn-nav.active{color:var(--or);background:rgba(201,169,110,0.07)}
+.lang-select{background:transparent;border:1px solid var(--bordure);border-radius:4px;color:var(--texte-doux);font-size:.72rem;padding:.3rem .5rem;margin-left:1rem;cursor:pointer;outline:none}
+.lang-select option{background:var(--fond3)}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
 .burger span{display:block;width:22px;height:1px;background:var(--or)}
 .mobile-menu{position:fixed;inset:0;background:rgba(10,8,6,0.98);z-index:200;display:none;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
 .mobile-menu.open{display:flex}
@@ -117,7 +119,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--bordure);padding:2
 
 @media(max-width:768px){
   header{padding:.9rem 1.5rem}
-  nav .btn-nav{display:none}
+  nav .btn-nav,nav .lang-select{display:none}
   .burger{display:flex}
   .experts-grille{grid-template-columns:repeat(3,1fr)}
   .tarifs-grille{grid-template-columns:1fr;gap:.8rem}
@@ -132,20 +134,29 @@ footer{position:relative;z-index:1;border-top:1px solid var(--bordure);padding:2
     <img src="assets/img/logo-altessa.png" alt="Logo Altessa" width="36" height="36">
     <div><span class="logo-main">Altessa</span><span class="logo-sub">Voyance</span></div>
   </a>
-  <nav>
+  <nav aria-label="Navigation principale">
     <a href="index.html" class="btn-nav">Accueil</a>
+    <a href="guide-voyance-en-ligne.html" class="btn-nav">Guide</a>
+    <a href="tirages-gratuits.html" class="btn-nav">Tirages gratuits</a>
     <a href="experts.html" class="btn-nav">Voyance écrite</a>
     <a href="tarifs.html" class="btn-nav">Tarifs</a>
     <a href="rdv-telephone.html" class="btn-nav">RDV Téléphone</a>
     <a href="contact.html" class="btn-nav">Support</a>
+    <select id="lang-switcher" class="lang-select" aria-label="Choisir la langue">
+      <option value="fr">🇫🇷 FR</option><option value="en">🇬🇧 EN</option>
+      <option value="es">🇪🇸 ES</option><option value="pt">🇵🇹 PT</option><option value="it">🇮🇹 IT</option>
+    </select>
   </nav>
-  <div class="burger" id="burger"><span></span><span></span><span></span></div>
+  <div class="burger" id="burger" role="button" tabindex="0" aria-label="Menu"><span></span><span></span><span></span></div>
 </header>
 
-<div class="mobile-menu" id="mobileMenu">
+<div class="mobile-menu" id="mobileMenu" role="dialog">
   <a href="index.html" onclick="closeMenu()">Accueil</a>
+  <a href="guide-voyance-en-ligne.html" onclick="closeMenu()">Guide</a>
+  <a href="tirages-gratuits.html" onclick="closeMenu()">Tirages gratuits</a>
   <a href="experts.html" onclick="closeMenu()">Voyance écrite</a>
   <a href="tarifs.html" onclick="closeMenu()">Tarifs</a>
+  <a href="rdv-telephone.html" onclick="closeMenu()">RDV Téléphone</a>
   <a href="contact.html" onclick="closeMenu()">Support</a>
 </div>
 

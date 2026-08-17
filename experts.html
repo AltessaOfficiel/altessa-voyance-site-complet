@@ -28,7 +28,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:
 .logo-main{display:block;font-family:'Cinzel',serif;font-size:1.05rem;color:var(--or);letter-spacing:0.14em;line-height:1;}
 .logo-sub{display:block;font-family:'Cinzel',serif;font-size:0.48rem;color:var(--texte-doux);letter-spacing:0.25em;text-transform:uppercase;margin-top:3px;}
 nav{display:flex;align-items:center;gap:0.2rem;}
-.btn-nav{font-family:'Lato',sans-serif;font-size:0.72rem;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:var(--texte-doux);text-decoration:none;padding:0.4rem 0.9rem;border-radius:4px;transition:color .25s,background .25s;}
+.btn-nav{font-family:'Lato',sans-serif;font-size:0.72rem;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:var(--texte-doux);text-decoration:none;padding:0.4rem 0.9rem;border-radius:4px;transition:color .25s,background .25s;white-space:nowrap;}
 .btn-nav:hover,.btn-nav.active{color:var(--or);background:rgba(201,169,110,0.07);}
 .lang-select{background:transparent;border:1px solid var(--bordure);border-radius:4px;color:var(--texte-doux);font-size:0.72rem;padding:0.3rem 0.5rem;margin-left:1rem;cursor:pointer;outline:none;}.lang-select option{background:var(--fond3);}
 .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}.burger span{display:block;width:22px;height:1px;background:var(--or);}
@@ -70,7 +70,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--bordure);padding:2
 .footer-links a{font-size:0.7rem;color:var(--texte-doux);text-decoration:none;letter-spacing:0.08em;transition:color .25s;}.footer-links a:hover{color:var(--or);}
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
 @media(max-width:1000px){.experts-grid{grid-template-columns:repeat(3,1fr);}}
-@media(max-width:700px){.experts-grid{grid-template-columns:repeat(2,1fr);gap:1rem;}header{padding:0.9rem 1.5rem;}nav .btn-nav{display:none;}.burger{display:flex;}footer{flex-direction:column;align-items:center;text-align:center;padding:2rem 1.5rem;}}
+@media(max-width:700px){.experts-grid{grid-template-columns:repeat(2,1fr);gap:1rem;}header{padding:0.9rem 1.5rem;}nav .btn-nav,nav .lang-select{display:none;}.burger{display:flex;}footer{flex-direction:column;align-items:center;text-align:center;padding:2rem 1.5rem;}}
 @media(max-width:420px){.experts-grid{grid-template-columns:1fr;}}
 </style>
 </head>
@@ -83,6 +83,8 @@ footer{position:relative;z-index:1;border-top:1px solid var(--bordure);padding:2
   </a>
   <nav aria-label="Navigation principale">
     <a href="index.html" class="btn-nav">Accueil</a>
+    <a href="guide-voyance-en-ligne.html" class="btn-nav">Guide</a>
+    <a href="tirages-gratuits.html" class="btn-nav">Tirages gratuits</a>
     <a href="experts.html" class="btn-nav active">Voyance écrite</a>
     <a href="tarifs.html" class="btn-nav">Tarifs</a>
     <a href="rdv-telephone.html" class="btn-nav">RDV Téléphone</a>
@@ -97,6 +99,8 @@ footer{position:relative;z-index:1;border-top:1px solid var(--bordure);padding:2
 
 <div class="mobile-menu" id="mobileMenu" role="dialog">
   <a href="index.html" onclick="closeMenu()">Accueil</a>
+  <a href="guide-voyance-en-ligne.html" onclick="closeMenu()">Guide</a>
+  <a href="tirages-gratuits.html" onclick="closeMenu()">Tirages gratuits</a>
   <a href="experts.html" onclick="closeMenu()">Voyance écrite</a>
   <a href="tarifs.html" onclick="closeMenu()">Tarifs</a>
   <a href="rdv-telephone.html" onclick="closeMenu()">RDV Téléphone</a>

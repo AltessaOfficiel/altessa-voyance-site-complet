@@ -19,7 +19,31 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Voyance par téléphone : rendez-vous en ligne","description":"Guide pour préparer une consultation de voyance par téléphone.","author":{"@type":"Organization","name":"Altessa Voyance"},"publisher":{"@type":"Organization","name":"Altessa Voyance","logo":{"@type":"ImageObject","url":"https://altessavoyance.com/assets/img/logo-altessa-premium.png"}},"mainEntityOfPage":"https://altessavoyance.com/voyance-par-telephone.html","inLanguage":"fr"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Quand choisir la voyance par téléphone ?","acceptedAnswer":{"@type":"Answer","text":"Le téléphone convient si vous préférez un échange vocal direct ou si votre demande nécessite plus de nuance qu'une question courte."}},{"@type":"Question","name":"Comment préparer l'appel ?","acceptedAnswer":{"@type":"Answer","text":"Préparez votre question principale, les éléments de contexte utiles et évitez de traiter trop de sujets pendant le même rendez-vous."}}]}]}</script>
 </head>
 <body>
-<header><a href="index.html" class="logo" aria-label="Altessa Voyance - Accueil"><img src="assets/img/logo-altessa.png" alt="Logo Altessa" width="36" height="36"><span><span class="logo-main">Altessa</span><span class="logo-sub">Voyance</span></span></a><nav aria-label="Navigation principale"><a href="index.html" class="btn-nav">Accueil</a><a href="guide-voyance-en-ligne.html" class="btn-nav">Guide</a><a href="experts.html" class="btn-nav">Experts</a><a href="tarifs.html" class="btn-nav">Tarifs</a><a href="rdv-telephone.html" class="btn-nav">Téléphone</a></nav></header>
+<header><a href="index.html" class="logo" aria-label="Altessa Voyance - Accueil"><img src="assets/img/logo-altessa.png" alt="Logo Altessa" width="36" height="36"><span><span class="logo-main">Altessa</span><span class="logo-sub">Voyance</span></span></a><nav aria-label="Navigation principale">
+    <a href="index.html" class="btn-nav">Accueil</a>
+    <a href="guide-voyance-en-ligne.html" class="btn-nav">Guide</a>
+    <a href="tirages-gratuits.html" class="btn-nav">Tirages gratuits</a>
+    <a href="experts.html" class="btn-nav">Voyance écrite</a>
+    <a href="tarifs.html" class="btn-nav">Tarifs</a>
+    <a href="rdv-telephone.html" class="btn-nav">RDV Téléphone</a>
+    <a href="contact.html" class="btn-nav">Support</a>
+    <select id="lang-switcher" class="lang-select" aria-label="Choisir la langue">
+      <option value="fr">🇫🇷 FR</option><option value="en">🇬🇧 EN</option>
+      <option value="es">🇪🇸 ES</option><option value="pt">🇵🇹 PT</option><option value="it">🇮🇹 IT</option>
+    </select>
+  </nav>
+  <div class="burger" id="burger" role="button" tabindex="0" aria-label="Menu"><span></span><span></span><span></span></div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu" role="dialog">
+  <a href="index.html" onclick="closeMenu()">Accueil</a>
+  <a href="guide-voyance-en-ligne.html" onclick="closeMenu()">Guide</a>
+  <a href="tirages-gratuits.html" onclick="closeMenu()">Tirages gratuits</a>
+  <a href="experts.html" onclick="closeMenu()">Voyance écrite</a>
+  <a href="tarifs.html" onclick="closeMenu()">Tarifs</a>
+  <a href="rdv-telephone.html" onclick="closeMenu()">RDV Téléphone</a>
+  <a href="contact.html" onclick="closeMenu()">Support</a>
+</div>
 <main>
   <section class="hero"><p class="label">Rendez-vous vocal</p><h1>Voyance par téléphone</h1><p class="intro">La voyance par téléphone convient aux personnes qui veulent un échange direct, une présence vocale et un moment dédié à leur question.</p><div class="cta-row"><a href="rdv-telephone.html" class="cta-primary">Prendre rendez-vous</a><a href="tarifs.html" class="cta-secondary">Voir les tarifs</a></div></section>
   <section class="content">
@@ -30,5 +54,11 @@
   </section>
 </main>
 <footer><p>© 2026 Altessa Voyance - Service réservé aux personnes majeures.</p><div class="footer-links"><a href="guide-voyance-en-ligne.html">Guide</a><a href="rdv-telephone.html">RDV téléphone</a><a href="voyance-par-mail.html">Voyance par mail</a><a href="mentions-legales.html">Mentions légales</a><a href="contact.html">Support</a></div></footer>
+<script>
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => menu.classList.toggle('open'));
+  function closeMenu() { menu.classList.remove('open'); }
+</script>
 </body>
 </html>

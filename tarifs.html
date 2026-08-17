@@ -81,7 +81,7 @@ header {
 .logo-sub { display: block; font-family: 'Cinzel', serif; font-size: 0.48rem; color: var(--texte-doux); letter-spacing: 0.25em; text-transform: uppercase; margin-top: 3px; }
 
 nav { display: flex; align-items: center; gap: 0.2rem; }
-.btn-nav { font-family: 'Lato', sans-serif; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--texte-doux); text-decoration: none; padding: 0.4rem 0.9rem; border-radius: 4px; transition: color 0.25s, background 0.25s; }
+.btn-nav { font-family: 'Lato', sans-serif; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--texte-doux); text-decoration: none; padding: 0.4rem 0.9rem; border-radius: 4px; transition: color 0.25s, background 0.25s; white-space: nowrap; }
 .btn-nav:hover, .btn-nav.active { color: var(--or); background: rgba(201,169,110,0.07); }
 
 .lang-select { background: transparent; border: 1px solid var(--bordure); border-radius: 4px; color: var(--texte-doux); font-size: 0.72rem; padding: 0.3rem 0.5rem; margin-left: 1rem; cursor: pointer; outline: none; }
@@ -331,6 +331,8 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--bordure); p
   </a>
   <nav aria-label="Navigation principale">
     <a href="index.html" class="btn-nav">Accueil</a>
+    <a href="guide-voyance-en-ligne.html" class="btn-nav">Guide</a>
+    <a href="tirages-gratuits.html" class="btn-nav">Tirages gratuits</a>
     <a href="experts.html" class="btn-nav">Voyance écrite</a>
     <a href="tarifs.html" class="btn-nav active">Tarifs</a>
     <a href="rdv-telephone.html" class="btn-nav">RDV Téléphone</a>
@@ -350,6 +352,8 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--bordure); p
 
 <div class="mobile-menu" id="mobileMenu" role="dialog">
   <a href="index.html" onclick="closeMenu()">Accueil</a>
+  <a href="guide-voyance-en-ligne.html" onclick="closeMenu()">Guide</a>
+  <a href="tirages-gratuits.html" onclick="closeMenu()">Tirages gratuits</a>
   <a href="experts.html" onclick="closeMenu()">Voyance écrite</a>
   <a href="tarifs.html" onclick="closeMenu()">Tarifs</a>
   <a href="rdv-telephone.html" onclick="closeMenu()">RDV Téléphone</a>

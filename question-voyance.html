@@ -15,7 +15,31 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","name":"Question de voyance en ligne","description":"Consultation de voyance centrée sur une question précise.","provider":{"@type":"ProfessionalService","name":"Altessa Voyance","url":"https://altessavoyance.com/"},"serviceType":"Voyance par écrit","url":"https://altessavoyance.com/question-voyance.html","offers":{"@type":"Offer","price":"8","priceCurrency":"EUR","url":"https://altessavoyance.com/tarifs.html"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Comment formuler une question de voyance ?","acceptedAnswer":{"@type":"Answer","text":"Formulez une question claire, centrée sur un seul sujet, et ajoutez le contexte nécessaire pour comprendre la situation."}},{"@type":"Question","name":"Quelle question poser en amour ?","acceptedAnswer":{"@type":"Answer","text":"Vous pouvez demander un éclairage sur une relation, un silence, une rupture, une attirance ou une décision sentimentale."}},{"@type":"Question","name":"Peut-on poser plusieurs questions ?","acceptedAnswer":{"@type":"Answer","text":"Il est préférable de séparer les sujets. Une consultation centrée sur une question permet généralement une réponse plus précise."}}]}]}</script>
 </head>
 <body>
-<header><a href="index.html" class="logo" aria-label="Altessa Voyance - Accueil"><img src="assets/img/logo-altessa.png" alt="Logo Altessa" width="36" height="36"><span><span class="logo-main">Altessa</span><span class="logo-sub">Voyance</span></span></a><nav aria-label="Navigation principale"><a href="index.html" class="btn-nav">Accueil</a><a href="guide-voyance-en-ligne.html" class="btn-nav">Guide</a><a href="experts.html" class="btn-nav">Experts</a><a href="tarifs.html" class="btn-nav">Tarifs</a><a href="contact.html" class="btn-nav">Support</a></nav></header>
+<header><a href="index.html" class="logo" aria-label="Altessa Voyance - Accueil"><img src="assets/img/logo-altessa.png" alt="Logo Altessa" width="36" height="36"><span><span class="logo-main">Altessa</span><span class="logo-sub">Voyance</span></span></a><nav aria-label="Navigation principale">
+    <a href="index.html" class="btn-nav">Accueil</a>
+    <a href="guide-voyance-en-ligne.html" class="btn-nav">Guide</a>
+    <a href="tirages-gratuits.html" class="btn-nav">Tirages gratuits</a>
+    <a href="experts.html" class="btn-nav">Voyance écrite</a>
+    <a href="tarifs.html" class="btn-nav">Tarifs</a>
+    <a href="rdv-telephone.html" class="btn-nav">RDV Téléphone</a>
+    <a href="contact.html" class="btn-nav">Support</a>
+    <select id="lang-switcher" class="lang-select" aria-label="Choisir la langue">
+      <option value="fr">🇫🇷 FR</option><option value="en">🇬🇧 EN</option>
+      <option value="es">🇪🇸 ES</option><option value="pt">🇵🇹 PT</option><option value="it">🇮🇹 IT</option>
+    </select>
+  </nav>
+  <div class="burger" id="burger" role="button" tabindex="0" aria-label="Menu"><span></span><span></span><span></span></div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu" role="dialog">
+  <a href="index.html" onclick="closeMenu()">Accueil</a>
+  <a href="guide-voyance-en-ligne.html" onclick="closeMenu()">Guide</a>
+  <a href="tirages-gratuits.html" onclick="closeMenu()">Tirages gratuits</a>
+  <a href="experts.html" onclick="closeMenu()">Voyance écrite</a>
+  <a href="tarifs.html" onclick="closeMenu()">Tarifs</a>
+  <a href="rdv-telephone.html" onclick="closeMenu()">RDV Téléphone</a>
+  <a href="contact.html" onclick="closeMenu()">Support</a>
+</div>
 <main>
   <section class="hero"><p class="label">Demande précise</p><h1>Question voyance : poser une demande claire pour recevoir une réponse utile</h1><p class="intro">Une bonne question de voyance n'est pas forcément longue. Elle est surtout précise, située dans un contexte et centrée sur ce que vous avez vraiment besoin d'éclairer.</p><div class="cta-row"><a href="tarifs.html" class="cta-primary">Poser ma question</a><a href="experts.html" class="cta-secondary">Choisir un expert</a></div></section>
   <section class="content">
@@ -27,5 +51,11 @@
   </section>
 </main>
 <footer><p>© 2026 Altessa Voyance - Question de voyance en ligne.</p><div class="footer-links"><a href="guide-voyance-en-ligne.html">Guide</a><a href="voyance-serieuse.html">Voyance sérieuse</a><a href="tarifs.html">Tarifs</a><a href="mentions-legales.html">Mentions légales</a><a href="contact.html">Support</a></div></footer>
+<script>
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => menu.classList.toggle('open'));
+  function closeMenu() { menu.classList.remove('open'); }
+</script>
 </body>
 </html>

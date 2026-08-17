@@ -15,7 +15,31 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Voyance sérieuse en ligne : critères de confiance","description":"Guide pour choisir une consultation de voyance en ligne avec des critères de clarté et de sécurité.","author":{"@type":"Organization","name":"Altessa Voyance"},"publisher":{"@type":"Organization","name":"Altessa Voyance","logo":{"@type":"ImageObject","url":"https://altessavoyance.com/assets/img/logo-altessa-premium.png"}},"mainEntityOfPage":"https://altessavoyance.com/voyance-serieuse.html","inLanguage":"fr"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Comment reconnaître une voyance sérieuse ?","acceptedAnswer":{"@type":"Answer","text":"Une voyance sérieuse présente des tarifs clairs, des informations légales accessibles, une politique de confidentialité, un support et des limites explicites sur ce que la consultation peut ou ne peut pas faire."}},{"@type":"Question","name":"Une voyance sérieuse garantit-elle un résultat ?","acceptedAnswer":{"@type":"Answer","text":"Non. Un accompagnement sérieux ne promet pas un résultat certain et ne remplace pas un avis médical, juridique, psychologique ou financier."}},{"@type":"Question","name":"Pourquoi les informations légales sont importantes ?","acceptedAnswer":{"@type":"Answer","text":"Elles permettent d'identifier l'éditeur du site, le moyen de contact, l'hébergement et les conditions de traitement des données."}}]}]}</script>
 </head>
 <body>
-<header><a href="index.html" class="logo" aria-label="Altessa Voyance - Accueil"><img src="assets/img/logo-altessa.png" alt="Logo Altessa" width="36" height="36"><span><span class="logo-main">Altessa</span><span class="logo-sub">Voyance</span></span></a><nav aria-label="Navigation principale"><a href="index.html" class="btn-nav">Accueil</a><a href="guide-voyance-en-ligne.html" class="btn-nav">Guide</a><a href="experts.html" class="btn-nav">Experts</a><a href="tarifs.html" class="btn-nav">Tarifs</a><a href="contact.html" class="btn-nav">Support</a></nav></header>
+<header><a href="index.html" class="logo" aria-label="Altessa Voyance - Accueil"><img src="assets/img/logo-altessa.png" alt="Logo Altessa" width="36" height="36"><span><span class="logo-main">Altessa</span><span class="logo-sub">Voyance</span></span></a><nav aria-label="Navigation principale">
+    <a href="index.html" class="btn-nav">Accueil</a>
+    <a href="guide-voyance-en-ligne.html" class="btn-nav">Guide</a>
+    <a href="tirages-gratuits.html" class="btn-nav">Tirages gratuits</a>
+    <a href="experts.html" class="btn-nav">Voyance écrite</a>
+    <a href="tarifs.html" class="btn-nav">Tarifs</a>
+    <a href="rdv-telephone.html" class="btn-nav">RDV Téléphone</a>
+    <a href="contact.html" class="btn-nav">Support</a>
+    <select id="lang-switcher" class="lang-select" aria-label="Choisir la langue">
+      <option value="fr">🇫🇷 FR</option><option value="en">🇬🇧 EN</option>
+      <option value="es">🇪🇸 ES</option><option value="pt">🇵🇹 PT</option><option value="it">🇮🇹 IT</option>
+    </select>
+  </nav>
+  <div class="burger" id="burger" role="button" tabindex="0" aria-label="Menu"><span></span><span></span><span></span></div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu" role="dialog">
+  <a href="index.html" onclick="closeMenu()">Accueil</a>
+  <a href="guide-voyance-en-ligne.html" onclick="closeMenu()">Guide</a>
+  <a href="tirages-gratuits.html" onclick="closeMenu()">Tirages gratuits</a>
+  <a href="experts.html" onclick="closeMenu()">Voyance écrite</a>
+  <a href="tarifs.html" onclick="closeMenu()">Tarifs</a>
+  <a href="rdv-telephone.html" onclick="closeMenu()">RDV Téléphone</a>
+  <a href="contact.html" onclick="closeMenu()">Support</a>
+</div>
 <main>
   <section class="hero"><p class="label">Confiance</p><h1>Voyance sérieuse en ligne : les critères qui comptent vraiment</h1><p class="intro">Chercher une voyance sérieuse, ce n'est pas chercher une promesse absolue. C'est chercher un cadre clair, des tarifs lisibles, une confidentialité respectée et une consultation qui garde ses limites.</p><div class="cta-row"><a href="experts.html" class="cta-primary">Voir les experts</a><a href="mentions-legales.html" class="cta-secondary">Mentions légales</a></div></section>
   <section class="content">
@@ -27,5 +51,11 @@
   </section>
 </main>
 <footer><p>© 2026 Altessa Voyance - Consultation de voyance en ligne.</p><div class="footer-links"><a href="tarifs.html">Tarifs</a><a href="experts.html">Experts</a><a href="cgv.html">CGV</a><a href="mentions-legales.html">Mentions légales</a><a href="contact.html">Support</a></div></footer>
+<script>
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => menu.classList.toggle('open'));
+  function closeMenu() { menu.classList.remove('open'); }
+</script>
 </body>
 </html>

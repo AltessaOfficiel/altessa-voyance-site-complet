@@ -29,11 +29,28 @@
   <nav aria-label="Navigation principale">
     <a href="index.html" class="btn-nav">Accueil</a>
     <a href="guide-voyance-en-ligne.html" class="btn-nav active">Guide</a>
-    <a href="experts.html" class="btn-nav">Experts</a>
+    <a href="tirages-gratuits.html" class="btn-nav">Tirages gratuits</a>
+    <a href="experts.html" class="btn-nav">Voyance écrite</a>
     <a href="tarifs.html" class="btn-nav">Tarifs</a>
-    <a href="rdv-telephone.html" class="btn-nav">Téléphone</a>
+    <a href="rdv-telephone.html" class="btn-nav">RDV Téléphone</a>
+    <a href="contact.html" class="btn-nav">Support</a>
+    <select id="lang-switcher" class="lang-select" aria-label="Choisir la langue">
+      <option value="fr">🇫🇷 FR</option><option value="en">🇬🇧 EN</option>
+      <option value="es">🇪🇸 ES</option><option value="pt">🇵🇹 PT</option><option value="it">🇮🇹 IT</option>
+    </select>
   </nav>
+  <div class="burger" id="burger" role="button" tabindex="0" aria-label="Menu"><span></span><span></span><span></span></div>
 </header>
+
+<div class="mobile-menu" id="mobileMenu" role="dialog">
+  <a href="index.html" onclick="closeMenu()">Accueil</a>
+  <a href="guide-voyance-en-ligne.html" onclick="closeMenu()">Guide</a>
+  <a href="tirages-gratuits.html" onclick="closeMenu()">Tirages gratuits</a>
+  <a href="experts.html" onclick="closeMenu()">Voyance écrite</a>
+  <a href="tarifs.html" onclick="closeMenu()">Tarifs</a>
+  <a href="rdv-telephone.html" onclick="closeMenu()">RDV Téléphone</a>
+  <a href="contact.html" onclick="closeMenu()">Support</a>
+</div>
 
 <main>
   <section class="hero">
@@ -104,5 +121,11 @@
     <a href="voyance-sentimentale.html">Sentimental</a><a href="voyance-par-telephone.html">Téléphone</a><a href="voyance-par-mail.html">Voyance par mail</a><a href="question-voyance.html">Question voyance</a><a href="tarot-amour.html">Tarot amour</a><a href="mentions-legales.html">Mentions légales</a><a href="contact.html">Support</a>
   </div>
 </footer>
+<script>
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => menu.classList.toggle('open'));
+  function closeMenu() { menu.classList.remove('open'); }
+</script>
 </body>
 </html>
