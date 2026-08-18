@@ -1,7 +1,9 @@
 (function () {
   const GA_ID = 'G-Q09YDMYHE0';
   const STORAGE_KEY = 'altessa_cookie_analytics';
-  let loaded = false;
+
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function () { window.dataLayer.push(arguments); };
 
   function getChoice() {
     try {
@@ -17,22 +19,35 @@
     } catch (err) {}
   }
 
-  function loadAnalytics() {
-    if (loaded || window.gtag) return;
-    loaded = true;
+  // ── Google Consent Mode v2 ──────────────────────────────────────────
+  // On charge gtag.js tout de suite, mais avec un signal "denied" par
+  // défaut. Avant tout choix du visiteur, Google reçoit un ping anonyme
+  // et sans cookie (mesure modélisée/agrégée), au lieu de ne rien voir
+  // du tout comme avant. Le consentement réel active ensuite les cookies
+  // complets.
+  const choixInitial = getChoice();
+  window.gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: choixInitial === 'accepted' ? 'granted' : 'denied',
+    wait_for_update: 500,
+  });
 
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function () {
-      window.dataLayer.push(arguments);
-    };
+  const script = document.createElement('script');
+  script.async = true;
+  script.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+  document.head.appendChild(script);
 
-    const script = document.createElement('script');
-    script.async = true;
-    script.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
-    document.head.appendChild(script);
+  window.gtag('js', new Date());
+  window.gtag('config', GA_ID, { anonymize_ip: true });
 
-    window.gtag('js', new Date());
-    window.gtag('config', GA_ID, { anonymize_ip: true });
+  function accepterAnalytics() {
+    window.gtag('consent', 'update', { analytics_storage: 'granted' });
+  }
+
+  function refuserAnalytics() {
+    window.gtag('consent', 'update', { analytics_storage: 'denied' });
   }
 
   function removeBanner() {
@@ -81,7 +96,7 @@
       const value = button.getAttribute('data-altessa-cookie');
       setChoice(value);
       removeBanner();
-      if (value === 'accepted') loadAnalytics();
+      if (value === 'accepted') accepterAnalytics(); else refuserAnalytics();
       return;
     }
 
@@ -95,15 +110,14 @@
     }
   });
 
+  // altessaTrack : évènements custom (clics CTA, etc.) — envoyés dans tous
+  // les cas, Consent Mode se charge lui-même de les rendre anonymes/modélisés
+  // tant que le visiteur n'a pas accepté.
   window.altessaTrack = function () {
-    if (getChoice() === 'accepted' && window.gtag) {
-      window.gtag.apply(null, arguments);
-    }
+    window.gtag.apply(null, arguments);
   };
 
-  if (getChoice() === 'accepted') {
-    loadAnalytics();
-  } else if (!getChoice()) {
+  if (!choixInitial) {
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', showBanner);
     } else {
