@@ -569,7 +569,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--bordure); p
     localStorage.setItem('altessa_prestation', tarif.nom);
     localStorage.setItem('altessa_prix', tarif.prix);
 
-    const url = new URL('../apres-paiement.html', window.location.href);
+    const url = new URL('apres-paiement.html', window.location.href);
     if (expertChoisi) url.searchParams.set('expert', expertChoisi);
     url.searchParams.set('prestation', tarif.nom);
     url.searchParams.set('prix', tarif.prix);

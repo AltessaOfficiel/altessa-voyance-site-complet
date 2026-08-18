@@ -665,6 +665,7 @@ const MAKE_WEBHOOK_URL = 'https://hook.eu1.make.com/8g3o3ttfkbpo0949k9v6r234bnmj
       prix:          prix,
       paypal_id:     paypalId,
       prompt_expert: PROMPTS_EXPERTS[expert] || `Tu es un expert en voyance bienveillant d'Altessa Voyance. Réponds avec précision et élégance à la question posée.`,
+      langue:        localStorage.getItem('altessa_langue') || 'fr',
       date_envoi:    new Date().toLocaleString('fr-FR', { timeZone: 'Europe/Paris' }),
     };
 

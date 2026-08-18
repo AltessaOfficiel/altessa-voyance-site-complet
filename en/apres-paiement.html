@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Altessa Voyance — Paiement confirmé</title>
+  <title>Altessa Voyance — Payment Confirmed</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q09YDMYHE0"></script>
@@ -145,31 +145,31 @@
 
 <header>
   <a href="index.html" class="logo" aria-label="Altessa Voyance">
-    <img src="assets/img/logo-altessa.png" alt="Logo Altessa" width="36" height="36">
+    <img src="../assets/img/logo-altessa.png" alt="Altessa logo" width="36" height="36">
     <div>
       <span class="logo-main">Altessa</span>
       <span class="logo-sub">Voyance</span>
     </div>
   </a>
   <nav aria-label="Navigation">
-    <a href="index.html" class="btn-nav">Accueil</a>
+    <a href="index.html" class="btn-nav">Home</a>
     <a href="experts.html" class="btn-nav">Experts</a>
-    <a href="contact.html" class="btn-nav">Support</a>
+    <a href="../contact.html" class="btn-nav">Support</a>
   </nav>
 </header>
 
 <main>
   <div class="carte">
-    <div class="badge-confirme">Paiement confirmé</div>
+    <div class="badge-confirme">Payment confirmed</div>
     <span class="icone-principale">✨</span>
-    <h1 class="titre-merci">Merci pour votre confiance</h1>
+    <h1 class="titre-merci">Thank you for your trust</h1>
     <p class="sous-titre">
-      Votre paiement a bien été validé.<br>
-      Vous pouvez maintenant poser votre question à votre expert.
+      Your payment has been validated.<br>
+      You can now ask your expert your question.
     </p>
     <div class="recap">
       <div class="recap-ligne">
-        <span class="recap-cle">Expert sélectionné</span>
+        <span class="recap-cle">Selected expert</span>
         <span class="recap-val" id="resumeExpert">—</span>
       </div>
       <div class="recap-ligne">
@@ -177,16 +177,16 @@
         <span class="recap-val" id="resumeType">—</span>
       </div>
       <div class="recap-ligne">
-        <span class="recap-cle">Montant réglé</span>
+        <span class="recap-cle">Amount paid</span>
         <span class="recap-val" id="resumePrix">—</span>
       </div>
     </div>
     <div id="blocManuel">
-      <a id="btnEtape2" href="consultation.html" class="btn-principal">
-        ✦ Poser ma question maintenant
+      <a id="btnEtape2" href="../consultation.html" class="btn-principal">
+        ✦ Ask my question now
       </a>
       <p class="compte-rebours">
-        Redirection automatique dans <strong id="countdown">10</strong> secondes…
+        Automatic redirect in <strong id="countdown">10</strong> seconds…
       </p>
       <div class="barre-wrap">
         <div class="barre-progress"></div>
@@ -195,26 +195,26 @@
 
     <div class="etat-auto" id="etatEnvoiAuto">
       <div class="spinner"></div>
-      <p class="sous-titre" style="margin-bottom:0">Votre question est transmise à votre expert…</p>
+      <p class="sous-titre" style="margin-bottom:0">Your question is being sent to your expert…</p>
     </div>
 
     <div class="etat-auto" id="etatSuccesAuto">
-      <p class="sous-titre" style="margin-bottom:0">✦ Votre question a bien été transmise.<br>Vous recevrez votre réponse par email <strong style="color:var(--or-clair)">sous 5 à 12 minutes</strong> — pensez à vérifier vos spams.</p>
+      <p class="sous-titre" style="margin-bottom:0">✦ Your question has been sent successfully.<br>You'll receive your answer by email <strong style="color:var(--or-clair)">within 5 to 12 minutes</strong> — please also check your spam folder.</p>
     </div>
   </div>
 </main>
 
 <footer>
-  <p class="footer-copy">© 2026 Altessa Voyance — Service réservé aux personnes majeures.</p>
+  <p class="footer-copy">© 2026 Altessa Voyance — Service reserved for adults.</p>
   <div class="footer-links">
-    <a href="cgv.html">CGV</a>
-    <a href="politique-confidentialite.html">Confidentialité</a>
-    <a href="contact.html">Support</a>
+    <a href="../cgv.html">Terms of Service</a>
+    <a href="../politique-confidentialite.html">Privacy</a>
+    <a href="../contact.html">Support</a>
   </div>
 </footer>
 
 <script>
-  // ── Étoiles ──────────────────────────────────────────────────────
+  // ── Stars ──────────────────────────────────────────────────────
   const starsEl = document.getElementById('stars');
   for (let i = 0; i < 40; i++) {
     const s = document.createElement('div');
@@ -223,27 +223,24 @@
     starsEl.appendChild(s);
   }
 
-  // ── Récupérer les paramètres URL (venant de PayPal ou du site) ───
+  // ── Read URL parameters (coming from PayPal or the site) ───
   const params = new URLSearchParams(window.location.search);
 
-  // Paramètres transmis depuis le bouton PayPal via custom variable
-  // PayPal transmet: tx (transaction id), st (status), amt (montant)
-  // + nos paramètres custom stockés dans localStorage avant le paiement
   const txPaypal = params.get('tx') || '';
   const montant  = params.get('amt') || '';
 
-  // Récupérer les infos expert stockées AVANT le paiement dans localStorage
+  // Retrieve expert info saved BEFORE payment in localStorage
   const expertSauvegarde    = localStorage.getItem('altessa_expert')     || params.get('expert')     || '';
   const prestationSauvegarde = localStorage.getItem('altessa_prestation') || params.get('prestation') || 'Consultation';
   const prixSauvegarde      = localStorage.getItem('altessa_prix')       || params.get('prix')       || (montant ? montant + ' €' : '—');
 
-  // ── Afficher le récap ─────────────────────────────────────────────
-  document.getElementById('resumeExpert').textContent = expertSauvegarde || 'Votre expert Altessa';
+  // ── Display the recap ─────────────────────────────────────────────
+  document.getElementById('resumeExpert').textContent = expertSauvegarde || 'Your Altessa expert';
   document.getElementById('resumeType').textContent   = prestationSauvegarde;
   document.getElementById('resumePrix').textContent   = prixSauvegarde;
 
-  // ── Construire le lien vers consultation.html (parcours de secours) ──
-  const urlConsultation = new URL('consultation.html', window.location.href);
+  // ── Build the link to consultation.html (fallback path, French page) ──
+  const urlConsultation = new URL('../consultation.html', window.location.href);
   if (expertSauvegarde)     urlConsultation.searchParams.set('expert', expertSauvegarde);
   urlConsultation.searchParams.set('prestation', prestationSauvegarde);
   urlConsultation.searchParams.set('prix', prixSauvegarde);
@@ -251,12 +248,12 @@
 
   document.getElementById('btnEtape2').href = urlConsultation.toString();
 
-  // ── Question posée AVANT paiement (nouveau tunnel) ────────────────
+  // ── Question asked BEFORE payment (new funnel) ────────────────
   const prenomQ  = localStorage.getItem('altessa_prenom')          || '';
   const emailQ   = localStorage.getItem('altessa_email')           || '';
   const questionQ = localStorage.getItem('altessa_question')       || '';
   const expertQ  = localStorage.getItem('altessa_question_expert') || '';
-  const langueQ  = localStorage.getItem('altessa_langue')          || 'fr';
+  const langueQ  = localStorage.getItem('altessa_langue')          || 'en';
 
   const questionDejaCollectee = !!(emailQ && questionQ && expertQ && expertQ === expertSauvegarde);
 
@@ -271,7 +268,8 @@
     localStorage.removeItem('altessa_langue');
   }
 
-  // ── 20 Prompts experts (identiques à consultation.html) ───────────
+  // ── 20 expert prompts (identical to consultation.html — kept in French,
+  //    the Make scenario is instructed to answer in the client's language) ──
   const SPECIALITES = {
     'Ariane': 'Tarologue', 'Noémie': 'Astrologue', 'Nicolas': 'Médium', 'Élise': 'Voyante',
     'Maël': 'Numérologue', 'Clara': 'Voyante clairvoyante', 'Sofia': 'Médium spirituelle',
@@ -305,7 +303,7 @@
     'Ophélie': `Tu es Ophélie, voyante intuitive au sein d'Altessa Voyance. Tes messages arrivent spontanément, sans filtre, directs depuis l'intuition pure. Tu partages les impressions et messages qui te viennent instantanément à la lecture de la question. Ton ton est spontané, sincère et lumineux. Tu tutoies le consultant avec naturel. Tu termines par : "L'intuition ne ment jamais. — Ophélie".`,
   };
 
-  // ── URL Webhook Make (identique à consultation.html) ──────────────
+  // ── Make webhook URL (identical to consultation.html) ──────────────
   const MAKE_WEBHOOK_URL = 'https://hook.eu1.make.com/8g3o3ttfkbpo0949k9v6r234bnmj6ntb';
 
   async function envoyerQuestionAutomatiquement() {
@@ -320,7 +318,7 @@
       paypal_id:     txPaypal,
       prompt_expert: PROMPTS_EXPERTS[expertSauvegarde] || `Tu es un expert en voyance bienveillant d'Altessa Voyance. Réponds avec précision et élégance à la question posée.`,
       langue:        langueQ,
-      date_envoi:    new Date().toLocaleString('fr-FR', { timeZone: 'Europe/Paris' }),
+      date_envoi:    new Date().toLocaleString('en-GB', { timeZone: 'Europe/Paris' }),
     };
 
     try {
@@ -334,8 +332,9 @@
         gtag('event', 'generate_lead', { event_category: 'make', event_label: 'consultation_question_auto' });
       }
     } catch (err) {
-      // Le webhook Make est en no-cors : on ne peut pas détecter un vrai échec réseau ici.
-      // En cas de souci, le client garde son email dans le récapitulatif de commande PayPal.
+      // The Make webhook is called in no-cors mode: we can't detect a real network
+      // failure here. If something goes wrong, the client's email is still kept
+      // in the PayPal order summary.
     }
 
     nettoyerLocalStorage();
@@ -345,13 +344,13 @@
     }, 1200);
   }
 
-  // ── Déclenchement : question déjà collectée (nouveau tunnel) ou parcours de secours ──
+  // ── Trigger: question already collected (new funnel) or fallback path ──
   if (questionDejaCollectee) {
     document.getElementById('blocManuel').style.display = 'none';
     document.getElementById('etatEnvoiAuto').classList.add('visible');
     envoyerQuestionAutomatiquement();
   } else {
-    // ── Parcours de secours (inchangé) : bouton + redirection manuelle ──
+    // ── Fallback path (unchanged): button + manual redirect ──
     localStorage.removeItem('altessa_expert');
     localStorage.removeItem('altessa_prestation');
     localStorage.removeItem('altessa_prix');

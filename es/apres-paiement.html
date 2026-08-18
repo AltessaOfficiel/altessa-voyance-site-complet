@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Altessa Voyance — Paiement confirmé</title>
+  <title>Altessa Voyance — Pago confirmado</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q09YDMYHE0"></script>
@@ -145,48 +145,48 @@
 
 <header>
   <a href="index.html" class="logo" aria-label="Altessa Voyance">
-    <img src="assets/img/logo-altessa.png" alt="Logo Altessa" width="36" height="36">
+    <img src="../assets/img/logo-altessa.png" alt="Logo Altessa" width="36" height="36">
     <div>
       <span class="logo-main">Altessa</span>
       <span class="logo-sub">Voyance</span>
     </div>
   </a>
-  <nav aria-label="Navigation">
-    <a href="index.html" class="btn-nav">Accueil</a>
-    <a href="experts.html" class="btn-nav">Experts</a>
-    <a href="contact.html" class="btn-nav">Support</a>
+  <nav aria-label="Navegación">
+    <a href="index.html" class="btn-nav">Inicio</a>
+    <a href="experts.html" class="btn-nav">Expertos</a>
+    <a href="../contact.html" class="btn-nav">Soporte</a>
   </nav>
 </header>
 
 <main>
   <div class="carte">
-    <div class="badge-confirme">Paiement confirmé</div>
+    <div class="badge-confirme">Pago confirmado</div>
     <span class="icone-principale">✨</span>
-    <h1 class="titre-merci">Merci pour votre confiance</h1>
+    <h1 class="titre-merci">Gracias por tu confianza</h1>
     <p class="sous-titre">
-      Votre paiement a bien été validé.<br>
-      Vous pouvez maintenant poser votre question à votre expert.
+      Tu pago ha sido validado correctamente.<br>
+      Ahora puedes hacer tu pregunta a tu experto.
     </p>
     <div class="recap">
       <div class="recap-ligne">
-        <span class="recap-cle">Expert sélectionné</span>
+        <span class="recap-cle">Experto seleccionado</span>
         <span class="recap-val" id="resumeExpert">—</span>
       </div>
       <div class="recap-ligne">
-        <span class="recap-cle">Consultation</span>
+        <span class="recap-cle">Consulta</span>
         <span class="recap-val" id="resumeType">—</span>
       </div>
       <div class="recap-ligne">
-        <span class="recap-cle">Montant réglé</span>
+        <span class="recap-cle">Importe pagado</span>
         <span class="recap-val" id="resumePrix">—</span>
       </div>
     </div>
     <div id="blocManuel">
-      <a id="btnEtape2" href="consultation.html" class="btn-principal">
-        ✦ Poser ma question maintenant
+      <a id="btnEtape2" href="../consultation.html" class="btn-principal">
+        ✦ Hacer mi pregunta ahora
       </a>
       <p class="compte-rebours">
-        Redirection automatique dans <strong id="countdown">10</strong> secondes…
+        Redirección automática en <strong id="countdown">10</strong> segundos…
       </p>
       <div class="barre-wrap">
         <div class="barre-progress"></div>
@@ -195,26 +195,26 @@
 
     <div class="etat-auto" id="etatEnvoiAuto">
       <div class="spinner"></div>
-      <p class="sous-titre" style="margin-bottom:0">Votre question est transmise à votre expert…</p>
+      <p class="sous-titre" style="margin-bottom:0">Tu pregunta se está enviando a tu experto…</p>
     </div>
 
     <div class="etat-auto" id="etatSuccesAuto">
-      <p class="sous-titre" style="margin-bottom:0">✦ Votre question a bien été transmise.<br>Vous recevrez votre réponse par email <strong style="color:var(--or-clair)">sous 5 à 12 minutes</strong> — pensez à vérifier vos spams.</p>
+      <p class="sous-titre" style="margin-bottom:0">✦ Tu pregunta se ha enviado correctamente.<br>Recibirás tu respuesta por email <strong style="color:var(--or-clair)">en 5 a 12 minutos</strong> — revisa también tu carpeta de spam.</p>
     </div>
   </div>
 </main>
 
 <footer>
-  <p class="footer-copy">© 2026 Altessa Voyance — Service réservé aux personnes majeures.</p>
+  <p class="footer-copy">© 2026 Altessa Voyance — Servicio reservado para mayores de edad.</p>
   <div class="footer-links">
-    <a href="cgv.html">CGV</a>
-    <a href="politique-confidentialite.html">Confidentialité</a>
-    <a href="contact.html">Support</a>
+    <a href="../cgv.html">Condiciones de venta</a>
+    <a href="../politique-confidentialite.html">Privacidad</a>
+    <a href="../contact.html">Soporte</a>
   </div>
 </footer>
 
 <script>
-  // ── Étoiles ──────────────────────────────────────────────────────
+  // ── Estrellas ──────────────────────────────────────────────────────
   const starsEl = document.getElementById('stars');
   for (let i = 0; i < 40; i++) {
     const s = document.createElement('div');
@@ -223,27 +223,24 @@
     starsEl.appendChild(s);
   }
 
-  // ── Récupérer les paramètres URL (venant de PayPal ou du site) ───
+  // ── Leer los parámetros de la URL (procedentes de PayPal o del sitio) ───
   const params = new URLSearchParams(window.location.search);
 
-  // Paramètres transmis depuis le bouton PayPal via custom variable
-  // PayPal transmet: tx (transaction id), st (status), amt (montant)
-  // + nos paramètres custom stockés dans localStorage avant le paiement
   const txPaypal = params.get('tx') || '';
   const montant  = params.get('amt') || '';
 
-  // Récupérer les infos expert stockées AVANT le paiement dans localStorage
+  // Recuperar los datos del experto guardados ANTES del pago en localStorage
   const expertSauvegarde    = localStorage.getItem('altessa_expert')     || params.get('expert')     || '';
   const prestationSauvegarde = localStorage.getItem('altessa_prestation') || params.get('prestation') || 'Consultation';
   const prixSauvegarde      = localStorage.getItem('altessa_prix')       || params.get('prix')       || (montant ? montant + ' €' : '—');
 
-  // ── Afficher le récap ─────────────────────────────────────────────
-  document.getElementById('resumeExpert').textContent = expertSauvegarde || 'Votre expert Altessa';
+  // ── Mostrar el resumen ─────────────────────────────────────────────
+  document.getElementById('resumeExpert').textContent = expertSauvegarde || 'Tu experto Altessa';
   document.getElementById('resumeType').textContent   = prestationSauvegarde;
   document.getElementById('resumePrix').textContent   = prixSauvegarde;
 
-  // ── Construire le lien vers consultation.html (parcours de secours) ──
-  const urlConsultation = new URL('consultation.html', window.location.href);
+  // ── Construir el enlace a consultation.html (ruta de respaldo, página en francés) ──
+  const urlConsultation = new URL('../consultation.html', window.location.href);
   if (expertSauvegarde)     urlConsultation.searchParams.set('expert', expertSauvegarde);
   urlConsultation.searchParams.set('prestation', prestationSauvegarde);
   urlConsultation.searchParams.set('prix', prixSauvegarde);
@@ -251,12 +248,12 @@
 
   document.getElementById('btnEtape2').href = urlConsultation.toString();
 
-  // ── Question posée AVANT paiement (nouveau tunnel) ────────────────
+  // ── Pregunta enviada ANTES del pago (nuevo circuito) ────────────────
   const prenomQ  = localStorage.getItem('altessa_prenom')          || '';
   const emailQ   = localStorage.getItem('altessa_email')           || '';
   const questionQ = localStorage.getItem('altessa_question')       || '';
   const expertQ  = localStorage.getItem('altessa_question_expert') || '';
-  const langueQ  = localStorage.getItem('altessa_langue')          || 'fr';
+  const langueQ  = localStorage.getItem('altessa_langue')          || 'es';
 
   const questionDejaCollectee = !!(emailQ && questionQ && expertQ && expertQ === expertSauvegarde);
 
@@ -271,7 +268,9 @@
     localStorage.removeItem('altessa_langue');
   }
 
-  // ── 20 Prompts experts (identiques à consultation.html) ───────────
+  // ── 20 prompts de expertos (idénticos a consultation.html — se mantienen
+  //    en francés, el escenario Make recibe la instrucción de responder en
+  //    el idioma del cliente) ──
   const SPECIALITES = {
     'Ariane': 'Tarologue', 'Noémie': 'Astrologue', 'Nicolas': 'Médium', 'Élise': 'Voyante',
     'Maël': 'Numérologue', 'Clara': 'Voyante clairvoyante', 'Sofia': 'Médium spirituelle',
@@ -305,7 +304,7 @@
     'Ophélie': `Tu es Ophélie, voyante intuitive au sein d'Altessa Voyance. Tes messages arrivent spontanément, sans filtre, directs depuis l'intuition pure. Tu partages les impressions et messages qui te viennent instantanément à la lecture de la question. Ton ton est spontané, sincère et lumineux. Tu tutoies le consultant avec naturel. Tu termines par : "L'intuition ne ment jamais. — Ophélie".`,
   };
 
-  // ── URL Webhook Make (identique à consultation.html) ──────────────
+  // ── URL del webhook de Make (idéntica a consultation.html) ──────────────
   const MAKE_WEBHOOK_URL = 'https://hook.eu1.make.com/8g3o3ttfkbpo0949k9v6r234bnmj6ntb';
 
   async function envoyerQuestionAutomatiquement() {
@@ -320,7 +319,7 @@
       paypal_id:     txPaypal,
       prompt_expert: PROMPTS_EXPERTS[expertSauvegarde] || `Tu es un expert en voyance bienveillant d'Altessa Voyance. Réponds avec précision et élégance à la question posée.`,
       langue:        langueQ,
-      date_envoi:    new Date().toLocaleString('fr-FR', { timeZone: 'Europe/Paris' }),
+      date_envoi:    new Date().toLocaleString('es-ES', { timeZone: 'Europe/Paris' }),
     };
 
     try {
@@ -334,8 +333,9 @@
         gtag('event', 'generate_lead', { event_category: 'make', event_label: 'consultation_question_auto' });
       }
     } catch (err) {
-      // Le webhook Make est en no-cors : on ne peut pas détecter un vrai échec réseau ici.
-      // En cas de souci, le client garde son email dans le récapitulatif de commande PayPal.
+      // El webhook de Make se llama en modo no-cors: no podemos detectar un
+      // fallo de red real aquí. Si algo falla, el email del cliente sigue
+      // disponible en el resumen del pedido de PayPal.
     }
 
     nettoyerLocalStorage();
@@ -345,13 +345,13 @@
     }, 1200);
   }
 
-  // ── Déclenchement : question déjà collectée (nouveau tunnel) ou parcours de secours ──
+  // ── Disparo: pregunta ya recopilada (nuevo circuito) o ruta de respaldo ──
   if (questionDejaCollectee) {
     document.getElementById('blocManuel').style.display = 'none';
     document.getElementById('etatEnvoiAuto').classList.add('visible');
     envoyerQuestionAutomatiquement();
   } else {
-    // ── Parcours de secours (inchangé) : bouton + redirection manuelle ──
+    // ── Ruta de respaldo (sin cambios): botón + redirección manual ──
     localStorage.removeItem('altessa_expert');
     localStorage.removeItem('altessa_prestation');
     localStorage.removeItem('altessa_prix');
