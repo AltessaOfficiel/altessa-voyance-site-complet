@@ -134,7 +134,7 @@
         <div><div class="eyebrow">Nos experts</div><h2 class="section-title">Trouvez le style de lecture qui vous correspond</h2><p class="section-copy">Chaque profil correspond à un style de lecture distinct (tarot, astrologie, médiumnité…). Les réponses écrites sont générées par IA dans ce style ; les consultations téléphoniques restent assurées par des praticiens humains. Découvrez quelques profils puis consultez la liste complète pour choisir librement.</p></div>
         <a class="btn btn-secondary" href="experts.html">Voir tous les experts</a>
       </div>
-      <div class="expert-grid">
+      <div class="expert-grid" id="expertGrid">
         <article class="expert"><div class="avatar">A</div><h3>Ariane</h3><div class="role">Tarot de Marseille</div><p>Pour les questions sentimentales, les décisions et les situations qui demandent un éclairage structuré.</p><a href="poser-ma-question.html?expert=Ariane">Consulter Ariane →</a></article>
         <article class="expert"><div class="avatar">N</div><h3>Noémie</h3><div class="role">Astrologie</div><p>Pour prendre du recul sur vos cycles, vos périodes de changement et vos grandes orientations.</p><a href="poser-ma-question.html?expert=Noémie">Consulter Noémie →</a></article>
         <article class="expert"><div class="avatar">N</div><h3>Nicolas</h3><div class="role">Médiumnité</div><p>Pour les situations complexes qui appellent une lecture intuitive et une autre manière de reformuler vos questions.</p><a href="poser-ma-question.html?expert=Nicolas">Consulter Nicolas →</a></article>
@@ -196,6 +196,61 @@
     if(!link)return;
     if(window.altessaTrack)window.altessaTrack('event',link.getAttribute('data-track'),{page:'homepage'});
   });
+
+  // ── Rotation des experts mis en avant sur l'accueil ────────────────
+  // Change chaque jour (même sélection pour tout le monde ce jour-là),
+  // pour ne pas toujours montrer les 3 mêmes profils.
+  const TOUS_LES_EXPERTS = [
+    { nom:'Ariane',   role:'Tarot de Marseille',        bio:"Pour les questions sentimentales, les décisions et les situations qui demandent un éclairage structuré." },
+    { nom:'Noémie',   role:'Astrologie',                 bio:"Pour prendre du recul sur vos cycles, vos périodes de changement et vos grandes orientations." },
+    { nom:'Nicolas',  role:'Médiumnité',                 bio:"Pour les situations complexes qui appellent une lecture intuitive et une autre manière de reformuler vos questions." },
+    { nom:'Élise',    role:'Voyante',                    bio:"Approche douce et bienveillante pour vos questions sentimentales et de cœur." },
+    { nom:'Maël',     role:'Numérologue',                bio:"Décrypte vos nombres de vie pour guider vos décisions avec la sagesse des chiffres." },
+    { nom:'Clara',    role:'Voyante clairvoyante',       bio:"Vision globale et précise grâce à la clairvoyance pour éclairer toutes vos situations." },
+    { nom:'Sofia',    role:'Médium spirituelle',         bio:"Connexion aux guides spirituels pour éclairer vos choix de vie avec douceur." },
+    { nom:'Jeanne',   role:'Cartomancienne',             bio:"Oracles et tarots pour comprendre les enjeux cachés et les dynamiques invisibles." },
+    { nom:'Lila',     role:'Voyante karmique',           bio:"Analyse vos mémoires karmiques pour éclairer vos schémas répétitifs et vous libérer." },
+    { nom:'Amélie',   role:'Voyante émotionnelle',       bio:"Ressent profondément les émotions et les énergies pour guider votre cœur avec justesse." },
+    { nom:'Yara',     role:'Énergéticienne',             bio:"Nettoyage énergétique et harmonisation intérieure pour retrouver équilibre et sérénité." },
+    { nom:'Selene',   role:'Voyante lunaire',            bio:"Travaille avec les cycles lunaires et les marées célestes pour guider vos choix." },
+    { nom:'Iris',     role:'Médium onirique',            bio:"Décrypte vos rêves et symboles inconscients pour révéler les messages de votre âme." },
+    { nom:'Zélie',    role:'Cartomancienne',             bio:"Guidance claire et précise grâce aux oracles pour prendre vos décisions en confiance." },
+    { nom:'Maud',     role:'Médium auditif',             bio:"Messages intuitifs perçus sous forme sonore — une sensibilité rare et précieuse." },
+    { nom:'Anaïs',    role:'Astrologue karmique',        bio:"Analyse profonde de vos cycles karmiques à travers le prisme de l'astrologie." },
+    { nom:'Jade',     role:'Médium & tarologue',         bio:"Guidance directe et puissante grâce à la combinaison du tarot et de la médiumnité." },
+    { nom:'Luna',     role:'Chamane énergétique',        bio:"Travaille avec les éléments naturels et la sagesse des ancêtres pour vous guider." },
+    { nom:'Camille',  role:'Voyante',                    bio:"Lecture claire et lumineuse pour comprendre et éclairer vos choix sentimentaux." },
+    { nom:'Ophélie',  role:'Voyante intuitive',          bio:"Messages spontanés et intuitifs pour éclairer vos décisions avec authenticité." },
+  ];
+
+  function graineDuJour(){
+    const d = new Date();
+    const debutAnnee = new Date(d.getFullYear(),0,0);
+    const jourDeLAnnee = Math.floor((d - debutAnnee) / 86400000);
+    return d.getFullYear() * 1000 + jourDeLAnnee;
+  }
+
+  function choisirTroisExperts(){
+    let graine = graineDuJour();
+    const alea = () => { graine = (graine * 9301 + 49297) % 233280; return graine / 233280; };
+    const copie = [...TOUS_LES_EXPERTS];
+    const choix = [];
+    for (let i = 0; i < 3 && copie.length; i++){
+      const idx = Math.floor(alea() * copie.length);
+      choix.push(copie.splice(idx, 1)[0]);
+    }
+    return choix;
+  }
+
+  const grille = document.getElementById('expertGrid');
+  if (grille){
+    const choix = choisirTroisExperts();
+    const cartesHTML = choix.map(e =>
+      `<article class="expert"><div class="avatar">${e.nom[0]}</div><h3>${e.nom}</h3><div class="role">${e.role}</div><p>${e.bio}</p><a href="poser-ma-question.html?expert=${encodeURIComponent(e.nom)}">Consulter ${e.nom} →</a></article>`
+    ).join('');
+    const carteToutVoir = `<article class="expert more"><div class="avatar">✦</div><h3>Tous les experts</h3><div class="role">Choisissez librement</div><p>Comparez les spécialités et trouvez le profil qui correspond à votre demande.</p><a href="experts.html">Découvrir tous les experts →</a></article>`;
+    grille.innerHTML = cartesHTML + carteToutVoir;
+  }
 </script>
 </body>
 </html>
