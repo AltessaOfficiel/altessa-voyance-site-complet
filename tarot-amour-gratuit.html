@@ -25,7 +25,17 @@ nav{display:flex;align-items:center;gap:.2rem}
 @media(max-width:760px){header{padding:.9rem 1.5rem}.cards{grid-template-columns:1fr}.card{min-height:240px}.actions .btn{width:100%}}
 .email-gate{max-width:480px;margin:0 auto 20px;text-align:center}.email-gate p{font-family:'Cormorant Garamond',serif;color:var(--g2);font-size:1.05rem;margin:0 0 10px}.email-gate input{width:100%;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:8px;padding:12px 14px;color:var(--txt);font-family:Lato,sans-serif;font-size:.95rem}.email-gate input.err{border-color:#d97757}
 </style>
-</head><body>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0a0806">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/icons/favicon-16.png">
+  <link rel="apple-touch-icon" href="/assets/img/icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Altessa">
+  <script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));}</script>
+</head>
+<body>
 <header>
   <a href="index.html" class="logo" aria-label="Altessa Voyance — Accueil">
     <img src="assets/img/logo-altessa.png" alt="Logo Altessa" width="36" height="36">

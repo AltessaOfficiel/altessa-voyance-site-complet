@@ -77,7 +77,17 @@ footer{position:relative;z-index:1;border-top:1px solid var(--bordure);padding:2
 @media(max-width:700px){.experts-grid{grid-template-columns:repeat(2,1fr);gap:1rem;}header{padding:0.9rem 1.5rem;}nav .btn-nav,nav .lang-select{display:none;}.burger{display:flex;}footer{flex-direction:column;align-items:center;text-align:center;padding:2rem 1.5rem;}}
 @media(max-width:420px){.experts-grid{grid-template-columns:1fr;}}
 </style>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0a0806">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/icons/favicon-16.png">
+  <link rel="apple-touch-icon" href="/assets/img/icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Altessa">
+  <script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));}</script>
 </head>
+
 <body>
 
 <header>

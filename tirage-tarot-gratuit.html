@@ -42,7 +42,17 @@ nav{display:flex;align-items:center;gap:.2rem}
 @media(max-width:900px){nav .btn-nav,nav .lang-select{display:none}.burger{display:flex}}
 @media(max-width:720px){header{padding:.9rem 1.5rem}.stage{grid-template-columns:1fr}.card{width:220px;height:340px}.how-grid{grid-template-columns:1fr}}
   </style>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0a0806">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/icons/favicon-16.png">
+  <link rel="apple-touch-icon" href="/assets/img/icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Altessa">
+  <script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));}</script>
 </head>
+
 <body>
 <header>
   <a href="index.html" class="logo" aria-label="Altessa Voyance — Accueil">
